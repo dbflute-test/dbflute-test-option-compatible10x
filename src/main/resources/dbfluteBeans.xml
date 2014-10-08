@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+    >
+
+    <!-- The components of DBFlute Runtime. -->
+    <bean id="introduction" class="org.docksidestage.compatible10x.dbflute.allcommon.DBFluteInitializer">
+        <constructor-arg index="0"><ref bean="dataSource"/></constructor-arg>
+    </bean>
+    <bean id="invokerAssistant" class="org.docksidestage.compatible10x.dbflute.allcommon.ImplementedInvokerAssistant" autowire="byType">
+        <property name="dataSource"><ref bean="dataSource"/></property>
+        <property name="introduction"><ref bean="introduction"/></property>
+    </bean>
+    <bean id="commonColumnAutoSetupper" class="org.docksidestage.compatible10x.dbflute.allcommon.ImplementedCommonColumnAutoSetupper" autowire="byType"/>
+    <bean id="behaviorSelector" class="org.docksidestage.compatible10x.dbflute.allcommon.ImplementedBehaviorSelector" autowire="byType"/>
+    <bean id="behaviorCommandInvoker" class="org.dbflute.bhv.core.BehaviorCommandInvoker" autowire="byType">
+        <property name="invokerAssistant"><ref bean="invokerAssistant"/></property>
+    </bean>
+
+    <!-- The components of Behavior. -->
+	<bean id="memberBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberAddressBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberAddressBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberFollowingBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberFollowingBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberLoginBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberLoginBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberSecurityBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberSecurityBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberServiceBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberServiceBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberStatusBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberStatusBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="memberWithdrawalBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.MemberWithdrawalBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="productBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.ProductBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="productCategoryBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.ProductCategoryBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="productStatusBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.ProductStatusBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="purchaseBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.PurchaseBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="purchasePaymentBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.PurchasePaymentBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="regionBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.RegionBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="serviceRankBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.ServiceRankBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="summaryProductBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.SummaryProductBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="summaryWithdrawalBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.SummaryWithdrawalBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+    </bean>
+	<bean id="vendorDollarBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.Vendor$DollarBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="vendorCheckBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.VendorCheckBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="vendorIdentityOnlyBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.VendorIdentityOnlyBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="vendorPrimaryKeyOnlyBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.VendorPrimaryKeyOnlyBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="vendorTheLongAndWindingTableAndColumnBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.VendorTheLongAndWindingTableAndColumnBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="vendorTheLongAndWindingTableAndColumnRefBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.VendorTheLongAndWindingTableAndColumnRefBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+	<bean id="withdrawalReasonBhv" class="org.docksidestage.compatible10x.dbflute.exbhv.WithdrawalReasonBhv" autowire="byType">
+        <property name="behaviorCommandInvoker"><ref bean="behaviorCommandInvoker"/></property>
+        <property name="behaviorSelector"><ref bean="behaviorSelector"/></property>
+        <property name="commonColumnAutoSetupper"><ref bean="commonColumnAutoSetupper"/></property>
+    </bean>
+</beans>
