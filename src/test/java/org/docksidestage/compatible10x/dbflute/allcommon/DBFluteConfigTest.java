@@ -2,7 +2,6 @@ package org.docksidestage.compatible10x.dbflute.allcommon;
 
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.jdbc.StatementConfig;
-import org.docksidestage.compatible10x.dbflute.allcommon.DBFluteConfig;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv;
 import org.docksidestage.compatible10x.dbflute.exentity.Member;
