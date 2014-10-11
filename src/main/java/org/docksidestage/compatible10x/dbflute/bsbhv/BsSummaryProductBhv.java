@@ -398,12 +398,10 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * Load referrer of purchaseList by the set-upper of referrer. <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseList'.
      * <pre>
-     * summaryProductBhv.<span style="color: #DD4747">loadPurchaseList</span>(summaryProductList, new ConditionBeanSetupper&lt;PurchaseCB&gt;() {
-     *     public void setup(PurchaseCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * summaryProductBhv.<span style="color: #DD4747">loadPurchaseList</span>(summaryProductList, purchaseCB -&gt; {
+     *     purchaseCB.setupSelect...();
+     *     purchaseCB.query().setFoo...(value);
+     *     purchaseCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -431,12 +429,10 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * Load referrer of purchaseList by the set-upper of referrer. <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseList'.
      * <pre>
-     * summaryProductBhv.<span style="color: #DD4747">loadPurchaseList</span>(summaryProductList, new ConditionBeanSetupper&lt;PurchaseCB&gt;() {
-     *     public void setup(PurchaseCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * summaryProductBhv.<span style="color: #DD4747">loadPurchaseList</span>(summaryProductList, purchaseCB -&gt; {
+     *     purchaseCB.setupSelect...();
+     *     purchaseCB.query().setFoo...(value);
+     *     purchaseCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

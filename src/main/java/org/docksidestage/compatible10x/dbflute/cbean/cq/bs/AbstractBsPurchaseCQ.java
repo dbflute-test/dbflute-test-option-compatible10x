@@ -206,36 +206,6 @@ public abstract class AbstractBsPurchaseCQ extends AbstractConditionQuery {
     }
     public abstract String keepPurchaseId_NotExistsReferrer_PurchasePaymentList(PurchasePaymentCQ sq);
 
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select PURCHASE_ID from PURCHASE_PAYMENT where ...)} <br />
-     * (購入支払)PURCHASE_PAYMENT by PURCHASE_ID, named 'purchasePaymentAsOne'.
-     * @param subCBLambda The callback for sub-query of PurchasePaymentList for 'in-scope'. (NotNull)
-     */
-    public void inScopePurchasePaymentList(SubQuery<PurchasePaymentCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        PurchasePaymentCB cb = new PurchasePaymentCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepPurchaseId_InScopeRelation_PurchasePaymentList(cb.query());
-        registerInScopeRelation(cb.query(), "PURCHASE_ID", "PURCHASE_ID", pp, "purchasePaymentList");
-    }
-    public abstract String keepPurchaseId_InScopeRelation_PurchasePaymentList(PurchasePaymentCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select PURCHASE_ID from PURCHASE_PAYMENT where ...)} <br />
-     * (購入支払)PURCHASE_PAYMENT by PURCHASE_ID, named 'purchasePaymentAsOne'.
-     * @param subCBLambda The callback for sub-query of PurchasePaymentList for 'not in-scope'. (NotNull)
-     */
-    public void notInScopePurchasePaymentList(SubQuery<PurchasePaymentCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        PurchasePaymentCB cb = new PurchasePaymentCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepPurchaseId_NotInScopeRelation_PurchasePaymentList(cb.query());
-        registerNotInScopeRelation(cb.query(), "PURCHASE_ID", "PURCHASE_ID", pp, "purchasePaymentList");
-    }
-    public abstract String keepPurchaseId_NotInScopeRelation_PurchasePaymentList(PurchasePaymentCQ sq);
-
     public void xsderivePurchasePaymentList(String fn, SubQuery<PurchasePaymentCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         PurchasePaymentCB cb = new PurchasePaymentCB(); cb.xsetupForDerivedReferrer(this);
@@ -250,11 +220,9 @@ public abstract class AbstractBsPurchaseCQ extends AbstractConditionQuery {
      * {FOO &lt;= (select max(BAR) from PURCHASE_PAYMENT where ...)} <br />
      * (購入支払)PURCHASE_PAYMENT by PURCHASE_ID, named 'purchasePaymentAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">derivedPurchasePaymentList()</span>.<span style="color: #DD4747">max</span>(new SubQuery&lt;PurchasePaymentCB&gt;() {
-     *     public void query(PurchasePaymentCB subCB) {
-     *         subCB.specify().<span style="color: #DD4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
-     *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
-     *     }
+     * cb.query().<span style="color: #DD4747">derivedPurchasePaymentList()</span>.<span style="color: #DD4747">max</span>(paymentCB -&gt; {
+     *     paymentCB.specify().<span style="color: #DD4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *     paymentCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      * }).<span style="color: #DD4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
@@ -395,36 +363,6 @@ public abstract class AbstractBsPurchaseCQ extends AbstractConditionQuery {
         regINS(CK_NINS, cTL(memberIdList), getCValueMemberId(), "MEMBER_ID");
     }
 
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my MEMBER_ID, named 'member'.
-     * @param subCBLambda The callback for sub-query of Member for 'in-scope'. (NotNull)
-     */
-    public void inScopeMember(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberId_InScopeRelation_Member(cb.query());
-        registerInScopeRelation(cb.query(), "MEMBER_ID", "MEMBER_ID", pp, "member");
-    }
-    public abstract String keepMemberId_InScopeRelation_Member(MemberCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my MEMBER_ID, named 'member'.
-     * @param subCBLambda The callback for sub-query of Member for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeMember(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberId_NotInScopeRelation_Member(cb.query());
-        registerNotInScopeRelation(cb.query(), "MEMBER_ID", "MEMBER_ID", pp, "member");
-    }
-    public abstract String keepMemberId_NotInScopeRelation_Member(MemberCQ sq);
-
     protected void regMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueMemberId(), "MEMBER_ID"); }
     protected abstract ConditionValue getCValueMemberId();
 
@@ -528,36 +466,6 @@ public abstract class AbstractBsPurchaseCQ extends AbstractConditionQuery {
     protected void doSetProductId_NotInScope(Collection<Integer> productIdList) {
         regINS(CK_NINS, cTL(productIdList), getCValueProductId(), "PRODUCT_ID");
     }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select PRODUCT_ID from PRODUCT where ...)} <br />
-     * (商品)PRODUCT by my PRODUCT_ID, named 'product'.
-     * @param subCBLambda The callback for sub-query of Product for 'in-scope'. (NotNull)
-     */
-    public void inScopeProduct(SubQuery<ProductCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductCB cb = new ProductCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductId_InScopeRelation_Product(cb.query());
-        registerInScopeRelation(cb.query(), "PRODUCT_ID", "PRODUCT_ID", pp, "product");
-    }
-    public abstract String keepProductId_InScopeRelation_Product(ProductCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select PRODUCT_ID from PRODUCT where ...)} <br />
-     * (商品)PRODUCT by my PRODUCT_ID, named 'product'.
-     * @param subCBLambda The callback for sub-query of Product for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeProduct(SubQuery<ProductCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductCB cb = new ProductCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductId_NotInScopeRelation_Product(cb.query());
-        registerNotInScopeRelation(cb.query(), "PRODUCT_ID", "PRODUCT_ID", pp, "product");
-    }
-    public abstract String keepProductId_NotInScopeRelation_Product(ProductCQ sq);
 
     protected void regProductId(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueProductId(), "PRODUCT_ID"); }
     protected abstract ConditionValue getCValueProductId();
@@ -1653,22 +1561,6 @@ public abstract class AbstractBsPurchaseCQ extends AbstractConditionQuery {
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(PurchaseCQ sq);
-
-    // ===================================================================================
-    //                                                                       MyselfInScope
-    //                                                                       =============
-    /**
-     * Prepare for MyselfInScope (sub-query).
-     * @param subQuery The implementation of sub-query. (NotNull)
-     */
-    public void myselfInScope(SubQuery<PurchaseCB> subQuery) {
-        assertObjectNotNull("subQuery", subQuery);
-        PurchaseCB cb = new PurchaseCB(); cb.xsetupForMyselfInScope(this);
-        try { lock(); subQuery.query(cb); } finally { unlock(); }
-        String pp = keepMyselfInScope(cb.query());
-        registerMyselfInScope(cb.query(), pp);
-    }
-    public abstract String keepMyselfInScope(PurchaseCQ sq);
 
     // ===================================================================================
     //                                                                        Manual Order

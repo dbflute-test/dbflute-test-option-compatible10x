@@ -462,12 +462,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberAddressList by the set-upper of referrer. <br />
      * (会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberAddressList</span>(memberList, new ConditionBeanSetupper&lt;MemberAddressCB&gt;() {
-     *     public void setup(MemberAddressCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberAddressList</span>(memberList, addressCB -&gt; {
+     *     addressCB.setupSelect...();
+     *     addressCB.query().setFoo...(value);
+     *     addressCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -495,12 +493,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberAddressList by the set-upper of referrer. <br />
      * (会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberAddressList</span>(memberList, new ConditionBeanSetupper&lt;MemberAddressCB&gt;() {
-     *     public void setup(MemberAddressCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberAddressList</span>(memberList, addressCB -&gt; {
+     *     addressCB.setupSelect...();
+     *     addressCB.query().setFoo...(value);
+     *     addressCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -554,12 +550,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberFollowingByMyMemberIdList by the set-upper of referrer. <br />
      * (会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByMyMemberIdList</span>(memberList, new ConditionBeanSetupper&lt;MemberFollowingCB&gt;() {
-     *     public void setup(MemberFollowingCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByMyMemberIdList</span>(memberList, followingCB -&gt; {
+     *     followingCB.setupSelect...();
+     *     followingCB.query().setFoo...(value);
+     *     followingCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -587,12 +581,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberFollowingByMyMemberIdList by the set-upper of referrer. <br />
      * (会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByMyMemberIdList</span>(memberList, new ConditionBeanSetupper&lt;MemberFollowingCB&gt;() {
-     *     public void setup(MemberFollowingCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByMyMemberIdList</span>(memberList, followingCB -&gt; {
+     *     followingCB.setupSelect...();
+     *     followingCB.query().setFoo...(value);
+     *     followingCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -646,12 +638,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberFollowingByYourMemberIdList by the set-upper of referrer. <br />
      * (会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByYourMemberIdList</span>(memberList, new ConditionBeanSetupper&lt;MemberFollowingCB&gt;() {
-     *     public void setup(MemberFollowingCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByYourMemberIdList</span>(memberList, followingCB -&gt; {
+     *     followingCB.setupSelect...();
+     *     followingCB.query().setFoo...(value);
+     *     followingCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -679,12 +669,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberFollowingByYourMemberIdList by the set-upper of referrer. <br />
      * (会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByYourMemberIdList</span>(memberList, new ConditionBeanSetupper&lt;MemberFollowingCB&gt;() {
-     *     public void setup(MemberFollowingCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberFollowingByYourMemberIdList</span>(memberList, followingCB -&gt; {
+     *     followingCB.setupSelect...();
+     *     followingCB.query().setFoo...(value);
+     *     followingCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -738,12 +726,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberLoginList by the set-upper of referrer. <br />
      * (会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberList, new ConditionBeanSetupper&lt;MemberLoginCB&gt;() {
-     *     public void setup(MemberLoginCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberList, loginCB -&gt; {
+     *     loginCB.setupSelect...();
+     *     loginCB.query().setFoo...(value);
+     *     loginCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -771,12 +757,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of memberLoginList by the set-upper of referrer. <br />
      * (会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberList, new ConditionBeanSetupper&lt;MemberLoginCB&gt;() {
-     *     public void setup(MemberLoginCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberList, loginCB -&gt; {
+     *     loginCB.setupSelect...();
+     *     loginCB.query().setFoo...(value);
+     *     loginCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -830,12 +814,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of purchaseList by the set-upper of referrer. <br />
      * (購入)PURCHASE by MEMBER_ID, named 'purchaseList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadPurchaseList</span>(memberList, new ConditionBeanSetupper&lt;PurchaseCB&gt;() {
-     *     public void setup(PurchaseCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadPurchaseList</span>(memberList, purchaseCB -&gt; {
+     *     purchaseCB.setupSelect...();
+     *     purchaseCB.query().setFoo...(value);
+     *     purchaseCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -863,12 +845,10 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * Load referrer of purchaseList by the set-upper of referrer. <br />
      * (購入)PURCHASE by MEMBER_ID, named 'purchaseList'.
      * <pre>
-     * memberBhv.<span style="color: #DD4747">loadPurchaseList</span>(memberList, new ConditionBeanSetupper&lt;PurchaseCB&gt;() {
-     *     public void setup(PurchaseCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberBhv.<span style="color: #DD4747">loadPurchaseList</span>(memberList, purchaseCB -&gt; {
+     *     purchaseCB.setupSelect...();
+     *     purchaseCB.query().setFoo...(value);
+     *     purchaseCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

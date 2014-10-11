@@ -63,6 +63,7 @@ map:{
     #; isCompatibleConditionBeanOldNamingCheckInvalid = true
     #; isCompatibleConditionBeanOldNamingOption = true
     #; isCompatibleBizOneToOneImplicitReverseFkAllowed = true
+    #; isCompatibleReferrerCBMethodIdentityNameListSuffix = true
     #
     ## compile compatible (false if compatible)
     #; isMakeCallbackConditionBeanSetup = false

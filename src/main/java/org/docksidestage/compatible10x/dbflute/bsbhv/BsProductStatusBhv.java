@@ -423,12 +423,10 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of productList by the set-upper of referrer. <br />
      * (商品)PRODUCT by PRODUCT_STATUS_CODE, named 'productList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadProductList</span>(productStatusList, new ConditionBeanSetupper&lt;ProductCB&gt;() {
-     *     public void setup(ProductCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productStatusBhv.<span style="color: #DD4747">loadProductList</span>(productStatusList, productCB -&gt; {
+     *     productCB.setupSelect...();
+     *     productCB.query().setFoo...(value);
+     *     productCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -456,12 +454,10 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of productList by the set-upper of referrer. <br />
      * (商品)PRODUCT by PRODUCT_STATUS_CODE, named 'productList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadProductList</span>(productStatusList, new ConditionBeanSetupper&lt;ProductCB&gt;() {
-     *     public void setup(ProductCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productStatusBhv.<span style="color: #DD4747">loadProductList</span>(productStatusList, productCB -&gt; {
+     *     productCB.setupSelect...();
+     *     productCB.query().setFoo...(value);
+     *     productCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -515,12 +511,10 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of summaryProductList by the set-upper of referrer. <br />
      * SUMMARY_PRODUCT by PRODUCT_STATUS_CODE, named 'summaryProductList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadSummaryProductList</span>(productStatusList, new ConditionBeanSetupper&lt;SummaryProductCB&gt;() {
-     *     public void setup(SummaryProductCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productStatusBhv.<span style="color: #DD4747">loadSummaryProductList</span>(productStatusList, productCB -&gt; {
+     *     productCB.setupSelect...();
+     *     productCB.query().setFoo...(value);
+     *     productCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -548,12 +542,10 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of summaryProductList by the set-upper of referrer. <br />
      * SUMMARY_PRODUCT by PRODUCT_STATUS_CODE, named 'summaryProductList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadSummaryProductList</span>(productStatusList, new ConditionBeanSetupper&lt;SummaryProductCB&gt;() {
-     *     public void setup(SummaryProductCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productStatusBhv.<span style="color: #DD4747">loadSummaryProductList</span>(productStatusList, productCB -&gt; {
+     *     productCB.setupSelect...();
+     *     productCB.query().setFoo...(value);
+     *     productCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

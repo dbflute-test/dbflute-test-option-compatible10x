@@ -427,12 +427,10 @@ public abstract class BsPurchaseBhv extends AbstractBehaviorWritable<Purchase, P
      * Load referrer of purchasePaymentList by the set-upper of referrer. <br />
      * (購入支払)PURCHASE_PAYMENT by PURCHASE_ID, named 'purchasePaymentList'.
      * <pre>
-     * purchaseBhv.<span style="color: #DD4747">loadPurchasePaymentList</span>(purchaseList, new ConditionBeanSetupper&lt;PurchasePaymentCB&gt;() {
-     *     public void setup(PurchasePaymentCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * purchaseBhv.<span style="color: #DD4747">loadPurchasePaymentList</span>(purchaseList, paymentCB -&gt; {
+     *     paymentCB.setupSelect...();
+     *     paymentCB.query().setFoo...(value);
+     *     paymentCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -460,12 +458,10 @@ public abstract class BsPurchaseBhv extends AbstractBehaviorWritable<Purchase, P
      * Load referrer of purchasePaymentList by the set-upper of referrer. <br />
      * (購入支払)PURCHASE_PAYMENT by PURCHASE_ID, named 'purchasePaymentList'.
      * <pre>
-     * purchaseBhv.<span style="color: #DD4747">loadPurchasePaymentList</span>(purchaseList, new ConditionBeanSetupper&lt;PurchasePaymentCB&gt;() {
-     *     public void setup(PurchasePaymentCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * purchaseBhv.<span style="color: #DD4747">loadPurchasePaymentList</span>(purchaseList, paymentCB -&gt; {
+     *     paymentCB.setupSelect...();
+     *     paymentCB.query().setFoo...(value);
+     *     paymentCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

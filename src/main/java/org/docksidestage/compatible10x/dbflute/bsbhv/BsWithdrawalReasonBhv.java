@@ -423,12 +423,10 @@ public abstract class BsWithdrawalReasonBhv extends AbstractBehaviorWritable<Wit
      * Load referrer of memberWithdrawalList by the set-upper of referrer. <br />
      * (会員退会情報)MEMBER_WITHDRAWAL by WITHDRAWAL_REASON_CODE, named 'memberWithdrawalList'.
      * <pre>
-     * withdrawalReasonBhv.<span style="color: #DD4747">loadMemberWithdrawalList</span>(withdrawalReasonList, new ConditionBeanSetupper&lt;MemberWithdrawalCB&gt;() {
-     *     public void setup(MemberWithdrawalCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * withdrawalReasonBhv.<span style="color: #DD4747">loadMemberWithdrawalList</span>(withdrawalReasonList, withdrawalCB -&gt; {
+     *     withdrawalCB.setupSelect...();
+     *     withdrawalCB.query().setFoo...(value);
+     *     withdrawalCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -456,12 +454,10 @@ public abstract class BsWithdrawalReasonBhv extends AbstractBehaviorWritable<Wit
      * Load referrer of memberWithdrawalList by the set-upper of referrer. <br />
      * (会員退会情報)MEMBER_WITHDRAWAL by WITHDRAWAL_REASON_CODE, named 'memberWithdrawalList'.
      * <pre>
-     * withdrawalReasonBhv.<span style="color: #DD4747">loadMemberWithdrawalList</span>(withdrawalReasonList, new ConditionBeanSetupper&lt;MemberWithdrawalCB&gt;() {
-     *     public void setup(MemberWithdrawalCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * withdrawalReasonBhv.<span style="color: #DD4747">loadMemberWithdrawalList</span>(withdrawalReasonList, withdrawalCB -&gt; {
+     *     withdrawalCB.setupSelect...();
+     *     withdrawalCB.query().setFoo...(value);
+     *     withdrawalCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

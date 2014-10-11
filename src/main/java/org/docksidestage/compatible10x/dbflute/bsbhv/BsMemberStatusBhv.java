@@ -425,12 +425,10 @@ public abstract class BsMemberStatusBhv extends AbstractBehaviorWritable<MemberS
      * Load referrer of memberList by the set-upper of referrer. <br />
      * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberList'.
      * <pre>
-     * memberStatusBhv.<span style="color: #DD4747">loadMemberList</span>(memberStatusList, new ConditionBeanSetupper&lt;MemberCB&gt;() {
-     *     public void setup(MemberCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberStatusBhv.<span style="color: #DD4747">loadMemberList</span>(memberStatusList, memberCB -&gt; {
+     *     memberCB.setupSelect...();
+     *     memberCB.query().setFoo...(value);
+     *     memberCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -458,12 +456,10 @@ public abstract class BsMemberStatusBhv extends AbstractBehaviorWritable<MemberS
      * Load referrer of memberList by the set-upper of referrer. <br />
      * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberList'.
      * <pre>
-     * memberStatusBhv.<span style="color: #DD4747">loadMemberList</span>(memberStatusList, new ConditionBeanSetupper&lt;MemberCB&gt;() {
-     *     public void setup(MemberCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberStatusBhv.<span style="color: #DD4747">loadMemberList</span>(memberStatusList, memberCB -&gt; {
+     *     memberCB.setupSelect...();
+     *     memberCB.query().setFoo...(value);
+     *     memberCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -517,12 +513,10 @@ public abstract class BsMemberStatusBhv extends AbstractBehaviorWritable<MemberS
      * Load referrer of memberLoginList by the set-upper of referrer. <br />
      * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginList'.
      * <pre>
-     * memberStatusBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberStatusList, new ConditionBeanSetupper&lt;MemberLoginCB&gt;() {
-     *     public void setup(MemberLoginCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberStatusBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberStatusList, loginCB -&gt; {
+     *     loginCB.setupSelect...();
+     *     loginCB.query().setFoo...(value);
+     *     loginCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -550,12 +544,10 @@ public abstract class BsMemberStatusBhv extends AbstractBehaviorWritable<MemberS
      * Load referrer of memberLoginList by the set-upper of referrer. <br />
      * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginList'.
      * <pre>
-     * memberStatusBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberStatusList, new ConditionBeanSetupper&lt;MemberLoginCB&gt;() {
-     *     public void setup(MemberLoginCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * memberStatusBhv.<span style="color: #DD4747">loadMemberLoginList</span>(memberStatusList, loginCB -&gt; {
+     *     loginCB.setupSelect...();
+     *     loginCB.query().setFoo...(value);
+     *     loginCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

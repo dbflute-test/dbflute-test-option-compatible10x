@@ -398,12 +398,10 @@ public abstract class BsProductCategoryBhv extends AbstractBehaviorWritable<Prod
      * Load referrer of productList by the set-upper of referrer. <br />
      * (商品)PRODUCT by PRODUCT_CATEGORY_CODE, named 'productList'.
      * <pre>
-     * productCategoryBhv.<span style="color: #DD4747">loadProductList</span>(productCategoryList, new ConditionBeanSetupper&lt;ProductCB&gt;() {
-     *     public void setup(ProductCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productCategoryBhv.<span style="color: #DD4747">loadProductList</span>(productCategoryList, productCB -&gt; {
+     *     productCB.setupSelect...();
+     *     productCB.query().setFoo...(value);
+     *     productCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -431,12 +429,10 @@ public abstract class BsProductCategoryBhv extends AbstractBehaviorWritable<Prod
      * Load referrer of productList by the set-upper of referrer. <br />
      * (商品)PRODUCT by PRODUCT_CATEGORY_CODE, named 'productList'.
      * <pre>
-     * productCategoryBhv.<span style="color: #DD4747">loadProductList</span>(productCategoryList, new ConditionBeanSetupper&lt;ProductCB&gt;() {
-     *     public void setup(ProductCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productCategoryBhv.<span style="color: #DD4747">loadProductList</span>(productCategoryList, productCB -&gt; {
+     *     productCB.setupSelect...();
+     *     productCB.query().setFoo...(value);
+     *     productCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -490,12 +486,10 @@ public abstract class BsProductCategoryBhv extends AbstractBehaviorWritable<Prod
      * Load referrer of productCategorySelfList by the set-upper of referrer. <br />
      * (商品カテゴリ)PRODUCT_CATEGORY by PARENT_CATEGORY_CODE, named 'productCategorySelfList'.
      * <pre>
-     * productCategoryBhv.<span style="color: #DD4747">loadProductCategorySelfList</span>(productCategoryList, new ConditionBeanSetupper&lt;ProductCategoryCB&gt;() {
-     *     public void setup(ProductCategoryCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productCategoryBhv.<span style="color: #DD4747">loadProductCategorySelfList</span>(productCategoryList, categoryCB -&gt; {
+     *     categoryCB.setupSelect...();
+     *     categoryCB.query().setFoo...(value);
+     *     categoryCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -523,12 +517,10 @@ public abstract class BsProductCategoryBhv extends AbstractBehaviorWritable<Prod
      * Load referrer of productCategorySelfList by the set-upper of referrer. <br />
      * (商品カテゴリ)PRODUCT_CATEGORY by PARENT_CATEGORY_CODE, named 'productCategorySelfList'.
      * <pre>
-     * productCategoryBhv.<span style="color: #DD4747">loadProductCategorySelfList</span>(productCategoryList, new ConditionBeanSetupper&lt;ProductCategoryCB&gt;() {
-     *     public void setup(ProductCategoryCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * productCategoryBhv.<span style="color: #DD4747">loadProductCategorySelfList</span>(productCategoryList, categoryCB -&gt; {
+     *     categoryCB.setupSelect...();
+     *     categoryCB.query().setFoo...(value);
+     *     categoryCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

@@ -930,8 +930,9 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // *Point!
-        cb.query().inScopePurchaseList(new SubQuery<PurchaseCB>() {
+        cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
+                subCB.useInScopeSubQuery();
                 subCB.query().setPurchaseCount_GreaterThan(2);
             }
         });
@@ -976,8 +977,9 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // *Point!
-        cb.query().inScopePurchaseList(new SubQuery<PurchaseCB>() {
+        cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
+                subCB.useInScopeSubQuery();
                 subCB.query().queryProduct().setProductName_PrefixSearch("Storm");
             }
         });
@@ -1023,8 +1025,9 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // *Point!
-        cb.query().notInScopePurchaseList(new SubQuery<PurchaseCB>() {
+        cb.query().notExistsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
+                subCB.useInScopeSubQuery();
                 subCB.query().setPurchaseCount_GreaterThan(2);
             }
         });

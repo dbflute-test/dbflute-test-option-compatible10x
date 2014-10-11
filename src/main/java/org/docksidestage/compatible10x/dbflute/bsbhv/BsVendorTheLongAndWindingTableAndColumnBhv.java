@@ -423,12 +423,10 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      * Load referrer of vendorTheLongAndWindingTableAndColumnRefList by the set-upper of referrer. <br />
      * VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF by THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID, named 'vendorTheLongAndWindingTableAndColumnRefList'.
      * <pre>
-     * vendorTheLongAndWindingTableAndColumnBhv.<span style="color: #DD4747">loadVendorTheLongAndWindingTableAndColumnRefList</span>(vendorTheLongAndWindingTableAndColumnList, new ConditionBeanSetupper&lt;VendorTheLongAndWindingTableAndColumnRefCB&gt;() {
-     *     public void setup(VendorTheLongAndWindingTableAndColumnRefCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * vendorTheLongAndWindingTableAndColumnBhv.<span style="color: #DD4747">loadVendorTheLongAndWindingTableAndColumnRefList</span>(vendorTheLongAndWindingTableAndColumnList, refCB -&gt; {
+     *     refCB.setupSelect...();
+     *     refCB.query().setFoo...(value);
+     *     refCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -456,12 +454,10 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      * Load referrer of vendorTheLongAndWindingTableAndColumnRefList by the set-upper of referrer. <br />
      * VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF by THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID, named 'vendorTheLongAndWindingTableAndColumnRefList'.
      * <pre>
-     * vendorTheLongAndWindingTableAndColumnBhv.<span style="color: #DD4747">loadVendorTheLongAndWindingTableAndColumnRefList</span>(vendorTheLongAndWindingTableAndColumnList, new ConditionBeanSetupper&lt;VendorTheLongAndWindingTableAndColumnRefCB&gt;() {
-     *     public void setup(VendorTheLongAndWindingTableAndColumnRefCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * vendorTheLongAndWindingTableAndColumnBhv.<span style="color: #DD4747">loadVendorTheLongAndWindingTableAndColumnRefList</span>(vendorTheLongAndWindingTableAndColumnList, refCB -&gt; {
+     *     refCB.setupSelect...();
+     *     refCB.query().setFoo...(value);
+     *     refCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

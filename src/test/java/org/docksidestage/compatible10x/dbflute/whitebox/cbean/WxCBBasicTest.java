@@ -189,8 +189,9 @@ public class WxCBBasicTest extends UnitContainerTestCase {
     public void test_myselfInScopeSubQuery_basic() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().myselfInScope(new SubQuery<MemberCB>() {
+        cb.query().myselfExists(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {
+                subCB.useInScopeSubQuery();
                 subCB.query().setMemberName_PrefixSearch("S");
                 subCB.union(new UnionQuery<MemberCB>() {
                     public void query(MemberCB unionCB) {
@@ -227,8 +228,9 @@ public class WxCBBasicTest extends UnitContainerTestCase {
     public void test_myselfInScopeSubQuery_foreign() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().queryMemberStatus().myselfInScope(new SubQuery<MemberStatusCB>() {
+        cb.query().queryMemberStatus().myselfExists(new SubQuery<MemberStatusCB>() {
             public void query(MemberStatusCB subCB) {
+                subCB.useInScopeSubQuery();
                 subCB.query().setMemberStatusCode_Equal_Formalized();
                 subCB.union(new UnionQuery<MemberStatusCB>() {
                     public void query(MemberStatusCB unionCB) {

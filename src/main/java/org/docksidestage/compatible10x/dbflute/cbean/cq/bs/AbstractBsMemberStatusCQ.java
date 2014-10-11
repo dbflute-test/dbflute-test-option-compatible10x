@@ -216,10 +216,8 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {exists (select MEMBER_STATUS_CODE from MEMBER where ...)} <br />
      * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">existsMemberList</span>(new SubQuery&lt;MemberCB&gt;() {
-     *     public void query(MemberCB subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #DD4747">existsMemberList</span>(memberCB -&gt; {
+     *     memberCB.query().setXxx...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of MemberList for 'exists'. (NotNull)
@@ -238,10 +236,8 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {exists (select LOGIN_MEMBER_STATUS_CODE from MEMBER_LOGIN where ...)} <br />
      * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">existsMemberLoginList</span>(new SubQuery&lt;MemberLoginCB&gt;() {
-     *     public void query(MemberLoginCB subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #DD4747">existsMemberLoginList</span>(loginCB -&gt; {
+     *     loginCB.query().setXxx...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of MemberLoginList for 'exists'. (NotNull)
@@ -298,66 +294,6 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
         registerNotExistsReferrer(cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", pp, "memberLoginList");
     }
     public abstract String keepMemberStatusCode_NotExistsReferrer_MemberLoginList(MemberLoginCQ sq);
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select MEMBER_STATUS_CODE from MEMBER where ...)} <br />
-     * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberAsOne'.
-     * @param subCBLambda The callback for sub-query of MemberList for 'in-scope'. (NotNull)
-     */
-    public void inScopeMemberList(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_InScopeRelation_MemberList(cb.query());
-        registerInScopeRelation(cb.query(), "MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", pp, "memberList");
-    }
-    public abstract String keepMemberStatusCode_InScopeRelation_MemberList(MemberCQ sq);
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select LOGIN_MEMBER_STATUS_CODE from MEMBER_LOGIN where ...)} <br />
-     * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginAsOne'.
-     * @param subCBLambda The callback for sub-query of MemberLoginList for 'in-scope'. (NotNull)
-     */
-    public void inScopeMemberLoginList(SubQuery<MemberLoginCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberLoginCB cb = new MemberLoginCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_InScopeRelation_MemberLoginList(cb.query());
-        registerInScopeRelation(cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", pp, "memberLoginList");
-    }
-    public abstract String keepMemberStatusCode_InScopeRelation_MemberLoginList(MemberLoginCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select MEMBER_STATUS_CODE from MEMBER where ...)} <br />
-     * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberAsOne'.
-     * @param subCBLambda The callback for sub-query of MemberList for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeMemberList(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_NotInScopeRelation_MemberList(cb.query());
-        registerNotInScopeRelation(cb.query(), "MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", pp, "memberList");
-    }
-    public abstract String keepMemberStatusCode_NotInScopeRelation_MemberList(MemberCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select LOGIN_MEMBER_STATUS_CODE from MEMBER_LOGIN where ...)} <br />
-     * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginAsOne'.
-     * @param subCBLambda The callback for sub-query of MemberLoginList for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeMemberLoginList(SubQuery<MemberLoginCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberLoginCB cb = new MemberLoginCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_NotInScopeRelation_MemberLoginList(cb.query());
-        registerNotInScopeRelation(cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", pp, "memberLoginList");
-    }
-    public abstract String keepMemberStatusCode_NotInScopeRelation_MemberLoginList(MemberLoginCQ sq);
 
     public void xsderiveMemberList(String fn, SubQuery<MemberCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
@@ -978,22 +914,6 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(MemberStatusCQ sq);
-
-    // ===================================================================================
-    //                                                                       MyselfInScope
-    //                                                                       =============
-    /**
-     * Prepare for MyselfInScope (sub-query).
-     * @param subQuery The implementation of sub-query. (NotNull)
-     */
-    public void myselfInScope(SubQuery<MemberStatusCB> subQuery) {
-        assertObjectNotNull("subQuery", subQuery);
-        MemberStatusCB cb = new MemberStatusCB(); cb.xsetupForMyselfInScope(this);
-        try { lock(); subQuery.query(cb); } finally { unlock(); }
-        String pp = keepMyselfInScope(cb.query());
-        registerMyselfInScope(cb.query(), pp);
-    }
-    public abstract String keepMyselfInScope(MemberStatusCQ sq);
 
     // ===================================================================================
     //                                                                        Manual Order

@@ -398,12 +398,10 @@ public abstract class BsRegionBhv extends AbstractBehaviorWritable<Region, Regio
      * Load referrer of memberAddressList by the set-upper of referrer. <br />
      * (会員住所情報)MEMBER_ADDRESS by REGION_ID, named 'memberAddressList'.
      * <pre>
-     * regionBhv.<span style="color: #DD4747">loadMemberAddressList</span>(regionList, new ConditionBeanSetupper&lt;MemberAddressCB&gt;() {
-     *     public void setup(MemberAddressCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * regionBhv.<span style="color: #DD4747">loadMemberAddressList</span>(regionList, addressCB -&gt; {
+     *     addressCB.setupSelect...();
+     *     addressCB.query().setFoo...(value);
+     *     addressCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
@@ -431,12 +429,10 @@ public abstract class BsRegionBhv extends AbstractBehaviorWritable<Region, Regio
      * Load referrer of memberAddressList by the set-upper of referrer. <br />
      * (会員住所情報)MEMBER_ADDRESS by REGION_ID, named 'memberAddressList'.
      * <pre>
-     * regionBhv.<span style="color: #DD4747">loadMemberAddressList</span>(regionList, new ConditionBeanSetupper&lt;MemberAddressCB&gt;() {
-     *     public void setup(MemberAddressCB cb) {
-     *         cb.setupSelect...();
-     *         cb.query().setFoo...(value);
-     *         cb.query().addOrderBy_Bar...();
-     *     }
+     * regionBhv.<span style="color: #DD4747">loadMemberAddressList</span>(regionList, addressCB -&gt; {
+     *     addressCB.setupSelect...();
+     *     addressCB.query().setFoo...(value);
+     *     addressCB.query().addOrderBy_Bar...();
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>

@@ -4,7 +4,6 @@ import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.SubQuery;
 import org.dbflute.exception.IllegalConditionBeanOperationException;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
-import org.docksidestage.compatible10x.dbflute.cbean.MemberLoginCB;
 import org.docksidestage.compatible10x.dbflute.cbean.PurchaseCB;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv;
 import org.docksidestage.compatible10x.dbflute.exentity.Member;
@@ -44,11 +43,12 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.query().inline().setMemberName_PrefixSearch("S");
-        cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {
-            public void query(PurchaseCB subCB) {
-                subCB.query().setPaymentCompleteFlg_Equal_True();
-            }
-        });
+        // // unsupported since 1.1
+        //cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {
+        //    public void query(PurchaseCB subCB) {
+        //        subCB.query().setPaymentCompleteFlg_Equal_True();
+        //    }
+        //});
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);
@@ -67,11 +67,12 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
         cb.setupSelect_MemberStatus();
         cb.setupSelect_MemberAddressAsValid(currentDate());
         cb.query().inline().setMemberName_PrefixSearch("S");
-        cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {
-            public void query(PurchaseCB subCB) {
-                subCB.query().setPaymentCompleteFlg_Equal_True();
-            }
-        });
+        // unsupported since 1.1
+        //cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {
+        //    public void query(PurchaseCB subCB) {
+        //        subCB.query().setPaymentCompleteFlg_Equal_True();
+        //    }
+        //});
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
                 subCB.query().setPaymentCompleteFlg_Equal_True();
@@ -115,11 +116,12 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
         int countAll = memberBhv.selectCount(cb);
         cb.query().queryMemberStatus().inline().setDisplayOrder_GreaterEqual(2);
-        cb.query().queryMemberStatus().inline().inScopeMemberLoginList(new SubQuery<MemberLoginCB>() {
-            public void query(MemberLoginCB subCB) {
-                subCB.query().setMobileLoginFlg_Equal_True();
-            }
-        });
+        // unsupported since 1.1
+        //cb.query().queryMemberStatus().inline().inScopeMemberLoginList(new SubQuery<MemberLoginCB>() {
+        //    public void query(MemberLoginCB subCB) {
+        //        subCB.query().setMobileLoginFlg_Equal_True();
+        //    }
+        //});
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);
@@ -128,6 +130,5 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
         assertFalse(memberList.isEmpty());
         assertEquals(countAll, memberList.size());
         assertTrue(cb.toDisplaySql().contains("where dfinlineloc.DISPLAY_ORDER >= 2"));
-        assertTrue(cb.toDisplaySql().contains(".MOBILE_LOGIN_FLG = 1"));
     }
 }

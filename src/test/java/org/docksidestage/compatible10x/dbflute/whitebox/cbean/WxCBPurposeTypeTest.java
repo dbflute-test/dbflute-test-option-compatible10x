@@ -104,7 +104,7 @@ public class WxCBPurposeTypeTest extends UnitContainerTestCase {
         cb.query().setMemberStatusCode_Equal_Formalized();
         cb.query().existsMemberLoginList(new SubQuery<MemberLoginCB>() {
             public void query(MemberLoginCB subCB) {
-                subCB.query().inScopeMember(new SubQuery<MemberCB>() {
+                subCB.query().queryMemberStatus().existsMemberList(new SubQuery<MemberCB>() {
                     public void query(MemberCB subCB) {
                         subCB.query().setBirthdate_GreaterEqual(new Date());
                     }

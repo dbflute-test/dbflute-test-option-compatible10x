@@ -420,8 +420,8 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
             String memberName = member.getMemberName();
             String memberAccount = member.getMemberAccount();
             log(memberName + "(" + memberAccount + ")");
-            assertTrue("Unexpected memberAccount = " + memberAccount,
-                    memberAccount.startsWith("S") || memberAccount.startsWith("M") || memberAccount.startsWith("D"));
+            assertTrue("Unexpected memberAccount = " + memberAccount, memberAccount.startsWith("S") || memberAccount.startsWith("M")
+                    || memberAccount.startsWith("D"));
         }
         log("* * * * * * * * * */");
     }
@@ -618,11 +618,6 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
         // left outer join (select * from xxx where WithdrawalReasonCode is not null) xxx on xxx = xxx
         // cb.query().queryMemberWithdrawalAsOne().inline().setWithdrawalReasonCode_IsNotNull();
 
-        // 会員退会情報が存在する会員だけを取得するようにする
-        cb.query().inScopeMemberWithdrawalAsOne(new SubQuery<MemberWithdrawalCB>() {
-            public void query(MemberWithdrawalCB subCB) {
-            }
-        });
         cb.query().queryMemberWithdrawalAsOne().addOrderBy_WithdrawalDatetime_Desc();
 
         // ## Act ##
@@ -653,8 +648,11 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
         assertTrue(notExistsMemberWithdrawal);
         // MemberWithdrawalを取得できなかった会員の会員退会情報がちゃんとあるかどうか確認
         for (Integer memberId : notExistsMemberIdList) {
-            memberWithdrawalBhv.selectByPKValueWithDeletedCheck(memberId);// Expected no exception
+            if (memberWithdrawalBhv.selectByPKValue(memberId) != null) {
+                markHere("exists");
+            }
         }
+        assertMarked("exists");
     }
 
     // ===================================================================================
@@ -1334,8 +1332,9 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
         cb.query().setMemberStatusCode_Equal_Formalized();
         cb.query().existsMemberLoginList(new SubQuery<MemberLoginCB>() {
             public void query(MemberLoginCB subCB) {
-                subCB.query().inScopeMember(new SubQuery<MemberCB>() {
+                subCB.query().queryMemberStatus().existsMemberList(new SubQuery<MemberCB>() {
                     public void query(MemberCB subCB) {
+                        subCB.useInScopeSubQuery();
                         subCB.query().setBirthdate_GreaterEqual(new Date());
                     }
                 });
