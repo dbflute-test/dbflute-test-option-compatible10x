@@ -204,7 +204,7 @@ public class WxCBScalarConditionBasicTest extends UnitContainerTestCase {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }
-        });
+        }).get();
         PurchaseCB cb = new PurchaseCB();
         cb.query().queryMember().scalar_GreaterThan().avg(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {

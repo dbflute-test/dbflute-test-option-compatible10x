@@ -504,7 +504,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         doSetAddress_InScope(addressList);
     }
 
-    public void doSetAddress_InScope(Collection<String> addressList) {
+    protected void doSetAddress_InScope(Collection<String> addressList) {
         regINS(CK_INS, cTL(addressList), getCValueAddress(), "ADDRESS");
     }
 
@@ -517,7 +517,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         doSetAddress_NotInScope(addressList);
     }
 
-    public void doSetAddress_NotInScope(Collection<String> addressList) {
+    protected void doSetAddress_NotInScope(Collection<String> addressList) {
         regINS(CK_NINS, cTL(addressList), getCValueAddress(), "ADDRESS");
     }
 
@@ -861,7 +861,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         doSetRegisterUser_InScope(registerUserList);
     }
 
-    public void doSetRegisterUser_InScope(Collection<String> registerUserList) {
+    protected void doSetRegisterUser_InScope(Collection<String> registerUserList) {
         regINS(CK_INS, cTL(registerUserList), getCValueRegisterUser(), "REGISTER_USER");
     }
 
@@ -874,7 +874,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         doSetRegisterUser_NotInScope(registerUserList);
     }
 
-    public void doSetRegisterUser_NotInScope(Collection<String> registerUserList) {
+    protected void doSetRegisterUser_NotInScope(Collection<String> registerUserList) {
         regINS(CK_NINS, cTL(registerUserList), getCValueRegisterUser(), "REGISTER_USER");
     }
 
@@ -1059,7 +1059,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         doSetUpdateUser_InScope(updateUserList);
     }
 
-    public void doSetUpdateUser_InScope(Collection<String> updateUserList) {
+    protected void doSetUpdateUser_InScope(Collection<String> updateUserList) {
         regINS(CK_INS, cTL(updateUserList), getCValueUpdateUser(), "UPDATE_USER");
     }
 
@@ -1072,7 +1072,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
         doSetUpdateUser_NotInScope(updateUserList);
     }
 
-    public void doSetUpdateUser_NotInScope(Collection<String> updateUserList) {
+    protected void doSetUpdateUser_NotInScope(Collection<String> updateUserList) {
         regINS(CK_NINS, cTL(updateUserList), getCValueUpdateUser(), "UPDATE_USER");
     }
 
@@ -1374,12 +1374,12 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     //                                                                        ============
     /**
      * Prepare for MyselfExists (correlated sub-query).
-     * @param subQuery The implementation of sub-query. (NotNull)
+     * @param subCBLambda The implementation of sub-query. (NotNull)
      */
-    public void myselfExists(SubQuery<MemberAddressCB> subQuery) {
-        assertObjectNotNull("subQuery", subQuery);
+    public void myselfExists(SubQuery<MemberAddressCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
         MemberAddressCB cb = new MemberAddressCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subQuery.query(cb); } finally { unlock(); }
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
         String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }

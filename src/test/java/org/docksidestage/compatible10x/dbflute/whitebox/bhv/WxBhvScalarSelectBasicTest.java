@@ -57,15 +57,15 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
         Date expected = memberBhv.selectEntityWithDeletedCheck(cb).getBirthdate();
 
         // ## Act ##
-        Date birthdate = memberBhv.scalarSelect(Date.class).max(new ScalarQuery<MemberCB>() {
+        memberBhv.scalarSelect(Date.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnBirthdate(); // *Point!
                 cb.query().setMemberStatusCode_Equal_Formalized();
             }
+        }).alwaysPresent(birthdate -> {
+            /* ## Assert ## */
+            assertEquals(expected, birthdate);
         });
-
-        // ## Assert ##
-        assertEquals(expected, birthdate);
     }
 
     // ===================================================================================
@@ -159,7 +159,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                 }, null);
                 cb.query().setMemberStatusCode_Equal_Formalized();
             }
-        });
+        }).get();
 
         // ## Assert ##
         log("sum = " + sum);
@@ -207,7 +207,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                     }
                 });
             }
-        });
+        }).get();
 
         // ## Assert ##
         log("sum = " + sum);
@@ -249,7 +249,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                         }
                     });
                 }
-            });
+            }).get();
 
             // ## Assert ##
             log("sum = " + sum);
@@ -293,7 +293,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                         }
                     });
                 }
-            });
+            }).get();
 
             // ## Assert ##
             log("sum = " + sum);
@@ -341,7 +341,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                         }
                     });
                 }
-            });
+            }).get();
 
             // ## Assert ##
             log("sum = " + sum);
@@ -456,7 +456,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                 cb.query().setMemberStatusCode_Equal_Formalized();
                 cb.query().setMemberName_Equal("no exist");
             }
-        }, op -> op.coalesce(coalesce));
+        }, op -> op.coalesce(coalesce)).get();
 
         // ## Assert ##
         assertEquals(Integer.valueOf(coalesce), max);
@@ -473,7 +473,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                 cb.query().setMemberStatusCode_Equal_Formalized();
                 cb.query().setMemberName_Equal("no exist");
             }
-        }, op -> op.coalesce(coalesce));
+        }, op -> op.coalesce(coalesce)).get();
 
         // ## Assert ##
         assertEquals(coalesce, DfTypeUtil.toString(birthdate, "yyyy-MM-dd"));
@@ -494,7 +494,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                 cb.query().setMemberStatusCode_Equal_Formalized();
                 cb.query().setMemberName_Equal("no exist");
             }
-        }, op -> op.coalesce(coalesce));
+        }, op -> op.coalesce(coalesce)).get();
 
         // ## Assert ##
         assertEquals(Integer.valueOf(coalesce), max);
@@ -515,7 +515,7 @@ public class WxBhvScalarSelectBasicTest extends UnitContainerTestCase {
                 cb.query().setMemberStatusCode_Equal_Formalized();
                 cb.query().setMemberName_Equal("no exist");
             }
-        }, op -> op.coalesce(coalesce).round(2));
+        }, op -> op.coalesce(coalesce).round(2)).get();
 
         // ## Assert ##
         assertEquals(Integer.valueOf(coalesce), max);

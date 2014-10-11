@@ -45,7 +45,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
                 cb.specify().columnMemberId().multiply(3).plus(dreamCruiseCB.specify().columnVersionNo());
                 cb.query().setMemberStatusCode_Equal_Formalized();
             }
-        });
+        }).get();
 
         // ## Assert ##
         log(result);
@@ -77,7 +77,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
                     }
                 }, null);
             }
-        });
+        }).get();
 
         // ## Assert ##
         log(result);
@@ -113,7 +113,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
                     }
                 });
             }
-        });
+        }).get();
 
         // ## Assert ##
         log(result);

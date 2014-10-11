@@ -143,15 +143,15 @@ public class BehaviorMiddleTest extends UnitContainerTestCase {
         Date expected = memberBhv.selectEntityWithDeletedCheck(cb).getBirthdate();
 
         // ## Act ##
-        Date birthday = memberBhv.scalarSelect(Date.class).max(new ScalarQuery<MemberCB>() {
+        memberBhv.scalarSelect(Date.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnBirthdate(); // *Point!
                 cb.query().setMemberStatusCode_Equal_Formalized();
             }
+        }).alwaysPresent(birthdate -> {
+            /* ## Assert ## */
+            assertEquals(expected, birthdate);
         });
-
-        // ## Assert ##
-        assertEquals(expected, birthday);
 
         // [Description]
         // A. max()/min()/sum()/avg()をサポート

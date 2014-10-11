@@ -122,7 +122,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
             public void query(MemberCB cb) {
                 cb.specify().columnBirthdate();
             }
-        });
+        }).get();
         MemberCB cb = new MemberCB();
         cb.query().scalar_Equal().max(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {

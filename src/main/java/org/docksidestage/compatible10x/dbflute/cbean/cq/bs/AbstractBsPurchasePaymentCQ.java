@@ -584,7 +584,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
         setPaymentMethodCode_InScope_AsPaymentMethod(CDef.PaymentMethod.listOfRecommended());
     }
 
-    public void doSetPaymentMethodCode_InScope(Collection<String> paymentMethodCodeList) {
+    protected void doSetPaymentMethodCode_InScope(Collection<String> paymentMethodCodeList) {
         regINS(CK_INS, cTL(paymentMethodCodeList), getCValuePaymentMethodCode(), "PAYMENT_METHOD_CODE");
     }
 
@@ -607,7 +607,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
         doSetPaymentMethodCode_NotInScope(cTStrL(cdefList));
     }
 
-    public void doSetPaymentMethodCode_NotInScope(Collection<String> paymentMethodCodeList) {
+    protected void doSetPaymentMethodCode_NotInScope(Collection<String> paymentMethodCodeList) {
         regINS(CK_NINS, cTL(paymentMethodCodeList), getCValuePaymentMethodCode(), "PAYMENT_METHOD_CODE");
     }
 
@@ -761,7 +761,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
         doSetRegisterUser_InScope(registerUserList);
     }
 
-    public void doSetRegisterUser_InScope(Collection<String> registerUserList) {
+    protected void doSetRegisterUser_InScope(Collection<String> registerUserList) {
         regINS(CK_INS, cTL(registerUserList), getCValueRegisterUser(), "REGISTER_USER");
     }
 
@@ -774,7 +774,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
         doSetRegisterUser_NotInScope(registerUserList);
     }
 
-    public void doSetRegisterUser_NotInScope(Collection<String> registerUserList) {
+    protected void doSetRegisterUser_NotInScope(Collection<String> registerUserList) {
         regINS(CK_NINS, cTL(registerUserList), getCValueRegisterUser(), "REGISTER_USER");
     }
 
@@ -959,7 +959,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
         doSetUpdateUser_InScope(updateUserList);
     }
 
-    public void doSetUpdateUser_InScope(Collection<String> updateUserList) {
+    protected void doSetUpdateUser_InScope(Collection<String> updateUserList) {
         regINS(CK_INS, cTL(updateUserList), getCValueUpdateUser(), "UPDATE_USER");
     }
 
@@ -972,7 +972,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
         doSetUpdateUser_NotInScope(updateUserList);
     }
 
-    public void doSetUpdateUser_NotInScope(Collection<String> updateUserList) {
+    protected void doSetUpdateUser_NotInScope(Collection<String> updateUserList) {
         regINS(CK_NINS, cTL(updateUserList), getCValueUpdateUser(), "UPDATE_USER");
     }
 
@@ -1170,12 +1170,12 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     //                                                                        ============
     /**
      * Prepare for MyselfExists (correlated sub-query).
-     * @param subQuery The implementation of sub-query. (NotNull)
+     * @param subCBLambda The implementation of sub-query. (NotNull)
      */
-    public void myselfExists(SubQuery<PurchasePaymentCB> subQuery) {
-        assertObjectNotNull("subQuery", subQuery);
+    public void myselfExists(SubQuery<PurchasePaymentCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
         PurchasePaymentCB cb = new PurchasePaymentCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subQuery.query(cb); } finally { unlock(); }
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
         String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }

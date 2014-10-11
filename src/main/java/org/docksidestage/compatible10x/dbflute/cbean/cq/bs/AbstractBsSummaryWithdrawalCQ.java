@@ -248,7 +248,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetMemberName_InScope(memberNameList);
     }
 
-    public void doSetMemberName_InScope(Collection<String> memberNameList) {
+    protected void doSetMemberName_InScope(Collection<String> memberNameList) {
         regINS(CK_INS, cTL(memberNameList), getCValueMemberName(), "MEMBER_NAME");
     }
 
@@ -261,7 +261,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetMemberName_NotInScope(memberNameList);
     }
 
-    public void doSetMemberName_NotInScope(Collection<String> memberNameList) {
+    protected void doSetMemberName_NotInScope(Collection<String> memberNameList) {
         regINS(CK_NINS, cTL(memberNameList), getCValueMemberName(), "MEMBER_NAME");
     }
 
@@ -388,7 +388,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetWithdrawalReasonCode_InScope(withdrawalReasonCodeList);
     }
 
-    public void doSetWithdrawalReasonCode_InScope(Collection<String> withdrawalReasonCodeList) {
+    protected void doSetWithdrawalReasonCode_InScope(Collection<String> withdrawalReasonCodeList) {
         regINS(CK_INS, cTL(withdrawalReasonCodeList), getCValueWithdrawalReasonCode(), "WITHDRAWAL_REASON_CODE");
     }
 
@@ -401,7 +401,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetWithdrawalReasonCode_NotInScope(withdrawalReasonCodeList);
     }
 
-    public void doSetWithdrawalReasonCode_NotInScope(Collection<String> withdrawalReasonCodeList) {
+    protected void doSetWithdrawalReasonCode_NotInScope(Collection<String> withdrawalReasonCodeList) {
         regINS(CK_NINS, cTL(withdrawalReasonCodeList), getCValueWithdrawalReasonCode(), "WITHDRAWAL_REASON_CODE");
     }
 
@@ -528,7 +528,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetWithdrawalReasonText_InScope(withdrawalReasonTextList);
     }
 
-    public void doSetWithdrawalReasonText_InScope(Collection<String> withdrawalReasonTextList) {
+    protected void doSetWithdrawalReasonText_InScope(Collection<String> withdrawalReasonTextList) {
         regINS(CK_INS, cTL(withdrawalReasonTextList), getCValueWithdrawalReasonText(), "WITHDRAWAL_REASON_TEXT");
     }
 
@@ -541,7 +541,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetWithdrawalReasonText_NotInScope(withdrawalReasonTextList);
     }
 
-    public void doSetWithdrawalReasonText_NotInScope(Collection<String> withdrawalReasonTextList) {
+    protected void doSetWithdrawalReasonText_NotInScope(Collection<String> withdrawalReasonTextList) {
         regINS(CK_NINS, cTL(withdrawalReasonTextList), getCValueWithdrawalReasonText(), "WITHDRAWAL_REASON_TEXT");
     }
 
@@ -668,7 +668,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetWithdrawalReasonInputText_InScope(withdrawalReasonInputTextList);
     }
 
-    public void doSetWithdrawalReasonInputText_InScope(Collection<String> withdrawalReasonInputTextList) {
+    protected void doSetWithdrawalReasonInputText_InScope(Collection<String> withdrawalReasonInputTextList) {
         regINS(CK_INS, cTL(withdrawalReasonInputTextList), getCValueWithdrawalReasonInputText(), "WITHDRAWAL_REASON_INPUT_TEXT");
     }
 
@@ -681,7 +681,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetWithdrawalReasonInputText_NotInScope(withdrawalReasonInputTextList);
     }
 
-    public void doSetWithdrawalReasonInputText_NotInScope(Collection<String> withdrawalReasonInputTextList) {
+    protected void doSetWithdrawalReasonInputText_NotInScope(Collection<String> withdrawalReasonInputTextList) {
         regINS(CK_NINS, cTL(withdrawalReasonInputTextList), getCValueWithdrawalReasonInputText(), "WITHDRAWAL_REASON_INPUT_TEXT");
     }
 
@@ -896,7 +896,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetMemberStatusCode_InScope(memberStatusCodeList);
     }
 
-    public void doSetMemberStatusCode_InScope(Collection<String> memberStatusCodeList) {
+    protected void doSetMemberStatusCode_InScope(Collection<String> memberStatusCodeList) {
         regINS(CK_INS, cTL(memberStatusCodeList), getCValueMemberStatusCode(), "MEMBER_STATUS_CODE");
     }
 
@@ -909,7 +909,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetMemberStatusCode_NotInScope(memberStatusCodeList);
     }
 
-    public void doSetMemberStatusCode_NotInScope(Collection<String> memberStatusCodeList) {
+    protected void doSetMemberStatusCode_NotInScope(Collection<String> memberStatusCodeList) {
         regINS(CK_NINS, cTL(memberStatusCodeList), getCValueMemberStatusCode(), "MEMBER_STATUS_CODE");
     }
 
@@ -1036,7 +1036,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetMemberStatusName_InScope(memberStatusNameList);
     }
 
-    public void doSetMemberStatusName_InScope(Collection<String> memberStatusNameList) {
+    protected void doSetMemberStatusName_InScope(Collection<String> memberStatusNameList) {
         regINS(CK_INS, cTL(memberStatusNameList), getCValueMemberStatusName(), "MEMBER_STATUS_NAME");
     }
 
@@ -1049,7 +1049,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
         doSetMemberStatusName_NotInScope(memberStatusNameList);
     }
 
-    public void doSetMemberStatusName_NotInScope(Collection<String> memberStatusNameList) {
+    protected void doSetMemberStatusName_NotInScope(Collection<String> memberStatusNameList) {
         regINS(CK_NINS, cTL(memberStatusNameList), getCValueMemberStatusName(), "MEMBER_STATUS_NAME");
     }
 

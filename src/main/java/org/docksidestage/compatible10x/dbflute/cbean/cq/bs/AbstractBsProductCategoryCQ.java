@@ -132,7 +132,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         doSetProductCategoryCode_InScope(productCategoryCodeList);
     }
 
-    public void doSetProductCategoryCode_InScope(Collection<String> productCategoryCodeList) {
+    protected void doSetProductCategoryCode_InScope(Collection<String> productCategoryCodeList) {
         regINS(CK_INS, cTL(productCategoryCodeList), getCValueProductCategoryCode(), "PRODUCT_CATEGORY_CODE");
     }
 
@@ -145,7 +145,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         doSetProductCategoryCode_NotInScope(productCategoryCodeList);
     }
 
-    public void doSetProductCategoryCode_NotInScope(Collection<String> productCategoryCodeList) {
+    protected void doSetProductCategoryCode_NotInScope(Collection<String> productCategoryCodeList) {
         regINS(CK_NINS, cTL(productCategoryCodeList), getCValueProductCategoryCode(), "PRODUCT_CATEGORY_CODE");
     }
 
@@ -436,7 +436,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         doSetProductCategoryName_InScope(productCategoryNameList);
     }
 
-    public void doSetProductCategoryName_InScope(Collection<String> productCategoryNameList) {
+    protected void doSetProductCategoryName_InScope(Collection<String> productCategoryNameList) {
         regINS(CK_INS, cTL(productCategoryNameList), getCValueProductCategoryName(), "PRODUCT_CATEGORY_NAME");
     }
 
@@ -449,7 +449,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         doSetProductCategoryName_NotInScope(productCategoryNameList);
     }
 
-    public void doSetProductCategoryName_NotInScope(Collection<String> productCategoryNameList) {
+    protected void doSetProductCategoryName_NotInScope(Collection<String> productCategoryNameList) {
         regINS(CK_NINS, cTL(productCategoryNameList), getCValueProductCategoryName(), "PRODUCT_CATEGORY_NAME");
     }
 
@@ -558,7 +558,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         doSetParentCategoryCode_InScope(parentCategoryCodeList);
     }
 
-    public void doSetParentCategoryCode_InScope(Collection<String> parentCategoryCodeList) {
+    protected void doSetParentCategoryCode_InScope(Collection<String> parentCategoryCodeList) {
         regINS(CK_INS, cTL(parentCategoryCodeList), getCValueParentCategoryCode(), "PARENT_CATEGORY_CODE");
     }
 
@@ -571,7 +571,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         doSetParentCategoryCode_NotInScope(parentCategoryCodeList);
     }
 
-    public void doSetParentCategoryCode_NotInScope(Collection<String> parentCategoryCodeList) {
+    protected void doSetParentCategoryCode_NotInScope(Collection<String> parentCategoryCodeList) {
         regINS(CK_NINS, cTL(parentCategoryCodeList), getCValueParentCategoryCode(), "PARENT_CATEGORY_CODE");
     }
 
@@ -787,12 +787,12 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     //                                                                        ============
     /**
      * Prepare for MyselfExists (correlated sub-query).
-     * @param subQuery The implementation of sub-query. (NotNull)
+     * @param subCBLambda The implementation of sub-query. (NotNull)
      */
-    public void myselfExists(SubQuery<ProductCategoryCB> subQuery) {
-        assertObjectNotNull("subQuery", subQuery);
+    public void myselfExists(SubQuery<ProductCategoryCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
         ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subQuery.query(cb); } finally { unlock(); }
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
         String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }

@@ -283,7 +283,7 @@ public class WxBhvQueryInsertTest extends UnitContainerTestCase {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }
-        });
+        }).get();
 
         // ## Act ##
         memberBhv.queryInsert(new QueryInsertSetupper<Member, MemberCB>() {
@@ -301,7 +301,7 @@ public class WxBhvQueryInsertTest extends UnitContainerTestCase {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }
-        });
+        }).get();
         assertTrue(beforeMaxId < afterMaxId);
     }
 }
