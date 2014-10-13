@@ -351,7 +351,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of validBeginDate. (NullAllowed: if null, no to-condition)
      */
     public void setValidBeginDate_DateFromTo(Date fromDate, Date toDate) {
-        setValidBeginDate_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setValidBeginDate_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regValidBeginDate(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueValidBeginDate(), "VALID_BEGIN_DATE"); }
@@ -427,7 +427,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of validEndDate. (NullAllowed: if null, no to-condition)
      */
     public void setValidEndDate_DateFromTo(Date fromDate, Date toDate) {
-        setValidEndDate_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setValidEndDate_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regValidEndDate(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueValidEndDate(), "VALID_END_DATE"); }
@@ -549,7 +549,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param address The value of address as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setAddress_PrefixSearch(String address) {
-        setAddress_LikeSearch(address, cLSOP().likePrefix());
+        setAddress_LikeSearch(address, xcLSOPPre());
     }
 
     protected void regAddress(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueAddress(), "ADDRESS"); }
@@ -784,7 +784,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setRegisterDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setRegisterDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegisterDatetime(), "REGISTER_DATETIME"); }
@@ -906,7 +906,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param registerUser The value of registerUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setRegisterUser_PrefixSearch(String registerUser) {
-        setRegisterUser_LikeSearch(registerUser, cLSOP().likePrefix());
+        setRegisterUser_LikeSearch(registerUser, xcLSOPPre());
     }
 
     protected void regRegisterUser(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegisterUser(), "REGISTER_USER"); }
@@ -982,7 +982,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setUpdateDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setUpdateDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueUpdateDatetime(), "UPDATE_DATETIME"); }
@@ -1104,7 +1104,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * @param updateUser The value of updateUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setUpdateUser_PrefixSearch(String updateUser) {
-        setUpdateUser_LikeSearch(updateUser, cLSOP().likePrefix());
+        setUpdateUser_LikeSearch(updateUser, xcLSOPPre());
     }
 
     protected void regUpdateUser(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueUpdateUser(), "UPDATE_USER"); }

@@ -293,7 +293,7 @@ public abstract class AbstractBsVendor$DollarCQ extends AbstractConditionQuery {
      * @param vendor$DollarName The value of vendor$DollarName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setVendor$DollarName_PrefixSearch(String vendor$DollarName) {
-        setVendor$DollarName_LikeSearch(vendor$DollarName, cLSOP().likePrefix());
+        setVendor$DollarName_LikeSearch(vendor$DollarName, xcLSOPPre());
     }
 
     /**

@@ -378,7 +378,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
      * @param productName The value of productName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductName_PrefixSearch(String productName) {
-        setProductName_LikeSearch(productName, cLSOP().likePrefix());
+        setProductName_LikeSearch(productName, xcLSOPPre());
     }
 
     /**
@@ -518,7 +518,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
      * @param productHandleCode The value of productHandleCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductHandleCode_PrefixSearch(String productHandleCode) {
-        setProductHandleCode_LikeSearch(productHandleCode, cLSOP().likePrefix());
+        setProductHandleCode_LikeSearch(productHandleCode, xcLSOPPre());
     }
 
     /**
@@ -773,7 +773,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
      * @param toDate The to-date(yyyy/MM/dd) of latestPurchaseDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setLatestPurchaseDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setLatestPurchaseDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setLatestPurchaseDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     /**

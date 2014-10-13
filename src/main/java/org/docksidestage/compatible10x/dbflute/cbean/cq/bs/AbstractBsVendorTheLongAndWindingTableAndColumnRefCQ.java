@@ -351,7 +351,7 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnRefCQ exten
      * @param toDate The to-date(yyyy/MM/dd) of theLongAndWindingTableAndColumnRefDate. (NullAllowed: if null, no to-condition)
      */
     public void setTheLongAndWindingTableAndColumnRefDate_DateFromTo(Date fromDate, Date toDate) {
-        setTheLongAndWindingTableAndColumnRefDate_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setTheLongAndWindingTableAndColumnRefDate_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regTheLongAndWindingTableAndColumnRefDate(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueTheLongAndWindingTableAndColumnRefDate(), "THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE"); }
@@ -427,7 +427,7 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnRefCQ exten
      * @param toDate The to-date(yyyy/MM/dd) of shortDate. (NullAllowed: if null, no to-condition)
      */
     public void setShortDate_DateFromTo(Date fromDate, Date toDate) {
-        setShortDate_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setShortDate_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regShortDate(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueShortDate(), "SHORT_DATE"); }

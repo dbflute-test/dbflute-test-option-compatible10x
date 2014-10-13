@@ -378,7 +378,7 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
      * @param theLongAndWindingTableAndColumnName The value of theLongAndWindingTableAndColumnName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTheLongAndWindingTableAndColumnName_PrefixSearch(String theLongAndWindingTableAndColumnName) {
-        setTheLongAndWindingTableAndColumnName_LikeSearch(theLongAndWindingTableAndColumnName, cLSOP().likePrefix());
+        setTheLongAndWindingTableAndColumnName_LikeSearch(theLongAndWindingTableAndColumnName, xcLSOPPre());
     }
 
     protected void regTheLongAndWindingTableAndColumnName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueTheLongAndWindingTableAndColumnName(), "THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME"); }
@@ -500,7 +500,7 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
      * @param shortName The value of shortName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setShortName_PrefixSearch(String shortName) {
-        setShortName_LikeSearch(shortName, cLSOP().likePrefix());
+        setShortName_LikeSearch(shortName, xcLSOPPre());
     }
 
     protected void regShortName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueShortName(), "SHORT_NAME"); }

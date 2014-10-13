@@ -12,8 +12,8 @@ import org.dbflute.bhv.readable.EntityRowHandler;
 import org.dbflute.bhv.referrer.ConditionBeanSetupper;
 import org.dbflute.bhv.referrer.EntityListSetupper;
 import org.dbflute.bhv.referrer.LoadReferrerOption;
-import org.dbflute.cbean.paging.group.PageGroupOption;
-import org.dbflute.cbean.paging.range.PageRangeOption;
+import org.dbflute.cbean.paging.numberlink.group.PageGroupBean;
+import org.dbflute.cbean.paging.numberlink.range.PageRangeBean;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.cbean.result.grouping.GroupingListDeterminer;
@@ -89,58 +89,51 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
 
         log("{PageRange}");
         {
-            PageRangeOption pageRangeOption = new PageRangeOption();
-            pageRangeOption.setPageRangeSize(2);
-            page2.setPageRangeOption(pageRangeOption);
             {
-                boolean existsPre = page2.pageRange().isExistPrePageRange();
-                boolean existsNext = page2.pageRange().isExistNextPageRange();
-                log("    page2: " + existsPre + " " + page2.pageRange().createPageNumberList() + " " + existsNext);
+                PageRangeBean pageRange = page2.pageRange(op -> op.rangeSize(2));
+                boolean existsPre = pageRange.isExistPrePageRange();
+                boolean existsNext = pageRange.isExistNextPageRange();
+                log("    page2: " + existsPre + " " + pageRange.createPageNumberList() + " " + existsNext);
             }
-            page3.setPageRangeOption(pageRangeOption);
             {
-                boolean existsPre = page3.pageRange().isExistPrePageRange();
-                boolean existsNext = page3.pageRange().isExistNextPageRange();
-                log("    page3: " + existsPre + " " + page3.pageRange().createPageNumberList() + " " + existsNext);
+                PageRangeBean pageRange = page3.pageRange(op -> op.rangeSize(2));
+                boolean existsPre = pageRange.isExistPrePageRange();
+                boolean existsNext = pageRange.isExistNextPageRange();
+                log("    page3: " + existsPre + " " + pageRange.createPageNumberList() + " " + existsNext);
             }
             log("PagingResultBean.toString():" + ln() + " " + page2 + ln() + " " + page3);
             log("");
         }
         log("{PageRange-fillLimit}");
         {
-            PageRangeOption pageRangeOption = new PageRangeOption();
-            pageRangeOption.setPageRangeSize(2);
-            pageRangeOption.setFillLimit(true);
-            page2.setPageRangeOption(pageRangeOption);
             {
-                boolean existsPre = page2.pageRange().isExistPrePageRange();
-                boolean existsNext = page2.pageRange().isExistNextPageRange();
-                log("    page2: " + existsPre + " " + page2.pageRange().createPageNumberList() + " " + existsNext);
+                PageRangeBean pageRange = page2.pageRange(op -> op.rangeSize(2).fillLimit());
+                boolean existsPre = pageRange.isExistPrePageRange();
+                boolean existsNext = pageRange.isExistNextPageRange();
+                log("    page2: " + existsPre + " " + pageRange.createPageNumberList() + " " + existsNext);
             }
-            page3.setPageRangeOption(pageRangeOption);
             {
-                boolean existsPre = page3.pageRange().isExistPrePageRange();
-                boolean existsNext = page3.pageRange().isExistNextPageRange();
-                log("    page3: " + existsPre + " " + page3.pageRange().createPageNumberList() + " " + existsNext);
+                PageRangeBean pageRange = page3.pageRange(op -> op.rangeSize(2).fillLimit());
+                boolean existsPre = pageRange.isExistPrePageRange();
+                boolean existsNext = pageRange.isExistNextPageRange();
+                log("    page3: " + existsPre + " " + pageRange.createPageNumberList() + " " + existsNext);
             }
             log("PagingResultBean.toString():" + ln() + " " + page2 + ln() + " " + page3);
             log("");
         }
         log("{PageGroup}");
         {
-            PageGroupOption pageGroupOption = new PageGroupOption();
-            pageGroupOption.setPageGroupSize(2);
-            page2.setPageGroupOption(pageGroupOption);
             {
-                boolean existsPre = page2.pageGroup().isExistPrePageGroup();
-                boolean existsNext = page2.pageGroup().isExistNextPageGroup();
-                log("    page2: " + existsPre + " " + page2.pageGroup().createPageNumberList() + " " + existsNext);
+                PageGroupBean pageGroup = page2.pageGroup(op -> op.groupSize(2));
+                boolean existsPre = pageGroup.isExistPrePageGroup();
+                boolean existsNext = pageGroup.isExistNextPageGroup();
+                log("    page2: " + existsPre + " " + pageGroup.createPageNumberList() + " " + existsNext);
             }
-            page3.setPageGroupOption(pageGroupOption);
             {
-                boolean existsPre = page3.pageGroup().isExistPrePageGroup();
-                boolean existsNext = page3.pageGroup().isExistNextPageGroup();
-                log("    page3: " + existsPre + " " + page3.pageGroup().createPageNumberList() + " " + existsNext);
+                PageGroupBean pageGroup = page3.pageGroup(op -> op.groupSize(2));
+                boolean existsPre = pageGroup.isExistPrePageGroup();
+                boolean existsNext = pageGroup.isExistNextPageGroup();
+                log("    page3: " + existsPre + " " + pageGroup.createPageNumberList() + " " + existsNext);
             }
             log("PagingResultBean.toString():" + ln() + " " + page2 + ln() + " " + page3);
             log("");
@@ -300,8 +293,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
         pmb.paging(8, 2);
         Class<UnpaidSummaryMember> entityType = UnpaidSummaryMember.class;
 
-        PagingResultBean<UnpaidSummaryMember> memberPage = memberBhv.outsideSql().autoPaging()
-                .selectPage(path, pmb, entityType);
+        PagingResultBean<UnpaidSummaryMember> memberPage = memberBhv.outsideSql().autoPaging().selectPage(path, pmb, entityType);
         List<Member> domainList = new ArrayList<Member>();
         for (UnpaidSummaryMember member : memberPage) {
             domainList.add(member.prepareDomain());
@@ -627,8 +619,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
         // ## Act ##
         int pageSize = 3;
         pmb.paging(pageSize, 1); // 1st page
-        PagingResultBean<PurchaseMaxPriceMember> page1 = memberBhv.outsideSql().manualPaging()
-                .selectPage(path, pmb, entityType);
+        PagingResultBean<PurchaseMaxPriceMember> page1 = memberBhv.outsideSql().manualPaging().selectPage(path, pmb, entityType);
 
         // ## Assert ##
         assertNotSame(0, page1.size());
@@ -665,8 +656,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
 
         // ## Act ##
         // SQL実行！
-        List<SimpleMember> memberList = memberBhv.outsideSql().configure(statementConfig)
-                .selectList(path, pmb, entityType);
+        List<SimpleMember> memberList = memberBhv.outsideSql().configure(statementConfig).selectList(path, pmb, entityType);
 
         // ## Assert ##
         assertFalse(memberList.isEmpty());
@@ -894,8 +884,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
         // SQL実行！
         int pageSize = 3;
         pmb.paging(pageSize, 99999);
-        PagingResultBean<UnpaidSummaryMember> page99999 = memberBhv.outsideSql().autoPaging()
-                .selectPage(path, pmb, entityType);
+        PagingResultBean<UnpaidSummaryMember> page99999 = memberBhv.outsideSql().autoPaging().selectPage(path, pmb, entityType);
 
         // ## Assert ##
         assertTrue(page99999.isEmpty());

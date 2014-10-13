@@ -293,7 +293,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param typeOfChar The value of typeOfChar as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTypeOfChar_PrefixSearch(String typeOfChar) {
-        setTypeOfChar_LikeSearch(typeOfChar, cLSOP().likePrefix());
+        setTypeOfChar_LikeSearch(typeOfChar, xcLSOPPre());
     }
 
     /**
@@ -433,7 +433,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param typeOfVarchar The value of typeOfVarchar as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTypeOfVarchar_PrefixSearch(String typeOfVarchar) {
-        setTypeOfVarchar_LikeSearch(typeOfVarchar, cLSOP().likePrefix());
+        setTypeOfVarchar_LikeSearch(typeOfVarchar, xcLSOPPre());
     }
 
     /**
@@ -573,7 +573,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param typeOfClob The value of typeOfClob as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTypeOfClob_PrefixSearch(String typeOfClob) {
-        setTypeOfClob_LikeSearch(typeOfClob, cLSOP().likePrefix());
+        setTypeOfClob_LikeSearch(typeOfClob, xcLSOPPre());
     }
 
     /**
@@ -713,7 +713,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param typeOfText The value of typeOfText as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTypeOfText_PrefixSearch(String typeOfText) {
-        setTypeOfText_LikeSearch(typeOfText, cLSOP().likePrefix());
+        setTypeOfText_LikeSearch(typeOfText, xcLSOPPre());
     }
 
     /**
@@ -2199,7 +2199,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of typeOfDate. (NullAllowed: if null, no to-condition)
      */
     public void setTypeOfDate_DateFromTo(Date fromDate, Date toDate) {
-        setTypeOfDate_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setTypeOfDate_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     /**
@@ -2287,7 +2287,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of typeOfTimestamp. (NullAllowed: if null, no to-condition)
      */
     public void setTypeOfTimestamp_DateFromTo(Date fromDate, Date toDate) {
-        setTypeOfTimestamp_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setTypeOfTimestamp_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     /**
@@ -2553,7 +2553,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param typeOfArray The value of typeOfArray as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTypeOfArray_PrefixSearch(String typeOfArray) {
-        setTypeOfArray_LikeSearch(typeOfArray, cLSOP().likePrefix());
+        setTypeOfArray_LikeSearch(typeOfArray, xcLSOPPre());
     }
 
     /**
@@ -2693,7 +2693,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param typeOfOther The value of typeOfOther as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setTypeOfOther_PrefixSearch(String typeOfOther) {
-        setTypeOfOther_LikeSearch(typeOfOther, cLSOP().likePrefix());
+        setTypeOfOther_LikeSearch(typeOfOther, xcLSOPPre());
     }
 
     /**
@@ -2833,7 +2833,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param jAVABeansProperty The value of jAVABeansProperty as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setJAVABeansProperty_PrefixSearch(String jAVABeansProperty) {
-        setJAVABeansProperty_LikeSearch(jAVABeansProperty, cLSOP().likePrefix());
+        setJAVABeansProperty_LikeSearch(jAVABeansProperty, xcLSOPPre());
     }
 
     /**
@@ -2973,7 +2973,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
      * @param jPopBeansProperty The value of jPopBeansProperty as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setJPopBeansProperty_PrefixSearch(String jPopBeansProperty) {
-        setJPopBeansProperty_LikeSearch(jPopBeansProperty, cLSOP().likePrefix());
+        setJPopBeansProperty_LikeSearch(jPopBeansProperty, xcLSOPPre());
     }
 
     /**

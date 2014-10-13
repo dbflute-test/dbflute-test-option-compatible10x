@@ -512,7 +512,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * @param memberStatusName The value of memberStatusName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setMemberStatusName_PrefixSearch(String memberStatusName) {
-        setMemberStatusName_LikeSearch(memberStatusName, cLSOP().likePrefix());
+        setMemberStatusName_LikeSearch(memberStatusName, xcLSOPPre());
     }
 
     protected void regMemberStatusName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueMemberStatusName(), "MEMBER_STATUS_NAME"); }
@@ -634,7 +634,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * @param description The value of description as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setDescription_PrefixSearch(String description) {
-        setDescription_LikeSearch(description, cLSOP().likePrefix());
+        setDescription_LikeSearch(description, xcLSOPPre());
     }
 
     protected void regDescription(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueDescription(), "DESCRIPTION"); }

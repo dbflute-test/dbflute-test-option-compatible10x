@@ -293,7 +293,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param loginPassword The value of loginPassword as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setLoginPassword_PrefixSearch(String loginPassword) {
-        setLoginPassword_LikeSearch(loginPassword, cLSOP().likePrefix());
+        setLoginPassword_LikeSearch(loginPassword, xcLSOPPre());
     }
 
     protected void regLoginPassword(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueLoginPassword(), "LOGIN_PASSWORD"); }
@@ -415,7 +415,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param reminderQuestion The value of reminderQuestion as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setReminderQuestion_PrefixSearch(String reminderQuestion) {
-        setReminderQuestion_LikeSearch(reminderQuestion, cLSOP().likePrefix());
+        setReminderQuestion_LikeSearch(reminderQuestion, xcLSOPPre());
     }
 
     protected void regReminderQuestion(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueReminderQuestion(), "REMINDER_QUESTION"); }
@@ -537,7 +537,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param reminderAnswer The value of reminderAnswer as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setReminderAnswer_PrefixSearch(String reminderAnswer) {
-        setReminderAnswer_LikeSearch(reminderAnswer, cLSOP().likePrefix());
+        setReminderAnswer_LikeSearch(reminderAnswer, xcLSOPPre());
     }
 
     protected void regReminderAnswer(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueReminderAnswer(), "REMINDER_ANSWER"); }
@@ -717,7 +717,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setRegisterDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setRegisterDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegisterDatetime(), "REGISTER_DATETIME"); }
@@ -839,7 +839,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param registerUser The value of registerUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setRegisterUser_PrefixSearch(String registerUser) {
-        setRegisterUser_LikeSearch(registerUser, cLSOP().likePrefix());
+        setRegisterUser_LikeSearch(registerUser, xcLSOPPre());
     }
 
     protected void regRegisterUser(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegisterUser(), "REGISTER_USER"); }
@@ -915,7 +915,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setUpdateDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setUpdateDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueUpdateDatetime(), "UPDATE_DATETIME"); }
@@ -1037,7 +1037,7 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * @param updateUser The value of updateUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setUpdateUser_PrefixSearch(String updateUser) {
-        setUpdateUser_LikeSearch(updateUser, cLSOP().likePrefix());
+        setUpdateUser_LikeSearch(updateUser, xcLSOPPre());
     }
 
     protected void regUpdateUser(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueUpdateUser(), "UPDATE_USER"); }

@@ -433,7 +433,7 @@ public abstract class AbstractBsWithdrawalReasonCQ extends AbstractConditionQuer
      * @param withdrawalReasonText The value of withdrawalReasonText as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setWithdrawalReasonText_PrefixSearch(String withdrawalReasonText) {
-        setWithdrawalReasonText_LikeSearch(withdrawalReasonText, cLSOP().likePrefix());
+        setWithdrawalReasonText_LikeSearch(withdrawalReasonText, xcLSOPPre());
     }
 
     protected void regWithdrawalReasonText(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueWithdrawalReasonText(), "WITHDRAWAL_REASON_TEXT"); }

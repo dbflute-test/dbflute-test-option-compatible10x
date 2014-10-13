@@ -33,7 +33,7 @@ import org.dbflute.util.Srl;
  */
 public class WxAllClassCopyrightTest extends PlainTestCase {
 
-    private static final String COPYRIGHT = "Copyright 2004-2014 the Seasar Foundation and the Others.";
+    private static final String COPYRIGHT = "Copyright 2014-2014 the original author or authors.";
 
     public void test_licensed_main() {
         // ## Arrange ##
@@ -142,8 +142,7 @@ public class WxAllClassCopyrightTest extends PlainTestCase {
             if (br != null) {
                 try {
                     br.close();
-                } catch (IOException ignored) {
-                }
+                } catch (IOException ignored) {}
             }
         }
         if (!contains) {

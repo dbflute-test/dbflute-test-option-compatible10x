@@ -378,7 +378,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param productName The value of productName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductName_PrefixSearch(String productName) {
-        setProductName_LikeSearch(productName, cLSOP().likePrefix());
+        setProductName_LikeSearch(productName, xcLSOPPre());
     }
 
     protected void regProductName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueProductName(), "PRODUCT_NAME"); }
@@ -500,7 +500,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param productHandleCode The value of productHandleCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductHandleCode_PrefixSearch(String productHandleCode) {
-        setProductHandleCode_LikeSearch(productHandleCode, cLSOP().likePrefix());
+        setProductHandleCode_LikeSearch(productHandleCode, xcLSOPPre());
     }
 
     protected void regProductHandleCode(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueProductHandleCode(), "PRODUCT_HANDLE_CODE"); }
@@ -622,7 +622,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param productCategoryCode The value of productCategoryCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductCategoryCode_PrefixSearch(String productCategoryCode) {
-        setProductCategoryCode_LikeSearch(productCategoryCode, cLSOP().likePrefix());
+        setProductCategoryCode_LikeSearch(productCategoryCode, xcLSOPPre());
     }
 
     protected void regProductCategoryCode(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueProductCategoryCode(), "PRODUCT_CATEGORY_CODE"); }
@@ -945,7 +945,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setRegisterDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setRegisterDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegisterDatetime(), "REGISTER_DATETIME"); }
@@ -1067,7 +1067,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param registerUser The value of registerUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setRegisterUser_PrefixSearch(String registerUser) {
-        setRegisterUser_LikeSearch(registerUser, cLSOP().likePrefix());
+        setRegisterUser_LikeSearch(registerUser, xcLSOPPre());
     }
 
     protected void regRegisterUser(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegisterUser(), "REGISTER_USER"); }
@@ -1143,7 +1143,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setUpdateDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setUpdateDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueUpdateDatetime(), "UPDATE_DATETIME"); }
@@ -1265,7 +1265,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * @param updateUser The value of updateUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setUpdateUser_PrefixSearch(String updateUser) {
-        setUpdateUser_LikeSearch(updateUser, cLSOP().likePrefix());
+        setUpdateUser_LikeSearch(updateUser, xcLSOPPre());
     }
 
     protected void regUpdateUser(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueUpdateUser(), "UPDATE_USER"); }

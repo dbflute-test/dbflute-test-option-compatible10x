@@ -502,7 +502,7 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      * @param productStatusName The value of productStatusName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductStatusName_PrefixSearch(String productStatusName) {
-        setProductStatusName_LikeSearch(productStatusName, cLSOP().likePrefix());
+        setProductStatusName_LikeSearch(productStatusName, xcLSOPPre());
     }
 
     protected void regProductStatusName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueProductStatusName(), "PRODUCT_STATUS_NAME"); }

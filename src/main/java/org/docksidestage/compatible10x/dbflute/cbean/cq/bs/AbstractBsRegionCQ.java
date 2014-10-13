@@ -433,7 +433,7 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
      * @param regionName The value of regionName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setRegionName_PrefixSearch(String regionName) {
-        setRegionName_LikeSearch(regionName, cLSOP().likePrefix());
+        setRegionName_LikeSearch(regionName, xcLSOPPre());
     }
 
     protected void regRegionName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueRegionName(), "REGION_NAME"); }

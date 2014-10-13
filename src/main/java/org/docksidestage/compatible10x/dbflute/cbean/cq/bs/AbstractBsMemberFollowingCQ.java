@@ -455,7 +455,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * @param toDate The to-date(yyyy/MM/dd) of followDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setFollowDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setFollowDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setFollowDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regFollowDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueFollowDatetime(), "FOLLOW_DATETIME"); }

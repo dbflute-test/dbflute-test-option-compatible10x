@@ -293,7 +293,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param memberName The value of memberName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setMemberName_PrefixSearch(String memberName) {
-        setMemberName_LikeSearch(memberName, cLSOP().likePrefix());
+        setMemberName_LikeSearch(memberName, xcLSOPPre());
     }
 
     /**
@@ -433,7 +433,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param withdrawalReasonCode The value of withdrawalReasonCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setWithdrawalReasonCode_PrefixSearch(String withdrawalReasonCode) {
-        setWithdrawalReasonCode_LikeSearch(withdrawalReasonCode, cLSOP().likePrefix());
+        setWithdrawalReasonCode_LikeSearch(withdrawalReasonCode, xcLSOPPre());
     }
 
     /**
@@ -573,7 +573,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param withdrawalReasonText The value of withdrawalReasonText as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setWithdrawalReasonText_PrefixSearch(String withdrawalReasonText) {
-        setWithdrawalReasonText_LikeSearch(withdrawalReasonText, cLSOP().likePrefix());
+        setWithdrawalReasonText_LikeSearch(withdrawalReasonText, xcLSOPPre());
     }
 
     /**
@@ -713,7 +713,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param withdrawalReasonInputText The value of withdrawalReasonInputText as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setWithdrawalReasonInputText_PrefixSearch(String withdrawalReasonInputText) {
-        setWithdrawalReasonInputText_LikeSearch(withdrawalReasonInputText, cLSOP().likePrefix());
+        setWithdrawalReasonInputText_LikeSearch(withdrawalReasonInputText, xcLSOPPre());
     }
 
     /**
@@ -807,7 +807,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param toDate The to-date(yyyy/MM/dd) of withdrawalDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setWithdrawalDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setWithdrawalDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setWithdrawalDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     /**
@@ -941,7 +941,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param memberStatusCode The value of memberStatusCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setMemberStatusCode_PrefixSearch(String memberStatusCode) {
-        setMemberStatusCode_LikeSearch(memberStatusCode, cLSOP().likePrefix());
+        setMemberStatusCode_LikeSearch(memberStatusCode, xcLSOPPre());
     }
 
     /**
@@ -1081,7 +1081,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * @param memberStatusName The value of memberStatusName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setMemberStatusName_PrefixSearch(String memberStatusName) {
-        setMemberStatusName_LikeSearch(memberStatusName, cLSOP().likePrefix());
+        setMemberStatusName_LikeSearch(memberStatusName, xcLSOPPre());
     }
 
     /**

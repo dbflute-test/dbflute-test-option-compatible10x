@@ -449,7 +449,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * @param serviceRankName The value of serviceRankName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setServiceRankName_PrefixSearch(String serviceRankName) {
-        setServiceRankName_LikeSearch(serviceRankName, cLSOP().likePrefix());
+        setServiceRankName_LikeSearch(serviceRankName, xcLSOPPre());
     }
 
     protected void regServiceRankName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueServiceRankName(), "SERVICE_RANK_NAME"); }
@@ -812,7 +812,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * @param description The value of description as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setDescription_PrefixSearch(String description) {
-        setDescription_LikeSearch(description, cLSOP().likePrefix());
+        setDescription_LikeSearch(description, xcLSOPPre());
     }
 
     protected void regDescription(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueDescription(), "DESCRIPTION"); }

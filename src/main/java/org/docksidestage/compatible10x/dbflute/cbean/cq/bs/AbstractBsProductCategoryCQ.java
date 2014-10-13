@@ -177,7 +177,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * @param productCategoryCode The value of productCategoryCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductCategoryCode_PrefixSearch(String productCategoryCode) {
-        setProductCategoryCode_LikeSearch(productCategoryCode, cLSOP().likePrefix());
+        setProductCategoryCode_LikeSearch(productCategoryCode, xcLSOPPre());
     }
 
     /**
@@ -481,7 +481,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * @param productCategoryName The value of productCategoryName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductCategoryName_PrefixSearch(String productCategoryName) {
-        setProductCategoryName_LikeSearch(productCategoryName, cLSOP().likePrefix());
+        setProductCategoryName_LikeSearch(productCategoryName, xcLSOPPre());
     }
 
     protected void regProductCategoryName(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueProductCategoryName(), "PRODUCT_CATEGORY_NAME"); }
@@ -603,7 +603,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * @param parentCategoryCode The value of parentCategoryCode as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
     public void setParentCategoryCode_PrefixSearch(String parentCategoryCode) {
-        setParentCategoryCode_LikeSearch(parentCategoryCode, cLSOP().likePrefix());
+        setParentCategoryCode_LikeSearch(parentCategoryCode, xcLSOPPre());
     }
 
     /**

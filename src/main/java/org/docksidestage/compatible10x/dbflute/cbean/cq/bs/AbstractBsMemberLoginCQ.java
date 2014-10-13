@@ -351,7 +351,7 @@ public abstract class AbstractBsMemberLoginCQ extends AbstractConditionQuery {
      * @param toDate The to-date(yyyy/MM/dd) of loginDatetime. (NullAllowed: if null, no to-condition)
      */
     public void setLoginDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setLoginDatetime_FromTo(fromDate, toDate, cFTOP().compareAsDate());
+        setLoginDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regLoginDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueLoginDatetime(), "LOGIN_DATETIME"); }
