@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef implements Enti
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    /** Serial version UID. (Default) */
+    /** The serial version UID for object serialization. (Default) */
     private static final long serialVersionUID = 1L;
 
     // ===================================================================================

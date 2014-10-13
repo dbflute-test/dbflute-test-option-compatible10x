@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -286,7 +286,7 @@ public abstract class AbstractBsWithdrawalReasonCQ extends AbstractConditionQuer
         return xcreateQDRFunctionMemberWithdrawalList();
     }
     protected HpQDRFunction<MemberWithdrawalCB> xcreateQDRFunctionMemberWithdrawalList() {
-        return new HpQDRFunction<MemberWithdrawalCB>(new HpQDRSetupper<MemberWithdrawalCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberWithdrawalCB>() {
             public void setup(String fn, SubQuery<MemberWithdrawalCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberWithdrawalList(fn, sq, rd, vl, op);
             }
@@ -799,4 +799,5 @@ public abstract class AbstractBsWithdrawalReasonCQ extends AbstractConditionQuer
     protected String xabCQ() { return WithdrawalReasonCQ.class.getName(); }
     protected String xabLSO() { return LikeSearchOption.class.getName(); }
     protected String xabSSQS() { return HpSSQSetupper.class.getName(); }
+    protected String xabSCP() { return SubQuery.class.getName(); }
 }

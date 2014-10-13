@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.dbflute.bhv.BehaviorReadable;
 import org.dbflute.bhv.BehaviorSelector;
 import org.dbflute.dbmeta.DBMeta;
@@ -40,8 +40,8 @@ public class ImplementedBehaviorSelector implements BehaviorSelector {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    /** Log instance. */
-    private static final Log _log = LogFactory.getLog(ImplementedBehaviorSelector.class);
+    /** The logger instance for this class. (NotNull) */
+    private static final Logger _log = LoggerFactory.getLogger(ImplementedBehaviorSelector.class);
 
     // ===================================================================================
     //                                                                           Attribute

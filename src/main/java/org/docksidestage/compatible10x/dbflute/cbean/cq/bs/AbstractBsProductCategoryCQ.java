@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -300,7 +300,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         return xcreateQDRFunctionProductList();
     }
     protected HpQDRFunction<ProductCB> xcreateQDRFunctionProductList() {
-        return new HpQDRFunction<ProductCB>(new HpQDRSetupper<ProductCB>() {
+        return xcQDRFunc(new HpQDRSetupper<ProductCB>() {
             public void setup(String fn, SubQuery<ProductCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveProductList(fn, sq, rd, vl, op);
             }
@@ -334,7 +334,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
         return xcreateQDRFunctionProductCategorySelfList();
     }
     protected HpQDRFunction<ProductCategoryCB> xcreateQDRFunctionProductCategorySelfList() {
-        return new HpQDRFunction<ProductCategoryCB>(new HpQDRSetupper<ProductCategoryCB>() {
+        return xcQDRFunc(new HpQDRSetupper<ProductCategoryCB>() {
             public void setup(String fn, SubQuery<ProductCategoryCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveProductCategorySelfList(fn, sq, rd, vl, op);
             }
@@ -883,4 +883,5 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     protected String xabCQ() { return ProductCategoryCQ.class.getName(); }
     protected String xabLSO() { return LikeSearchOption.class.getName(); }
     protected String xabSSQS() { return HpSSQSetupper.class.getName(); }
+    protected String xabSCP() { return SubQuery.class.getName(); }
 }

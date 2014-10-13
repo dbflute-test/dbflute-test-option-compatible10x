@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -872,38 +872,36 @@ public abstract class BsPurchasePaymentBhv extends AbstractBehaviorWritable<Purc
     //                                                                          OutsideSql
     //                                                                          ==========
     /**
-     * Prepare the basic executor of outside-SQL to execute it. <br />
-     * The invoker of behavior command should be not null when you call this method.
+     * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * You can use the methods for outside-SQL are as follows:
-     * {Basic}
-     *   o selectList()
-     *   o execute()
-     *   o call()
+     * <span style="color: #3F7E5E">// main style</span> 
+     * purchasePaymentBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * purchasePaymentBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
+     * purchasePaymentBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
+     * purchasePaymentBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
+     * purchasePaymentBhv.outideSql().selectCursor(pmb, handler); <span style="color: #3F7E5E">// (by handler)</span>
+     * purchasePaymentBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
+     * purchasePaymentBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * {Entity}
-     *   o entityHandling().selectEntity()
-     *   o entityHandling().selectEntityWithDeletedCheck()
+     * <span style="color: #3F7E5E">// traditional style</span> 
+     * purchasePaymentBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
+     * purchasePaymentBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
+     * purchasePaymentBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
+     * purchasePaymentBhv.outideSql().traditionalStyle().selectPagedListOnly(path, pmb, entityType);
+     * purchasePaymentBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
+     * purchasePaymentBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * {Paging}
-     *   o autoPaging().selectList()
-     *   o autoPaging().selectPage()
-     *   o manualPaging().selectList()
-     *   o manualPaging().selectPage()
-     *
-     * {Cursor}
-     *   o cursorHandling().selectCursor()
-     *
-     * {Option}
-     *   o dynamicBinding().selectList()
-     *   o removeBlockComment().selectList()
-     *   o removeLineComment().selectList()
-     *   o formatSql().selectList()
+     * <span style="color: #3F7E5E">// options</span> 
+     * purchasePaymentBhv.outideSql().removeBlockComment().selectList()
+     * purchasePaymentBhv.outideSql().removeLineComment().selectList()
+     * purchasePaymentBhv.outideSql().formatSql().selectList()
      * </pre>
-     * @return The basic executor of outside-SQL. (NotNull)
+     * <p>The invoker of behavior command should be not null when you call this method.</p>
+     * @return The new-created all facade executor of outside-SQL. (NotNull)
      */
     public OutsideSqlBasicExecutor<PurchasePaymentBhv> outsideSql() {
-        return doOutsideSql();
+        OutsideSqlAllFacadeExecutor<PurchasePaymentBhv> facadeExecutor = doOutsideSql();
+        return facadeExecutor.xbasicExecutor();
     }
 
     // ===================================================================================

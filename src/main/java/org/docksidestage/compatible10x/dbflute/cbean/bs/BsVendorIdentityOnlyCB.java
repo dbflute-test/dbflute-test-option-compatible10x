@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -301,7 +301,7 @@ public class BsVendorIdentityOnlyCB extends AbstractConditionBean {
                 public boolean has() { return true; }
                 public VendorIdentityOnlyCQ qy() { return getConditionQuery(); }
             }
-            , _purpose, getDBMetaProvider()); }
+            , _purpose, getDBMetaProvider(), xcFofSDROp()); }
         return _specification;
     }
 
@@ -315,8 +315,9 @@ public class BsVendorIdentityOnlyCB extends AbstractConditionBean {
 
     public static class HpSpecification extends HpAbstractSpecification<VendorIdentityOnlyCQ> {
         public HpSpecification(ConditionBean baseCB, HpSpQyCall<VendorIdentityOnlyCQ> qyCall
-                             , HpCBPurpose purpose, DBMetaProvider dbmetaProvider)
-        { super(baseCB, qyCall, purpose, dbmetaProvider); }
+                             , HpCBPurpose purpose, DBMetaProvider dbmetaProvider
+                             , FactoryOfDerivedReferrerOption sdrOpFactory)
+        { super(baseCB, qyCall, purpose, dbmetaProvider, sdrOpFactory); }
         /**
          * IDENTITY_ONLY_ID: {PK, ID, NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
@@ -336,7 +337,7 @@ public class BsVendorIdentityOnlyCB extends AbstractConditionBean {
          */
         public HpSDRFunction<VendorIdentityOnlyCB, VendorIdentityOnlyCQ> myselfDerived() {
             assertDerived("myselfDerived"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return new HpSDRFunction<VendorIdentityOnlyCB, VendorIdentityOnlyCQ>(_baseCB, _qyCall.qy(), new HpSDRSetupper<VendorIdentityOnlyCB, VendorIdentityOnlyCQ>() {
+            return cHSDRF(_baseCB, _qyCall.qy(), new HpSDRSetupper<VendorIdentityOnlyCB, VendorIdentityOnlyCQ>() {
                 public void setup(String fn, SubQuery<VendorIdentityOnlyCB> sq, VendorIdentityOnlyCQ cq, String al, DerivedReferrerOption op) {
                     cq.xsmyselfDerive(fn, sq, al, op); } }, _dbmetaProvider);
         }

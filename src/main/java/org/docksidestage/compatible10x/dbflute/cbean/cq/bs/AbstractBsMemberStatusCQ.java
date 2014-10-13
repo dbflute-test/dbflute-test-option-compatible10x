@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -331,7 +331,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberList();
     }
     protected HpQDRFunction<MemberCB> xcreateQDRFunctionMemberList() {
-        return new HpQDRFunction<MemberCB>(new HpQDRSetupper<MemberCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberCB>() {
             public void setup(String fn, SubQuery<MemberCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberList(fn, sq, rd, vl, op);
             }
@@ -365,7 +365,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberLoginList();
     }
     protected HpQDRFunction<MemberLoginCB> xcreateQDRFunctionMemberLoginList() {
-        return new HpQDRFunction<MemberLoginCB>(new HpQDRSetupper<MemberLoginCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberLoginCB>() {
             public void setup(String fn, SubQuery<MemberLoginCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberLoginList(fn, sq, rd, vl, op);
             }
@@ -1000,4 +1000,5 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     protected String xabCQ() { return MemberStatusCQ.class.getName(); }
     protected String xabLSO() { return LikeSearchOption.class.getName(); }
     protected String xabSSQS() { return HpSSQSetupper.class.getName(); }
+    protected String xabSCP() { return SubQuery.class.getName(); }
 }

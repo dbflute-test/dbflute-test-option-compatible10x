@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -864,38 +864,36 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
     //                                                                          OutsideSql
     //                                                                          ==========
     /**
-     * Prepare the basic executor of outside-SQL to execute it. <br />
-     * The invoker of behavior command should be not null when you call this method.
+     * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * You can use the methods for outside-SQL are as follows:
-     * {Basic}
-     *   o selectList()
-     *   o execute()
-     *   o call()
+     * <span style="color: #3F7E5E">// main style</span> 
+     * vendorPrimaryKeyOnlyBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * vendorPrimaryKeyOnlyBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
+     * vendorPrimaryKeyOnlyBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
+     * vendorPrimaryKeyOnlyBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
+     * vendorPrimaryKeyOnlyBhv.outideSql().selectCursor(pmb, handler); <span style="color: #3F7E5E">// (by handler)</span>
+     * vendorPrimaryKeyOnlyBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
+     * vendorPrimaryKeyOnlyBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * {Entity}
-     *   o entityHandling().selectEntity()
-     *   o entityHandling().selectEntityWithDeletedCheck()
+     * <span style="color: #3F7E5E">// traditional style</span> 
+     * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
+     * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
+     * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
+     * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectPagedListOnly(path, pmb, entityType);
+     * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
+     * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * {Paging}
-     *   o autoPaging().selectList()
-     *   o autoPaging().selectPage()
-     *   o manualPaging().selectList()
-     *   o manualPaging().selectPage()
-     *
-     * {Cursor}
-     *   o cursorHandling().selectCursor()
-     *
-     * {Option}
-     *   o dynamicBinding().selectList()
-     *   o removeBlockComment().selectList()
-     *   o removeLineComment().selectList()
-     *   o formatSql().selectList()
+     * <span style="color: #3F7E5E">// options</span> 
+     * vendorPrimaryKeyOnlyBhv.outideSql().removeBlockComment().selectList()
+     * vendorPrimaryKeyOnlyBhv.outideSql().removeLineComment().selectList()
+     * vendorPrimaryKeyOnlyBhv.outideSql().formatSql().selectList()
      * </pre>
-     * @return The basic executor of outside-SQL. (NotNull)
+     * <p>The invoker of behavior command should be not null when you call this method.</p>
+     * @return The new-created all facade executor of outside-SQL. (NotNull)
      */
     public OutsideSqlBasicExecutor<VendorPrimaryKeyOnlyBhv> outsideSql() {
-        return doOutsideSql();
+        OutsideSqlAllFacadeExecutor<VendorPrimaryKeyOnlyBhv> facadeExecutor = doOutsideSql();
+        return facadeExecutor.xbasicExecutor();
     }
 
     // ===================================================================================

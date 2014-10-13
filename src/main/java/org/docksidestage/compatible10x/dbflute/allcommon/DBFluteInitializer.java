@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ import org.dbflute.jdbc.DataSourceHandler;
 import org.dbflute.s2dao.extension.TnSqlLogRegistry;
 import org.dbflute.system.DBFluteSystem;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author DBFlute(AutoGenerator)
@@ -32,8 +32,8 @@ public class DBFluteInitializer {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    /** Log instance. */
-    private static final Log _log = LogFactory.getLog(DBFluteInitializer.class);
+    /** The logger instance for this class. (NotNull) */
+    private static final Logger _log = LoggerFactory.getLogger(DBFluteInitializer.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -104,7 +104,7 @@ public class DBFluteInitializer {
             } else {
                 sb.append("    The sqlLogRegistry(org.seasar.extension.jdbc) is not supported at the version");
             }
-           _log.info(sb);
+           _log.info(sb.toString());
         } else {
             final Object sqlLogRegistry = TnSqlLogRegistry.findContainerSqlLogRegistry();
             if (sqlLogRegistry != null) {

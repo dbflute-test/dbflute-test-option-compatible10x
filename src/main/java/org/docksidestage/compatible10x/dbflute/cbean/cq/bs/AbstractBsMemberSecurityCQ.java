@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1403,4 +1403,5 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     protected String xabCQ() { return MemberSecurityCQ.class.getName(); }
     protected String xabLSO() { return LikeSearchOption.class.getName(); }
     protected String xabSSQS() { return HpSSQSetupper.class.getName(); }
+    protected String xabSCP() { return SubQuery.class.getName(); }
 }

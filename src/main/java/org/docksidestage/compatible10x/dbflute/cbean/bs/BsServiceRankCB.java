@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -313,7 +313,7 @@ public class BsServiceRankCB extends AbstractConditionBean {
                 public boolean has() { return true; }
                 public ServiceRankCQ qy() { return getConditionQuery(); }
             }
-            , _purpose, getDBMetaProvider()); }
+            , _purpose, getDBMetaProvider(), xcFofSDROp()); }
         return _specification;
     }
 
@@ -327,8 +327,9 @@ public class BsServiceRankCB extends AbstractConditionBean {
 
     public static class HpSpecification extends HpAbstractSpecification<ServiceRankCQ> {
         public HpSpecification(ConditionBean baseCB, HpSpQyCall<ServiceRankCQ> qyCall
-                             , HpCBPurpose purpose, DBMetaProvider dbmetaProvider)
-        { super(baseCB, qyCall, purpose, dbmetaProvider); }
+                             , HpCBPurpose purpose, DBMetaProvider dbmetaProvider
+                             , FactoryOfDerivedReferrerOption sdrOpFactory)
+        { super(baseCB, qyCall, purpose, dbmetaProvider, sdrOpFactory); }
         /**
          * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3), classification=ServiceRank}
          * @return The information object of specified column. (NotNull)
@@ -383,7 +384,7 @@ public class BsServiceRankCB extends AbstractConditionBean {
          */
         public HpSDRFunction<MemberServiceCB, ServiceRankCQ> derivedMemberServiceList() {
             assertDerived("memberServiceList"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return new HpSDRFunction<MemberServiceCB, ServiceRankCQ>(_baseCB, _qyCall.qy(), new HpSDRSetupper<MemberServiceCB, ServiceRankCQ>() {
+            return cHSDRF(_baseCB, _qyCall.qy(), new HpSDRSetupper<MemberServiceCB, ServiceRankCQ>() {
                 public void setup(String fn, SubQuery<MemberServiceCB> sq, ServiceRankCQ cq, String al, DerivedReferrerOption op) {
                     cq.xsderiveMemberServiceList(fn, sq, al, op); } }, _dbmetaProvider);
         }
@@ -393,7 +394,7 @@ public class BsServiceRankCB extends AbstractConditionBean {
          */
         public HpSDRFunction<ServiceRankCB, ServiceRankCQ> myselfDerived() {
             assertDerived("myselfDerived"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return new HpSDRFunction<ServiceRankCB, ServiceRankCQ>(_baseCB, _qyCall.qy(), new HpSDRSetupper<ServiceRankCB, ServiceRankCQ>() {
+            return cHSDRF(_baseCB, _qyCall.qy(), new HpSDRSetupper<ServiceRankCB, ServiceRankCQ>() {
                 public void setup(String fn, SubQuery<ServiceRankCB> sq, ServiceRankCQ cq, String al, DerivedReferrerOption op) {
                     cq.xsmyselfDerive(fn, sq, al, op); } }, _dbmetaProvider);
         }

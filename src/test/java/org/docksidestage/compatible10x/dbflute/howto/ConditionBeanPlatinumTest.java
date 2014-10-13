@@ -648,7 +648,9 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
         assertTrue(notExistsMemberWithdrawal);
         // MemberWithdrawalを取得できなかった会員の会員退会情報がちゃんとあるかどうか確認
         for (Integer memberId : notExistsMemberIdList) {
-            if (memberWithdrawalBhv.selectByPKValue(memberId) != null) {
+            MemberWithdrawalCB wdlCB = new MemberWithdrawalCB();
+            wdlCB.acceptPK(memberId);
+            if (memberWithdrawalBhv.selectCount(wdlCB) > 0) {
                 markHere("exists");
             }
         }

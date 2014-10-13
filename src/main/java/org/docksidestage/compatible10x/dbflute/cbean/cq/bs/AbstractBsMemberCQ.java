@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -575,7 +575,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberAddressList();
     }
     protected HpQDRFunction<MemberAddressCB> xcreateQDRFunctionMemberAddressList() {
-        return new HpQDRFunction<MemberAddressCB>(new HpQDRSetupper<MemberAddressCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberAddressCB>() {
             public void setup(String fn, SubQuery<MemberAddressCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberAddressList(fn, sq, rd, vl, op);
             }
@@ -607,7 +607,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberFollowingByMyMemberIdList();
     }
     protected HpQDRFunction<MemberFollowingCB> xcreateQDRFunctionMemberFollowingByMyMemberIdList() {
-        return new HpQDRFunction<MemberFollowingCB>(new HpQDRSetupper<MemberFollowingCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberFollowingCB>() {
             public void setup(String fn, SubQuery<MemberFollowingCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberFollowingByMyMemberIdList(fn, sq, rd, vl, op);
             }
@@ -639,7 +639,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberFollowingByYourMemberIdList();
     }
     protected HpQDRFunction<MemberFollowingCB> xcreateQDRFunctionMemberFollowingByYourMemberIdList() {
-        return new HpQDRFunction<MemberFollowingCB>(new HpQDRSetupper<MemberFollowingCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberFollowingCB>() {
             public void setup(String fn, SubQuery<MemberFollowingCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberFollowingByYourMemberIdList(fn, sq, rd, vl, op);
             }
@@ -671,7 +671,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberLoginList();
     }
     protected HpQDRFunction<MemberLoginCB> xcreateQDRFunctionMemberLoginList() {
-        return new HpQDRFunction<MemberLoginCB>(new HpQDRSetupper<MemberLoginCB>() {
+        return xcQDRFunc(new HpQDRSetupper<MemberLoginCB>() {
             public void setup(String fn, SubQuery<MemberLoginCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderiveMemberLoginList(fn, sq, rd, vl, op);
             }
@@ -703,7 +703,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionPurchaseList();
     }
     protected HpQDRFunction<PurchaseCB> xcreateQDRFunctionPurchaseList() {
-        return new HpQDRFunction<PurchaseCB>(new HpQDRSetupper<PurchaseCB>() {
+        return xcQDRFunc(new HpQDRSetupper<PurchaseCB>() {
             public void setup(String fn, SubQuery<PurchaseCB> sq, String rd, Object vl, DerivedReferrerOption op) {
                 xqderivePurchaseList(fn, sq, rd, vl, op);
             }
@@ -2063,4 +2063,5 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected String xabCQ() { return MemberCQ.class.getName(); }
     protected String xabLSO() { return LikeSearchOption.class.getName(); }
     protected String xabSSQS() { return HpSSQSetupper.class.getName(); }
+    protected String xabSCP() { return SubQuery.class.getName(); }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2004-2014 the Seasar Foundation and the Others.
+ * Copyright 2014-2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -985,38 +985,36 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
     //                                                                          OutsideSql
     //                                                                          ==========
     /**
-     * Prepare the basic executor of outside-SQL to execute it. <br />
-     * The invoker of behavior command should be not null when you call this method.
+     * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * You can use the methods for outside-SQL are as follows:
-     * {Basic}
-     *   o selectList()
-     *   o execute()
-     *   o call()
+     * <span style="color: #3F7E5E">// main style</span> 
+     * serviceRankBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * serviceRankBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
+     * serviceRankBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
+     * serviceRankBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
+     * serviceRankBhv.outideSql().selectCursor(pmb, handler); <span style="color: #3F7E5E">// (by handler)</span>
+     * serviceRankBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
+     * serviceRankBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * {Entity}
-     *   o entityHandling().selectEntity()
-     *   o entityHandling().selectEntityWithDeletedCheck()
+     * <span style="color: #3F7E5E">// traditional style</span> 
+     * serviceRankBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
+     * serviceRankBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
+     * serviceRankBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
+     * serviceRankBhv.outideSql().traditionalStyle().selectPagedListOnly(path, pmb, entityType);
+     * serviceRankBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
+     * serviceRankBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * {Paging}
-     *   o autoPaging().selectList()
-     *   o autoPaging().selectPage()
-     *   o manualPaging().selectList()
-     *   o manualPaging().selectPage()
-     *
-     * {Cursor}
-     *   o cursorHandling().selectCursor()
-     *
-     * {Option}
-     *   o dynamicBinding().selectList()
-     *   o removeBlockComment().selectList()
-     *   o removeLineComment().selectList()
-     *   o formatSql().selectList()
+     * <span style="color: #3F7E5E">// options</span> 
+     * serviceRankBhv.outideSql().removeBlockComment().selectList()
+     * serviceRankBhv.outideSql().removeLineComment().selectList()
+     * serviceRankBhv.outideSql().formatSql().selectList()
      * </pre>
-     * @return The basic executor of outside-SQL. (NotNull)
+     * <p>The invoker of behavior command should be not null when you call this method.</p>
+     * @return The new-created all facade executor of outside-SQL. (NotNull)
      */
     public OutsideSqlBasicExecutor<ServiceRankBhv> outsideSql() {
-        return doOutsideSql();
+        OutsideSqlAllFacadeExecutor<ServiceRankBhv> facadeExecutor = doOutsideSql();
+        return facadeExecutor.xbasicExecutor();
     }
 
     // ===================================================================================
