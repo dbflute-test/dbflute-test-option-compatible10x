@@ -152,7 +152,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
      * (商品カテゴリコード)PRODUCT_CATEGORY_CODE: {PK, NotNull, CHAR(3)} <br />
-     * <pre>e.g. setProductCategoryCode_LikeSearch("xxx", new <span style="color: #DD4747">LikeSearchOption</span>().likeContain());</pre>
+     * <pre>e.g. setProductCategoryCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productCategoryCode The value of productCategoryCode as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
      */
@@ -185,8 +185,8 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * {exists (select PRODUCT_CATEGORY_CODE from PRODUCT where ...)} <br />
      * (商品)PRODUCT by PRODUCT_CATEGORY_CODE, named 'productAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">existsProductList</span>(productCB -&gt; {
-     *     productCB.query().setXxx...
+     * cb.query().<span style="color: #CC4747">existsProductList</span>(productCB -&gt; {
+     *     productCB.query().set...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of ProductList for 'exists'. (NotNull)
@@ -205,8 +205,8 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * {exists (select PARENT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
      * (商品カテゴリ)PRODUCT_CATEGORY by PARENT_CATEGORY_CODE, named 'productCategorySelfAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">existsProductCategorySelfList</span>(categoryCB -&gt; {
-     *     categoryCB.query().setXxx...
+     * cb.query().<span style="color: #CC4747">existsProductCategorySelfList</span>(categoryCB -&gt; {
+     *     categoryCB.query().set...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of ProductCategorySelfList for 'exists'. (NotNull)
@@ -225,7 +225,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * {not exists (select PRODUCT_CATEGORY_CODE from PRODUCT where ...)} <br />
      * (商品)PRODUCT by PRODUCT_CATEGORY_CODE, named 'productAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">notExistsProductList</span>(new SubQuery&lt;ProductCB&gt;() {
+     * cb.query().<span style="color: #CC4747">notExistsProductList</span>(new SubQuery&lt;ProductCB&gt;() {
      *     public void query(ProductCB subCB) {
      *         subCB.query().setXxx...
      *     }
@@ -247,7 +247,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * {not exists (select PARENT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
      * (商品カテゴリ)PRODUCT_CATEGORY by PARENT_CATEGORY_CODE, named 'productCategorySelfAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">notExistsProductCategorySelfList</span>(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">notExistsProductCategorySelfList</span>(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.query().setXxx...
      *     }
@@ -287,12 +287,12 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * {FOO &lt;= (select max(BAR) from PRODUCT where ...)} <br />
      * (商品)PRODUCT by PRODUCT_CATEGORY_CODE, named 'productAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">derivedProductList()</span>.<span style="color: #DD4747">max</span>(new SubQuery&lt;ProductCB&gt;() {
+     * cb.query().<span style="color: #CC4747">derivedProductList()</span>.<span style="color: #CC4747">max</span>(new SubQuery&lt;ProductCB&gt;() {
      *     public void query(ProductCB subCB) {
-     *         subCB.specify().<span style="color: #DD4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *         subCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
      *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      *     }
-     * }).<span style="color: #DD4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
+     * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
      */
@@ -321,12 +321,12 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * {FOO &lt;= (select max(BAR) from PRODUCT_CATEGORY where ...)} <br />
      * (商品カテゴリ)PRODUCT_CATEGORY by PARENT_CATEGORY_CODE, named 'productCategorySelfAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">derivedProductCategorySelfList()</span>.<span style="color: #DD4747">max</span>(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">derivedProductCategorySelfList()</span>.<span style="color: #CC4747">max</span>(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
-     *         subCB.specify().<span style="color: #DD4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *         subCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
      *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      *     }
-     * }).<span style="color: #DD4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
+     * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
      */
@@ -456,7 +456,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
      * (商品カテゴリ名称)PRODUCT_CATEGORY_NAME: {NotNull, VARCHAR(50)} <br />
-     * <pre>e.g. setProductCategoryName_LikeSearch("xxx", new <span style="color: #DD4747">LikeSearchOption</span>().likeContain());</pre>
+     * <pre>e.g. setProductCategoryName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productCategoryName The value of productCategoryName as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
      */
@@ -578,7 +578,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
      * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY} <br />
-     * <pre>e.g. setParentCategoryCode_LikeSearch("xxx", new <span style="color: #DD4747">LikeSearchOption</span>().likeContain());</pre>
+     * <pre>e.g. setParentCategoryCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param parentCategoryCode The value of parentCategoryCode as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
      */
@@ -634,7 +634,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * Prepare ScalarCondition as equal. <br />
      * {where FOO = (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_Equal()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_Equal()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.specify().setXxx... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setYyy...
@@ -651,7 +651,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * Prepare ScalarCondition as equal. <br />
      * {where FOO &lt;&gt; (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_NotEqual()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_NotEqual()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.specify().setXxx... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setYyy...
@@ -668,7 +668,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * Prepare ScalarCondition as greaterThan. <br />
      * {where FOO &gt; (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_GreaterThan()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_GreaterThan()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -685,7 +685,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * Prepare ScalarCondition as lessThan. <br />
      * {where FOO &lt; (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_LessThan()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_LessThan()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -702,7 +702,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * Prepare ScalarCondition as greaterEqual. <br />
      * {where FOO &gt;= (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_GreaterEqual()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_GreaterEqual()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -719,7 +719,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * Prepare ScalarCondition as lessEqual. <br />
      * {where FOO &lt;= (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_LessEqual()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_LessEqual()</span>.max(new SubQuery&lt;ProductCategoryCB&gt;() {
      *     public void query(ProductCategoryCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -806,8 +806,8 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * <pre>
      * MemberCB cb = new MemberCB();
      * ManualOrderBean mob = new ManualOrderBean();
-     * mob.<span style="color: #DD4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
-     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #DD4747">withManualOrder(mob)</span>;
+     * mob.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder(mob)</span>;
      * <span style="color: #3F7E5E">// order by </span>
      * <span style="color: #3F7E5E">//   case</span>
      * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
@@ -816,10 +816,10 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      *
      * MemberCB cb = new MemberCB();
      * ManualOrderBean mob = new ManualOrderBean();
-     * mob.<span style="color: #DD4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
-     * mob.<span style="color: #DD4747">when_Equal</span>(CDef.MemberStatus.Formalized);
-     * mob.<span style="color: #DD4747">when_Equal</span>(CDef.MemberStatus.Provisional);
-     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #DD4747">withManualOrder(mob)</span>;
+     * mob.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     * mob.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     * mob.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder(mob)</span>;
      * <span style="color: #3F7E5E">// order by </span>
      * <span style="color: #3F7E5E">//   case</span>
      * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
@@ -849,7 +849,7 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * orderValueList.add(CDef.MemberStatus.Withdrawal);
      * orderValueList.add(CDef.MemberStatus.Formalized);
      * orderValueList.add(CDef.MemberStatus.Provisional);
-     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #DD4747">withManualOrder(orderValueList)</span>;
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder(orderValueList)</span>;
      * <span style="color: #3F7E5E">// order by </span>
      * <span style="color: #3F7E5E">//   case</span>
      * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>

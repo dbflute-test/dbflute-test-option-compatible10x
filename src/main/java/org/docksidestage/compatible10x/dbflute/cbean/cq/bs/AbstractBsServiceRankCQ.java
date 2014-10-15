@@ -238,8 +238,8 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * {exists (select SERVICE_RANK_CODE from MEMBER_SERVICE where ...)} <br />
      * (会員サービス)MEMBER_SERVICE by SERVICE_RANK_CODE, named 'memberServiceAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">existsMemberServiceList</span>(serviceCB -&gt; {
-     *     serviceCB.query().setXxx...
+     * cb.query().<span style="color: #CC4747">existsMemberServiceList</span>(serviceCB -&gt; {
+     *     serviceCB.query().set...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of MemberServiceList for 'exists'. (NotNull)
@@ -258,7 +258,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * {not exists (select SERVICE_RANK_CODE from MEMBER_SERVICE where ...)} <br />
      * (会員サービス)MEMBER_SERVICE by SERVICE_RANK_CODE, named 'memberServiceAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">notExistsMemberServiceList</span>(new SubQuery&lt;MemberServiceCB&gt;() {
+     * cb.query().<span style="color: #CC4747">notExistsMemberServiceList</span>(new SubQuery&lt;MemberServiceCB&gt;() {
      *     public void query(MemberServiceCB subCB) {
      *         subCB.query().setXxx...
      *     }
@@ -289,12 +289,12 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * {FOO &lt;= (select max(BAR) from MEMBER_SERVICE where ...)} <br />
      * (会員サービス)MEMBER_SERVICE by SERVICE_RANK_CODE, named 'memberServiceAsOne'.
      * <pre>
-     * cb.query().<span style="color: #DD4747">derivedMemberServiceList()</span>.<span style="color: #DD4747">max</span>(new SubQuery&lt;MemberServiceCB&gt;() {
+     * cb.query().<span style="color: #CC4747">derivedMemberServiceList()</span>.<span style="color: #CC4747">max</span>(new SubQuery&lt;MemberServiceCB&gt;() {
      *     public void query(MemberServiceCB subCB) {
-     *         subCB.specify().<span style="color: #DD4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *         subCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
      *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      *     }
-     * }).<span style="color: #DD4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
+     * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
      */
@@ -424,7 +424,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
      * (サービスランク名称)SERVICE_RANK_NAME: {NotNull, VARCHAR(50)} <br />
-     * <pre>e.g. setServiceRankName_LikeSearch("xxx", new <span style="color: #DD4747">LikeSearchOption</span>().likeContain());</pre>
+     * <pre>e.g. setServiceRankName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param serviceRankName The value of serviceRankName as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
      */
@@ -787,7 +787,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
      * (説明)DESCRIPTION: {NotNull, VARCHAR(200)} <br />
-     * <pre>e.g. setDescription_LikeSearch("xxx", new <span style="color: #DD4747">LikeSearchOption</span>().likeContain());</pre>
+     * <pre>e.g. setDescription_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param description The value of description as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
      */
@@ -929,7 +929,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * Prepare ScalarCondition as equal. <br />
      * {where FOO = (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_Equal()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_Equal()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
      *     public void query(ServiceRankCB subCB) {
      *         subCB.specify().setXxx... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setYyy...
@@ -946,7 +946,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * Prepare ScalarCondition as equal. <br />
      * {where FOO &lt;&gt; (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_NotEqual()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_NotEqual()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
      *     public void query(ServiceRankCB subCB) {
      *         subCB.specify().setXxx... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setYyy...
@@ -963,7 +963,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * Prepare ScalarCondition as greaterThan. <br />
      * {where FOO &gt; (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_GreaterThan()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_GreaterThan()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
      *     public void query(ServiceRankCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -980,7 +980,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * Prepare ScalarCondition as lessThan. <br />
      * {where FOO &lt; (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_LessThan()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_LessThan()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
      *     public void query(ServiceRankCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -997,7 +997,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * Prepare ScalarCondition as greaterEqual. <br />
      * {where FOO &gt;= (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_GreaterEqual()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_GreaterEqual()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
      *     public void query(ServiceRankCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -1014,7 +1014,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * Prepare ScalarCondition as lessEqual. <br />
      * {where FOO &lt;= (select max(BAR) from ...)
      * <pre>
-     * cb.query().<span style="color: #DD4747">scalar_LessEqual()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
+     * cb.query().<span style="color: #CC4747">scalar_LessEqual()</span>.max(new SubQuery&lt;ServiceRankCB&gt;() {
      *     public void query(ServiceRankCB subCB) {
      *         subCB.specify().setFoo... <span style="color: #3F7E5E">// derived column for function</span>
      *         subCB.query().setBar...
@@ -1101,8 +1101,8 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * <pre>
      * MemberCB cb = new MemberCB();
      * ManualOrderBean mob = new ManualOrderBean();
-     * mob.<span style="color: #DD4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
-     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #DD4747">withManualOrder(mob)</span>;
+     * mob.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder(mob)</span>;
      * <span style="color: #3F7E5E">// order by </span>
      * <span style="color: #3F7E5E">//   case</span>
      * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
@@ -1111,10 +1111,10 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      *
      * MemberCB cb = new MemberCB();
      * ManualOrderBean mob = new ManualOrderBean();
-     * mob.<span style="color: #DD4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
-     * mob.<span style="color: #DD4747">when_Equal</span>(CDef.MemberStatus.Formalized);
-     * mob.<span style="color: #DD4747">when_Equal</span>(CDef.MemberStatus.Provisional);
-     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #DD4747">withManualOrder(mob)</span>;
+     * mob.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     * mob.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     * mob.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder(mob)</span>;
      * <span style="color: #3F7E5E">// order by </span>
      * <span style="color: #3F7E5E">//   case</span>
      * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
@@ -1144,7 +1144,7 @@ public abstract class AbstractBsServiceRankCQ extends AbstractConditionQuery {
      * orderValueList.add(CDef.MemberStatus.Withdrawal);
      * orderValueList.add(CDef.MemberStatus.Formalized);
      * orderValueList.add(CDef.MemberStatus.Provisional);
-     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #DD4747">withManualOrder(orderValueList)</span>;
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder(orderValueList)</span>;
      * <span style="color: #3F7E5E">// order by </span>
      * <span style="color: #3F7E5E">//   case</span>
      * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>

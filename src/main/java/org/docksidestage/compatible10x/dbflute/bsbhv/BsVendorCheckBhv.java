@@ -110,7 +110,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <pre>
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
-     * int count = vendorCheckBhv.<span style="color: #DD4747">selectCount</span>(cb);
+     * int count = vendorCheckBhv.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of VendorCheck. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -157,11 +157,11 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
 
     /**
      * Select the entity by the condition-bean with deleted check. <br />
-     * <span style="color: #AD4747; font-size: 120%">If the data always exists as your business rule, this method is good.</span>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
-     * VendorCheck vendorCheck = vendorCheckBhv.<span style="color: #DD4747">selectEntityWithDeletedCheck</span>(cb);
+     * VendorCheck vendorCheck = vendorCheckBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = vendorCheck.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of VendorCheck. (NotNull)
@@ -227,7 +227,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;VendorCheck&gt; vendorCheckList = vendorCheckBhv.<span style="color: #DD4747">selectList</span>(cb);
+     * ListResultBean&lt;VendorCheck&gt; vendorCheckList = vendorCheckBhv.<span style="color: #CC4747">selectList</span>(cb);
      * for (VendorCheck vendorCheck : vendorCheckList) {
      *     ... = vendorCheck.get...();
      * }
@@ -253,8 +253,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * cb.<span style="color: #DD4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;VendorCheck&gt; page = vendorCheckBhv.<span style="color: #DD4747">selectPage</span>(cb);
+     * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * PagingResultBean&lt;VendorCheck&gt; page = vendorCheckBhv.<span style="color: #CC4747">selectPage</span>(cb);
      * int allRecordCount = page.getAllRecordCount();
      * int allPageCount = page.getAllPageCount();
      * boolean isExistPrePage = page.isExistPrePage();
@@ -280,7 +280,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <pre>
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
-     * vendorCheckBhv.<span style="color: #DD4747">selectCursor</span>(cb, new EntityRowHandler&lt;VendorCheck&gt;() {
+     * vendorCheckBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;VendorCheck&gt;() {
      *     public void handle(VendorCheck entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -300,9 +300,9 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * vendorCheckBhv.<span style="color: #DD4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
+     * vendorCheckBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
      *     public void query(VendorCheckCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
      *         cb.query().setBarName_PrefixSearch("S");
      *     }
      * });
@@ -333,8 +333,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -347,7 +347,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -369,8 +369,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -383,7 +383,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -426,7 +426,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
      * <span style="color: #3F7E5E">//vendorCheck.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//vendorCheck.set...;</span>
-     * vendorCheckBhv.<span style="color: #DD4747">insert</span>(vendorCheck);
+     * vendorCheckBhv.<span style="color: #CC4747">insert</span>(vendorCheck);
      * ... = vendorCheck.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * <p>While, when the entity is created by select, all columns are registered.</p>
@@ -447,9 +447,9 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <span style="color: #3F7E5E">//vendorCheck.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//vendorCheck.set...;</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * vendorCheck.<span style="color: #DD4747">setVersionNo</span>(value);
+     * vendorCheck.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     vendorCheckBhv.<span style="color: #DD4747">update</span>(vendorCheck);
+     *     vendorCheckBhv.<span style="color: #CC4747">update</span>(vendorCheck);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -466,7 +466,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /**
      * Insert or update the entity modified-only. (DefaultConstraintsEnabled, NonExclusiveControl) <br />
      * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
-     * <p><span style="color: #DD4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param vendorCheck The entity of insert or update. (NotNull, ...depends on insert or update)
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
@@ -482,9 +482,9 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * VendorCheck vendorCheck = new VendorCheck();
      * vendorCheck.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * vendorCheck.<span style="color: #DD4747">setVersionNo</span>(value);
+     * vendorCheck.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     vendorCheckBhv.<span style="color: #DD4747">delete</span>(vendorCheck);
+     *     vendorCheckBhv.<span style="color: #CC4747">delete</span>(vendorCheck);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -503,7 +503,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /**
      * Batch-insert the entity list modified-only of same-set columns. (DefaultConstraintsEnabled) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <p><span style="color: #DD4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
      * <pre>
      * for (... : ...) {
      *     VendorCheck vendorCheck = new VendorCheck();
@@ -516,7 +516,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      *     <span style="color: #3F7E5E">// columns not-called in all entities are registered as null or default value</span>
      *     vendorCheckList.add(vendorCheck);
      * }
-     * vendorCheckBhv.<span style="color: #DD4747">batchInsert</span>(vendorCheckList);
+     * vendorCheckBhv.<span style="color: #CC4747">batchInsert</span>(vendorCheckList);
      * </pre>
      * <p>While, when the entities are created by select, all columns are registered.</p>
      * <p>And if the table has an identity, entities after the process don't have incremented values.
@@ -531,7 +531,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /**
      * Batch-update the entity list modified-only of same-set columns. (NonExclusiveControl) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <span style="color: #DD4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
+     * <span style="color: #CC4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
      * <pre>
      * for (... : ...) {
      *     VendorCheck vendorCheck = new VendorCheck();
@@ -546,7 +546,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      *     <span style="color: #3F7E5E">// (others are not updated: their values are kept)</span>
      *     vendorCheckList.add(vendorCheck);
      * }
-     * vendorCheckBhv.<span style="color: #DD4747">batchUpdate</span>(vendorCheckList);
+     * vendorCheckBhv.<span style="color: #CC4747">batchUpdate</span>(vendorCheckList);
      * </pre>
      * @param vendorCheckList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
@@ -561,16 +561,16 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * vendorCheckBhv.<span style="color: #DD4747">batchUpdate</span>(vendorCheckList, new SpecifyQuery<VendorCheckCB>() {
+     * vendorCheckBhv.<span style="color: #CC4747">batchUpdate</span>(vendorCheckList, new SpecifyQuery<VendorCheckCB>() {
      *     public void specify(VendorCheckCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #DD4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * vendorCheckBhv.<span style="color: #DD4747">batchUpdate</span>(vendorCheckList, new SpecifyQuery<VendorCheckCB>() {
+     * vendorCheckBhv.<span style="color: #CC4747">batchUpdate</span>(vendorCheckList, new SpecifyQuery<VendorCheckCB>() {
      *     public void specify(VendorCheckCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
+     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
      * });
      * </pre>
@@ -605,7 +605,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /**
      * Insert the several entities by query (modified-only for fixed value).
      * <pre>
-     * vendorCheckBhv.<span style="color: #DD4747">queryInsert</span>(new QueryInsertSetupper&lt;VendorCheck, VendorCheckCB&gt;() {
+     * vendorCheckBhv.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;VendorCheck, VendorCheckCB&gt;() {
      *     public ConditionBean setup(VendorCheck entity, VendorCheckCB intoCB) {
      *         FooCB cb = FooCB();
      *         cb.setupSelect_Bar();
@@ -647,7 +647,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <span style="color: #3F7E5E">//vendorCheck.setVersionNo(value);</span>
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
-     * vendorCheckBhv.<span style="color: #DD4747">queryUpdate</span>(vendorCheck, cb);
+     * vendorCheckBhv.<span style="color: #CC4747">queryUpdate</span>(vendorCheck, cb);
      * </pre>
      * @param vendorCheck The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
      * @param cb The condition-bean of VendorCheck. (NotNull)
@@ -663,7 +663,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <pre>
      * VendorCheckCB cb = new VendorCheckCB();
      * cb.query().setFoo...(value);
-     * vendorCheckBhv.<span style="color: #DD4747">queryDelete</span>(vendorCheck, cb);
+     * vendorCheckBhv.<span style="color: #CC4747">queryDelete</span>(vendorCheck, cb);
      * </pre>
      * @param cb The condition-bean of VendorCheck. (NotNull)
      * @return The deleted count.
@@ -691,15 +691,15 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * InsertOption<VendorCheckCB> option = new InsertOption<VendorCheckCB>();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
-     * vendorCheckBhv.<span style="color: #DD4747">varyingInsert</span>(vendorCheck, option);
+     * vendorCheckBhv.<span style="color: #CC4747">varyingInsert</span>(vendorCheck, option);
      * ... = vendorCheck.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param vendorCheck The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsert(VendorCheck vendorCheck, WOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> opLambda) {
-        doInsert(vendorCheck, handleInsertOpCall(opLambda));
+    public void varyingInsert(VendorCheck vendorCheck, WritableOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> opLambda) {
+        doInsert(vendorCheck, createInsertOption(opLambda));
     }
 
     /**
@@ -711,16 +711,16 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * vendorCheck.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * vendorCheck.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * vendorCheck.<span style="color: #DD4747">setVersionNo</span>(value);
+     * vendorCheck.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
      *     <span style="color: #3F7E5E">// you can update by self calculation values</span>
      *     UpdateOption&lt;VendorCheckCB&gt; option = new UpdateOption&lt;VendorCheckCB&gt;();
      *     option.self(new SpecifyQuery&lt;VendorCheckCB&gt;() {
      *         public void specify(VendorCheckCB cb) {
-     *             cb.specify().<span style="color: #DD4747">columnXxxCount()</span>;
+     *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *         }
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     vendorCheckBhv.<span style="color: #DD4747">varyingUpdate</span>(vendorCheck, option);
+     *     vendorCheckBhv.<span style="color: #CC4747">varyingUpdate</span>(vendorCheck, option);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -731,8 +731,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingUpdate(VendorCheck vendorCheck, WOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
-        doUpdate(vendorCheck, handleUpdateOpCall(opLambda));
+    public void varyingUpdate(VendorCheck vendorCheck, WritableOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
+        doUpdate(vendorCheck, createUpdateOption(opLambda));
     }
 
     /**
@@ -745,8 +745,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsertOrUpdate(VendorCheck vendorCheck, WOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> insertOpLambda, WOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> updateOpLambda) {
-        doInsertOrUpdate(vendorCheck, handleInsertOpCall(insertOpLambda), handleUpdateOpCall(updateOpLambda));
+    public void varyingInsertOrUpdate(VendorCheck vendorCheck, WritableOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> insertOpLambda, WritableOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> updateOpLambda) {
+        doInsertOrUpdate(vendorCheck, createInsertOption(insertOpLambda), createUpdateOption(updateOpLambda));
     }
 
     /**
@@ -758,8 +758,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
      */
-    public void varyingDelete(VendorCheck vendorCheck, WOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
-        doDelete(vendorCheck, handleDeleteOpCall(opLambda));
+    public void varyingDelete(VendorCheck vendorCheck, WritableOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
+        doDelete(vendorCheck, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -774,8 +774,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchInsert(List<VendorCheck> vendorCheckList, WOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> opLambda) {
-        return doBatchInsert(vendorCheckList, handleInsertOpCall(opLambda));
+    public int[] varyingBatchInsert(List<VendorCheck> vendorCheckList, WritableOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> opLambda) {
+        return doBatchInsert(vendorCheckList, createInsertOption(opLambda));
     }
 
     /**
@@ -787,8 +787,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @param opLambda The callback for option of update for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchUpdate(List<VendorCheck> vendorCheckList, WOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
-        return doBatchUpdate(vendorCheckList, handleUpdateOpCall(opLambda));
+    public int[] varyingBatchUpdate(List<VendorCheck> vendorCheckList, WritableOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
+        return doBatchUpdate(vendorCheckList, createUpdateOption(opLambda));
     }
 
     /**
@@ -799,8 +799,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchDelete(List<VendorCheck> vendorCheckList, WOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
-        return doBatchDelete(vendorCheckList, handleDeleteOpCall(opLambda));
+    public int[] varyingBatchDelete(List<VendorCheck> vendorCheckList, WritableOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
+        return doBatchDelete(vendorCheckList, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -814,8 +814,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The inserted count.
      */
-    public int varyingQueryInsert(QueryInsertSetupper<VendorCheck, VendorCheckCB> manyArgLambda, WOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> opLambda) {
-        return doQueryInsert(manyArgLambda, handleInsertOpCall(opLambda));
+    public int varyingQueryInsert(QueryInsertSetupper<VendorCheck, VendorCheckCB> manyArgLambda, WritableOptionCall<VendorCheckCB, InsertOption<VendorCheckCB>> opLambda) {
+        return doQueryInsert(manyArgLambda, createInsertOption(opLambda));
     }
 
     /**
@@ -837,10 +837,10 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * UpdateOption&lt;VendorCheckCB&gt; option = new UpdateOption&lt;VendorCheckCB&gt;();
      * option.self(new SpecifyQuery&lt;VendorCheckCB&gt;() {
      *     public void specify(VendorCheckCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooCount()</span>;
+     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
      *     }
      * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * vendorCheckBhv.<span style="color: #DD4747">varyingQueryUpdate</span>(vendorCheck, cb, option);
+     * vendorCheckBhv.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorCheck, cb, option);
      * </pre>
      * @param vendorCheck The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of VendorCheck. (NotNull)
@@ -848,8 +848,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @return The updated count.
      * @exception NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryUpdate(VendorCheck vendorCheck, VendorCheckCB cb, WOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
-        return doQueryUpdate(vendorCheck, cb, handleUpdateOpCall(opLambda));
+    public int varyingQueryUpdate(VendorCheck vendorCheck, VendorCheckCB cb, WritableOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
+        return doQueryUpdate(vendorCheck, cb, createUpdateOption(opLambda));
     }
 
     /**
@@ -861,8 +861,8 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @return The deleted count.
      * @exception NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryDelete(VendorCheckCB cb, WOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
-        return doQueryDelete(cb, handleDeleteOpCall(opLambda));
+    public int varyingQueryDelete(VendorCheckCB cb, WritableOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
+        return doQueryDelete(cb, createDeleteOption(opLambda));
     }
 
     // ===================================================================================
@@ -898,7 +898,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      */
     public OutsideSqlBasicExecutor<VendorCheckBhv> outsideSql() {
         OutsideSqlAllFacadeExecutor<VendorCheckBhv> facadeExecutor = doOutsideSql();
-        return facadeExecutor.xbasicExecutor();
+        return facadeExecutor.xbasicExecutor(); // variable to resolve generic type
     }
 
     // ===================================================================================

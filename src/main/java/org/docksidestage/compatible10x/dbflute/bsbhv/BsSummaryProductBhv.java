@@ -105,7 +105,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <pre>
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
-     * int count = summaryProductBhv.<span style="color: #DD4747">selectCount</span>(cb);
+     * int count = summaryProductBhv.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of SummaryProduct. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -152,11 +152,11 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
 
     /**
      * Select the entity by the condition-bean with deleted check. <br />
-     * <span style="color: #AD4747; font-size: 120%">If the data always exists as your business rule, this method is good.</span>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
-     * SummaryProduct summaryProduct = summaryProductBhv.<span style="color: #DD4747">selectEntityWithDeletedCheck</span>(cb);
+     * SummaryProduct summaryProduct = summaryProductBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = summaryProduct.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of SummaryProduct. (NotNull)
@@ -222,7 +222,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;SummaryProduct&gt; summaryProductList = summaryProductBhv.<span style="color: #DD4747">selectList</span>(cb);
+     * ListResultBean&lt;SummaryProduct&gt; summaryProductList = summaryProductBhv.<span style="color: #CC4747">selectList</span>(cb);
      * for (SummaryProduct summaryProduct : summaryProductList) {
      *     ... = summaryProduct.get...();
      * }
@@ -248,8 +248,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * cb.<span style="color: #DD4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;SummaryProduct&gt; page = summaryProductBhv.<span style="color: #DD4747">selectPage</span>(cb);
+     * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * PagingResultBean&lt;SummaryProduct&gt; page = summaryProductBhv.<span style="color: #CC4747">selectPage</span>(cb);
      * int allRecordCount = page.getAllRecordCount();
      * int allPageCount = page.getAllPageCount();
      * boolean isExistPrePage = page.isExistPrePage();
@@ -275,7 +275,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <pre>
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
-     * summaryProductBhv.<span style="color: #DD4747">selectCursor</span>(cb, new EntityRowHandler&lt;SummaryProduct&gt;() {
+     * summaryProductBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;SummaryProduct&gt;() {
      *     public void handle(SummaryProduct entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -295,9 +295,9 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * summaryProductBhv.<span style="color: #DD4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
+     * summaryProductBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
      *     public void query(SummaryProductCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
      *         cb.query().setBarName_PrefixSearch("S");
      *     }
      * });
@@ -328,8 +328,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -342,7 +342,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -364,8 +364,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -378,7 +378,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -398,7 +398,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * Load referrer of purchaseList by the set-upper of referrer. <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseList'.
      * <pre>
-     * summaryProductBhv.<span style="color: #DD4747">loadPurchaseList</span>(summaryProductList, purchaseCB -&gt; {
+     * summaryProductBhv.<span style="color: #CC4747">loadPurchaseList</span>(summaryProductList, purchaseCB -&gt; {
      *     purchaseCB.setupSelect...();
      *     purchaseCB.query().setFoo...(value);
      *     purchaseCB.query().addOrderBy_Bar...();
@@ -407,7 +407,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
      * for (SummaryProduct summaryProduct : summaryProductList) {
-     *     ... = summaryProduct.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     ... = summaryProduct.<span style="color: #CC4747">getPurchaseList()</span>;
      * }
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
@@ -429,7 +429,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * Load referrer of purchaseList by the set-upper of referrer. <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseList'.
      * <pre>
-     * summaryProductBhv.<span style="color: #DD4747">loadPurchaseList</span>(summaryProductList, purchaseCB -&gt; {
+     * summaryProductBhv.<span style="color: #CC4747">loadPurchaseList</span>(summaryProductList, purchaseCB -&gt; {
      *     purchaseCB.setupSelect...();
      *     purchaseCB.query().setFoo...(value);
      *     purchaseCB.query().addOrderBy_Bar...();
@@ -437,7 +437,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
-     * ... = summaryProduct.<span style="color: #DD4747">getPurchaseList()</span>;
+     * ... = summaryProduct.<span style="color: #CC4747">getPurchaseList()</span>;
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
      * The condition-bean, which the set-upper provides, has settings before callback as follows:
@@ -517,7 +517,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
      * <span style="color: #3F7E5E">//summaryProduct.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//summaryProduct.set...;</span>
-     * summaryProductBhv.<span style="color: #DD4747">insert</span>(summaryProduct);
+     * summaryProductBhv.<span style="color: #CC4747">insert</span>(summaryProduct);
      * ... = summaryProduct.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * <p>While, when the entity is created by select, all columns are registered.</p>
@@ -538,9 +538,9 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <span style="color: #3F7E5E">//summaryProduct.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//summaryProduct.set...;</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * summaryProduct.<span style="color: #DD4747">setVersionNo</span>(value);
+     * summaryProduct.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     summaryProductBhv.<span style="color: #DD4747">update</span>(summaryProduct);
+     *     summaryProductBhv.<span style="color: #CC4747">update</span>(summaryProduct);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -557,7 +557,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
     /**
      * Insert or update the entity modified-only. (DefaultConstraintsEnabled, NonExclusiveControl) <br />
      * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
-     * <p><span style="color: #DD4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param summaryProduct The entity of insert or update. (NotNull, ...depends on insert or update)
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
@@ -573,9 +573,9 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * SummaryProduct summaryProduct = new SummaryProduct();
      * summaryProduct.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * summaryProduct.<span style="color: #DD4747">setVersionNo</span>(value);
+     * summaryProduct.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     summaryProductBhv.<span style="color: #DD4747">delete</span>(summaryProduct);
+     *     summaryProductBhv.<span style="color: #CC4747">delete</span>(summaryProduct);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -594,7 +594,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
     /**
      * Batch-insert the entity list modified-only of same-set columns. (DefaultConstraintsEnabled) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <p><span style="color: #DD4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
      * <pre>
      * for (... : ...) {
      *     SummaryProduct summaryProduct = new SummaryProduct();
@@ -607,7 +607,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      *     <span style="color: #3F7E5E">// columns not-called in all entities are registered as null or default value</span>
      *     summaryProductList.add(summaryProduct);
      * }
-     * summaryProductBhv.<span style="color: #DD4747">batchInsert</span>(summaryProductList);
+     * summaryProductBhv.<span style="color: #CC4747">batchInsert</span>(summaryProductList);
      * </pre>
      * <p>While, when the entities are created by select, all columns are registered.</p>
      * <p>And if the table has an identity, entities after the process don't have incremented values.
@@ -622,7 +622,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
     /**
      * Batch-update the entity list modified-only of same-set columns. (NonExclusiveControl) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <span style="color: #DD4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
+     * <span style="color: #CC4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
      * <pre>
      * for (... : ...) {
      *     SummaryProduct summaryProduct = new SummaryProduct();
@@ -637,7 +637,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      *     <span style="color: #3F7E5E">// (others are not updated: their values are kept)</span>
      *     summaryProductList.add(summaryProduct);
      * }
-     * summaryProductBhv.<span style="color: #DD4747">batchUpdate</span>(summaryProductList);
+     * summaryProductBhv.<span style="color: #CC4747">batchUpdate</span>(summaryProductList);
      * </pre>
      * @param summaryProductList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
@@ -652,16 +652,16 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * summaryProductBhv.<span style="color: #DD4747">batchUpdate</span>(summaryProductList, new SpecifyQuery<SummaryProductCB>() {
+     * summaryProductBhv.<span style="color: #CC4747">batchUpdate</span>(summaryProductList, new SpecifyQuery<SummaryProductCB>() {
      *     public void specify(SummaryProductCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #DD4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * summaryProductBhv.<span style="color: #DD4747">batchUpdate</span>(summaryProductList, new SpecifyQuery<SummaryProductCB>() {
+     * summaryProductBhv.<span style="color: #CC4747">batchUpdate</span>(summaryProductList, new SpecifyQuery<SummaryProductCB>() {
      *     public void specify(SummaryProductCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
+     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
      * });
      * </pre>
@@ -696,7 +696,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
     /**
      * Insert the several entities by query (modified-only for fixed value).
      * <pre>
-     * summaryProductBhv.<span style="color: #DD4747">queryInsert</span>(new QueryInsertSetupper&lt;SummaryProduct, SummaryProductCB&gt;() {
+     * summaryProductBhv.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;SummaryProduct, SummaryProductCB&gt;() {
      *     public ConditionBean setup(SummaryProduct entity, SummaryProductCB intoCB) {
      *         FooCB cb = FooCB();
      *         cb.setupSelect_Bar();
@@ -738,7 +738,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <span style="color: #3F7E5E">//summaryProduct.setVersionNo(value);</span>
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
-     * summaryProductBhv.<span style="color: #DD4747">queryUpdate</span>(summaryProduct, cb);
+     * summaryProductBhv.<span style="color: #CC4747">queryUpdate</span>(summaryProduct, cb);
      * </pre>
      * @param summaryProduct The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
      * @param cb The condition-bean of SummaryProduct. (NotNull)
@@ -754,7 +754,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * <pre>
      * SummaryProductCB cb = new SummaryProductCB();
      * cb.query().setFoo...(value);
-     * summaryProductBhv.<span style="color: #DD4747">queryDelete</span>(summaryProduct, cb);
+     * summaryProductBhv.<span style="color: #CC4747">queryDelete</span>(summaryProduct, cb);
      * </pre>
      * @param cb The condition-bean of SummaryProduct. (NotNull)
      * @return The deleted count.
@@ -782,15 +782,15 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * InsertOption<SummaryProductCB> option = new InsertOption<SummaryProductCB>();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
-     * summaryProductBhv.<span style="color: #DD4747">varyingInsert</span>(summaryProduct, option);
+     * summaryProductBhv.<span style="color: #CC4747">varyingInsert</span>(summaryProduct, option);
      * ... = summaryProduct.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param summaryProduct The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsert(SummaryProduct summaryProduct, WOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> opLambda) {
-        doInsert(summaryProduct, handleInsertOpCall(opLambda));
+    public void varyingInsert(SummaryProduct summaryProduct, WritableOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> opLambda) {
+        doInsert(summaryProduct, createInsertOption(opLambda));
     }
 
     /**
@@ -802,16 +802,16 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * summaryProduct.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * summaryProduct.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * summaryProduct.<span style="color: #DD4747">setVersionNo</span>(value);
+     * summaryProduct.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
      *     <span style="color: #3F7E5E">// you can update by self calculation values</span>
      *     UpdateOption&lt;SummaryProductCB&gt; option = new UpdateOption&lt;SummaryProductCB&gt;();
      *     option.self(new SpecifyQuery&lt;SummaryProductCB&gt;() {
      *         public void specify(SummaryProductCB cb) {
-     *             cb.specify().<span style="color: #DD4747">columnXxxCount()</span>;
+     *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *         }
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     summaryProductBhv.<span style="color: #DD4747">varyingUpdate</span>(summaryProduct, option);
+     *     summaryProductBhv.<span style="color: #CC4747">varyingUpdate</span>(summaryProduct, option);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -822,8 +822,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingUpdate(SummaryProduct summaryProduct, WOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> opLambda) {
-        doUpdate(summaryProduct, handleUpdateOpCall(opLambda));
+    public void varyingUpdate(SummaryProduct summaryProduct, WritableOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> opLambda) {
+        doUpdate(summaryProduct, createUpdateOption(opLambda));
     }
 
     /**
@@ -836,8 +836,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsertOrUpdate(SummaryProduct summaryProduct, WOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> insertOpLambda, WOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> updateOpLambda) {
-        doInsertOrUpdate(summaryProduct, handleInsertOpCall(insertOpLambda), handleUpdateOpCall(updateOpLambda));
+    public void varyingInsertOrUpdate(SummaryProduct summaryProduct, WritableOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> insertOpLambda, WritableOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> updateOpLambda) {
+        doInsertOrUpdate(summaryProduct, createInsertOption(insertOpLambda), createUpdateOption(updateOpLambda));
     }
 
     /**
@@ -849,8 +849,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
      */
-    public void varyingDelete(SummaryProduct summaryProduct, WOptionCall<SummaryProductCB, DeleteOption<SummaryProductCB>> opLambda) {
-        doDelete(summaryProduct, handleDeleteOpCall(opLambda));
+    public void varyingDelete(SummaryProduct summaryProduct, WritableOptionCall<SummaryProductCB, DeleteOption<SummaryProductCB>> opLambda) {
+        doDelete(summaryProduct, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -865,8 +865,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchInsert(List<SummaryProduct> summaryProductList, WOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> opLambda) {
-        return doBatchInsert(summaryProductList, handleInsertOpCall(opLambda));
+    public int[] varyingBatchInsert(List<SummaryProduct> summaryProductList, WritableOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> opLambda) {
+        return doBatchInsert(summaryProductList, createInsertOption(opLambda));
     }
 
     /**
@@ -878,8 +878,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @param opLambda The callback for option of update for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchUpdate(List<SummaryProduct> summaryProductList, WOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> opLambda) {
-        return doBatchUpdate(summaryProductList, handleUpdateOpCall(opLambda));
+    public int[] varyingBatchUpdate(List<SummaryProduct> summaryProductList, WritableOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> opLambda) {
+        return doBatchUpdate(summaryProductList, createUpdateOption(opLambda));
     }
 
     /**
@@ -890,8 +890,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchDelete(List<SummaryProduct> summaryProductList, WOptionCall<SummaryProductCB, DeleteOption<SummaryProductCB>> opLambda) {
-        return doBatchDelete(summaryProductList, handleDeleteOpCall(opLambda));
+    public int[] varyingBatchDelete(List<SummaryProduct> summaryProductList, WritableOptionCall<SummaryProductCB, DeleteOption<SummaryProductCB>> opLambda) {
+        return doBatchDelete(summaryProductList, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -905,8 +905,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The inserted count.
      */
-    public int varyingQueryInsert(QueryInsertSetupper<SummaryProduct, SummaryProductCB> manyArgLambda, WOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> opLambda) {
-        return doQueryInsert(manyArgLambda, handleInsertOpCall(opLambda));
+    public int varyingQueryInsert(QueryInsertSetupper<SummaryProduct, SummaryProductCB> manyArgLambda, WritableOptionCall<SummaryProductCB, InsertOption<SummaryProductCB>> opLambda) {
+        return doQueryInsert(manyArgLambda, createInsertOption(opLambda));
     }
 
     /**
@@ -928,10 +928,10 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * UpdateOption&lt;SummaryProductCB&gt; option = new UpdateOption&lt;SummaryProductCB&gt;();
      * option.self(new SpecifyQuery&lt;SummaryProductCB&gt;() {
      *     public void specify(SummaryProductCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooCount()</span>;
+     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
      *     }
      * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * summaryProductBhv.<span style="color: #DD4747">varyingQueryUpdate</span>(summaryProduct, cb, option);
+     * summaryProductBhv.<span style="color: #CC4747">varyingQueryUpdate</span>(summaryProduct, cb, option);
      * </pre>
      * @param summaryProduct The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of SummaryProduct. (NotNull)
@@ -939,8 +939,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @return The updated count.
      * @exception NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryUpdate(SummaryProduct summaryProduct, SummaryProductCB cb, WOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> opLambda) {
-        return doQueryUpdate(summaryProduct, cb, handleUpdateOpCall(opLambda));
+    public int varyingQueryUpdate(SummaryProduct summaryProduct, SummaryProductCB cb, WritableOptionCall<SummaryProductCB, UpdateOption<SummaryProductCB>> opLambda) {
+        return doQueryUpdate(summaryProduct, cb, createUpdateOption(opLambda));
     }
 
     /**
@@ -952,8 +952,8 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      * @return The deleted count.
      * @exception NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryDelete(SummaryProductCB cb, WOptionCall<SummaryProductCB, DeleteOption<SummaryProductCB>> opLambda) {
-        return doQueryDelete(cb, handleDeleteOpCall(opLambda));
+    public int varyingQueryDelete(SummaryProductCB cb, WritableOptionCall<SummaryProductCB, DeleteOption<SummaryProductCB>> opLambda) {
+        return doQueryDelete(cb, createDeleteOption(opLambda));
     }
 
     // ===================================================================================
@@ -989,7 +989,7 @@ public abstract class BsSummaryProductBhv extends AbstractBehaviorWritable<Summa
      */
     public OutsideSqlBasicExecutor<SummaryProductBhv> outsideSql() {
         OutsideSqlAllFacadeExecutor<SummaryProductBhv> facadeExecutor = doOutsideSql();
-        return facadeExecutor.xbasicExecutor();
+        return facadeExecutor.xbasicExecutor(); // variable to resolve generic type
     }
 
     // ===================================================================================

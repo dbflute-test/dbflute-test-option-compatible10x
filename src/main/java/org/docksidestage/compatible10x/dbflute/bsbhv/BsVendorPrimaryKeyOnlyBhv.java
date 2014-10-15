@@ -105,7 +105,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * <pre>
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
-     * int count = vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">selectCount</span>(cb);
+     * int count = vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of VendorPrimaryKeyOnly. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -152,11 +152,11 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
 
     /**
      * Select the entity by the condition-bean with deleted check. <br />
-     * <span style="color: #AD4747; font-size: 120%">If the data always exists as your business rule, this method is good.</span>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
-     * VendorPrimaryKeyOnly vendorPrimaryKeyOnly = vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">selectEntityWithDeletedCheck</span>(cb);
+     * VendorPrimaryKeyOnly vendorPrimaryKeyOnly = vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = vendorPrimaryKeyOnly.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of VendorPrimaryKeyOnly. (NotNull)
@@ -222,7 +222,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;VendorPrimaryKeyOnly&gt; vendorPrimaryKeyOnlyList = vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">selectList</span>(cb);
+     * ListResultBean&lt;VendorPrimaryKeyOnly&gt; vendorPrimaryKeyOnlyList = vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">selectList</span>(cb);
      * for (VendorPrimaryKeyOnly vendorPrimaryKeyOnly : vendorPrimaryKeyOnlyList) {
      *     ... = vendorPrimaryKeyOnly.get...();
      * }
@@ -248,8 +248,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * cb.<span style="color: #DD4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;VendorPrimaryKeyOnly&gt; page = vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">selectPage</span>(cb);
+     * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * PagingResultBean&lt;VendorPrimaryKeyOnly&gt; page = vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">selectPage</span>(cb);
      * int allRecordCount = page.getAllRecordCount();
      * int allPageCount = page.getAllPageCount();
      * boolean isExistPrePage = page.isExistPrePage();
@@ -275,7 +275,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * <pre>
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">selectCursor</span>(cb, new EntityRowHandler&lt;VendorPrimaryKeyOnly&gt;() {
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;VendorPrimaryKeyOnly&gt;() {
      *     public void handle(VendorPrimaryKeyOnly entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -295,9 +295,9 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
      *     public void query(VendorPrimaryKeyOnlyCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
      *         cb.query().setBarName_PrefixSearch("S");
      *     }
      * });
@@ -328,8 +328,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -342,7 +342,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -364,8 +364,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -378,7 +378,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -421,7 +421,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
      * <span style="color: #3F7E5E">//vendorPrimaryKeyOnly.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//vendorPrimaryKeyOnly.set...;</span>
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">insert</span>(vendorPrimaryKeyOnly);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">insert</span>(vendorPrimaryKeyOnly);
      * ... = vendorPrimaryKeyOnly.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * <p>While, when the entity is created by select, all columns are registered.</p>
@@ -442,9 +442,9 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * <span style="color: #3F7E5E">//vendorPrimaryKeyOnly.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//vendorPrimaryKeyOnly.set...;</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * vendorPrimaryKeyOnly.<span style="color: #DD4747">setVersionNo</span>(value);
+     * vendorPrimaryKeyOnly.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">update</span>(vendorPrimaryKeyOnly);
+     *     vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">update</span>(vendorPrimaryKeyOnly);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -461,7 +461,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
     /**
      * Insert or update the entity modified-only. (DefaultConstraintsEnabled, NonExclusiveControl) <br />
      * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
-     * <p><span style="color: #DD4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param vendorPrimaryKeyOnly The entity of insert or update. (NotNull, ...depends on insert or update)
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
@@ -477,9 +477,9 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * VendorPrimaryKeyOnly vendorPrimaryKeyOnly = new VendorPrimaryKeyOnly();
      * vendorPrimaryKeyOnly.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * vendorPrimaryKeyOnly.<span style="color: #DD4747">setVersionNo</span>(value);
+     * vendorPrimaryKeyOnly.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">delete</span>(vendorPrimaryKeyOnly);
+     *     vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">delete</span>(vendorPrimaryKeyOnly);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -498,7 +498,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
     /**
      * Batch-insert the entity list modified-only of same-set columns. (DefaultConstraintsEnabled) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <p><span style="color: #DD4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
      * <pre>
      * for (... : ...) {
      *     VendorPrimaryKeyOnly vendorPrimaryKeyOnly = new VendorPrimaryKeyOnly();
@@ -511,7 +511,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      *     <span style="color: #3F7E5E">// columns not-called in all entities are registered as null or default value</span>
      *     vendorPrimaryKeyOnlyList.add(vendorPrimaryKeyOnly);
      * }
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">batchInsert</span>(vendorPrimaryKeyOnlyList);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">batchInsert</span>(vendorPrimaryKeyOnlyList);
      * </pre>
      * <p>While, when the entities are created by select, all columns are registered.</p>
      * <p>And if the table has an identity, entities after the process don't have incremented values.
@@ -526,7 +526,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
     /**
      * Batch-update the entity list modified-only of same-set columns. (NonExclusiveControl) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <span style="color: #DD4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
+     * <span style="color: #CC4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
      * <pre>
      * for (... : ...) {
      *     VendorPrimaryKeyOnly vendorPrimaryKeyOnly = new VendorPrimaryKeyOnly();
@@ -541,7 +541,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      *     <span style="color: #3F7E5E">// (others are not updated: their values are kept)</span>
      *     vendorPrimaryKeyOnlyList.add(vendorPrimaryKeyOnly);
      * }
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">batchUpdate</span>(vendorPrimaryKeyOnlyList);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">batchUpdate</span>(vendorPrimaryKeyOnlyList);
      * </pre>
      * @param vendorPrimaryKeyOnlyList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
@@ -556,16 +556,16 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">batchUpdate</span>(vendorPrimaryKeyOnlyList, new SpecifyQuery<VendorPrimaryKeyOnlyCB>() {
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">batchUpdate</span>(vendorPrimaryKeyOnlyList, new SpecifyQuery<VendorPrimaryKeyOnlyCB>() {
      *     public void specify(VendorPrimaryKeyOnlyCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #DD4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">batchUpdate</span>(vendorPrimaryKeyOnlyList, new SpecifyQuery<VendorPrimaryKeyOnlyCB>() {
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">batchUpdate</span>(vendorPrimaryKeyOnlyList, new SpecifyQuery<VendorPrimaryKeyOnlyCB>() {
      *     public void specify(VendorPrimaryKeyOnlyCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
+     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
      * });
      * </pre>
@@ -600,7 +600,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
     /**
      * Insert the several entities by query (modified-only for fixed value).
      * <pre>
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">queryInsert</span>(new QueryInsertSetupper&lt;VendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB&gt;() {
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;VendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB&gt;() {
      *     public ConditionBean setup(VendorPrimaryKeyOnly entity, VendorPrimaryKeyOnlyCB intoCB) {
      *         FooCB cb = FooCB();
      *         cb.setupSelect_Bar();
@@ -642,7 +642,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * <span style="color: #3F7E5E">//vendorPrimaryKeyOnly.setVersionNo(value);</span>
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">queryUpdate</span>(vendorPrimaryKeyOnly, cb);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">queryUpdate</span>(vendorPrimaryKeyOnly, cb);
      * </pre>
      * @param vendorPrimaryKeyOnly The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
      * @param cb The condition-bean of VendorPrimaryKeyOnly. (NotNull)
@@ -658,7 +658,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * <pre>
      * VendorPrimaryKeyOnlyCB cb = new VendorPrimaryKeyOnlyCB();
      * cb.query().setFoo...(value);
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">queryDelete</span>(vendorPrimaryKeyOnly, cb);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">queryDelete</span>(vendorPrimaryKeyOnly, cb);
      * </pre>
      * @param cb The condition-bean of VendorPrimaryKeyOnly. (NotNull)
      * @return The deleted count.
@@ -686,15 +686,15 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * InsertOption<VendorPrimaryKeyOnlyCB> option = new InsertOption<VendorPrimaryKeyOnlyCB>();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">varyingInsert</span>(vendorPrimaryKeyOnly, option);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">varyingInsert</span>(vendorPrimaryKeyOnly, option);
      * ... = vendorPrimaryKeyOnly.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param vendorPrimaryKeyOnly The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsert(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        doInsert(vendorPrimaryKeyOnly, handleInsertOpCall(opLambda));
+    public void varyingInsert(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WritableOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        doInsert(vendorPrimaryKeyOnly, createInsertOption(opLambda));
     }
 
     /**
@@ -706,16 +706,16 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * vendorPrimaryKeyOnly.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * vendorPrimaryKeyOnly.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * vendorPrimaryKeyOnly.<span style="color: #DD4747">setVersionNo</span>(value);
+     * vendorPrimaryKeyOnly.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
      *     <span style="color: #3F7E5E">// you can update by self calculation values</span>
      *     UpdateOption&lt;VendorPrimaryKeyOnlyCB&gt; option = new UpdateOption&lt;VendorPrimaryKeyOnlyCB&gt;();
      *     option.self(new SpecifyQuery&lt;VendorPrimaryKeyOnlyCB&gt;() {
      *         public void specify(VendorPrimaryKeyOnlyCB cb) {
-     *             cb.specify().<span style="color: #DD4747">columnXxxCount()</span>;
+     *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *         }
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">varyingUpdate</span>(vendorPrimaryKeyOnly, option);
+     *     vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">varyingUpdate</span>(vendorPrimaryKeyOnly, option);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -726,8 +726,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingUpdate(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        doUpdate(vendorPrimaryKeyOnly, handleUpdateOpCall(opLambda));
+    public void varyingUpdate(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WritableOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        doUpdate(vendorPrimaryKeyOnly, createUpdateOption(opLambda));
     }
 
     /**
@@ -740,8 +740,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsertOrUpdate(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> insertOpLambda, WOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> updateOpLambda) {
-        doInsertOrUpdate(vendorPrimaryKeyOnly, handleInsertOpCall(insertOpLambda), handleUpdateOpCall(updateOpLambda));
+    public void varyingInsertOrUpdate(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WritableOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> insertOpLambda, WritableOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> updateOpLambda) {
+        doInsertOrUpdate(vendorPrimaryKeyOnly, createInsertOption(insertOpLambda), createUpdateOption(updateOpLambda));
     }
 
     /**
@@ -753,8 +753,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
      */
-    public void varyingDelete(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WOptionCall<VendorPrimaryKeyOnlyCB, DeleteOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        doDelete(vendorPrimaryKeyOnly, handleDeleteOpCall(opLambda));
+    public void varyingDelete(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, WritableOptionCall<VendorPrimaryKeyOnlyCB, DeleteOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        doDelete(vendorPrimaryKeyOnly, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -769,8 +769,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchInsert(List<VendorPrimaryKeyOnly> vendorPrimaryKeyOnlyList, WOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        return doBatchInsert(vendorPrimaryKeyOnlyList, handleInsertOpCall(opLambda));
+    public int[] varyingBatchInsert(List<VendorPrimaryKeyOnly> vendorPrimaryKeyOnlyList, WritableOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        return doBatchInsert(vendorPrimaryKeyOnlyList, createInsertOption(opLambda));
     }
 
     /**
@@ -782,8 +782,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @param opLambda The callback for option of update for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchUpdate(List<VendorPrimaryKeyOnly> vendorPrimaryKeyOnlyList, WOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        return doBatchUpdate(vendorPrimaryKeyOnlyList, handleUpdateOpCall(opLambda));
+    public int[] varyingBatchUpdate(List<VendorPrimaryKeyOnly> vendorPrimaryKeyOnlyList, WritableOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        return doBatchUpdate(vendorPrimaryKeyOnlyList, createUpdateOption(opLambda));
     }
 
     /**
@@ -794,8 +794,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchDelete(List<VendorPrimaryKeyOnly> vendorPrimaryKeyOnlyList, WOptionCall<VendorPrimaryKeyOnlyCB, DeleteOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        return doBatchDelete(vendorPrimaryKeyOnlyList, handleDeleteOpCall(opLambda));
+    public int[] varyingBatchDelete(List<VendorPrimaryKeyOnly> vendorPrimaryKeyOnlyList, WritableOptionCall<VendorPrimaryKeyOnlyCB, DeleteOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        return doBatchDelete(vendorPrimaryKeyOnlyList, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -809,8 +809,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The inserted count.
      */
-    public int varyingQueryInsert(QueryInsertSetupper<VendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB> manyArgLambda, WOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        return doQueryInsert(manyArgLambda, handleInsertOpCall(opLambda));
+    public int varyingQueryInsert(QueryInsertSetupper<VendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB> manyArgLambda, WritableOptionCall<VendorPrimaryKeyOnlyCB, InsertOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        return doQueryInsert(manyArgLambda, createInsertOption(opLambda));
     }
 
     /**
@@ -832,10 +832,10 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * UpdateOption&lt;VendorPrimaryKeyOnlyCB&gt; option = new UpdateOption&lt;VendorPrimaryKeyOnlyCB&gt;();
      * option.self(new SpecifyQuery&lt;VendorPrimaryKeyOnlyCB&gt;() {
      *     public void specify(VendorPrimaryKeyOnlyCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooCount()</span>;
+     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
      *     }
      * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * vendorPrimaryKeyOnlyBhv.<span style="color: #DD4747">varyingQueryUpdate</span>(vendorPrimaryKeyOnly, cb, option);
+     * vendorPrimaryKeyOnlyBhv.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorPrimaryKeyOnly, cb, option);
      * </pre>
      * @param vendorPrimaryKeyOnly The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of VendorPrimaryKeyOnly. (NotNull)
@@ -843,8 +843,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @return The updated count.
      * @exception NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryUpdate(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB cb, WOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        return doQueryUpdate(vendorPrimaryKeyOnly, cb, handleUpdateOpCall(opLambda));
+    public int varyingQueryUpdate(VendorPrimaryKeyOnly vendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB cb, WritableOptionCall<VendorPrimaryKeyOnlyCB, UpdateOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        return doQueryUpdate(vendorPrimaryKeyOnly, cb, createUpdateOption(opLambda));
     }
 
     /**
@@ -856,8 +856,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * @return The deleted count.
      * @exception NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryDelete(VendorPrimaryKeyOnlyCB cb, WOptionCall<VendorPrimaryKeyOnlyCB, DeleteOption<VendorPrimaryKeyOnlyCB>> opLambda) {
-        return doQueryDelete(cb, handleDeleteOpCall(opLambda));
+    public int varyingQueryDelete(VendorPrimaryKeyOnlyCB cb, WritableOptionCall<VendorPrimaryKeyOnlyCB, DeleteOption<VendorPrimaryKeyOnlyCB>> opLambda) {
+        return doQueryDelete(cb, createDeleteOption(opLambda));
     }
 
     // ===================================================================================
@@ -893,7 +893,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      */
     public OutsideSqlBasicExecutor<VendorPrimaryKeyOnlyBhv> outsideSql() {
         OutsideSqlAllFacadeExecutor<VendorPrimaryKeyOnlyBhv> facadeExecutor = doOutsideSql();
-        return facadeExecutor.xbasicExecutor();
+        return facadeExecutor.xbasicExecutor(); // variable to resolve generic type
     }
 
     // ===================================================================================

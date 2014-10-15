@@ -105,7 +105,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <pre>
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
-     * int count = productStatusBhv.<span style="color: #DD4747">selectCount</span>(cb);
+     * int count = productStatusBhv.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of ProductStatus. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -152,11 +152,11 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
 
     /**
      * Select the entity by the condition-bean with deleted check. <br />
-     * <span style="color: #AD4747; font-size: 120%">If the data always exists as your business rule, this method is good.</span>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
-     * ProductStatus productStatus = productStatusBhv.<span style="color: #DD4747">selectEntityWithDeletedCheck</span>(cb);
+     * ProductStatus productStatus = productStatusBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = productStatus.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of ProductStatus. (NotNull)
@@ -247,7 +247,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;ProductStatus&gt; productStatusList = productStatusBhv.<span style="color: #DD4747">selectList</span>(cb);
+     * ListResultBean&lt;ProductStatus&gt; productStatusList = productStatusBhv.<span style="color: #CC4747">selectList</span>(cb);
      * for (ProductStatus productStatus : productStatusList) {
      *     ... = productStatus.get...();
      * }
@@ -273,8 +273,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
-     * cb.<span style="color: #DD4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;ProductStatus&gt; page = productStatusBhv.<span style="color: #DD4747">selectPage</span>(cb);
+     * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * PagingResultBean&lt;ProductStatus&gt; page = productStatusBhv.<span style="color: #CC4747">selectPage</span>(cb);
      * int allRecordCount = page.getAllRecordCount();
      * int allPageCount = page.getAllPageCount();
      * boolean isExistPrePage = page.isExistPrePage();
@@ -300,7 +300,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <pre>
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
-     * productStatusBhv.<span style="color: #DD4747">selectCursor</span>(cb, new EntityRowHandler&lt;ProductStatus&gt;() {
+     * productStatusBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;ProductStatus&gt;() {
      *     public void handle(ProductStatus entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -320,9 +320,9 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
+     * productStatusBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
      *     public void query(ProductStatusCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
      *         cb.query().setBarName_PrefixSearch("S");
      *     }
      * });
@@ -353,8 +353,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -367,7 +367,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -389,8 +389,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * MemberCB cb = new MemberCB();
      * cb.query().set...
      * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #DD4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #DD4747">loadPurchaseList</span>(purchaseCB -&gt; {
+     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
+     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
      *         purchaseCB.query().set...
      *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
@@ -403,7 +403,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
      * }
      * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #DD4747">getPurchaseList()</span>;
+     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
      *     }
@@ -423,7 +423,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of productList by the set-upper of referrer. <br />
      * (商品)PRODUCT by PRODUCT_STATUS_CODE, named 'productList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadProductList</span>(productStatusList, productCB -&gt; {
+     * productStatusBhv.<span style="color: #CC4747">loadProductList</span>(productStatusList, productCB -&gt; {
      *     productCB.setupSelect...();
      *     productCB.query().setFoo...(value);
      *     productCB.query().addOrderBy_Bar...();
@@ -432,7 +432,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
      * for (ProductStatus productStatus : productStatusList) {
-     *     ... = productStatus.<span style="color: #DD4747">getProductList()</span>;
+     *     ... = productStatus.<span style="color: #CC4747">getProductList()</span>;
      * }
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
@@ -454,7 +454,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of productList by the set-upper of referrer. <br />
      * (商品)PRODUCT by PRODUCT_STATUS_CODE, named 'productList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadProductList</span>(productStatusList, productCB -&gt; {
+     * productStatusBhv.<span style="color: #CC4747">loadProductList</span>(productStatusList, productCB -&gt; {
      *     productCB.setupSelect...();
      *     productCB.query().setFoo...(value);
      *     productCB.query().addOrderBy_Bar...();
@@ -462,7 +462,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
-     * ... = productStatus.<span style="color: #DD4747">getProductList()</span>;
+     * ... = productStatus.<span style="color: #CC4747">getProductList()</span>;
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
      * The condition-bean, which the set-upper provides, has settings before callback as follows:
@@ -511,7 +511,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of summaryProductList by the set-upper of referrer. <br />
      * SUMMARY_PRODUCT by PRODUCT_STATUS_CODE, named 'summaryProductList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadSummaryProductList</span>(productStatusList, productCB -&gt; {
+     * productStatusBhv.<span style="color: #CC4747">loadSummaryProductList</span>(productStatusList, productCB -&gt; {
      *     productCB.setupSelect...();
      *     productCB.query().setFoo...(value);
      *     productCB.query().addOrderBy_Bar...();
@@ -520,7 +520,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
      * for (ProductStatus productStatus : productStatusList) {
-     *     ... = productStatus.<span style="color: #DD4747">getSummaryProductList()</span>;
+     *     ... = productStatus.<span style="color: #CC4747">getSummaryProductList()</span>;
      * }
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
@@ -542,7 +542,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Load referrer of summaryProductList by the set-upper of referrer. <br />
      * SUMMARY_PRODUCT by PRODUCT_STATUS_CODE, named 'summaryProductList'.
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">loadSummaryProductList</span>(productStatusList, productCB -&gt; {
+     * productStatusBhv.<span style="color: #CC4747">loadSummaryProductList</span>(productStatusList, productCB -&gt; {
      *     productCB.setupSelect...();
      *     productCB.query().setFoo...(value);
      *     productCB.query().addOrderBy_Bar...();
@@ -550,7 +550,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">//}).withNestedList(referrerList -&gt {</span>
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
-     * ... = productStatus.<span style="color: #DD4747">getSummaryProductList()</span>;
+     * ... = productStatus.<span style="color: #CC4747">getSummaryProductList()</span>;
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
      * The condition-bean, which the set-upper provides, has settings before callback as follows:
@@ -630,7 +630,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
      * <span style="color: #3F7E5E">//productStatus.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//productStatus.set...;</span>
-     * productStatusBhv.<span style="color: #DD4747">insert</span>(productStatus);
+     * productStatusBhv.<span style="color: #CC4747">insert</span>(productStatus);
      * ... = productStatus.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * <p>While, when the entity is created by select, all columns are registered.</p>
@@ -651,9 +651,9 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">//productStatus.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//productStatus.set...;</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * productStatus.<span style="color: #DD4747">setVersionNo</span>(value);
+     * productStatus.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     productStatusBhv.<span style="color: #DD4747">update</span>(productStatus);
+     *     productStatusBhv.<span style="color: #CC4747">update</span>(productStatus);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -670,7 +670,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /**
      * Insert or update the entity modified-only. (DefaultConstraintsEnabled, NonExclusiveControl) <br />
      * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
-     * <p><span style="color: #DD4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param productStatus The entity of insert or update. (NotNull, ...depends on insert or update)
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
@@ -686,9 +686,9 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * ProductStatus productStatus = new ProductStatus();
      * productStatus.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * productStatus.<span style="color: #DD4747">setVersionNo</span>(value);
+     * productStatus.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     productStatusBhv.<span style="color: #DD4747">delete</span>(productStatus);
+     *     productStatusBhv.<span style="color: #CC4747">delete</span>(productStatus);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -707,7 +707,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /**
      * Batch-insert the entity list modified-only of same-set columns. (DefaultConstraintsEnabled) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <p><span style="color: #DD4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
+     * <p><span style="color: #CC4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
      * <pre>
      * for (... : ...) {
      *     ProductStatus productStatus = new ProductStatus();
@@ -720,7 +720,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      *     <span style="color: #3F7E5E">// columns not-called in all entities are registered as null or default value</span>
      *     productStatusList.add(productStatus);
      * }
-     * productStatusBhv.<span style="color: #DD4747">batchInsert</span>(productStatusList);
+     * productStatusBhv.<span style="color: #CC4747">batchInsert</span>(productStatusList);
      * </pre>
      * <p>While, when the entities are created by select, all columns are registered.</p>
      * <p>And if the table has an identity, entities after the process don't have incremented values.
@@ -735,7 +735,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /**
      * Batch-update the entity list modified-only of same-set columns. (NonExclusiveControl) <br />
      * This method uses executeBatch() of java.sql.PreparedStatement. <br />
-     * <span style="color: #DD4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
+     * <span style="color: #CC4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
      * <pre>
      * for (... : ...) {
      *     ProductStatus productStatus = new ProductStatus();
@@ -750,7 +750,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      *     <span style="color: #3F7E5E">// (others are not updated: their values are kept)</span>
      *     productStatusList.add(productStatus);
      * }
-     * productStatusBhv.<span style="color: #DD4747">batchUpdate</span>(productStatusList);
+     * productStatusBhv.<span style="color: #CC4747">batchUpdate</span>(productStatusList);
      * </pre>
      * @param productStatusList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
@@ -765,16 +765,16 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * productStatusBhv.<span style="color: #DD4747">batchUpdate</span>(productStatusList, new SpecifyQuery<ProductStatusCB>() {
+     * productStatusBhv.<span style="color: #CC4747">batchUpdate</span>(productStatusList, new SpecifyQuery<ProductStatusCB>() {
      *     public void specify(ProductStatusCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #DD4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * productStatusBhv.<span style="color: #DD4747">batchUpdate</span>(productStatusList, new SpecifyQuery<ProductStatusCB>() {
+     * productStatusBhv.<span style="color: #CC4747">batchUpdate</span>(productStatusList, new SpecifyQuery<ProductStatusCB>() {
      *     public void specify(ProductStatusCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #DD4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
+     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
      * });
      * </pre>
@@ -809,7 +809,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /**
      * Insert the several entities by query (modified-only for fixed value).
      * <pre>
-     * productStatusBhv.<span style="color: #DD4747">queryInsert</span>(new QueryInsertSetupper&lt;ProductStatus, ProductStatusCB&gt;() {
+     * productStatusBhv.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;ProductStatus, ProductStatusCB&gt;() {
      *     public ConditionBean setup(ProductStatus entity, ProductStatusCB intoCB) {
      *         FooCB cb = FooCB();
      *         cb.setupSelect_Bar();
@@ -851,7 +851,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">//productStatus.setVersionNo(value);</span>
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
-     * productStatusBhv.<span style="color: #DD4747">queryUpdate</span>(productStatus, cb);
+     * productStatusBhv.<span style="color: #CC4747">queryUpdate</span>(productStatus, cb);
      * </pre>
      * @param productStatus The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
      * @param cb The condition-bean of ProductStatus. (NotNull)
@@ -867,7 +867,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <pre>
      * ProductStatusCB cb = new ProductStatusCB();
      * cb.query().setFoo...(value);
-     * productStatusBhv.<span style="color: #DD4747">queryDelete</span>(productStatus, cb);
+     * productStatusBhv.<span style="color: #CC4747">queryDelete</span>(productStatus, cb);
      * </pre>
      * @param cb The condition-bean of ProductStatus. (NotNull)
      * @return The deleted count.
@@ -895,15 +895,15 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * InsertOption<ProductStatusCB> option = new InsertOption<ProductStatusCB>();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
-     * productStatusBhv.<span style="color: #DD4747">varyingInsert</span>(productStatus, option);
+     * productStatusBhv.<span style="color: #CC4747">varyingInsert</span>(productStatus, option);
      * ... = productStatus.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param productStatus The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsert(ProductStatus productStatus, WOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> opLambda) {
-        doInsert(productStatus, handleInsertOpCall(opLambda));
+    public void varyingInsert(ProductStatus productStatus, WritableOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> opLambda) {
+        doInsert(productStatus, createInsertOption(opLambda));
     }
 
     /**
@@ -915,16 +915,16 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * productStatus.setPK...(value); <span style="color: #3F7E5E">// required</span>
      * productStatus.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
-     * productStatus.<span style="color: #DD4747">setVersionNo</span>(value);
+     * productStatus.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
      *     <span style="color: #3F7E5E">// you can update by self calculation values</span>
      *     UpdateOption&lt;ProductStatusCB&gt; option = new UpdateOption&lt;ProductStatusCB&gt;();
      *     option.self(new SpecifyQuery&lt;ProductStatusCB&gt;() {
      *         public void specify(ProductStatusCB cb) {
-     *             cb.specify().<span style="color: #DD4747">columnXxxCount()</span>;
+     *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *         }
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     productStatusBhv.<span style="color: #DD4747">varyingUpdate</span>(productStatus, option);
+     *     productStatusBhv.<span style="color: #CC4747">varyingUpdate</span>(productStatus, option);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
@@ -935,8 +935,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingUpdate(ProductStatus productStatus, WOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
-        doUpdate(productStatus, handleUpdateOpCall(opLambda));
+    public void varyingUpdate(ProductStatus productStatus, WritableOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
+        doUpdate(productStatus, createUpdateOption(opLambda));
     }
 
     /**
@@ -949,8 +949,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @exception EntityDuplicatedException When the entity has been duplicated.
      * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
-    public void varyingInsertOrUpdate(ProductStatus productStatus, WOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> insertOpLambda, WOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> updateOpLambda) {
-        doInsertOrUpdate(productStatus, handleInsertOpCall(insertOpLambda), handleUpdateOpCall(updateOpLambda));
+    public void varyingInsertOrUpdate(ProductStatus productStatus, WritableOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> insertOpLambda, WritableOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> updateOpLambda) {
+        doInsertOrUpdate(productStatus, createInsertOption(insertOpLambda), createUpdateOption(updateOpLambda));
     }
 
     /**
@@ -962,8 +962,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      * @exception EntityDuplicatedException When the entity has been duplicated.
      */
-    public void varyingDelete(ProductStatus productStatus, WOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
-        doDelete(productStatus, handleDeleteOpCall(opLambda));
+    public void varyingDelete(ProductStatus productStatus, WritableOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
+        doDelete(productStatus, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -978,8 +978,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchInsert(List<ProductStatus> productStatusList, WOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> opLambda) {
-        return doBatchInsert(productStatusList, handleInsertOpCall(opLambda));
+    public int[] varyingBatchInsert(List<ProductStatus> productStatusList, WritableOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> opLambda) {
+        return doBatchInsert(productStatusList, createInsertOption(opLambda));
     }
 
     /**
@@ -991,8 +991,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @param opLambda The callback for option of update for varying requests. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchUpdate(List<ProductStatus> productStatusList, WOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
-        return doBatchUpdate(productStatusList, handleUpdateOpCall(opLambda));
+    public int[] varyingBatchUpdate(List<ProductStatus> productStatusList, WritableOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
+        return doBatchUpdate(productStatusList, createUpdateOption(opLambda));
     }
 
     /**
@@ -1003,8 +1003,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
      */
-    public int[] varyingBatchDelete(List<ProductStatus> productStatusList, WOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
-        return doBatchDelete(productStatusList, handleDeleteOpCall(opLambda));
+    public int[] varyingBatchDelete(List<ProductStatus> productStatusList, WritableOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
+        return doBatchDelete(productStatusList, createDeleteOption(opLambda));
     }
 
     // -----------------------------------------------------
@@ -1018,8 +1018,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
      * @return The inserted count.
      */
-    public int varyingQueryInsert(QueryInsertSetupper<ProductStatus, ProductStatusCB> manyArgLambda, WOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> opLambda) {
-        return doQueryInsert(manyArgLambda, handleInsertOpCall(opLambda));
+    public int varyingQueryInsert(QueryInsertSetupper<ProductStatus, ProductStatusCB> manyArgLambda, WritableOptionCall<ProductStatusCB, InsertOption<ProductStatusCB>> opLambda) {
+        return doQueryInsert(manyArgLambda, createInsertOption(opLambda));
     }
 
     /**
@@ -1041,10 +1041,10 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * UpdateOption&lt;ProductStatusCB&gt; option = new UpdateOption&lt;ProductStatusCB&gt;();
      * option.self(new SpecifyQuery&lt;ProductStatusCB&gt;() {
      *     public void specify(ProductStatusCB cb) {
-     *         cb.specify().<span style="color: #DD4747">columnFooCount()</span>;
+     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
      *     }
      * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * productStatusBhv.<span style="color: #DD4747">varyingQueryUpdate</span>(productStatus, cb, option);
+     * productStatusBhv.<span style="color: #CC4747">varyingQueryUpdate</span>(productStatus, cb, option);
      * </pre>
      * @param productStatus The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of ProductStatus. (NotNull)
@@ -1052,8 +1052,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @return The updated count.
      * @exception NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryUpdate(ProductStatus productStatus, ProductStatusCB cb, WOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
-        return doQueryUpdate(productStatus, cb, handleUpdateOpCall(opLambda));
+    public int varyingQueryUpdate(ProductStatus productStatus, ProductStatusCB cb, WritableOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
+        return doQueryUpdate(productStatus, cb, createUpdateOption(opLambda));
     }
 
     /**
@@ -1065,8 +1065,8 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @return The deleted count.
      * @exception NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
      */
-    public int varyingQueryDelete(ProductStatusCB cb, WOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
-        return doQueryDelete(cb, handleDeleteOpCall(opLambda));
+    public int varyingQueryDelete(ProductStatusCB cb, WritableOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
+        return doQueryDelete(cb, createDeleteOption(opLambda));
     }
 
     // ===================================================================================
@@ -1102,7 +1102,7 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      */
     public OutsideSqlBasicExecutor<ProductStatusBhv> outsideSql() {
         OutsideSqlAllFacadeExecutor<ProductStatusBhv> facadeExecutor = doOutsideSql();
-        return facadeExecutor.xbasicExecutor();
+        return facadeExecutor.xbasicExecutor(); // variable to resolve generic type
     }
 
     // ===================================================================================
