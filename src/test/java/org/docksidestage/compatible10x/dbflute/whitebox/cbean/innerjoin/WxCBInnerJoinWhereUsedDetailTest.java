@@ -2,7 +2,7 @@ package org.docksidestage.compatible10x.dbflute.whitebox.cbean.innerjoin;
 
 import java.util.List;
 
-import org.dbflute.cbean.chelper.HpSpecifiedColumn;
+import org.dbflute.cbean.dream.SpecifiedColumn;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.SpecifyQuery;
 import org.dbflute.cbean.scoping.SubQuery;
@@ -154,7 +154,7 @@ public class WxCBInnerJoinWhereUsedDetailTest extends UnitContainerTestCase {
     public void test_innerJoin_QueryDerivedReferrer_DreamCruise() throws Exception {
         MemberCB cb = new MemberCB();
         MemberCB dreamCruiseCB = cb.dreamCruiseCB();
-        HpSpecifiedColumn servicePointCount =
+        SpecifiedColumn servicePointCount =
                 dreamCruiseCB.specify().specifyMemberServiceAsOne().columnServicePointCount();
         cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {

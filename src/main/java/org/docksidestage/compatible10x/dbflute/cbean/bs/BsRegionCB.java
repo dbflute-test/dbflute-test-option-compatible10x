@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -322,12 +323,12 @@ public class BsRegionCB extends AbstractConditionBean {
          * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10), classification=Region}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegionId() { return doColumn("REGION_ID"); }
+        public SpecifiedColumn columnRegionId() { return doColumn("REGION_ID"); }
         /**
          * (地域名称)REGION_NAME: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegionName() { return doColumn("REGION_NAME"); }
+        public SpecifiedColumn columnRegionName() { return doColumn("REGION_NAME"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -389,7 +390,7 @@ public class BsRegionCB extends AbstractConditionBean {
      */
     public HpColQyOperand<RegionCB> columnQuery(final SpecifyQuery<RegionCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<RegionCB>() {
-            public HpCalculator handle(SpecifyQuery<RegionCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<RegionCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -525,7 +526,7 @@ public class BsRegionCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

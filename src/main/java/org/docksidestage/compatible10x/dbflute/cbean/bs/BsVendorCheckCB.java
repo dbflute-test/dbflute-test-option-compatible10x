@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -322,142 +323,142 @@ public class BsVendorCheckCB extends AbstractConditionBean {
          * VENDOR_CHECK_ID: {PK, NotNull, DECIMAL(16)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVendorCheckId() { return doColumn("VENDOR_CHECK_ID"); }
+        public SpecifiedColumn columnVendorCheckId() { return doColumn("VENDOR_CHECK_ID"); }
         /**
          * TYPE_OF_CHAR: {CHAR(3)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfChar() { return doColumn("TYPE_OF_CHAR"); }
+        public SpecifiedColumn columnTypeOfChar() { return doColumn("TYPE_OF_CHAR"); }
         /**
          * TYPE_OF_VARCHAR: {VARCHAR(32)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfVarchar() { return doColumn("TYPE_OF_VARCHAR"); }
+        public SpecifiedColumn columnTypeOfVarchar() { return doColumn("TYPE_OF_VARCHAR"); }
         /**
          * TYPE_OF_CLOB: {CLOB(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfClob() { return doColumn("TYPE_OF_CLOB"); }
+        public SpecifiedColumn columnTypeOfClob() { return doColumn("TYPE_OF_CLOB"); }
         /**
          * TYPE_OF_TEXT: {CLOB(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfText() { return doColumn("TYPE_OF_TEXT"); }
+        public SpecifiedColumn columnTypeOfText() { return doColumn("TYPE_OF_TEXT"); }
         /**
          * TYPE_OF_NUMERIC_INTEGER: {DECIMAL(5)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericInteger() { return doColumn("TYPE_OF_NUMERIC_INTEGER"); }
+        public SpecifiedColumn columnTypeOfNumericInteger() { return doColumn("TYPE_OF_NUMERIC_INTEGER"); }
         /**
          * TYPE_OF_NUMERIC_BIGINT: {DECIMAL(12)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericBigint() { return doColumn("TYPE_OF_NUMERIC_BIGINT"); }
+        public SpecifiedColumn columnTypeOfNumericBigint() { return doColumn("TYPE_OF_NUMERIC_BIGINT"); }
         /**
          * TYPE_OF_NUMERIC_DECIMAL: {DECIMAL(5, 3)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericDecimal() { return doColumn("TYPE_OF_NUMERIC_DECIMAL"); }
+        public SpecifiedColumn columnTypeOfNumericDecimal() { return doColumn("TYPE_OF_NUMERIC_DECIMAL"); }
         /**
          * TYPE_OF_NUMERIC_INTEGER_MIN: {DECIMAL(1)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericIntegerMin() { return doColumn("TYPE_OF_NUMERIC_INTEGER_MIN"); }
+        public SpecifiedColumn columnTypeOfNumericIntegerMin() { return doColumn("TYPE_OF_NUMERIC_INTEGER_MIN"); }
         /**
          * TYPE_OF_NUMERIC_INTEGER_MAX: {DECIMAL(9)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericIntegerMax() { return doColumn("TYPE_OF_NUMERIC_INTEGER_MAX"); }
+        public SpecifiedColumn columnTypeOfNumericIntegerMax() { return doColumn("TYPE_OF_NUMERIC_INTEGER_MAX"); }
         /**
          * TYPE_OF_NUMERIC_BIGINT_MIN: {DECIMAL(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericBigintMin() { return doColumn("TYPE_OF_NUMERIC_BIGINT_MIN"); }
+        public SpecifiedColumn columnTypeOfNumericBigintMin() { return doColumn("TYPE_OF_NUMERIC_BIGINT_MIN"); }
         /**
          * TYPE_OF_NUMERIC_BIGINT_MAX: {DECIMAL(18)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericBigintMax() { return doColumn("TYPE_OF_NUMERIC_BIGINT_MAX"); }
+        public SpecifiedColumn columnTypeOfNumericBigintMax() { return doColumn("TYPE_OF_NUMERIC_BIGINT_MAX"); }
         /**
          * TYPE_OF_NUMERIC_SUPERINT_MIN: {DECIMAL(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericSuperintMin() { return doColumn("TYPE_OF_NUMERIC_SUPERINT_MIN"); }
+        public SpecifiedColumn columnTypeOfNumericSuperintMin() { return doColumn("TYPE_OF_NUMERIC_SUPERINT_MIN"); }
         /**
          * TYPE_OF_NUMERIC_SUPERINT_MAX: {DECIMAL(38)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericSuperintMax() { return doColumn("TYPE_OF_NUMERIC_SUPERINT_MAX"); }
+        public SpecifiedColumn columnTypeOfNumericSuperintMax() { return doColumn("TYPE_OF_NUMERIC_SUPERINT_MAX"); }
         /**
          * TYPE_OF_NUMERIC_MAXDECIMAL: {DECIMAL(38, 38)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfNumericMaxdecimal() { return doColumn("TYPE_OF_NUMERIC_MAXDECIMAL"); }
+        public SpecifiedColumn columnTypeOfNumericMaxdecimal() { return doColumn("TYPE_OF_NUMERIC_MAXDECIMAL"); }
         /**
          * TYPE_OF_INTEGER: {INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfInteger() { return doColumn("TYPE_OF_INTEGER"); }
+        public SpecifiedColumn columnTypeOfInteger() { return doColumn("TYPE_OF_INTEGER"); }
         /**
          * TYPE_OF_BIGINT: {BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfBigint() { return doColumn("TYPE_OF_BIGINT"); }
+        public SpecifiedColumn columnTypeOfBigint() { return doColumn("TYPE_OF_BIGINT"); }
         /**
          * TYPE_OF_DATE: {DATE(8)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfDate() { return doColumn("TYPE_OF_DATE"); }
+        public SpecifiedColumn columnTypeOfDate() { return doColumn("TYPE_OF_DATE"); }
         /**
          * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfTimestamp() { return doColumn("TYPE_OF_TIMESTAMP"); }
+        public SpecifiedColumn columnTypeOfTimestamp() { return doColumn("TYPE_OF_TIMESTAMP"); }
         /**
          * TYPE_OF_TIME: {TIME(6)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfTime() { return doColumn("TYPE_OF_TIME"); }
+        public SpecifiedColumn columnTypeOfTime() { return doColumn("TYPE_OF_TIME"); }
         /**
          * TYPE_OF_BOOLEAN: {BOOLEAN(1)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfBoolean() { return doColumn("TYPE_OF_BOOLEAN"); }
+        public SpecifiedColumn columnTypeOfBoolean() { return doColumn("TYPE_OF_BOOLEAN"); }
         /**
          * TYPE_OF_BINARY: {VARBINARY(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfBinary() { return doColumn("TYPE_OF_BINARY"); }
+        public SpecifiedColumn columnTypeOfBinary() { return doColumn("TYPE_OF_BINARY"); }
         /**
          * TYPE_OF_BLOB: {BLOB(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfBlob() { return doColumn("TYPE_OF_BLOB"); }
+        public SpecifiedColumn columnTypeOfBlob() { return doColumn("TYPE_OF_BLOB"); }
         /**
          * TYPE_OF_UUID: {UUID(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfUuid() { return doColumn("TYPE_OF_UUID"); }
+        public SpecifiedColumn columnTypeOfUuid() { return doColumn("TYPE_OF_UUID"); }
         /**
          * TYPE_OF_ARRAY: {ARRAY}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfArray() { return doColumn("TYPE_OF_ARRAY"); }
+        public SpecifiedColumn columnTypeOfArray() { return doColumn("TYPE_OF_ARRAY"); }
         /**
          * TYPE_OF_OTHER: {OTHER(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTypeOfOther() { return doColumn("TYPE_OF_OTHER"); }
+        public SpecifiedColumn columnTypeOfOther() { return doColumn("TYPE_OF_OTHER"); }
         /**
          * J_A_V_A_BEANS_PROPERTY: {VARCHAR(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnJAVABeansProperty() { return doColumn("J_A_V_A_BEANS_PROPERTY"); }
+        public SpecifiedColumn columnJAVABeansProperty() { return doColumn("J_A_V_A_BEANS_PROPERTY"); }
         /**
          * J_POP_BEANS_PROPERTY: {VARCHAR(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnJPopBeansProperty() { return doColumn("J_POP_BEANS_PROPERTY"); }
+        public SpecifiedColumn columnJPopBeansProperty() { return doColumn("J_POP_BEANS_PROPERTY"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -501,7 +502,7 @@ public class BsVendorCheckCB extends AbstractConditionBean {
      */
     public HpColQyOperand<VendorCheckCB> columnQuery(final SpecifyQuery<VendorCheckCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<VendorCheckCB>() {
-            public HpCalculator handle(SpecifyQuery<VendorCheckCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<VendorCheckCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -637,7 +638,7 @@ public class BsVendorCheckCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

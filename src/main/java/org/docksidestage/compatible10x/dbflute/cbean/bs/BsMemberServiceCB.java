@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -384,47 +385,47 @@ public class BsMemberServiceCB extends AbstractConditionBean {
          * (会員サービスID)MEMBER_SERVICE_ID: {PK, ID, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberServiceId() { return doColumn("MEMBER_SERVICE_ID"); }
+        public SpecifiedColumn columnMemberServiceId() { return doColumn("MEMBER_SERVICE_ID"); }
         /**
          * (会員ID)MEMBER_ID: {UQ, IX, NotNull, INTEGER(10), FK to MEMBER}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
+        public SpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
         /**
          * (サービスポイント数)SERVICE_POINT_COUNT: {IX, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnServicePointCount() { return doColumn("SERVICE_POINT_COUNT"); }
+        public SpecifiedColumn columnServicePointCount() { return doColumn("SERVICE_POINT_COUNT"); }
         /**
          * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnServiceRankCode() { return doColumn("SERVICE_RANK_CODE"); }
+        public SpecifiedColumn columnServiceRankCode() { return doColumn("SERVICE_RANK_CODE"); }
         /**
          * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
+        public SpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
         /**
          * REGISTER_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
+        public SpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
         /**
          * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
+        public SpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
         /**
          * UPDATE_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
+        public SpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
         /**
          * VERSION_NO: {NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
+        public SpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -518,7 +519,7 @@ public class BsMemberServiceCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberServiceCB> columnQuery(final SpecifyQuery<MemberServiceCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberServiceCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberServiceCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberServiceCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -654,7 +655,7 @@ public class BsMemberServiceCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -342,22 +343,22 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
          * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_ID: {PK, NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTheLongAndWindingTableAndColumnRefId() { return doColumn("THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_ID"); }
+        public SpecifiedColumn columnTheLongAndWindingTableAndColumnRefId() { return doColumn("THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_ID"); }
         /**
          * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID: {IX, NotNull, BIGINT(19), FK to VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTheLongAndWindingTableAndColumnId() { return doColumn("THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID"); }
+        public SpecifiedColumn columnTheLongAndWindingTableAndColumnId() { return doColumn("THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID"); }
         /**
          * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(8)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnTheLongAndWindingTableAndColumnRefDate() { return doColumn("THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE"); }
+        public SpecifiedColumn columnTheLongAndWindingTableAndColumnRefDate() { return doColumn("THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE"); }
         /**
          * SHORT_DATE: {NotNull, DATE(8)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnShortDate() { return doColumn("SHORT_DATE"); }
+        public SpecifiedColumn columnShortDate() { return doColumn("SHORT_DATE"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -426,7 +427,7 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      */
     public HpColQyOperand<VendorTheLongAndWindingTableAndColumnRefCB> columnQuery(final SpecifyQuery<VendorTheLongAndWindingTableAndColumnRefCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<VendorTheLongAndWindingTableAndColumnRefCB>() {
-            public HpCalculator handle(SpecifyQuery<VendorTheLongAndWindingTableAndColumnRefCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<VendorTheLongAndWindingTableAndColumnRefCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -562,7 +563,7 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

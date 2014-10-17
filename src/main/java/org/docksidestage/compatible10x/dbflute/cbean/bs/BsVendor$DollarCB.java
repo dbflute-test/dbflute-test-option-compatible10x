@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -322,12 +323,12 @@ public class BsVendor$DollarCB extends AbstractConditionBean {
          * VENDOR_$_DOLLAR_ID: {PK, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVendor$DollarId() { return doColumn("VENDOR_$_DOLLAR_ID"); }
+        public SpecifiedColumn columnVendor$DollarId() { return doColumn("VENDOR_$_DOLLAR_ID"); }
         /**
          * VENDOR_$_DOLLAR_NAME: {VARCHAR(32)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVendor$DollarName() { return doColumn("VENDOR_$_DOLLAR_NAME"); }
+        public SpecifiedColumn columnVendor$DollarName() { return doColumn("VENDOR_$_DOLLAR_NAME"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -371,7 +372,7 @@ public class BsVendor$DollarCB extends AbstractConditionBean {
      */
     public HpColQyOperand<Vendor$DollarCB> columnQuery(final SpecifyQuery<Vendor$DollarCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<Vendor$DollarCB>() {
-            public HpCalculator handle(SpecifyQuery<Vendor$DollarCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<Vendor$DollarCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -507,7 +508,7 @@ public class BsVendor$DollarCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -369,47 +370,47 @@ public class BsMemberWithdrawalCB extends AbstractConditionBean {
          * MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
+        public SpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
         /**
          * (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnWithdrawalReasonCode() { return doColumn("WITHDRAWAL_REASON_CODE"); }
+        public SpecifiedColumn columnWithdrawalReasonCode() { return doColumn("WITHDRAWAL_REASON_CODE"); }
         /**
          * (退会理由入力テキスト)WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnWithdrawalReasonInputText() { return doColumn("WITHDRAWAL_REASON_INPUT_TEXT"); }
+        public SpecifiedColumn columnWithdrawalReasonInputText() { return doColumn("WITHDRAWAL_REASON_INPUT_TEXT"); }
         /**
          * (退会日時)WITHDRAWAL_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnWithdrawalDatetime() { return doColumn("WITHDRAWAL_DATETIME"); }
+        public SpecifiedColumn columnWithdrawalDatetime() { return doColumn("WITHDRAWAL_DATETIME"); }
         /**
          * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
+        public SpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
         /**
          * REGISTER_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
+        public SpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
         /**
          * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
+        public SpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
         /**
          * UPDATE_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
+        public SpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
         /**
          * VERSION_NO: {NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
+        public SpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -499,7 +500,7 @@ public class BsMemberWithdrawalCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberWithdrawalCB> columnQuery(final SpecifyQuery<MemberWithdrawalCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberWithdrawalCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberWithdrawalCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberWithdrawalCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -635,7 +636,7 @@ public class BsMemberWithdrawalCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

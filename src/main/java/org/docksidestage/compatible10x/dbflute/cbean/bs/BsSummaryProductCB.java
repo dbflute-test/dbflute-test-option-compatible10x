@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -342,27 +343,27 @@ public class BsSummaryProductCB extends AbstractConditionBean {
          * PRODUCT_ID: {PK, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductId() { return doColumn("PRODUCT_ID"); }
+        public SpecifiedColumn columnProductId() { return doColumn("PRODUCT_ID"); }
         /**
          * PRODUCT_NAME: {VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductName() { return doColumn("PRODUCT_NAME"); }
+        public SpecifiedColumn columnProductName() { return doColumn("PRODUCT_NAME"); }
         /**
          * PRODUCT_HANDLE_CODE: {VARCHAR(100)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductHandleCode() { return doColumn("PRODUCT_HANDLE_CODE"); }
+        public SpecifiedColumn columnProductHandleCode() { return doColumn("PRODUCT_HANDLE_CODE"); }
         /**
          * PRODUCT_STATUS_CODE: {CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
+        public SpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
         /**
          * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnLatestPurchaseDatetime() { return doColumn("LATEST_PURCHASE_DATETIME"); }
+        public SpecifiedColumn columnLatestPurchaseDatetime() { return doColumn("LATEST_PURCHASE_DATETIME"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -449,7 +450,7 @@ public class BsSummaryProductCB extends AbstractConditionBean {
      */
     public HpColQyOperand<SummaryProductCB> columnQuery(final SpecifyQuery<SummaryProductCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<SummaryProductCB>() {
-            public HpCalculator handle(SpecifyQuery<SummaryProductCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<SummaryProductCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -585,7 +586,7 @@ public class BsSummaryProductCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

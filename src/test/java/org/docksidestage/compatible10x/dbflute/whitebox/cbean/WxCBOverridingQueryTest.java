@@ -39,9 +39,10 @@ public class WxCBOverridingQueryTest extends UnitContainerTestCase {
             log(e.getMessage());
         }
         // ## Act ##
-        cb.enableOverridingQuery();
+        cb.enableOverridingQuery(() -> {
+            cb.query().setMemberName_Equal("sea");
+        });
         // ## Assert ##
-        cb.query().setMemberName_Equal("sea");
         String sql = cb.toDisplaySql();
         assertNotContains(sql, "land");
         assertContains(sql, "sea");
@@ -68,14 +69,15 @@ public class WxCBOverridingQueryTest extends UnitContainerTestCase {
     public void test_OverridingQuery_subquery_enabled() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.enableOverridingQuery();
         cb.query().setMemberName_Equal("land");
 
         // ## Act ##
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
                 subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-07"));
-                subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-08"));
+                subCB.enableOverridingQuery(() -> {
+                    subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-08"));
+                });
             }
         });
 
@@ -121,9 +123,10 @@ public class WxCBOverridingQueryTest extends UnitContainerTestCase {
         // ## Act ##
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
-                subCB.enableOverridingQuery();
                 subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-07"));
-                subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-08"));
+                subCB.enableOverridingQuery(() -> {
+                    subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-08"));
+                });
             }
         });
         try {

@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -385,27 +386,27 @@ public class BsMemberLoginCB extends AbstractConditionBean {
          * (会員ログインID)MEMBER_LOGIN_ID: {PK, ID, NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberLoginId() { return doColumn("MEMBER_LOGIN_ID"); }
+        public SpecifiedColumn columnMemberLoginId() { return doColumn("MEMBER_LOGIN_ID"); }
         /**
          * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
+        public SpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
         /**
          * (ログイン日時)LOGIN_DATETIME: {+UQ, IX, NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnLoginDatetime() { return doColumn("LOGIN_DATETIME"); }
+        public SpecifiedColumn columnLoginDatetime() { return doColumn("LOGIN_DATETIME"); }
         /**
          * (モバイルログインフラグ)MOBILE_LOGIN_FLG: {NotNull, INTEGER(10), classification=Flg}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMobileLoginFlg() { return doColumn("MOBILE_LOGIN_FLG"); }
+        public SpecifiedColumn columnMobileLoginFlg() { return doColumn("MOBILE_LOGIN_FLG"); }
         /**
          * (ログイン時会員ステータスコード)LOGIN_MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnLoginMemberStatusCode() { return doColumn("LOGIN_MEMBER_STATUS_CODE"); }
+        public SpecifiedColumn columnLoginMemberStatusCode() { return doColumn("LOGIN_MEMBER_STATUS_CODE"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -499,7 +500,7 @@ public class BsMemberLoginCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberLoginCB> columnQuery(final SpecifyQuery<MemberLoginCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberLoginCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberLoginCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberLoginCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -635,7 +636,7 @@ public class BsMemberLoginCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

@@ -20,10 +20,11 @@ public class WxCBEmptyStringQueryTest extends UnitContainerTestCase {
         cb.query().setMemberName_Equal("");
 
         // ## Act ##
-        cb.enableEmptyStringQuery();
+        cb.enableEmptyStringQuery(() -> {
+            cb.query().setMemberAccount_Equal("");
+        });
 
         // ## Assert ##
-        cb.query().setMemberAccount_Equal("");
         String sql = cb.toDisplaySql();
         log(ln() + sql);
         assertFalse(sql.contains(" dfloc.MEMBER_NAME = ''"));
@@ -40,10 +41,11 @@ public class WxCBEmptyStringQueryTest extends UnitContainerTestCase {
         });
 
         // ## Act ##
-        cb.enableEmptyStringQuery();
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
-                subCB.query().queryProduct().setProductStatusCode_Equal("");
+                subCB.enableEmptyStringQuery(() -> {
+                    subCB.query().queryProduct().setProductStatusCode_Equal("");
+                });
             }
         });
 

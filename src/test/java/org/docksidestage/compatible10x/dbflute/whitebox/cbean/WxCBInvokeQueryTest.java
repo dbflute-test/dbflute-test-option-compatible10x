@@ -7,12 +7,12 @@ import java.util.List;
 import org.dbflute.Entity;
 import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
-import org.dbflute.cbean.chelper.HpSpecifiedColumn;
 import org.dbflute.cbean.ckey.ConditionKey;
 import org.dbflute.cbean.coption.FromToOption;
 import org.dbflute.cbean.coption.LikeSearchOption;
 import org.dbflute.cbean.coption.RangeOfOption;
 import org.dbflute.cbean.cvalue.ConditionValue;
+import org.dbflute.cbean.dream.SpecifiedColumn;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.exception.ConditionInvokingFailureException;
 import org.dbflute.util.DfCollectionUtil;
@@ -112,7 +112,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
     public void test_invokeSpecifyColumn_basic() throws Exception {
         // ## Arrange ##
         ConditionBean cb = memberBhv.newConditionBean();
-        HpSpecifiedColumn specifiedColumn = cb.invokeSpecifyColumn("memberAccount");
+        SpecifiedColumn specifiedColumn = cb.invokeSpecifyColumn("memberAccount");
 
         // ## Act ##
         ListResultBean<Entity> entityList = memberBhv.readList(cb);
@@ -132,7 +132,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         // ## Arrange ##
         ConditionBean cb = memberBhv.newConditionBean();
         cb.invokeSetupSelect("memberStatus");
-        HpSpecifiedColumn specifiedColumn = cb.invokeSpecifyColumn("memberStatus.displayOrder");
+        SpecifiedColumn specifiedColumn = cb.invokeSpecifyColumn("memberStatus.displayOrder");
 
         // ## Act ##
         ListResultBean<Entity> entityList = memberBhv.readList(cb);

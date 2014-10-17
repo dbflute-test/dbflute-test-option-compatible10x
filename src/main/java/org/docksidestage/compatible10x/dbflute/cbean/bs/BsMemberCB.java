@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -485,57 +486,57 @@ public class BsMemberCB extends AbstractConditionBean {
          * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
+        public SpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
         /**
          * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberName() { return doColumn("MEMBER_NAME"); }
+        public SpecifiedColumn columnMemberName() { return doColumn("MEMBER_NAME"); }
         /**
          * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberAccount() { return doColumn("MEMBER_ACCOUNT"); }
+        public SpecifiedColumn columnMemberAccount() { return doColumn("MEMBER_ACCOUNT"); }
         /**
          * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberStatusCode() { return doColumn("MEMBER_STATUS_CODE"); }
+        public SpecifiedColumn columnMemberStatusCode() { return doColumn("MEMBER_STATUS_CODE"); }
         /**
          * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnFormalizedDatetime() { return doColumn("FORMALIZED_DATETIME"); }
+        public SpecifiedColumn columnFormalizedDatetime() { return doColumn("FORMALIZED_DATETIME"); }
         /**
          * (生年月日)BIRTHDATE: {DATE(8)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnBirthdate() { return doColumn("BIRTHDATE"); }
+        public SpecifiedColumn columnBirthdate() { return doColumn("BIRTHDATE"); }
         /**
          * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
+        public SpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
         /**
          * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
+        public SpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
         /**
          * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
+        public SpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
         /**
          * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
+        public SpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
         /**
          * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
+        public SpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -824,7 +825,7 @@ public class BsMemberCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberCB> columnQuery(final SpecifyQuery<MemberCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -960,7 +961,7 @@ public class BsMemberCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

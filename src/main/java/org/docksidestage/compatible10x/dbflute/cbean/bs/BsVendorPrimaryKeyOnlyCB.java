@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -322,7 +323,7 @@ public class BsVendorPrimaryKeyOnlyCB extends AbstractConditionBean {
          * PRIMARY_KEY_ONLY_ID: {PK, NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnPrimaryKeyOnlyId() { return doColumn("PRIMARY_KEY_ONLY_ID"); }
+        public SpecifiedColumn columnPrimaryKeyOnlyId() { return doColumn("PRIMARY_KEY_ONLY_ID"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -366,7 +367,7 @@ public class BsVendorPrimaryKeyOnlyCB extends AbstractConditionBean {
      */
     public HpColQyOperand<VendorPrimaryKeyOnlyCB> columnQuery(final SpecifyQuery<VendorPrimaryKeyOnlyCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<VendorPrimaryKeyOnlyCB>() {
-            public HpCalculator handle(SpecifyQuery<VendorPrimaryKeyOnlyCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<VendorPrimaryKeyOnlyCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -502,7 +503,7 @@ public class BsVendorPrimaryKeyOnlyCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

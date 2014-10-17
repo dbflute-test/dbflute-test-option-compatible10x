@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -334,17 +335,17 @@ public class BsWithdrawalReasonCB extends AbstractConditionBean {
          * (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnWithdrawalReasonCode() { return doColumn("WITHDRAWAL_REASON_CODE"); }
+        public SpecifiedColumn columnWithdrawalReasonCode() { return doColumn("WITHDRAWAL_REASON_CODE"); }
         /**
          * (退会理由テキスト)WITHDRAWAL_REASON_TEXT: {NotNull, CLOB(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnWithdrawalReasonText() { return doColumn("WITHDRAWAL_REASON_TEXT"); }
+        public SpecifiedColumn columnWithdrawalReasonText() { return doColumn("WITHDRAWAL_REASON_TEXT"); }
         /**
          * DISPLAY_ORDER: {UQ, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
+        public SpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -406,7 +407,7 @@ public class BsWithdrawalReasonCB extends AbstractConditionBean {
      */
     public HpColQyOperand<WithdrawalReasonCB> columnQuery(final SpecifyQuery<WithdrawalReasonCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<WithdrawalReasonCB>() {
-            public HpCalculator handle(SpecifyQuery<WithdrawalReasonCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<WithdrawalReasonCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -542,7 +543,7 @@ public class BsWithdrawalReasonCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -394,22 +395,22 @@ public class BsMemberFollowingCB extends AbstractConditionBean {
          * (会員フォローイングID)MEMBER_FOLLOWING_ID: {PK, ID, NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberFollowingId() { return doColumn("MEMBER_FOLLOWING_ID"); }
+        public SpecifiedColumn columnMemberFollowingId() { return doColumn("MEMBER_FOLLOWING_ID"); }
         /**
          * (わたし)MY_MEMBER_ID: {UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMyMemberId() { return doColumn("MY_MEMBER_ID"); }
+        public SpecifiedColumn columnMyMemberId() { return doColumn("MY_MEMBER_ID"); }
         /**
          * (あなた)YOUR_MEMBER_ID: {+UQ, IX+, NotNull, INTEGER(10), FK to MEMBER}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnYourMemberId() { return doColumn("YOUR_MEMBER_ID"); }
+        public SpecifiedColumn columnYourMemberId() { return doColumn("YOUR_MEMBER_ID"); }
         /**
          * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnFollowDatetime() { return doColumn("FOLLOW_DATETIME"); }
+        public SpecifiedColumn columnFollowDatetime() { return doColumn("FOLLOW_DATETIME"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -503,7 +504,7 @@ public class BsMemberFollowingCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberFollowingCB> columnQuery(final SpecifyQuery<MemberFollowingCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberFollowingCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberFollowingCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberFollowingCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -639,7 +640,7 @@ public class BsMemberFollowingCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

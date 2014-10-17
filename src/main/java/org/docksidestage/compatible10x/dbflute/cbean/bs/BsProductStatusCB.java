@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -334,17 +335,17 @@ public class BsProductStatusCB extends AbstractConditionBean {
          * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3), classification=ProductStatus}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
+        public SpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
         /**
          * (商品ステータス名称)PRODUCT_STATUS_NAME: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductStatusName() { return doColumn("PRODUCT_STATUS_NAME"); }
+        public SpecifiedColumn columnProductStatusName() { return doColumn("PRODUCT_STATUS_NAME"); }
         /**
          * (表示順)DISPLAY_ORDER: {UQ, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
+        public SpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -424,7 +425,7 @@ public class BsProductStatusCB extends AbstractConditionBean {
      */
     public HpColQyOperand<ProductStatusCB> columnQuery(final SpecifyQuery<ProductStatusCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<ProductStatusCB>() {
-            public HpCalculator handle(SpecifyQuery<ProductStatusCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<ProductStatusCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -560,7 +561,7 @@ public class BsProductStatusCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

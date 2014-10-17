@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -384,57 +385,57 @@ public class BsProductCB extends AbstractConditionBean {
          * PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductId() { return doColumn("PRODUCT_ID"); }
+        public SpecifiedColumn columnProductId() { return doColumn("PRODUCT_ID"); }
         /**
          * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductName() { return doColumn("PRODUCT_NAME"); }
+        public SpecifiedColumn columnProductName() { return doColumn("PRODUCT_NAME"); }
         /**
          * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductHandleCode() { return doColumn("PRODUCT_HANDLE_CODE"); }
+        public SpecifiedColumn columnProductHandleCode() { return doColumn("PRODUCT_HANDLE_CODE"); }
         /**
          * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductCategoryCode() { return doColumn("PRODUCT_CATEGORY_CODE"); }
+        public SpecifiedColumn columnProductCategoryCode() { return doColumn("PRODUCT_CATEGORY_CODE"); }
         /**
          * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
+        public SpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
         /**
          * (定価)REGULAR_PRICE: {NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegularPrice() { return doColumn("REGULAR_PRICE"); }
+        public SpecifiedColumn columnRegularPrice() { return doColumn("REGULAR_PRICE"); }
         /**
          * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
+        public SpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
         /**
          * REGISTER_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
+        public SpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
         /**
          * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
+        public SpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
         /**
          * UPDATE_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
+        public SpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
         /**
          * VERSION_NO: {NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
+        public SpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -546,7 +547,7 @@ public class BsProductCB extends AbstractConditionBean {
      */
     public HpColQyOperand<ProductCB> columnQuery(final SpecifyQuery<ProductCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<ProductCB>() {
-            public HpCalculator handle(SpecifyQuery<ProductCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<ProductCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -682,7 +683,7 @@ public class BsProductCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

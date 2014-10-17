@@ -3,7 +3,7 @@ package org.docksidestage.compatible10x.dbflute.whitebox.cbean.derivedreferrer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dbflute.cbean.chelper.HpSpecifiedColumn;
+import org.dbflute.cbean.dream.SpecifiedColumn;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.SpecifyQuery;
 import org.dbflute.cbean.scoping.SubQuery;
@@ -70,7 +70,7 @@ public class WxCBDerivedReferrerDreamCruiseTest extends UnitContainerTestCase {
             }
         }, Member.ALIAS_highestPurchasePrice, op -> op.plus(3));
         MemberCB dreamCruiseCB = cb.dreamCruiseCB();
-        HpSpecifiedColumn servicePointCount =
+        SpecifiedColumn servicePointCount =
                 dreamCruiseCB.specify().specifyMemberServiceAsOne().columnServicePointCount();
         cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
@@ -635,7 +635,7 @@ public class WxCBDerivedReferrerDreamCruiseTest extends UnitContainerTestCase {
                 subCB.specify().columnPurchasePrice().plus(3);
             }
         }).greaterEqual(dreamCruiseCB.specify().columnVersionNo());
-        HpSpecifiedColumn servicePointCount =
+        SpecifiedColumn servicePointCount =
                 dreamCruiseCB.specify().specifyMemberServiceAsOne().columnServicePointCount();
         cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
@@ -692,7 +692,7 @@ public class WxCBDerivedReferrerDreamCruiseTest extends UnitContainerTestCase {
                 subCB.specify().columnPurchasePrice().plus(3);
             }
         }).greaterEqual(dreamCruiseCB.specify().columnVersionNo());
-        HpSpecifiedColumn servicePointCount =
+        SpecifiedColumn servicePointCount =
                 dreamCruiseCB.specify().specifyMemberServiceAsOne().columnServicePointCount();
         cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {

@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -349,52 +350,52 @@ public class BsMemberSecurityCB extends AbstractConditionBean {
          * (会員ID)MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
+        public SpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
         /**
          * (ログインパスワード)LOGIN_PASSWORD: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnLoginPassword() { return doColumn("LOGIN_PASSWORD"); }
+        public SpecifiedColumn columnLoginPassword() { return doColumn("LOGIN_PASSWORD"); }
         /**
          * (リマインダ質問)REMINDER_QUESTION: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnReminderQuestion() { return doColumn("REMINDER_QUESTION"); }
+        public SpecifiedColumn columnReminderQuestion() { return doColumn("REMINDER_QUESTION"); }
         /**
          * (リマインダ回答)REMINDER_ANSWER: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnReminderAnswer() { return doColumn("REMINDER_ANSWER"); }
+        public SpecifiedColumn columnReminderAnswer() { return doColumn("REMINDER_ANSWER"); }
         /**
          * (リマインダ利用回数)REMINDER_USE_COUNT: {NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnReminderUseCount() { return doColumn("REMINDER_USE_COUNT"); }
+        public SpecifiedColumn columnReminderUseCount() { return doColumn("REMINDER_USE_COUNT"); }
         /**
          * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
+        public SpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
         /**
          * REGISTER_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
+        public SpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
         /**
          * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
+        public SpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }
         /**
          * UPDATE_USER: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
+        public SpecifiedColumn columnUpdateUser() { return doColumn("UPDATE_USER"); }
         /**
          * VERSION_NO: {NotNull, BIGINT(19)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
+        public SpecifiedColumn columnVersionNo() { return doColumn("VERSION_NO"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -459,7 +460,7 @@ public class BsMemberSecurityCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberSecurityCB> columnQuery(final SpecifyQuery<MemberSecurityCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberSecurityCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberSecurityCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberSecurityCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -595,7 +596,7 @@ public class BsMemberSecurityCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

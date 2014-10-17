@@ -3,7 +3,7 @@ package org.docksidestage.compatible10x.dbflute.whitebox.cbean.orderby;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.dbflute.cbean.chelper.HpSpecifiedColumn;
+import org.dbflute.cbean.dream.SpecifiedColumn;
 import org.dbflute.cbean.ordering.ManualOrderOption;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.SubQuery;
@@ -430,7 +430,7 @@ public class WxCBManualOrderDreamCruiseBasicTest extends UnitContainerTestCase {
         MemberCB dreamCruiseCB = cb.dreamCruiseCB();
         ManualOrderOption mob = new ManualOrderOption();
         mob.convert(op -> op.coalesce(1));
-        HpSpecifiedColumn columnPoint = dreamCruiseCB.specify().specifyMemberServiceAsOne().columnServicePointCount();
+        SpecifiedColumn columnPoint = dreamCruiseCB.specify().specifyMemberServiceAsOne().columnServicePointCount();
         columnPoint.convert(op -> op.coalesce(2));
         mob.multiply(columnPoint);
         mob.convert(op -> op.coalesce(3));

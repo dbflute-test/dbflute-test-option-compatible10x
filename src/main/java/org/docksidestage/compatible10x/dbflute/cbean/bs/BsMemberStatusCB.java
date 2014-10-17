@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -334,22 +335,22 @@ public class BsMemberStatusCB extends AbstractConditionBean {
          * (会員ステータスコード)MEMBER_STATUS_CODE: {PK, NotNull, CHAR(3), classification=MemberStatus}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberStatusCode() { return doColumn("MEMBER_STATUS_CODE"); }
+        public SpecifiedColumn columnMemberStatusCode() { return doColumn("MEMBER_STATUS_CODE"); }
         /**
          * (会員ステータス名称)MEMBER_STATUS_NAME: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnMemberStatusName() { return doColumn("MEMBER_STATUS_NAME"); }
+        public SpecifiedColumn columnMemberStatusName() { return doColumn("MEMBER_STATUS_NAME"); }
         /**
          * (説明)DESCRIPTION: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnDescription() { return doColumn("DESCRIPTION"); }
+        public SpecifiedColumn columnDescription() { return doColumn("DESCRIPTION"); }
         /**
          * (表示順)DISPLAY_ORDER: {UQ, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
+        public SpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -429,7 +430,7 @@ public class BsMemberStatusCB extends AbstractConditionBean {
      */
     public HpColQyOperand<MemberStatusCB> columnQuery(final SpecifyQuery<MemberStatusCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<MemberStatusCB>() {
-            public HpCalculator handle(SpecifyQuery<MemberStatusCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<MemberStatusCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -565,7 +566,7 @@ public class BsMemberStatusCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**

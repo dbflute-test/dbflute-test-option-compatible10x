@@ -20,6 +20,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.chelper.*;
 import org.dbflute.cbean.coption.*;
+import org.dbflute.cbean.dream.*;
 import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.cbean.sqlclause.SqlClauseCreator;
 import org.dbflute.cbean.scoping.*;
@@ -334,32 +335,32 @@ public class BsServiceRankCB extends AbstractConditionBean {
          * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3), classification=ServiceRank}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnServiceRankCode() { return doColumn("SERVICE_RANK_CODE"); }
+        public SpecifiedColumn columnServiceRankCode() { return doColumn("SERVICE_RANK_CODE"); }
         /**
          * (サービスランク名称)SERVICE_RANK_NAME: {NotNull, VARCHAR(50)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnServiceRankName() { return doColumn("SERVICE_RANK_NAME"); }
+        public SpecifiedColumn columnServiceRankName() { return doColumn("SERVICE_RANK_NAME"); }
         /**
          * (サービスポイント発生率)SERVICE_POINT_INCIDENCE: {NotNull, DECIMAL(5, 3)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnServicePointIncidence() { return doColumn("SERVICE_POINT_INCIDENCE"); }
+        public SpecifiedColumn columnServicePointIncidence() { return doColumn("SERVICE_POINT_INCIDENCE"); }
         /**
          * (新規受け入れ可能フラグ)NEW_ACCEPTABLE_FLG: {NotNull, INTEGER(10), classification=Flg}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnNewAcceptableFlg() { return doColumn("NEW_ACCEPTABLE_FLG"); }
+        public SpecifiedColumn columnNewAcceptableFlg() { return doColumn("NEW_ACCEPTABLE_FLG"); }
         /**
          * (説明)DESCRIPTION: {NotNull, VARCHAR(200)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnDescription() { return doColumn("DESCRIPTION"); }
+        public SpecifiedColumn columnDescription() { return doColumn("DESCRIPTION"); }
         /**
          * (表示順)DISPLAY_ORDER: {UQ, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
-        public HpSpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
+        public SpecifiedColumn columnDisplayOrder() { return doColumn("DISPLAY_ORDER"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
@@ -421,7 +422,7 @@ public class BsServiceRankCB extends AbstractConditionBean {
      */
     public HpColQyOperand<ServiceRankCB> columnQuery(final SpecifyQuery<ServiceRankCB> colCBLambda) {
         return xcreateColQyOperand(new HpColQyHandler<ServiceRankCB>() {
-            public HpCalculator handle(SpecifyQuery<ServiceRankCB> rightSp, String operand) {
+            public ColumnCalculator handle(SpecifyQuery<ServiceRankCB> rightSp, String operand) {
                 return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
             }
         });
@@ -557,7 +558,7 @@ public class BsServiceRankCB extends AbstractConditionBean {
      * @deprecated use enableEmptyStringQuery()
      */
     public void allowEmptyStringQuery() {
-        enableEmptyStringQuery();
+        doEnableEmptyStringQuery();
     }
 
     /**
