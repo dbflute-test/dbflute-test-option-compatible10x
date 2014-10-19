@@ -133,7 +133,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setMemberFollowingId_RangeOf(Long minNumber, Long maxNumber, RangeOfOption rangeOfOption) {
-        regROO(minNumber, maxNumber, getCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID", rangeOfOption);
+        regROO(minNumber, maxNumber, xgetCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID", rangeOfOption);
     }
 
     /**
@@ -146,7 +146,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     }
 
     protected void doSetMemberFollowingId_InScope(Collection<Long> memberFollowingIdList) {
-        regINS(CK_INS, cTL(memberFollowingIdList), getCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID");
+        regINS(CK_INS, cTL(memberFollowingIdList), xgetCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID");
     }
 
     /**
@@ -159,7 +159,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     }
 
     protected void doSetMemberFollowingId_NotInScope(Collection<Long> memberFollowingIdList) {
-        regINS(CK_NINS, cTL(memberFollowingIdList), getCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID");
+        regINS(CK_NINS, cTL(memberFollowingIdList), xgetCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID");
     }
 
     /**
@@ -174,8 +174,8 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      */
     public void setMemberFollowingId_IsNotNull() { regMemberFollowingId(CK_ISNN, DOBJ); }
 
-    protected void regMemberFollowingId(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID"); }
-    protected abstract ConditionValue getCValueMemberFollowingId();
+    protected void regMemberFollowingId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueMemberFollowingId(), "MEMBER_FOLLOWING_ID"); }
+    protected abstract ConditionValue xgetCValueMemberFollowingId();
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
@@ -249,7 +249,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setMyMemberId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
-        regROO(minNumber, maxNumber, getCValueMyMemberId(), "MY_MEMBER_ID", rangeOfOption);
+        regROO(minNumber, maxNumber, xgetCValueMyMemberId(), "MY_MEMBER_ID", rangeOfOption);
     }
 
     /**
@@ -262,7 +262,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     }
 
     protected void doSetMyMemberId_InScope(Collection<Integer> myMemberIdList) {
-        regINS(CK_INS, cTL(myMemberIdList), getCValueMyMemberId(), "MY_MEMBER_ID");
+        regINS(CK_INS, cTL(myMemberIdList), xgetCValueMyMemberId(), "MY_MEMBER_ID");
     }
 
     /**
@@ -275,11 +275,11 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     }
 
     protected void doSetMyMemberId_NotInScope(Collection<Integer> myMemberIdList) {
-        regINS(CK_NINS, cTL(myMemberIdList), getCValueMyMemberId(), "MY_MEMBER_ID");
+        regINS(CK_NINS, cTL(myMemberIdList), xgetCValueMyMemberId(), "MY_MEMBER_ID");
     }
 
-    protected void regMyMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueMyMemberId(), "MY_MEMBER_ID"); }
-    protected abstract ConditionValue getCValueMyMemberId();
+    protected void regMyMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueMyMemberId(), "MY_MEMBER_ID"); }
+    protected abstract ConditionValue xgetCValueMyMemberId();
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
@@ -353,7 +353,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setYourMemberId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
-        regROO(minNumber, maxNumber, getCValueYourMemberId(), "YOUR_MEMBER_ID", rangeOfOption);
+        regROO(minNumber, maxNumber, xgetCValueYourMemberId(), "YOUR_MEMBER_ID", rangeOfOption);
     }
 
     /**
@@ -366,7 +366,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     }
 
     protected void doSetYourMemberId_InScope(Collection<Integer> yourMemberIdList) {
-        regINS(CK_INS, cTL(yourMemberIdList), getCValueYourMemberId(), "YOUR_MEMBER_ID");
+        regINS(CK_INS, cTL(yourMemberIdList), xgetCValueYourMemberId(), "YOUR_MEMBER_ID");
     }
 
     /**
@@ -379,11 +379,11 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     }
 
     protected void doSetYourMemberId_NotInScope(Collection<Integer> yourMemberIdList) {
-        regINS(CK_NINS, cTL(yourMemberIdList), getCValueYourMemberId(), "YOUR_MEMBER_ID");
+        regINS(CK_NINS, cTL(yourMemberIdList), xgetCValueYourMemberId(), "YOUR_MEMBER_ID");
     }
 
-    protected void regYourMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueYourMemberId(), "YOUR_MEMBER_ID"); }
-    protected abstract ConditionValue getCValueYourMemberId();
+    protected void regYourMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueYourMemberId(), "YOUR_MEMBER_ID"); }
+    protected abstract ConditionValue xgetCValueYourMemberId();
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
@@ -440,7 +440,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * @param fromToOption The option of from-to. (NotNull)
      */
     public void setFollowDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
-        regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), getCValueFollowDatetime(), "FOLLOW_DATETIME", fromToOption);
+        regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueFollowDatetime(), "FOLLOW_DATETIME", fromToOption);
     }
 
     /**
@@ -458,8 +458,8 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
         setFollowDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
-    protected void regFollowDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, getCValueFollowDatetime(), "FOLLOW_DATETIME"); }
-    protected abstract ConditionValue getCValueFollowDatetime();
+    protected void regFollowDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueFollowDatetime(), "FOLLOW_DATETIME"); }
+    protected abstract ConditionValue xgetCValueFollowDatetime();
 
     // ===================================================================================
     //                                                                     ScalarCondition

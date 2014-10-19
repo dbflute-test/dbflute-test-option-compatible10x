@@ -160,6 +160,8 @@ public class WxInvokePathBasicTest extends UnitContainerTestCase {
                 assertTrue(executedSql.contains(getClass().getSimpleName()));
             }
         } finally {
+            XLog.unlock();
+            QLog.unlock();
             XLog.setLoggingInHolidayMood(false);
             QLog.setLoggingInHolidayMood(false);
             XLog.lock();

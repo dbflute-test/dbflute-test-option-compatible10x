@@ -186,8 +186,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         // ## Act ##
         cb.localCQ().invokeQuery(name, ConditionKey.CK_EQUAL.getConditionKey(), "foo");
         cb.localCQ().invokeQuery(name, ConditionKey.CK_NOT_EQUAL_STANDARD.getConditionKey(), "foo");
-        cb.localCQ().invokeQuery(name, ConditionKey.CK_LIKE_SEARCH.getConditionKey(), "foo",
-                new LikeSearchOption().likePrefix());
+        cb.localCQ().invokeQuery(name, ConditionKey.CK_LIKE_SEARCH.getConditionKey(), "foo", new LikeSearchOption().likePrefix());
 
         // ## Assert ##
         assertTrue(cb.hasWhereClauseOnBaseQuery());
@@ -211,7 +210,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         cb.query().invokeQuery(propertyName, "inScope", list);
 
         // ## Assert ##
-        final ConditionValue value = cb.query().getMemberName();
+        final ConditionValue value = cb.query().xdfgetMemberName();
         log("conditionValue=" + value);
         assertEquals(list, value.getVarying().get("inScope").get("inScope0"));
     }
@@ -398,7 +397,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         cb.query().invokeQuery(propertyName, "Equal", "testValue");
 
         // ## Assert ##
-        final ConditionValue value = cb.query().getMemberName();
+        final ConditionValue value = cb.query().xdfgetMemberName();
         log("conditionValue=" + value);
         assertEquals("testValue", value.getFixedQuery().get("equal"));
     }
@@ -412,7 +411,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         cb.query().invokeQuery(propertyName, "Equal", "testValue");
 
         // ## Assert ##
-        final ConditionValue value = cb.query().getMemberName();
+        final ConditionValue value = cb.query().xdfgetMemberName();
         log("conditionValue=" + value);
         assertEquals("testValue", value.getFixedQuery().get("equal"));
     }
@@ -430,7 +429,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         cb.query().invokeQuery(foreingPropertyName + "." + propertyName, "Equal", "testValue");
 
         // ## Assert ##
-        final ConditionValue value = cb.query().queryMemberStatus().getMemberStatusName();
+        final ConditionValue value = cb.query().queryMemberStatus().xdfgetMemberStatusName();
         log("conditionValue=" + value);
         assertEquals("testValue", value.getFixedQuery().get("equal"));
     }
@@ -450,8 +449,7 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         cb.query().invokeQuery(targetName, "Equal", "testValue");
 
         // ## Assert ##
-        final ConditionValue value = cb.query().queryMemberWithdrawalAsOne().queryWithdrawalReason()
-                .getWithdrawalReasonText();
+        final ConditionValue value = cb.query().queryMemberWithdrawalAsOne().queryWithdrawalReason().xdfgetWithdrawalReasonText();
         log("conditionValue=" + value);
         assertEquals("testValue", value.getFixedQuery().get("equal"));
     }
@@ -617,10 +615,8 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
     public void test_invokeOrderBy_resolveNestedRelation() {
         // ## Arrange ##
         final MemberCB cb = new MemberCB();
-        final String foreingPropertyName1 = MemberDbm.getInstance().foreignMemberWithdrawalAsOne()
-                .getForeignPropertyName();
-        final String foreingPropertyName2 = MemberWithdrawalDbm.getInstance().foreignWithdrawalReason()
-                .getForeignPropertyName();
+        final String foreingPropertyName1 = MemberDbm.getInstance().foreignMemberWithdrawalAsOne().getForeignPropertyName();
+        final String foreingPropertyName2 = MemberWithdrawalDbm.getInstance().foreignWithdrawalReason().getForeignPropertyName();
         final String propertyName = WithdrawalReasonDbm.getInstance().columnWithdrawalReasonText().getPropertyName();
         final String targetName = foreingPropertyName1 + "." + foreingPropertyName2 + "." + propertyName;
         final String columnName = WithdrawalReasonDbm.getInstance().columnWithdrawalReasonText().getColumnDbName();

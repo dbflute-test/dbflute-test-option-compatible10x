@@ -78,26 +78,14 @@ public class LoaderOfProductCategory {
     //                                                                       =============
     protected List<Product> _referrerProductList;
     public NestedReferrerLoaderGateway<LoaderOfProduct> loadProductList(ConditionBeanSetupper<ProductCB> refCBLambda) {
-        myBhv().loadProductList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<Product>() {
-            public void handle(List<Product> referrerList) { _referrerProductList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfProduct>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfProduct> handler) {
-                handler.handle(new LoaderOfProduct().ready(_referrerProductList, _selector));
-            }
-        };
+        myBhv().loadProductList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerProductList = refLs);
+        return hd -> hd.handle(new LoaderOfProduct().ready(_referrerProductList, _selector));
     }
 
     protected List<ProductCategory> _referrerProductCategorySelfList;
     public NestedReferrerLoaderGateway<LoaderOfProductCategory> loadProductCategorySelfList(ConditionBeanSetupper<ProductCategoryCB> refCBLambda) {
-        myBhv().loadProductCategorySelfList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<ProductCategory>() {
-            public void handle(List<ProductCategory> referrerList) { _referrerProductCategorySelfList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfProductCategory>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfProductCategory> handler) {
-                handler.handle(new LoaderOfProductCategory().ready(_referrerProductCategorySelfList, _selector));
-            }
-        };
+        myBhv().loadProductCategorySelfList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerProductCategorySelfList = refLs);
+        return hd -> hd.handle(new LoaderOfProductCategory().ready(_referrerProductCategorySelfList, _selector));
     }
 
     // ===================================================================================
@@ -105,9 +93,8 @@ public class LoaderOfProductCategory {
     //                                                                    ================
     protected LoaderOfProductCategory _foreignProductCategorySelfLoader;
     public LoaderOfProductCategory pulloutProductCategorySelf() {
-        if (_foreignProductCategorySelfLoader != null) { return _foreignProductCategorySelfLoader; }
-        List<ProductCategory> pulledList = myBhv().pulloutProductCategorySelf(_selectedList);
-        _foreignProductCategorySelfLoader = new LoaderOfProductCategory().ready(pulledList, _selector);
+        if (_foreignProductCategorySelfLoader == null)
+        { _foreignProductCategorySelfLoader = new LoaderOfProductCategory().ready(myBhv().pulloutProductCategorySelf(_selectedList), _selector); }
         return _foreignProductCategorySelfLoader;
     }
 

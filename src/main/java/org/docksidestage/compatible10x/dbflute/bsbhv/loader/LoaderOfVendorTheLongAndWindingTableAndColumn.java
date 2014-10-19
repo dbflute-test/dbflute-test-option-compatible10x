@@ -78,14 +78,8 @@ public class LoaderOfVendorTheLongAndWindingTableAndColumn {
     //                                                                       =============
     protected List<VendorTheLongAndWindingTableAndColumnRef> _referrerVendorTheLongAndWindingTableAndColumnRefList;
     public NestedReferrerLoaderGateway<LoaderOfVendorTheLongAndWindingTableAndColumnRef> loadVendorTheLongAndWindingTableAndColumnRefList(ConditionBeanSetupper<VendorTheLongAndWindingTableAndColumnRefCB> refCBLambda) {
-        myBhv().loadVendorTheLongAndWindingTableAndColumnRefList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<VendorTheLongAndWindingTableAndColumnRef>() {
-            public void handle(List<VendorTheLongAndWindingTableAndColumnRef> referrerList) { _referrerVendorTheLongAndWindingTableAndColumnRefList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfVendorTheLongAndWindingTableAndColumnRef>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfVendorTheLongAndWindingTableAndColumnRef> handler) {
-                handler.handle(new LoaderOfVendorTheLongAndWindingTableAndColumnRef().ready(_referrerVendorTheLongAndWindingTableAndColumnRefList, _selector));
-            }
-        };
+        myBhv().loadVendorTheLongAndWindingTableAndColumnRefList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerVendorTheLongAndWindingTableAndColumnRefList = refLs);
+        return hd -> hd.handle(new LoaderOfVendorTheLongAndWindingTableAndColumnRef().ready(_referrerVendorTheLongAndWindingTableAndColumnRefList, _selector));
     }
 
     // ===================================================================================

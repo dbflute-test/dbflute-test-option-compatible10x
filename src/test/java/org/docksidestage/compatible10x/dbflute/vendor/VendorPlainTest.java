@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 
 import org.dbflute.cbean.ConditionQuery;
 import org.dbflute.cbean.sqlclause.SqlClause;
+import org.dbflute.helper.HandyDate;
 import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
@@ -103,8 +104,7 @@ public class VendorPlainTest extends UnitContainerTestCase {
         assertEquals(GregorianCalendar.AD, afterEra);
         assertTrue("before=" + before.getTime(), DfTypeUtil.isDateBC(before));
         assertFalse("after=" + after.getTime(), DfTypeUtil.isDateBC(after));
-        DfTypeUtil.addDateMillisecond(before, 1);
-        assertEquals(after.getTime(), before.getTime());
+        assertEquals(after.getTime(), new HandyDate(before).addMillisecond(1).getDate().getTime());
     }
 
     // ===================================================================================

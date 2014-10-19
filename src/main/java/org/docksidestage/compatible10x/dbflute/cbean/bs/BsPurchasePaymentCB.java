@@ -202,10 +202,14 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
      */
     public PurchasePaymentCQ query() {
         assertQueryPurpose(); // assert only when user-public query 
-        return getConditionQuery();
+        return doGetConditionQuery();
     }
 
-    public PurchasePaymentCQ getConditionQuery() { // public for parameter comment and internal
+    public PurchasePaymentCQ xdfgetConditionQuery() { // public for parameter comment and internal
+        return doGetConditionQuery();
+    }
+
+    protected PurchasePaymentCQ doGetConditionQuery() {
         if (_conditionQuery == null) {
             _conditionQuery = createLocalCQ();
         }
@@ -226,8 +230,11 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
         return new PurchasePaymentCQ(childQuery, sqlClause, aliasName, nestLevel);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public ConditionQuery localCQ() {
-        return getConditionQuery();
+        return doGetConditionQuery();
     }
 
     // ===================================================================================
@@ -275,7 +282,7 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
     //                                                                         SetupSelect
     //                                                                         ===========
     protected PurchaseNss _nssPurchase;
-    public PurchaseNss getNssPurchase() {
+    public PurchaseNss xdfgetNssPurchase() {
         if (_nssPurchase == null) { _nssPurchase = new PurchaseNss(null); }
         return _nssPurchase;
     }
@@ -329,7 +336,7 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
         if (_specification == null) { _specification = new HpSpecification(this
             , new HpSpQyCall<PurchasePaymentCQ>() {
                 public boolean has() { return true; }
-                public PurchasePaymentCQ qy() { return getConditionQuery(); }
+                public PurchasePaymentCQ qy() { return xdfgetConditionQuery(); }
             }
             , _purpose, getDBMetaProvider(), xcSDRFnFc()); }
         return _specification;
@@ -678,8 +685,8 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
     //                                                                            Internal
     //                                                                            ========
     // very internal (for suppressing warn about 'Not Use Import')
-    protected String getConditionBeanClassNameInternally() { return PurchasePaymentCB.class.getName(); }
-    protected String getConditionQueryClassNameInternally() { return PurchasePaymentCQ.class.getName(); }
-    protected String getSubQueryClassNameInternally() { return SubQuery.class.getName(); }
-    protected String getConditionOptionClassNameInternally() { return ConditionOption.class.getName(); }
+    protected String xgetConditionBeanClassNameInternally() { return PurchasePaymentCB.class.getName(); }
+    protected String xgetConditionQueryClassNameInternally() { return PurchasePaymentCQ.class.getName(); }
+    protected String xgetSubQueryClassNameInternally() { return SubQuery.class.getName(); }
+    protected String xgetConditionOptionClassNameInternally() { return ConditionOption.class.getName(); }
 }

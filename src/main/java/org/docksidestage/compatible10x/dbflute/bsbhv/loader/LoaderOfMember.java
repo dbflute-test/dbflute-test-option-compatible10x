@@ -78,62 +78,32 @@ public class LoaderOfMember {
     //                                                                       =============
     protected List<MemberAddress> _referrerMemberAddressList;
     public NestedReferrerLoaderGateway<LoaderOfMemberAddress> loadMemberAddressList(ConditionBeanSetupper<MemberAddressCB> refCBLambda) {
-        myBhv().loadMemberAddressList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<MemberAddress>() {
-            public void handle(List<MemberAddress> referrerList) { _referrerMemberAddressList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfMemberAddress>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfMemberAddress> handler) {
-                handler.handle(new LoaderOfMemberAddress().ready(_referrerMemberAddressList, _selector));
-            }
-        };
+        myBhv().loadMemberAddressList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerMemberAddressList = refLs);
+        return hd -> hd.handle(new LoaderOfMemberAddress().ready(_referrerMemberAddressList, _selector));
     }
 
     protected List<MemberFollowing> _referrerMemberFollowingByMyMemberIdList;
     public NestedReferrerLoaderGateway<LoaderOfMemberFollowing> loadMemberFollowingByMyMemberIdList(ConditionBeanSetupper<MemberFollowingCB> refCBLambda) {
-        myBhv().loadMemberFollowingByMyMemberIdList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<MemberFollowing>() {
-            public void handle(List<MemberFollowing> referrerList) { _referrerMemberFollowingByMyMemberIdList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfMemberFollowing>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfMemberFollowing> handler) {
-                handler.handle(new LoaderOfMemberFollowing().ready(_referrerMemberFollowingByMyMemberIdList, _selector));
-            }
-        };
+        myBhv().loadMemberFollowingByMyMemberIdList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerMemberFollowingByMyMemberIdList = refLs);
+        return hd -> hd.handle(new LoaderOfMemberFollowing().ready(_referrerMemberFollowingByMyMemberIdList, _selector));
     }
 
     protected List<MemberFollowing> _referrerMemberFollowingByYourMemberIdList;
     public NestedReferrerLoaderGateway<LoaderOfMemberFollowing> loadMemberFollowingByYourMemberIdList(ConditionBeanSetupper<MemberFollowingCB> refCBLambda) {
-        myBhv().loadMemberFollowingByYourMemberIdList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<MemberFollowing>() {
-            public void handle(List<MemberFollowing> referrerList) { _referrerMemberFollowingByYourMemberIdList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfMemberFollowing>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfMemberFollowing> handler) {
-                handler.handle(new LoaderOfMemberFollowing().ready(_referrerMemberFollowingByYourMemberIdList, _selector));
-            }
-        };
+        myBhv().loadMemberFollowingByYourMemberIdList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerMemberFollowingByYourMemberIdList = refLs);
+        return hd -> hd.handle(new LoaderOfMemberFollowing().ready(_referrerMemberFollowingByYourMemberIdList, _selector));
     }
 
     protected List<MemberLogin> _referrerMemberLoginList;
     public NestedReferrerLoaderGateway<LoaderOfMemberLogin> loadMemberLoginList(ConditionBeanSetupper<MemberLoginCB> refCBLambda) {
-        myBhv().loadMemberLoginList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<MemberLogin>() {
-            public void handle(List<MemberLogin> referrerList) { _referrerMemberLoginList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfMemberLogin>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfMemberLogin> handler) {
-                handler.handle(new LoaderOfMemberLogin().ready(_referrerMemberLoginList, _selector));
-            }
-        };
+        myBhv().loadMemberLoginList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerMemberLoginList = refLs);
+        return hd -> hd.handle(new LoaderOfMemberLogin().ready(_referrerMemberLoginList, _selector));
     }
 
     protected List<Purchase> _referrerPurchaseList;
     public NestedReferrerLoaderGateway<LoaderOfPurchase> loadPurchaseList(ConditionBeanSetupper<PurchaseCB> refCBLambda) {
-        myBhv().loadPurchaseList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<Purchase>() {
-            public void handle(List<Purchase> referrerList) { _referrerPurchaseList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfPurchase>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfPurchase> handler) {
-                handler.handle(new LoaderOfPurchase().ready(_referrerPurchaseList, _selector));
-            }
-        };
+        myBhv().loadPurchaseList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerPurchaseList = refLs);
+        return hd -> hd.handle(new LoaderOfPurchase().ready(_referrerPurchaseList, _selector));
     }
 
     // ===================================================================================
@@ -141,49 +111,43 @@ public class LoaderOfMember {
     //                                                                    ================
     protected LoaderOfMemberStatus _foreignMemberStatusLoader;
     public LoaderOfMemberStatus pulloutMemberStatus() {
-        if (_foreignMemberStatusLoader != null) { return _foreignMemberStatusLoader; }
-        List<MemberStatus> pulledList = myBhv().pulloutMemberStatus(_selectedList);
-        _foreignMemberStatusLoader = new LoaderOfMemberStatus().ready(pulledList, _selector);
+        if (_foreignMemberStatusLoader == null)
+        { _foreignMemberStatusLoader = new LoaderOfMemberStatus().ready(myBhv().pulloutMemberStatus(_selectedList), _selector); }
         return _foreignMemberStatusLoader;
     }
 
     protected LoaderOfMemberAddress _foreignMemberAddressAsValidLoader;
     public LoaderOfMemberAddress pulloutMemberAddressAsValid() {
-        if (_foreignMemberAddressAsValidLoader != null) { return _foreignMemberAddressAsValidLoader; }
-        List<MemberAddress> pulledList = myBhv().pulloutMemberAddressAsValid(_selectedList);
-        _foreignMemberAddressAsValidLoader = new LoaderOfMemberAddress().ready(pulledList, _selector);
+        if (_foreignMemberAddressAsValidLoader == null)
+        { _foreignMemberAddressAsValidLoader = new LoaderOfMemberAddress().ready(myBhv().pulloutMemberAddressAsValid(_selectedList), _selector); }
         return _foreignMemberAddressAsValidLoader;
     }
 
     protected LoaderOfMemberLogin _foreignMemberLoginAsLatestLoader;
     public LoaderOfMemberLogin pulloutMemberLoginAsLatest() {
-        if (_foreignMemberLoginAsLatestLoader != null) { return _foreignMemberLoginAsLatestLoader; }
-        List<MemberLogin> pulledList = myBhv().pulloutMemberLoginAsLatest(_selectedList);
-        _foreignMemberLoginAsLatestLoader = new LoaderOfMemberLogin().ready(pulledList, _selector);
+        if (_foreignMemberLoginAsLatestLoader == null)
+        { _foreignMemberLoginAsLatestLoader = new LoaderOfMemberLogin().ready(myBhv().pulloutMemberLoginAsLatest(_selectedList), _selector); }
         return _foreignMemberLoginAsLatestLoader;
     }
 
     protected LoaderOfMemberSecurity _foreignMemberSecurityAsOneLoader;
     public LoaderOfMemberSecurity pulloutMemberSecurityAsOne() {
-        if (_foreignMemberSecurityAsOneLoader != null) { return _foreignMemberSecurityAsOneLoader; }
-        List<MemberSecurity> pulledList = myBhv().pulloutMemberSecurityAsOne(_selectedList);
-        _foreignMemberSecurityAsOneLoader = new LoaderOfMemberSecurity().ready(pulledList, _selector);
+        if (_foreignMemberSecurityAsOneLoader == null)
+        { _foreignMemberSecurityAsOneLoader = new LoaderOfMemberSecurity().ready(myBhv().pulloutMemberSecurityAsOne(_selectedList), _selector); }
         return _foreignMemberSecurityAsOneLoader;
     }
 
     protected LoaderOfMemberService _foreignMemberServiceAsOneLoader;
     public LoaderOfMemberService pulloutMemberServiceAsOne() {
-        if (_foreignMemberServiceAsOneLoader != null) { return _foreignMemberServiceAsOneLoader; }
-        List<MemberService> pulledList = myBhv().pulloutMemberServiceAsOne(_selectedList);
-        _foreignMemberServiceAsOneLoader = new LoaderOfMemberService().ready(pulledList, _selector);
+        if (_foreignMemberServiceAsOneLoader == null)
+        { _foreignMemberServiceAsOneLoader = new LoaderOfMemberService().ready(myBhv().pulloutMemberServiceAsOne(_selectedList), _selector); }
         return _foreignMemberServiceAsOneLoader;
     }
 
     protected LoaderOfMemberWithdrawal _foreignMemberWithdrawalAsOneLoader;
     public LoaderOfMemberWithdrawal pulloutMemberWithdrawalAsOne() {
-        if (_foreignMemberWithdrawalAsOneLoader != null) { return _foreignMemberWithdrawalAsOneLoader; }
-        List<MemberWithdrawal> pulledList = myBhv().pulloutMemberWithdrawalAsOne(_selectedList);
-        _foreignMemberWithdrawalAsOneLoader = new LoaderOfMemberWithdrawal().ready(pulledList, _selector);
+        if (_foreignMemberWithdrawalAsOneLoader == null)
+        { _foreignMemberWithdrawalAsOneLoader = new LoaderOfMemberWithdrawal().ready(myBhv().pulloutMemberWithdrawalAsOne(_selectedList), _selector); }
         return _foreignMemberWithdrawalAsOneLoader;
     }
 

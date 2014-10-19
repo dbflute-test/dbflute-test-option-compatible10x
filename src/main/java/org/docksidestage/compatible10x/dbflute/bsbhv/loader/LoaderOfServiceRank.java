@@ -78,14 +78,8 @@ public class LoaderOfServiceRank {
     //                                                                       =============
     protected List<MemberService> _referrerMemberServiceList;
     public NestedReferrerLoaderGateway<LoaderOfMemberService> loadMemberServiceList(ConditionBeanSetupper<MemberServiceCB> refCBLambda) {
-        myBhv().loadMemberServiceList(_selectedList, refCBLambda).withNestedReferrer(new ReferrerListHandler<MemberService>() {
-            public void handle(List<MemberService> referrerList) { _referrerMemberServiceList = referrerList; }
-        });
-        return new NestedReferrerLoaderGateway<LoaderOfMemberService>() {
-            public void withNestedReferrer(ReferrerLoaderHandler<LoaderOfMemberService> handler) {
-                handler.handle(new LoaderOfMemberService().ready(_referrerMemberServiceList, _selector));
-            }
-        };
+        myBhv().loadMemberServiceList(_selectedList, refCBLambda).withNestedReferrer(refLs -> _referrerMemberServiceList = refLs);
+        return hd -> hd.handle(new LoaderOfMemberService().ready(_referrerMemberServiceList, _selector));
     }
 
     // ===================================================================================
