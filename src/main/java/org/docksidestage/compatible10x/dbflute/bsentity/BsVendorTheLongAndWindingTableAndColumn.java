@@ -90,7 +90,6 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
     /** SHORT_SIZE: {NotNull, INTEGER(10)} */
     protected Integer _shortSize;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -195,10 +194,10 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_theLongAndWindingTableAndColumnId);
-        sb.append(dm).append(_theLongAndWindingTableAndColumnName);
-        sb.append(dm).append(_shortName);
-        sb.append(dm).append(_shortSize);
+        sb.append(dm).append(xfND(_theLongAndWindingTableAndColumnId));
+        sb.append(dm).append(xfND(_theLongAndWindingTableAndColumnName));
+        sb.append(dm).append(xfND(_shortName));
+        sb.append(dm).append(xfND(_shortSize));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -230,6 +229,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @return The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID'. (basically NotNull if selected: for the constraint)
      */
     public Long getTheLongAndWindingTableAndColumnId() {
+        checkSpecifiedProperty("theLongAndWindingTableAndColumnId");
         return _theLongAndWindingTableAndColumnId;
     }
 
@@ -238,7 +238,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @param theLongAndWindingTableAndColumnId The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID'. (basically NotNull if update: for the constraint)
      */
     public void setTheLongAndWindingTableAndColumnId(Long theLongAndWindingTableAndColumnId) {
-        __modifiedProperties.addPropertyName("theLongAndWindingTableAndColumnId");
+        registerModifiedProperty("theLongAndWindingTableAndColumnId");
         _theLongAndWindingTableAndColumnId = theLongAndWindingTableAndColumnId;
     }
 
@@ -247,6 +247,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @return The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME'. (basically NotNull if selected: for the constraint)
      */
     public String getTheLongAndWindingTableAndColumnName() {
+        checkSpecifiedProperty("theLongAndWindingTableAndColumnName");
         return _theLongAndWindingTableAndColumnName;
     }
 
@@ -255,7 +256,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @param theLongAndWindingTableAndColumnName The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME'. (basically NotNull if update: for the constraint)
      */
     public void setTheLongAndWindingTableAndColumnName(String theLongAndWindingTableAndColumnName) {
-        __modifiedProperties.addPropertyName("theLongAndWindingTableAndColumnName");
+        registerModifiedProperty("theLongAndWindingTableAndColumnName");
         _theLongAndWindingTableAndColumnName = theLongAndWindingTableAndColumnName;
     }
 
@@ -264,6 +265,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @return The value of the column 'SHORT_NAME'. (basically NotNull if selected: for the constraint)
      */
     public String getShortName() {
+        checkSpecifiedProperty("shortName");
         return _shortName;
     }
 
@@ -272,7 +274,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @param shortName The value of the column 'SHORT_NAME'. (basically NotNull if update: for the constraint)
      */
     public void setShortName(String shortName) {
-        __modifiedProperties.addPropertyName("shortName");
+        registerModifiedProperty("shortName");
         _shortName = shortName;
     }
 
@@ -281,6 +283,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @return The value of the column 'SHORT_SIZE'. (basically NotNull if selected: for the constraint)
      */
     public Integer getShortSize() {
+        checkSpecifiedProperty("shortSize");
         return _shortSize;
     }
 
@@ -289,7 +292,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumn extends AbstractEn
      * @param shortSize The value of the column 'SHORT_SIZE'. (basically NotNull if update: for the constraint)
      */
     public void setShortSize(Integer shortSize) {
-        __modifiedProperties.addPropertyName("shortSize");
+        registerModifiedProperty("shortSize");
         _shortSize = shortSize;
     }
 }

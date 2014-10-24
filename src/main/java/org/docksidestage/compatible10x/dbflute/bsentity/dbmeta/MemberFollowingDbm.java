@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -53,26 +53,10 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgMemberFollowingId(), "memberFollowingId");
-        setupEpg(_epgMap, new EpgMyMemberId(), "myMemberId");
-        setupEpg(_epgMap, new EpgYourMemberId(), "yourMemberId");
-        setupEpg(_epgMap, new EpgFollowDatetime(), "followDatetime");
-    }
-    public static class EpgMemberFollowingId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberFollowing)et).getMemberFollowingId(); }
-        public void write(Entity et, Object vl) { ((MemberFollowing)et).setMemberFollowingId(ctl(vl)); }
-    }
-    public static class EpgMyMemberId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberFollowing)et).getMyMemberId(); }
-        public void write(Entity et, Object vl) { ((MemberFollowing)et).setMyMemberId(cti(vl)); }
-    }
-    public static class EpgYourMemberId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberFollowing)et).getYourMemberId(); }
-        public void write(Entity et, Object vl) { ((MemberFollowing)et).setYourMemberId(cti(vl)); }
-    }
-    public static class EpgFollowDatetime implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberFollowing)et).getFollowDatetime(); }
-        public void write(Entity et, Object vl) { ((MemberFollowing)et).setFollowDatetime((java.sql.Timestamp)vl); }
+        setupEpg(_epgMap, et -> ((MemberFollowing)et).getMemberFollowingId(), (et, vl) -> ((MemberFollowing)et).setMemberFollowingId(ctl(vl)), "memberFollowingId");
+        setupEpg(_epgMap, et -> ((MemberFollowing)et).getMyMemberId(), (et, vl) -> ((MemberFollowing)et).setMyMemberId(cti(vl)), "myMemberId");
+        setupEpg(_epgMap, et -> ((MemberFollowing)et).getYourMemberId(), (et, vl) -> ((MemberFollowing)et).setYourMemberId(cti(vl)), "yourMemberId");
+        setupEpg(_epgMap, et -> ((MemberFollowing)et).getFollowDatetime(), (et, vl) -> ((MemberFollowing)et).setFollowDatetime((java.sql.Timestamp)vl), "followDatetime");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -81,17 +65,10 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     //                                      Foreign Property
     //                                      ----------------
     protected final Map<String, PropertyGateway> _efpgMap = newHashMap();
-    {
-        setupEfpg(_efpgMap, new EfpgMemberByMyMemberId(), "memberByMyMemberId");
-        setupEfpg(_efpgMap, new EfpgMemberByYourMemberId(), "memberByYourMemberId");
-    }
-    public class EfpgMemberByMyMemberId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberFollowing)et).getMemberByMyMemberId(); }
-        public void write(Entity et, Object vl) { ((MemberFollowing)et).setMemberByMyMemberId((Member)vl); }
-    }
-    public class EfpgMemberByYourMemberId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberFollowing)et).getMemberByYourMemberId(); }
-        public void write(Entity et, Object vl) { ((MemberFollowing)et).setMemberByYourMemberId((Member)vl); }
+    { xsetupEfpg(); }
+    protected void xsetupEfpg() {
+        setupEfpg(_efpgMap, et -> ((MemberFollowing)et).getMemberByMyMemberId(), (et, vl) -> ((MemberFollowing)et).setMemberByMyMemberId((Member)vl), "memberByMyMemberId");
+        setupEfpg(_efpgMap, et -> ((MemberFollowing)et).getMemberByYourMemberId(), (et, vl) -> ((MemberFollowing)et).setMemberByYourMemberId((Member)vl), "memberByYourMemberId");
     }
     public PropertyGateway findForeignPropertyGateway(String prop)
     { return doFindEfpg(_efpgMap, prop); }
@@ -114,7 +91,7 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberFollowingId = cci("MEMBER_FOLLOWING_ID", "MEMBER_FOLLOWING_ID", null, "会員フォローイングID", Long.class, "memberFollowingId", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_BE777486_5587_4A9D_9AD9_297FE09AC462", false, null, "連番", null, null, null);
+    protected final ColumnInfo _columnMemberFollowingId = cci("MEMBER_FOLLOWING_ID", "MEMBER_FOLLOWING_ID", null, "会員フォローイングID", Long.class, "memberFollowingId", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_A22AB7A2_0840_48F5_9241_708B5A4B2700", false, null, "連番", null, null, null);
     protected final ColumnInfo _columnMyMemberId = cci("MY_MEMBER_ID", "MY_MEMBER_ID", null, "わたし", Integer.class, "myMemberId", null, false, false, true, "INTEGER", 10, 0, null, false, null, "気になった人がいて...勇気を振り絞った会員のID。", "memberByMyMemberId", null, null);
     protected final ColumnInfo _columnYourMemberId = cci("YOUR_MEMBER_ID", "YOUR_MEMBER_ID", null, "あなた", Integer.class, "yourMemberId", null, false, false, true, "INTEGER", 10, 0, null, false, null, "いきなりのアクションに...ちょっと心揺らいだ会員のID。", "memberByYourMemberId", null, null);
     protected final ColumnInfo _columnFollowDatetime = cci("FOLLOW_DATETIME", "FOLLOW_DATETIME", null, "その瞬間", java.sql.Timestamp.class, "followDatetime", null, false, false, true, "TIMESTAMP", 23, 10, null, false, null, "ふりかえるとちょっと恥ずかしい気持ちになる日時", null, null, null);

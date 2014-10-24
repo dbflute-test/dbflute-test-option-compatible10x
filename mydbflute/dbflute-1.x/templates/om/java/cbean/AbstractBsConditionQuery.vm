@@ -323,7 +323,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
      * ${col.aliasExpression}${col.name}: {${col.columnDefinitionLineDisp}} <br />
-     * <pre>e.g. set${tmpJavaName}_LikeSearch("xxx", op -&gt; op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * <pre>e.g. set${tmpJavaName}_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
      * @param ${tmpUncapitalisedJavaName} The value of ${col.uncapitalisedJavaName} as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param opLambda The callback for option of like-search. (NotNull)
      */
@@ -403,7 +403,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * {exists (select ${referrer.firstLocalColumnName} from ${referrer.table.tableDbName} where ...)} <br />
      * ${referrer.referrerDispAsOneForJavaDoc}
      * <pre>
-     * cb.query().<span style="color: #CC4747">exists${relationMethodIdentityName}</span>(${referrer.referrerLambdaExampleCBName} -&gt; {
+     * cb.query().<span style="color: #CC4747">exists${relationMethodIdentityName}</span>(${referrer.referrerLambdaExampleCBName} <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     ${referrer.referrerLambdaExampleCBName}.query().set...
      * });
      * </pre>
@@ -412,8 +412,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void exists${relationMethodIdentityName}(SubQuery<${relatedCBClassName}> ${relatedLambdaName}) {
         assertObjectNotNull("${relatedLambdaName}", ${relatedLambdaName});
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForExistsReferrer(this);
-        try { lock(); ${relatedLambdaName}.query(cb); } finally { unlock(); }
-        String pp = keep${subQueryPropertyNameInitCap}(cb.query());
+        lockCall(() -> ${relatedLambdaName}.query(cb)); String pp = keep${subQueryPropertyNameInitCap}(cb.query());
         registerExistsReferrer(cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", pp, "${relationPropertyName}");
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -441,10 +440,8 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * {not exists (select ${referrer.firstLocalColumnName} from ${referrer.table.tableDbName} where ...)} <br />
      * ${referrer.referrerDispAsOneForJavaDoc}
      * <pre>
-     * cb.query().<span style="color: #CC4747">notExists${relationMethodIdentityName}</span>(new SubQuery&lt;${relatedCBClassName}&gt;() {
-     *     public void query(${relatedCBClassName} subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">notExists${relationMethodIdentityName}</span>(${referrer.referrerLambdaExampleCBName} <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ${referrer.referrerLambdaExampleCBName}.query().set...
      * });
      * </pre>
      * @param ${relatedLambdaName} The callback for sub-query of ${subQueryPropertyNameInitCap} for 'not exists'. (NotNull)
@@ -452,8 +449,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void notExists${relationMethodIdentityName}(SubQuery<${relatedCBClassName}> ${relatedLambdaName}) {
         assertObjectNotNull("${relatedLambdaName}", ${relatedLambdaName});
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForExistsReferrer(this);
-        try { lock(); ${relatedLambdaName}.query(cb); } finally { unlock(); }
-        String pp = keep${subQueryPropertyNameInitCap}(cb.query());
+        lockCall(() -> ${relatedLambdaName}.query(cb)); String pp = keep${subQueryPropertyNameInitCap}(cb.query());
         registerNotExistsReferrer(cb.query(), "${col.name}", "${referrer.FirstLocalColumnName}", pp, "${relationPropertyName}");
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -467,8 +463,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void xsderive${referrer.referrerPropertyNameInitCap}(String fn, SubQuery<${relatedCBClassName}> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keep${subQueryPropertyNameInitCap}(cb.query());
+        lockCall(() -> sq.query(cb)); String pp = keep${subQueryPropertyNameInitCap}(cb.query());
         registerSpecifyDerivedReferrer(fn, cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", pp, "${referrer.referrerPropertyName}", al, op);
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -485,11 +480,9 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * {FOO &lt;= (select max(BAR) from ${referrer.table.tableDbName} where ...)} <br />
      * ${referrer.referrerDispAsOneForJavaDoc}
      * <pre>
-     * cb.query().<span style="color: #CC4747">derived${relationMethodIdentityName}()</span>.<span style="color: #CC4747">max</span>(new SubQuery&lt;${relatedCBClassName}&gt;() {
-     *     public void query(${relatedCBClassName} subCB) {
-     *         subCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
-     *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
-     *     }
+     * cb.query().<span style="color: #CC4747">derived${relationMethodIdentityName}()</span>.<span style="color: #CC4747">max</span>(${referrer.referrerLambdaExampleCBName} <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ${referrer.referrerLambdaExampleCBName}.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *     ${referrer.referrerLambdaExampleCBName}.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
@@ -498,17 +491,12 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
         return xcreateQDRFunction${referrer.referrerPropertyNameInitCap}();
     }
     protected HpQDRFunction<${relatedCBClassName}> xcreateQDRFunction${referrer.referrerPropertyNameInitCap}() {
-        return xcQDRFunc(new HpQDRSetupper<${relatedCBClassName}>() {
-            public void setup(String fn, SubQuery<${relatedCBClassName}> sq, String rd, Object vl, DerivedReferrerOption op) {
-                xqderive${referrer.referrerPropertyNameInitCap}(fn, sq, rd, vl, op);
-            }
-        });
+        return xcQDRFunc((fn, sq, rd, vl, op) -> xqderive${referrer.referrerPropertyNameInitCap}(fn, sq, rd, vl, op));
     }
     public void xqderive${referrer.referrerPropertyNameInitCap}(String fn, SubQuery<${relatedCBClassName}> sq, String rd, Object vl, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String sqpp = keep${subQueryPropertyNameInitCap}(cb.query()); String prpp = keep${subQueryPropertyNameInitCap}Parameter(vl);
+        lockCall(() -> sq.query(cb)); String sqpp = keep${subQueryPropertyNameInitCap}(cb.query()); String prpp = keep${subQueryPropertyNameInitCap}Parameter(vl);
         registerQueryDerivedReferrer(fn, cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", sqpp, "${referrer.referrerPropertyName}", rd, vl, prpp, op);
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -786,7 +774,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * {exists (select ${referrer.firstLocalColumnName} from ${referrer.table.tableDbName} where ...)} <br />
      * ${referrer.referrerDispAsOneForJavaDoc}
      * <pre>
-     * cb.query().<span style="color: #CC4747">exists${relationMethodIdentityName}</span>(${referrer.referrerLambdaExampleCBName} -&gt; {
+     * cb.query().<span style="color: #CC4747">exists${relationMethodIdentityName}</span>(${referrer.referrerLambdaExampleCBName} <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     ${referrer.referrerLambdaExampleCBName}.query().set...
      * });
      * </pre>
@@ -795,8 +783,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void exists${relationMethodIdentityName}(SubQuery<${relatedCBClassName}> ${relatedLambdaName}) {
         assertObjectNotNull("${relatedLambdaName}", ${relatedLambdaName});
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForExistsReferrer(this);
-        try { lock(); ${relatedLambdaName}.query(cb); } finally { unlock(); }
-        String pp = keep${subQueryPropertyNameInitCap}(cb.query());
+        lockCall(() -> ${relatedLambdaName}.query(cb)); String pp = keep${subQueryPropertyNameInitCap}(cb.query());
         registerExistsReferrer(cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", pp, "${relationPropertyName}");
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -824,10 +811,8 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * {not exists (select ${referrer.firstLocalColumnName} from ${referrer.table.tableDbName} where ...)} <br />
      * ${referrer.referrerDispAsOneForJavaDoc}
      * <pre>
-     * cb.query().<span style="color: #CC4747">notExists${relationMethodIdentityName}</span>(new SubQuery&lt;${relatedCBClassName}&gt;() {
-     *     public void query(${relatedCBClassName} subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">notExists${relationMethodIdentityName}</span>(${referrer.referrerLambdaExampleCBName} <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ${referrer.referrerLambdaExampleCBName}.query().set...
      * });
      * </pre>
      * @param ${relatedLambdaName} The callback for sub-query of ${subQueryPropertyNameInitCap} for 'not exists'. (NotNull)
@@ -835,8 +820,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void notExists${relationMethodIdentityName}(SubQuery<${relatedCBClassName}> ${relatedLambdaName}) {
         assertObjectNotNull("${relatedLambdaName}", ${relatedLambdaName});
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForExistsReferrer(this);
-        try { lock(); ${relatedLambdaName}.query(cb); } finally { unlock(); }
-        String pp = keep${subQueryPropertyNameInitCap}(cb.query());
+        lockCall(() -> ${relatedLambdaName}.query(cb)); String pp = keep${subQueryPropertyNameInitCap}(cb.query());
         registerNotExistsReferrer(cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", pp, "${relationPropertyName}");
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -850,8 +834,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void xsderive${referrer.referrerPropertyNameInitCap}(String fn, SubQuery<${relatedCBClassName}> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keep${subQueryPropertyNameInitCap}(cb.query());
+        lockCall(() -> sq.query(cb)); String pp = keep${subQueryPropertyNameInitCap}(cb.query());
         registerSpecifyDerivedReferrer(fn, cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", pp, "${referrer.referrerPropertyName}", al, op);
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -868,7 +851,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * {FOO &lt;= (select max(BAR) from ${referrer.table.tableDbName} where ...)} <br />
      * ${referrer.referrerDispAsOneForJavaDoc}
      * <pre>
-     * cb.query().<span style="color: #CC4747">derived${relationMethodIdentityName}()</span>.<span style="color: #CC4747">max</span>(${referrer.referrerLambdaExampleCBName} -&gt; {
+     * cb.query().<span style="color: #CC4747">derived${relationMethodIdentityName}()</span>.<span style="color: #CC4747">max</span>(${referrer.referrerLambdaExampleCBName} <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     ${referrer.referrerLambdaExampleCBName}.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
      *     ${referrer.referrerLambdaExampleCBName}.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
@@ -879,17 +862,12 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
         return xcreateQDRFunction${referrer.referrerPropertyNameInitCap}();
     }
     protected HpQDRFunction<${relatedCBClassName}> xcreateQDRFunction${referrer.referrerPropertyNameInitCap}() {
-        return xcQDRFunc(new HpQDRSetupper<${relatedCBClassName}>() {
-            public void setup(String fn, SubQuery<${relatedCBClassName}> sq, String rd, Object vl, DerivedReferrerOption op) {
-                xqderive${referrer.referrerPropertyNameInitCap}(fn, sq, rd, vl, op);
-            }
-        });
+        return xcQDRFunc((fn, sq, rd, vl, op) -> xqderive${referrer.referrerPropertyNameInitCap}(fn, sq, rd, vl, op));
     }
     public void xqderive${referrer.referrerPropertyNameInitCap}(String fn, SubQuery<${relatedCBClassName}> sq, String rd, Object vl, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         ${relatedCBClassName} cb = new ${relatedCBClassName}(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String sqpp = keep${subQueryPropertyNameInitCap}(cb.query()); String prpp = keep${subQueryPropertyNameInitCap}Parameter(vl);
+        lockCall(() -> sq.query(cb)); String sqpp = keep${subQueryPropertyNameInitCap}(cb.query()); String prpp = keep${subQueryPropertyNameInitCap}Parameter(vl);
         registerQueryDerivedReferrer(fn, cb.query(), "${col.name}", "${referrer.firstLocalColumnName}", sqpp, "${referrer.referrerPropertyName}", rd, vl, prpp, op);
     }
     public abstract String keep${subQueryPropertyNameInitCap}(${relatedCQClassName} sq);
@@ -967,7 +945,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
      * And NullIgnored, OnlyOnceRegistered. <br />
      * ${col.aliasExpression}${col.name}: {${col.columnDefinitionLineDisp}}
-     * <pre>e.g. set${tmpJavaName}_FromTo(fromDate, toDate, op -&gt; op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * <pre>e.g. set${tmpJavaName}_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of ${col.uncapitalisedJavaName}. (NullAllowed: if null, no from-condition)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of ${col.uncapitalisedJavaName}. (NullAllowed: if null, no to-condition)
      * @param opLambda The callback for option of from-to. (NotNull)
@@ -1258,9 +1236,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void xsmyselfDerive(String fn, SubQuery<${myConditionBeanClassName}> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         ${myConditionBeanClassName} cb = new ${myConditionBeanClassName}(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepSpecifyMyselfDerived(cb.query());
-        String pk = "${table.primaryKeyAsOne.name}";
+        lockCall(() -> sq.query(cb)); String pp = keepSpecifyMyselfDerived(cb.query()); String pk = "${table.primaryKeyAsOne.name}";
         registerSpecifyMyselfDerived(fn, cb.query(), pk, pk, pp, "myselfDerived", al, op);
     }
     public abstract String keepSpecifyMyselfDerived(${myConditionQueryClassName} sq);
@@ -1296,8 +1272,7 @@ public abstract class ${myClassName} extends AbstractConditionQuery {
     public void myselfExists(SubQuery<${myConditionBeanClassName}> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         ${myConditionBeanClassName} cb = new ${myConditionBeanClassName}(); cb.xsetupForMyselfExists(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyselfExists(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(${myConditionQueryClassName} sq);

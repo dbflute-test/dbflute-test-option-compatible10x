@@ -105,7 +105,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <pre>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
      * cb.query().setFoo...(value);
-     * int count = vendorIdentityOnlyBhv.<span style="color: #CC4747">selectCount</span>(cb);
+     * int count = <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -124,7 +124,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <pre>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
      * cb.query().setFoo...(value);
-     * VendorIdentityOnly vendorIdentityOnly = vendorIdentityOnlyBhv.<span style="color: #DD4747">selectEntity</span>(cb);
+     * VendorIdentityOnly vendorIdentityOnly = <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #DD4747">selectEntity</span>(cb);
      * if (vendorIdentityOnly != null) { <span style="color: #3F7E5E">// null check</span>
      *     ... = vendorIdentityOnly.get...();
      * } else {
@@ -133,8 +133,8 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * </pre>
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public VendorIdentityOnly selectEntity(VendorIdentityOnlyCB cb) {
         return facadeSelectEntity(cb);
@@ -155,15 +155,15 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
-     * cb.query().setFoo...(value);
-     * VendorIdentityOnly vendorIdentityOnly = vendorIdentityOnlyBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
+     * cb.query().set...;
+     * VendorIdentityOnly vendorIdentityOnly = <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = vendorIdentityOnly.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The entity selected by the condition. (NotNull: if no data, throws exception)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public VendorIdentityOnly selectEntityWithDeletedCheck(VendorIdentityOnlyCB cb) {
         return facadeSelectEntityWithDeletedCheck(cb);
@@ -173,8 +173,8 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * Select the entity by the primary-key value.
      * @param identityOnlyId : PK, ID, NotNull, BIGINT(19). (NotNull)
      * @return The entity selected by the PK. (NullAllowed: if no data, it returns null)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public VendorIdentityOnly selectByPKValue(Long identityOnlyId) {
         return facadeSelectByPKValue(identityOnlyId);
@@ -196,9 +196,9 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * Select the entity by the primary-key value with deleted check.
      * @param identityOnlyId : PK, ID, NotNull, BIGINT(19). (NotNull)
      * @return The entity selected by the PK. (NotNull: if no data, throws exception)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public VendorIdentityOnly selectByPKValueWithDeletedCheck(Long identityOnlyId) {
         return doSelectByPKWithDeletedCheck(identityOnlyId, typeOfSelectedEntity());
@@ -220,23 +220,20 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * Select the list as result bean.
      * <pre>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
-     * cb.query().setFoo...(value);
-     * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;VendorIdentityOnly&gt; vendorIdentityOnlyList = vendorIdentityOnlyBhv.<span style="color: #CC4747">selectList</span>(cb);
-     * for (VendorIdentityOnly vendorIdentityOnly : vendorIdentityOnlyList) {
+     * cb.query().set...;
+     * cb.query().addOrderBy...();
+     * ListResultBean&lt;VendorIdentityOnly&gt; <span style="color: #553000">vendorIdentityOnlyList</span> = <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">selectList</span>(cb);
+     * for (VendorIdentityOnly vendorIdentityOnly : <span style="color: #553000">vendorIdentityOnlyList</span>) {
      *     ... = vendorIdentityOnly.get...();
      * }
      * </pre>
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The result bean of selected list. (NotNull: if no data, returns empty list)
-     * @exception DangerousResultSizeException When the result size is over the specified safety size.
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
      */
     public ListResultBean<VendorIdentityOnly> selectList(VendorIdentityOnlyCB cb) {
         return facadeSelectList(cb);
     }
-
-    @Override
-    protected boolean isEntityDerivedMappable() { return true; }
 
     // ===================================================================================
     //                                                                         Page Select
@@ -249,19 +246,19 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
      * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;VendorIdentityOnly&gt; page = vendorIdentityOnlyBhv.<span style="color: #CC4747">selectPage</span>(cb);
-     * int allRecordCount = page.getAllRecordCount();
-     * int allPageCount = page.getAllPageCount();
-     * boolean isExistPrePage = page.isExistPrePage();
-     * boolean isExistNextPage = page.isExistNextPage();
+     * PagingResultBean&lt;VendorIdentityOnly&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">selectPage</span>(cb);
+     * int allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * int allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * boolean isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * boolean isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
      * ...
-     * for (VendorIdentityOnly vendorIdentityOnly : page) {
+     * for (VendorIdentityOnly vendorIdentityOnly : <span style="color: #553000">page</span>) {
      *     ... = vendorIdentityOnly.get...();
      * }
      * </pre>
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
-     * @exception DangerousResultSizeException When the result size is over the specified safety size.
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
      */
     public PagingResultBean<VendorIdentityOnly> selectPage(VendorIdentityOnlyCB cb) {
         return facadeSelectPage(cb);
@@ -274,8 +271,8 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * Select the cursor by the condition-bean.
      * <pre>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
-     * cb.query().setFoo...(value);
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;VendorIdentityOnly&gt;() {
+     * cb.query().set...
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;VendorIdentityOnly&gt;() {
      *     public void handle(VendorIdentityOnly entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -295,11 +292,9 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
-     *     public void query(VendorIdentityOnlyCB cb) {
-     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
-     *         cb.query().setBarName_PrefixSearch("S");
-     *     }
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...()</span>; <span style="color: #3F7E5E">// required for the function</span>
+     *     <span style="color: #553000">cb</span>.query().set...
      * });
      * </pre>
      * @param <RESULT> The type of result.
@@ -325,23 +320,24 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
     /**
      * Load referrer by the the referrer loader. <br />
      * <pre>
-     * MemberCB cb = new MemberCB();
-     * cb.query().set...
-     * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
-     *         purchaseCB.query().set...
-     *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
+     * List&lt;Member&gt; <span style="color: #553000">memberList</span> = <span style="color: #0000C0">memberBhv</span>.selectList(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * memberBhv.<span style="color: #CC4747">load</span>(<span style="color: #553000">memberList</span>, <span style="color: #553000">memberLoader</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">memberLoader</span>.<span style="color: #CC4747">loadPurchase</span>(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.setupSelect...
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedList(purchaseLoader -&gt {</span>
-     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePaymentList(...);</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
      *     <span style="color: #3F7E5E">// you can also pull out foreign table and load its referrer</span>
      *     <span style="color: #3F7E5E">// (setupSelect of the foreign table should be called)</span>
-     *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
-     * }
-     * for (Member member : memberList) {
+     *     <span style="color: #3F7E5E">//memberLoader.pulloutMemberStatus().loadMemberLogin(...)</span>
+     * });
+     * for (Member member : <span style="color: #553000">memberList</span>) {
      *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
@@ -361,27 +357,24 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
     /**
      * Load referrer of ${referrer.referrerJavaBeansRulePropertyName} by the referrer loader. <br />
      * <pre>
-     * MemberCB cb = new MemberCB();
-     * cb.query().set...
-     * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
-     *         purchaseCB.query().set...
-     *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
+     * Member <span style="color: #553000">member</span> = <span style="color: #0000C0">memberBhv</span>.selectEntityWithDeletedCheck(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> <span style="color: #553000">cb</span>.acceptPK(1));
+     * <span style="color: #0000C0">memberBhv</span>.<span style="color: #CC4747">load</span>(<span style="color: #553000">member</span>, <span style="color: #553000">memberLoader</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">memberLoader</span>.<span style="color: #CC4747">loadPurchase</span>(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.setupSelect...
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedList(purchaseLoader -&gt {</span>
-     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePaymentList(...);</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
      *     <span style="color: #3F7E5E">// you can also pull out foreign table and load its referrer</span>
      *     <span style="color: #3F7E5E">// (setupSelect of the foreign table should be called)</span>
-     *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
-     * }
-     * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
-     *     for (Purchase purchase : purchaseList) {
-     *         ...
-     *     }
+     *     <span style="color: #3F7E5E">//memberLoader.pulloutMemberStatus().loadMemberLogin(...)</span>
+     * });
+     * List&lt;Purchase&gt; purchaseList = <span style="color: #553000">member</span>.<span style="color: #CC4747">getPurchaseList()</span>;
+     * for (Purchase purchase : purchaseList) {
+     *     ...
      * }
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
@@ -421,12 +414,12 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
      * <span style="color: #3F7E5E">//vendorIdentityOnly.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//vendorIdentityOnly.set...;</span>
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">insert</span>(vendorIdentityOnly);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">insert</span>(vendorIdentityOnly);
      * ... = vendorIdentityOnly.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * <p>While, when the entity is created by select, all columns are registered.</p>
      * @param vendorIdentityOnly The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void insert(VendorIdentityOnly vendorIdentityOnly) {
         doInsert(vendorIdentityOnly, null);
@@ -444,15 +437,15 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * vendorIdentityOnly.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     vendorIdentityOnlyBhv.<span style="color: #CC4747">update</span>(vendorIdentityOnly);
+     *     <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">update</span>(vendorIdentityOnly);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
      * </pre>
      * @param vendorIdentityOnly The entity of update. (NotNull, PrimaryKeyNotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void update(VendorIdentityOnly vendorIdentityOnly) {
         doUpdate(vendorIdentityOnly, null);
@@ -463,9 +456,9 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
      * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param vendorIdentityOnly The entity of insert or update. (NotNull, ...depends on insert or update)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void insertOrUpdate(VendorIdentityOnly vendorIdentityOnly) {
         doInsertOrUpdate(vendorIdentityOnly, null, null);
@@ -479,14 +472,14 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * vendorIdentityOnly.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     vendorIdentityOnlyBhv.<span style="color: #CC4747">delete</span>(vendorIdentityOnly);
+     *     <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">delete</span>(vendorIdentityOnly);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
      * </pre>
      * @param vendorIdentityOnly The entity of delete. (NotNull, PrimaryKeyNotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
      */
     public void delete(VendorIdentityOnly vendorIdentityOnly) {
         doDelete(vendorIdentityOnly, null);
@@ -511,7 +504,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      *     <span style="color: #3F7E5E">// columns not-called in all entities are registered as null or default value</span>
      *     vendorIdentityOnlyList.add(vendorIdentityOnly);
      * }
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">batchInsert</span>(vendorIdentityOnlyList);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">batchInsert</span>(vendorIdentityOnlyList);
      * </pre>
      * <p>While, when the entities are created by select, all columns are registered.</p>
      * <p>And if the table has an identity, entities after the process don't have incremented values.
@@ -541,11 +534,11 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      *     <span style="color: #3F7E5E">// (others are not updated: their values are kept)</span>
      *     vendorIdentityOnlyList.add(vendorIdentityOnly);
      * }
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">batchUpdate</span>(vendorIdentityOnlyList);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">batchUpdate</span>(vendorIdentityOnlyList);
      * </pre>
      * @param vendorIdentityOnlyList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public int[] batchUpdate(List<VendorIdentityOnly> vendorIdentityOnlyList) {
         return doBatchUpdate(vendorIdentityOnlyList, null);
@@ -563,7 +556,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">batchUpdate</span>(vendorIdentityOnlyList, new SpecifyQuery<VendorIdentityOnlyCB>() {
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">batchUpdate</span>(vendorIdentityOnlyList, new SpecifyQuery<VendorIdentityOnlyCB>() {
      *     public void specify(VendorIdentityOnlyCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
      *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
@@ -577,7 +570,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * @param vendorIdentityOnlyList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @param colCBLambda The callback for specification of update columns. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public int[] batchUpdate(List<VendorIdentityOnly> vendorIdentityOnlyList, SpecifyQuery<VendorIdentityOnlyCB> colCBLambda) {
         return doBatchUpdate(vendorIdentityOnlyList, createSpecifiedUpdateOption(colCBLambda));
@@ -588,7 +581,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * @param vendorIdentityOnlyList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public int[] batchDelete(List<VendorIdentityOnly> vendorIdentityOnlyList) {
         return doBatchDelete(vendorIdentityOnlyList, null);
@@ -600,7 +593,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
     /**
      * Insert the several entities by query (modified-only for fixed value).
      * <pre>
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;VendorIdentityOnly, VendorIdentityOnlyCB&gt;() {
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;VendorIdentityOnly, VendorIdentityOnlyCB&gt;() {
      *     public ConditionBean setup(VendorIdentityOnly entity, VendorIdentityOnlyCB intoCB) {
      *         FooCB cb = FooCB();
      *         cb.setupSelect_Bar();
@@ -642,12 +635,12 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <span style="color: #3F7E5E">//vendorIdentityOnly.setVersionNo(value);</span>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
      * cb.query().setFoo...(value);
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">queryUpdate</span>(vendorIdentityOnly, cb);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendorIdentityOnly, cb);
      * </pre>
      * @param vendorIdentityOnly The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The updated count.
-     * @exception NonQueryUpdateNotAllowedException When the query has no condition.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition.
      */
     public int queryUpdate(VendorIdentityOnly vendorIdentityOnly, VendorIdentityOnlyCB cb) {
         return doQueryUpdate(vendorIdentityOnly, cb, null);
@@ -658,11 +651,11 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * <pre>
      * VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB();
      * cb.query().setFoo...(value);
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">queryDelete</span>(vendorIdentityOnly, cb);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">queryDelete</span>(vendorIdentityOnly, cb);
      * </pre>
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @return The deleted count.
-     * @exception NonQueryDeleteNotAllowedException When the query has no condition.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition.
      */
     public int queryDelete(VendorIdentityOnlyCB cb) {
         return doQueryDelete(cb, null);
@@ -686,12 +679,12 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * InsertOption<VendorIdentityOnlyCB> option = new InsertOption<VendorIdentityOnlyCB>();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">varyingInsert</span>(vendorIdentityOnly, option);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">varyingInsert</span>(vendorIdentityOnly, option);
      * ... = vendorIdentityOnly.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param vendorIdentityOnly The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void varyingInsert(VendorIdentityOnly vendorIdentityOnly, WritableOptionCall<VendorIdentityOnlyCB, InsertOption<VendorIdentityOnlyCB>> opLambda) {
         doInsert(vendorIdentityOnly, createInsertOption(opLambda));
@@ -715,16 +708,16 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *         }
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     vendorIdentityOnlyBhv.<span style="color: #CC4747">varyingUpdate</span>(vendorIdentityOnly, option);
+     *     <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">varyingUpdate</span>(vendorIdentityOnly, option);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
      * </pre>
      * @param vendorIdentityOnly The entity of update. (NotNull, PrimaryKeyNotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void varyingUpdate(VendorIdentityOnly vendorIdentityOnly, WritableOptionCall<VendorIdentityOnlyCB, UpdateOption<VendorIdentityOnlyCB>> opLambda) {
         doUpdate(vendorIdentityOnly, createUpdateOption(opLambda));
@@ -736,9 +729,9 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * @param vendorIdentityOnly The entity of insert or update. (NotNull)
      * @param insertOpLambda The callback for option of insert for varying requests. (NotNull)
      * @param updateOpLambda The callback for option of update for varying requests. (NotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void varyingInsertOrUpdate(VendorIdentityOnly vendorIdentityOnly, WritableOptionCall<VendorIdentityOnlyCB, InsertOption<VendorIdentityOnlyCB>> insertOpLambda, WritableOptionCall<VendorIdentityOnlyCB, UpdateOption<VendorIdentityOnlyCB>> updateOpLambda) {
         doInsertOrUpdate(vendorIdentityOnly, createInsertOption(insertOpLambda), createUpdateOption(updateOpLambda));
@@ -750,8 +743,8 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * Other specifications are same as delete(entity).
      * @param vendorIdentityOnly The entity of delete. (NotNull, PrimaryKeyNotNull, ConcurrencyColumnNotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
      */
     public void varyingDelete(VendorIdentityOnly vendorIdentityOnly, WritableOptionCall<VendorIdentityOnlyCB, DeleteOption<VendorIdentityOnlyCB>> opLambda) {
         doDelete(vendorIdentityOnly, createDeleteOption(opLambda));
@@ -835,13 +828,13 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
      *     }
      * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * vendorIdentityOnlyBhv.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorIdentityOnly, cb, option);
+     * <span style="color: #0000C0">vendorIdentityOnlyBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorIdentityOnly, cb, option);
      * </pre>
      * @param vendorIdentityOnly The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
      * @return The updated count.
-     * @exception NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
      */
     public int varyingQueryUpdate(VendorIdentityOnly vendorIdentityOnly, VendorIdentityOnlyCB cb, WritableOptionCall<VendorIdentityOnlyCB, UpdateOption<VendorIdentityOnlyCB>> opLambda) {
         return doQueryUpdate(vendorIdentityOnly, cb, createUpdateOption(opLambda));
@@ -854,7 +847,7 @@ public abstract class BsVendorIdentityOnlyBhv extends AbstractBehaviorWritable<V
      * @param cb The condition-bean of VendorIdentityOnly. (NotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The deleted count.
-     * @exception NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
      */
     public int varyingQueryDelete(VendorIdentityOnlyCB cb, WritableOptionCall<VendorIdentityOnlyCB, DeleteOption<VendorIdentityOnlyCB>> opLambda) {
         return doQueryDelete(cb, createDeleteOption(opLambda));

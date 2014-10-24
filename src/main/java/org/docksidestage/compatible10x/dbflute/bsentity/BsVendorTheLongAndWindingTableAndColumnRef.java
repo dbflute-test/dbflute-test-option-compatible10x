@@ -90,7 +90,6 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     /** SHORT_DATE: {NotNull, DATE(8)} */
     protected java.util.Date _shortDate;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -183,8 +182,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_theLongAndWindingTableAndColumnRefId);
-        sb.append(dm).append(_theLongAndWindingTableAndColumnId);
+        sb.append(dm).append(xfND(_theLongAndWindingTableAndColumnRefId));
+        sb.append(dm).append(xfND(_theLongAndWindingTableAndColumnId));
         sb.append(dm).append(xfUD(_theLongAndWindingTableAndColumnRefDate));
         sb.append(dm).append(xfUD(_shortDate));
         if (sb.length() > dm.length()) {
@@ -217,6 +216,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @return The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_ID'. (basically NotNull if selected: for the constraint)
      */
     public Long getTheLongAndWindingTableAndColumnRefId() {
+        checkSpecifiedProperty("theLongAndWindingTableAndColumnRefId");
         return _theLongAndWindingTableAndColumnRefId;
     }
 
@@ -225,7 +225,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @param theLongAndWindingTableAndColumnRefId The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_ID'. (basically NotNull if update: for the constraint)
      */
     public void setTheLongAndWindingTableAndColumnRefId(Long theLongAndWindingTableAndColumnRefId) {
-        __modifiedProperties.addPropertyName("theLongAndWindingTableAndColumnRefId");
+        registerModifiedProperty("theLongAndWindingTableAndColumnRefId");
         _theLongAndWindingTableAndColumnRefId = theLongAndWindingTableAndColumnRefId;
     }
 
@@ -234,6 +234,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @return The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID'. (basically NotNull if selected: for the constraint)
      */
     public Long getTheLongAndWindingTableAndColumnId() {
+        checkSpecifiedProperty("theLongAndWindingTableAndColumnId");
         return _theLongAndWindingTableAndColumnId;
     }
 
@@ -242,7 +243,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @param theLongAndWindingTableAndColumnId The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID'. (basically NotNull if update: for the constraint)
      */
     public void setTheLongAndWindingTableAndColumnId(Long theLongAndWindingTableAndColumnId) {
-        __modifiedProperties.addPropertyName("theLongAndWindingTableAndColumnId");
+        registerModifiedProperty("theLongAndWindingTableAndColumnId");
         _theLongAndWindingTableAndColumnId = theLongAndWindingTableAndColumnId;
     }
 
@@ -251,6 +252,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @return The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE'. (basically NotNull if selected: for the constraint)
      */
     public java.util.Date getTheLongAndWindingTableAndColumnRefDate() {
+        checkSpecifiedProperty("theLongAndWindingTableAndColumnRefDate");
         return _theLongAndWindingTableAndColumnRefDate;
     }
 
@@ -259,7 +261,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @param theLongAndWindingTableAndColumnRefDate The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE'. (basically NotNull if update: for the constraint)
      */
     public void setTheLongAndWindingTableAndColumnRefDate(java.util.Date theLongAndWindingTableAndColumnRefDate) {
-        __modifiedProperties.addPropertyName("theLongAndWindingTableAndColumnRefDate");
+        registerModifiedProperty("theLongAndWindingTableAndColumnRefDate");
         _theLongAndWindingTableAndColumnRefDate = theLongAndWindingTableAndColumnRefDate;
     }
 
@@ -268,6 +270,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @return The value of the column 'SHORT_DATE'. (basically NotNull if selected: for the constraint)
      */
     public java.util.Date getShortDate() {
+        checkSpecifiedProperty("shortDate");
         return _shortDate;
     }
 
@@ -276,7 +279,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
      * @param shortDate The value of the column 'SHORT_DATE'. (basically NotNull if update: for the constraint)
      */
     public void setShortDate(java.util.Date shortDate) {
-        __modifiedProperties.addPropertyName("shortDate");
+        registerModifiedProperty("shortDate");
         _shortDate = shortDate;
     }
 }

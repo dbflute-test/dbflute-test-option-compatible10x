@@ -34,54 +34,54 @@
 # *The line that starts with '#' means comment-out.
 #
 map:{
-    ; isCompatibleBeforeJava8 = true
+    # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    # Migration to Java8 DBFlute
+    # http://d.hatena.ne.jp/jflute/20140530/java8
+    # _/_/_/_/_/_/_/_/_/
+    # compile compatible (true if compatible)
+    ; isCompatibleSelectByPKOldStyle = true
+    ; isCompatibleSelectByPKPlainReturn = true
+    ; isCompatibleSelectByPKWithDeletedCheck = true
+    ; isMakeConditionQueryExistsReferrerToOne = true
+    ; isMakeConditionQueryInScopeRelationToOne = true
+    ; isMakeConditionQueryPlainListManualOrder = true
+    ; isMakeDirectConditionBeanSetup = true
+    ; isMakeBatchUpdateSpecifyColumn = true
+    ; isAvailableSelectEntityPlainReturn = true
+    ; isAvailableRelationPlainEntity = true
+    ; isMakeConditionQueryPrefixSearch = true
+    ; isMakeConditionQueryDateFromTo = true
+    ; isMakeDirectConditionOptionSetup = true
+    ; isMakeDirectConditionManualOrder = true
+    ; isMakeClassificationNativeTypeSetter = true
+    ; isCompatibleNewMyEntityConditionBean = true
+    ; isCompatibleDeleteNonstrictIgnoreDeleted = true
+    ; isCompatibleLoadReferrerOldOption = true
+    ; isCompatibleConditionBeanAcceptPKOldStyle = true
+    ; isCompatibleConditionBeanOldNamingCheckInvalid = true
+    ; isCompatibleConditionBeanOldNamingOption = true
+    ; isCompatibleBizOneToOneImplicitReverseFkAllowed = true
+    ; isCompatibleReferrerCBMethodIdentityNameListSuffix = true
+    ; isCompatibleOutsideSqlFacadeChainOldStyle = true
+    ; isCompatibleOutsideSqlSqlCommentCheckDefault = true
 
-    ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    ## for future DBFlute
-    ## http://d.hatena.ne.jp/jflute/20140530/java8
-    ## _/_/_/_/_/_/_/_/_/
-    ## compile compatible (true if compatible)
-    #; isCompatibleSelectByPKOldStyle = true
-    #; isCompatibleSelectByPKPlainReturn = true
-    #; isCompatibleSelectByPKWithDeletedCheck = true
-    #; isMakeConditionQueryExistsReferrerToOne = true
-    #; isMakeConditionQueryInScopeRelationToOne = true
-    #; isMakeConditionQueryPlainListManualOrder = true
-    #; isMakeDirectConditionBeanSetup = true
-    #; isMakeBatchUpdateSpecifyColumn = true
-    #; isAvailableSelectEntityPlainReturn = true
-    #; isAvailableRelationPlainEntity = true
-    #; isMakeConditionQueryPrefixSearch = true
-    #; isMakeConditionQueryDateFromTo = true
-    #; isMakeDirectConditionOptionSetup = true
-    #; isMakeDirectConditionManualOrder = true
-    #; isMakeClassificationNativeTypeSetter = true
-    #; isCompatibleNewMyEntityConditionBean = true
-    #; isCompatibleDeleteNonstrictIgnoreDeleted = true
-    #; isCompatibleLoadReferrerOldOption = true
-    #; isCompatibleConditionBeanAcceptPKOldStyle = true
-    #; isCompatibleConditionBeanOldNamingCheckInvalid = true
-    #; isCompatibleConditionBeanOldNamingOption = true
-    #; isCompatibleBizOneToOneImplicitReverseFkAllowed = true
-    #; isCompatibleReferrerCBMethodIdentityNameListSuffix = true
-    #; isCompatibleOutsideSqlFacadeChainOldStyle = true
-    #
-    ## compile compatible (false if compatible)
-    #; isMakeCallbackConditionBeanSetup = false
-    #; isEntityDerivedMappable = false
-    #; isMakeCallbackConditionOptionSetup = false
-    #; isMakeCallbackConditionManualOrder = false
-    #; isAvailableJava8TimeLocalDateEntity = false
-    #
-    ## runtime compatible (true if compatible)
-    #; isNullOrEmptyQueryAllowed = true
-    #; isOverridingQueryAllowed = true
-    #; isCompatibleConditionBeanFromToOneSideAllowed = true
-    #; isCompatibleOrScopeQueryPurposeNoCheck = true
-    #; isSuppressDefaultCheckClassificationCode = true
-    #
-    ## runtime compatible (false if compatible)
-    #; isThatsBadTimingDetect = false
+    # compile compatible (false if compatible)
+    ; isMakeCallbackConditionBeanSetup = false
+    ; isEntityDerivedMappable = false
+    ; isMakeCallbackConditionOptionSetup = false
+    ; isMakeCallbackConditionManualOrder = false
+    ; isAvailableJava8TimeLocalDateEntity = false
+
+    # runtime compatible (true if compatible)
+    ; isNullOrEmptyQueryAllowed = true
+    ; isOverridingQueryAllowed = true
+    ; isNonSpecifiedColumnAccessAllowed = true
+    ; isCompatibleConditionBeanFromToOneSideAllowed = true
+    ; isCompatibleOrScopeQueryPurposeNoCheck = true
+    ; isSuppressDefaultCheckClassificationCode = true
+
+    # runtime compatible (false if compatible)
+    ; isThatsBadTimingDetect = false
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o isAvailableAddingSchemaToTableSqlName: (NotRequired - Default false)

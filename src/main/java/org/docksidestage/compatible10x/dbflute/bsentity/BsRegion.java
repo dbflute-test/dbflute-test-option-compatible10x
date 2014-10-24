@@ -83,7 +83,6 @@ public abstract class BsRegion extends AbstractEntity {
     /** (地域名称)REGION_NAME: {NotNull, VARCHAR(50)} */
     protected String _regionName;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -283,8 +282,8 @@ public abstract class BsRegion extends AbstractEntity {
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_regionId);
-        sb.append(dm).append(_regionName);
+        sb.append(dm).append(xfND(_regionId));
+        sb.append(dm).append(xfND(_regionName));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -318,6 +317,7 @@ public abstract class BsRegion extends AbstractEntity {
      * @return The value of the column 'REGION_ID'. (basically NotNull if selected: for the constraint)
      */
     public Integer getRegionId() {
+        checkSpecifiedProperty("regionId");
         return _regionId;
     }
 
@@ -328,7 +328,7 @@ public abstract class BsRegion extends AbstractEntity {
      * @param regionId The value of the column 'REGION_ID'. (basically NotNull if update: for the constraint)
      */
     public void setRegionId(Integer regionId) {
-        __modifiedProperties.addPropertyName("regionId");
+        registerModifiedProperty("regionId");
         _regionId = regionId;
     }
 
@@ -338,6 +338,7 @@ public abstract class BsRegion extends AbstractEntity {
      * @return The value of the column 'REGION_NAME'. (basically NotNull if selected: for the constraint)
      */
     public String getRegionName() {
+        checkSpecifiedProperty("regionName");
         return _regionName;
     }
 
@@ -347,7 +348,7 @@ public abstract class BsRegion extends AbstractEntity {
      * @param regionName The value of the column 'REGION_NAME'. (basically NotNull if update: for the constraint)
      */
     public void setRegionName(String regionName) {
-        __modifiedProperties.addPropertyName("regionName");
+        registerModifiedProperty("regionName");
         _regionName = regionName;
     }
 }

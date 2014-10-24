@@ -216,7 +216,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {exists (select MEMBER_STATUS_CODE from MEMBER where ...)} <br />
      * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">existsMemberList</span>(memberCB -&gt; {
+     * cb.query().<span style="color: #CC4747">existsMemberList</span>(memberCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     memberCB.query().set...
      * });
      * </pre>
@@ -225,8 +225,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void existsMemberList(SubQuery<MemberCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         MemberCB cb = new MemberCB(); cb.xsetupForExistsReferrer(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_ExistsReferrer_MemberList(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMemberStatusCode_ExistsReferrer_MemberList(cb.query());
         registerExistsReferrer(cb.query(), "MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", pp, "memberList");
     }
     public abstract String keepMemberStatusCode_ExistsReferrer_MemberList(MemberCQ sq);
@@ -236,7 +235,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {exists (select LOGIN_MEMBER_STATUS_CODE from MEMBER_LOGIN where ...)} <br />
      * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">existsMemberLoginList</span>(loginCB -&gt; {
+     * cb.query().<span style="color: #CC4747">existsMemberLoginList</span>(loginCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     loginCB.query().set...
      * });
      * </pre>
@@ -245,8 +244,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void existsMemberLoginList(SubQuery<MemberLoginCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         MemberLoginCB cb = new MemberLoginCB(); cb.xsetupForExistsReferrer(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_ExistsReferrer_MemberLoginList(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMemberStatusCode_ExistsReferrer_MemberLoginList(cb.query());
         registerExistsReferrer(cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", pp, "memberLoginList");
     }
     public abstract String keepMemberStatusCode_ExistsReferrer_MemberLoginList(MemberLoginCQ sq);
@@ -256,10 +254,8 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {not exists (select MEMBER_STATUS_CODE from MEMBER where ...)} <br />
      * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">notExistsMemberList</span>(new SubQuery&lt;MemberCB&gt;() {
-     *     public void query(MemberCB subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">notExistsMemberList</span>(memberCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     memberCB.query().set...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of MemberStatusCode_NotExistsReferrer_MemberList for 'not exists'. (NotNull)
@@ -267,8 +263,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void notExistsMemberList(SubQuery<MemberCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         MemberCB cb = new MemberCB(); cb.xsetupForExistsReferrer(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_NotExistsReferrer_MemberList(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMemberStatusCode_NotExistsReferrer_MemberList(cb.query());
         registerNotExistsReferrer(cb.query(), "MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", pp, "memberList");
     }
     public abstract String keepMemberStatusCode_NotExistsReferrer_MemberList(MemberCQ sq);
@@ -278,10 +273,8 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {not exists (select LOGIN_MEMBER_STATUS_CODE from MEMBER_LOGIN where ...)} <br />
      * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">notExistsMemberLoginList</span>(new SubQuery&lt;MemberLoginCB&gt;() {
-     *     public void query(MemberLoginCB subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">notExistsMemberLoginList</span>(loginCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     loginCB.query().set...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of MemberStatusCode_NotExistsReferrer_MemberLoginList for 'not exists'. (NotNull)
@@ -289,8 +282,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void notExistsMemberLoginList(SubQuery<MemberLoginCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         MemberLoginCB cb = new MemberLoginCB(); cb.xsetupForExistsReferrer(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_NotExistsReferrer_MemberLoginList(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMemberStatusCode_NotExistsReferrer_MemberLoginList(cb.query());
         registerNotExistsReferrer(cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", pp, "memberLoginList");
     }
     public abstract String keepMemberStatusCode_NotExistsReferrer_MemberLoginList(MemberLoginCQ sq);
@@ -298,8 +290,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void xsderiveMemberList(String fn, SubQuery<MemberCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         MemberCB cb = new MemberCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_SpecifyDerivedReferrer_MemberList(cb.query());
+        lockCall(() -> sq.query(cb)); String pp = keepMemberStatusCode_SpecifyDerivedReferrer_MemberList(cb.query());
         registerSpecifyDerivedReferrer(fn, cb.query(), "MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", pp, "memberList", al, op);
     }
     public abstract String keepMemberStatusCode_SpecifyDerivedReferrer_MemberList(MemberCQ sq);
@@ -307,8 +298,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void xsderiveMemberLoginList(String fn, SubQuery<MemberLoginCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         MemberLoginCB cb = new MemberLoginCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepMemberStatusCode_SpecifyDerivedReferrer_MemberLoginList(cb.query());
+        lockCall(() -> sq.query(cb)); String pp = keepMemberStatusCode_SpecifyDerivedReferrer_MemberLoginList(cb.query());
         registerSpecifyDerivedReferrer(fn, cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", pp, "memberLoginList", al, op);
     }
     public abstract String keepMemberStatusCode_SpecifyDerivedReferrer_MemberLoginList(MemberLoginCQ sq);
@@ -318,11 +308,9 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {FOO &lt;= (select max(BAR) from MEMBER where ...)} <br />
      * (会員)MEMBER by MEMBER_STATUS_CODE, named 'memberAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">derivedMemberList()</span>.<span style="color: #CC4747">max</span>(new SubQuery&lt;MemberCB&gt;() {
-     *     public void query(MemberCB subCB) {
-     *         subCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
-     *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
-     *     }
+     * cb.query().<span style="color: #CC4747">derivedMemberList()</span>.<span style="color: #CC4747">max</span>(memberCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     memberCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *     memberCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
@@ -331,17 +319,12 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberList();
     }
     protected HpQDRFunction<MemberCB> xcreateQDRFunctionMemberList() {
-        return xcQDRFunc(new HpQDRSetupper<MemberCB>() {
-            public void setup(String fn, SubQuery<MemberCB> sq, String rd, Object vl, DerivedReferrerOption op) {
-                xqderiveMemberList(fn, sq, rd, vl, op);
-            }
-        });
+        return xcQDRFunc((fn, sq, rd, vl, op) -> xqderiveMemberList(fn, sq, rd, vl, op));
     }
     public void xqderiveMemberList(String fn, SubQuery<MemberCB> sq, String rd, Object vl, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         MemberCB cb = new MemberCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String sqpp = keepMemberStatusCode_QueryDerivedReferrer_MemberList(cb.query()); String prpp = keepMemberStatusCode_QueryDerivedReferrer_MemberListParameter(vl);
+        lockCall(() -> sq.query(cb)); String sqpp = keepMemberStatusCode_QueryDerivedReferrer_MemberList(cb.query()); String prpp = keepMemberStatusCode_QueryDerivedReferrer_MemberListParameter(vl);
         registerQueryDerivedReferrer(fn, cb.query(), "MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", sqpp, "memberList", rd, vl, prpp, op);
     }
     public abstract String keepMemberStatusCode_QueryDerivedReferrer_MemberList(MemberCQ sq);
@@ -352,11 +335,9 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * {FOO &lt;= (select max(BAR) from MEMBER_LOGIN where ...)} <br />
      * (会員ログイン)MEMBER_LOGIN by LOGIN_MEMBER_STATUS_CODE, named 'memberLoginAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">derivedMemberLoginList()</span>.<span style="color: #CC4747">max</span>(new SubQuery&lt;MemberLoginCB&gt;() {
-     *     public void query(MemberLoginCB subCB) {
-     *         subCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
-     *         subCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
-     *     }
+     * cb.query().<span style="color: #CC4747">derivedMemberLoginList()</span>.<span style="color: #CC4747">max</span>(loginCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     loginCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
+     *     loginCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
      * </pre>
      * @return The object to set up a function for referrer table. (NotNull)
@@ -365,17 +346,12 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
         return xcreateQDRFunctionMemberLoginList();
     }
     protected HpQDRFunction<MemberLoginCB> xcreateQDRFunctionMemberLoginList() {
-        return xcQDRFunc(new HpQDRSetupper<MemberLoginCB>() {
-            public void setup(String fn, SubQuery<MemberLoginCB> sq, String rd, Object vl, DerivedReferrerOption op) {
-                xqderiveMemberLoginList(fn, sq, rd, vl, op);
-            }
-        });
+        return xcQDRFunc((fn, sq, rd, vl, op) -> xqderiveMemberLoginList(fn, sq, rd, vl, op));
     }
     public void xqderiveMemberLoginList(String fn, SubQuery<MemberLoginCB> sq, String rd, Object vl, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         MemberLoginCB cb = new MemberLoginCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String sqpp = keepMemberStatusCode_QueryDerivedReferrer_MemberLoginList(cb.query()); String prpp = keepMemberStatusCode_QueryDerivedReferrer_MemberLoginListParameter(vl);
+        lockCall(() -> sq.query(cb)); String sqpp = keepMemberStatusCode_QueryDerivedReferrer_MemberLoginList(cb.query()); String prpp = keepMemberStatusCode_QueryDerivedReferrer_MemberLoginListParameter(vl);
         registerQueryDerivedReferrer(fn, cb.query(), "MEMBER_STATUS_CODE", "LOGIN_MEMBER_STATUS_CODE", sqpp, "memberLoginList", rd, vl, prpp, op);
     }
     public abstract String keepMemberStatusCode_QueryDerivedReferrer_MemberLoginList(MemberLoginCQ sq);
@@ -873,9 +849,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void xsmyselfDerive(String fn, SubQuery<MemberStatusCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         MemberStatusCB cb = new MemberStatusCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepSpecifyMyselfDerived(cb.query());
-        String pk = "MEMBER_STATUS_CODE";
+        lockCall(() -> sq.query(cb)); String pp = keepSpecifyMyselfDerived(cb.query()); String pk = "MEMBER_STATUS_CODE";
         registerSpecifyMyselfDerived(fn, cb.query(), pk, pk, pp, "myselfDerived", al, op);
     }
     public abstract String keepSpecifyMyselfDerived(MemberStatusCQ sq);
@@ -909,8 +883,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     public void myselfExists(SubQuery<MemberStatusCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         MemberStatusCB cb = new MemberStatusCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyselfExists(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(MemberStatusCQ sq);

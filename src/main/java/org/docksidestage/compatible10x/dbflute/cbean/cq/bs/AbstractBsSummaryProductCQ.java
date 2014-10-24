@@ -167,7 +167,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
      * {exists (select PRODUCT_ID from PURCHASE where ...)} <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">existsPurchaseList</span>(purchaseCB -&gt; {
+     * cb.query().<span style="color: #CC4747">existsPurchaseList</span>(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     purchaseCB.query().set...
      * });
      * </pre>
@@ -176,8 +176,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     public void existsPurchaseList(SubQuery<PurchaseCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         PurchaseCB cb = new PurchaseCB(); cb.xsetupForExistsReferrer(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductId_ExistsReferrer_PurchaseList(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepProductId_ExistsReferrer_PurchaseList(cb.query());
         registerExistsReferrer(cb.query(), "PRODUCT_ID", "PRODUCT_ID", pp, "purchaseList");
     }
     public abstract String keepProductId_ExistsReferrer_PurchaseList(PurchaseCQ sq);
@@ -187,10 +186,8 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
      * {not exists (select PRODUCT_ID from PURCHASE where ...)} <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">notExistsPurchaseList</span>(new SubQuery&lt;PurchaseCB&gt;() {
-     *     public void query(PurchaseCB subCB) {
-     *         subCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">notExistsPurchaseList</span>(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     purchaseCB.query().set...
      * });
      * </pre>
      * @param subCBLambda The callback for sub-query of ProductId_NotExistsReferrer_PurchaseList for 'not exists'. (NotNull)
@@ -198,8 +195,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     public void notExistsPurchaseList(SubQuery<PurchaseCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         PurchaseCB cb = new PurchaseCB(); cb.xsetupForExistsReferrer(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductId_NotExistsReferrer_PurchaseList(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepProductId_NotExistsReferrer_PurchaseList(cb.query());
         registerNotExistsReferrer(cb.query(), "PRODUCT_ID", "PRODUCT_ID", pp, "purchaseList");
     }
     public abstract String keepProductId_NotExistsReferrer_PurchaseList(PurchaseCQ sq);
@@ -207,8 +203,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     public void xsderivePurchaseList(String fn, SubQuery<PurchaseCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         PurchaseCB cb = new PurchaseCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepProductId_SpecifyDerivedReferrer_PurchaseList(cb.query());
+        lockCall(() -> sq.query(cb)); String pp = keepProductId_SpecifyDerivedReferrer_PurchaseList(cb.query());
         registerSpecifyDerivedReferrer(fn, cb.query(), "PRODUCT_ID", "PRODUCT_ID", pp, "purchaseList", al, op);
     }
     public abstract String keepProductId_SpecifyDerivedReferrer_PurchaseList(PurchaseCQ sq);
@@ -218,7 +213,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
      * {FOO &lt;= (select max(BAR) from PURCHASE where ...)} <br />
      * (購入)PURCHASE by PRODUCT_ID, named 'purchaseAsOne'.
      * <pre>
-     * cb.query().<span style="color: #CC4747">derivedPurchaseList()</span>.<span style="color: #CC4747">max</span>(purchaseCB -&gt; {
+     * cb.query().<span style="color: #CC4747">derivedPurchaseList()</span>.<span style="color: #CC4747">max</span>(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     purchaseCB.specify().<span style="color: #CC4747">columnFoo...</span> <span style="color: #3F7E5E">// derived column by function</span>
      *     purchaseCB.query().setBar... <span style="color: #3F7E5E">// referrer condition</span>
      * }).<span style="color: #CC4747">greaterEqual</span>(123); <span style="color: #3F7E5E">// condition to derived column</span>
@@ -229,17 +224,12 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
         return xcreateQDRFunctionPurchaseList();
     }
     protected HpQDRFunction<PurchaseCB> xcreateQDRFunctionPurchaseList() {
-        return xcQDRFunc(new HpQDRSetupper<PurchaseCB>() {
-            public void setup(String fn, SubQuery<PurchaseCB> sq, String rd, Object vl, DerivedReferrerOption op) {
-                xqderivePurchaseList(fn, sq, rd, vl, op);
-            }
-        });
+        return xcQDRFunc((fn, sq, rd, vl, op) -> xqderivePurchaseList(fn, sq, rd, vl, op));
     }
     public void xqderivePurchaseList(String fn, SubQuery<PurchaseCB> sq, String rd, Object vl, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         PurchaseCB cb = new PurchaseCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String sqpp = keepProductId_QueryDerivedReferrer_PurchaseList(cb.query()); String prpp = keepProductId_QueryDerivedReferrer_PurchaseListParameter(vl);
+        lockCall(() -> sq.query(cb)); String sqpp = keepProductId_QueryDerivedReferrer_PurchaseList(cb.query()); String prpp = keepProductId_QueryDerivedReferrer_PurchaseListParameter(vl);
         registerQueryDerivedReferrer(fn, cb.query(), "PRODUCT_ID", "PRODUCT_ID", sqpp, "purchaseList", rd, vl, prpp, op);
     }
     public abstract String keepProductId_QueryDerivedReferrer_PurchaseList(PurchaseCQ sq);
@@ -918,9 +908,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     public void xsmyselfDerive(String fn, SubQuery<SummaryProductCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         SummaryProductCB cb = new SummaryProductCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepSpecifyMyselfDerived(cb.query());
-        String pk = "PRODUCT_ID";
+        lockCall(() -> sq.query(cb)); String pp = keepSpecifyMyselfDerived(cb.query()); String pk = "PRODUCT_ID";
         registerSpecifyMyselfDerived(fn, cb.query(), pk, pk, pp, "myselfDerived", al, op);
     }
     public abstract String keepSpecifyMyselfDerived(SummaryProductCQ sq);
@@ -954,8 +942,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     public void myselfExists(SubQuery<SummaryProductCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         SummaryProductCB cb = new SummaryProductCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyselfExists(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(SummaryProductCQ sq);

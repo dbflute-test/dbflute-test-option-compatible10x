@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -53,21 +53,9 @@ public class ProductStatusDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgProductStatusCode(), "productStatusCode");
-        setupEpg(_epgMap, new EpgProductStatusName(), "productStatusName");
-        setupEpg(_epgMap, new EpgDisplayOrder(), "displayOrder");
-    }
-    public static class EpgProductStatusCode implements PropertyGateway {
-        public Object read(Entity et) { return ((ProductStatus)et).getProductStatusCode(); }
-        public void write(Entity et, Object vl) { ((ProductStatus)et).setProductStatusCode((String)vl); }
-    }
-    public static class EpgProductStatusName implements PropertyGateway {
-        public Object read(Entity et) { return ((ProductStatus)et).getProductStatusName(); }
-        public void write(Entity et, Object vl) { ((ProductStatus)et).setProductStatusName((String)vl); }
-    }
-    public static class EpgDisplayOrder implements PropertyGateway {
-        public Object read(Entity et) { return ((ProductStatus)et).getDisplayOrder(); }
-        public void write(Entity et, Object vl) { ((ProductStatus)et).setDisplayOrder(cti(vl)); }
+        setupEpg(_epgMap, et -> ((ProductStatus)et).getProductStatusCode(), (et, vl) -> ((ProductStatus)et).setProductStatusCode((String)vl), "productStatusCode");
+        setupEpg(_epgMap, et -> ((ProductStatus)et).getProductStatusName(), (et, vl) -> ((ProductStatus)et).setProductStatusName((String)vl), "productStatusName");
+        setupEpg(_epgMap, et -> ((ProductStatus)et).getDisplayOrder(), (et, vl) -> ((ProductStatus)et).setDisplayOrder(cti(vl)), "displayOrder");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }

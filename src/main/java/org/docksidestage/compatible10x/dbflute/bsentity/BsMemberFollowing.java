@@ -91,7 +91,6 @@ public abstract class BsMemberFollowing extends AbstractEntity {
     /** (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)} */
     protected java.sql.Timestamp _followDatetime;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -218,10 +217,10 @@ public abstract class BsMemberFollowing extends AbstractEntity {
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_memberFollowingId);
-        sb.append(dm).append(_myMemberId);
-        sb.append(dm).append(_yourMemberId);
-        sb.append(dm).append(_followDatetime);
+        sb.append(dm).append(xfND(_memberFollowingId));
+        sb.append(dm).append(xfND(_myMemberId));
+        sb.append(dm).append(xfND(_yourMemberId));
+        sb.append(dm).append(xfND(_followDatetime));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -254,6 +253,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @return The value of the column 'MEMBER_FOLLOWING_ID'. (basically NotNull if selected: for the constraint)
      */
     public Long getMemberFollowingId() {
+        checkSpecifiedProperty("memberFollowingId");
         return _memberFollowingId;
     }
 
@@ -263,7 +263,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @param memberFollowingId The value of the column 'MEMBER_FOLLOWING_ID'. (basically NotNull if update: for the constraint)
      */
     public void setMemberFollowingId(Long memberFollowingId) {
-        __modifiedProperties.addPropertyName("memberFollowingId");
+        registerModifiedProperty("memberFollowingId");
         _memberFollowingId = memberFollowingId;
     }
 
@@ -273,6 +273,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @return The value of the column 'MY_MEMBER_ID'. (basically NotNull if selected: for the constraint)
      */
     public Integer getMyMemberId() {
+        checkSpecifiedProperty("myMemberId");
         return _myMemberId;
     }
 
@@ -282,7 +283,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @param myMemberId The value of the column 'MY_MEMBER_ID'. (basically NotNull if update: for the constraint)
      */
     public void setMyMemberId(Integer myMemberId) {
-        __modifiedProperties.addPropertyName("myMemberId");
+        registerModifiedProperty("myMemberId");
         _myMemberId = myMemberId;
     }
 
@@ -292,6 +293,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @return The value of the column 'YOUR_MEMBER_ID'. (basically NotNull if selected: for the constraint)
      */
     public Integer getYourMemberId() {
+        checkSpecifiedProperty("yourMemberId");
         return _yourMemberId;
     }
 
@@ -301,7 +303,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @param yourMemberId The value of the column 'YOUR_MEMBER_ID'. (basically NotNull if update: for the constraint)
      */
     public void setYourMemberId(Integer yourMemberId) {
-        __modifiedProperties.addPropertyName("yourMemberId");
+        registerModifiedProperty("yourMemberId");
         _yourMemberId = yourMemberId;
     }
 
@@ -311,6 +313,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @return The value of the column 'FOLLOW_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getFollowDatetime() {
+        checkSpecifiedProperty("followDatetime");
         return _followDatetime;
     }
 
@@ -320,7 +323,7 @@ public abstract class BsMemberFollowing extends AbstractEntity {
      * @param followDatetime The value of the column 'FOLLOW_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setFollowDatetime(java.sql.Timestamp followDatetime) {
-        __modifiedProperties.addPropertyName("followDatetime");
+        registerModifiedProperty("followDatetime");
         _followDatetime = followDatetime;
     }
 }

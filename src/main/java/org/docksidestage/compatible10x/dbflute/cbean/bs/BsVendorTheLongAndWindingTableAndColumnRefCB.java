@@ -55,6 +55,9 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
         if (DBFluteConfig.getInstance().isPagingCountLeastJoin()) {
             enablePagingCountLeastJoin();
         }
+        if (DBFluteConfig.getInstance().isNonSpecifiedColumnAccessAllowed()) {
+            enableNonSpecifiedColumnAccess();
+        }
         if (DBFluteConfig.getInstance().isQueryUpdateCountPreCheck()) {
             enableQueryUpdateCountPreCheck();
         }
@@ -138,7 +141,6 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * cb.query().setMemberId_LessEqual(value);    <span style="color: #3F7E5E">// &lt;=</span>
      * cb.query().setMemberName_InScope(valueList);    <span style="color: #3F7E5E">// in ('a', 'b')</span>
      * cb.query().setMemberName_NotInScope(valueList); <span style="color: #3F7E5E">// not in ('a', 'b')</span>
-     * cb.query().setMemberName_PrefixSearch(value);   <span style="color: #3F7E5E">// like 'a%' escape '|'</span>
      * <span style="color: #3F7E5E">// LikeSearch with various options: (versatile)</span>
      * <span style="color: #3F7E5E">// {like ... [options]}</span>
      * cb.query().setMemberName_LikeSearch(value, option);
@@ -148,47 +150,31 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * cb.query().setBirthdate_FromTo(fromDatetime, toDatetime, option);
      * <span style="color: #3F7E5E">// DateFromTo: (Date means yyyy/MM/dd)</span>
      * <span style="color: #3F7E5E">// {fromDate &lt;= BIRTHDATE &lt; toDate + 1 day}</span>
-     * cb.query().setBirthdate_DateFromTo(fromDate, toDate);
      * cb.query().setBirthdate_IsNull();    <span style="color: #3F7E5E">// is null</span>
      * cb.query().setBirthdate_IsNotNull(); <span style="color: #3F7E5E">// is not null</span>
      * 
      * <span style="color: #3F7E5E">// ExistsReferrer: (correlated sub-query)</span>
      * <span style="color: #3F7E5E">// {where exists (select PURCHASE_ID from PURCHASE where ...)}</span>
-     * cb.query().existsPurchaseList(new SubQuery&lt;PurchaseCB&gt;() {
-     *     public void query(PurchaseCB subCB) {
-     *         subCB.query().setXxx... <span style="color: #3F7E5E">// referrer sub-query condition</span>
-     *     }
+     * cb.query().existsPurchase(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     purchaseCB.query().set... <span style="color: #3F7E5E">// referrer sub-query condition</span>
      * });
-     * cb.query().notExistsPurchaseList...
-     * 
-     * <span style="color: #3F7E5E">// InScopeRelation: (sub-query)</span>
-     * <span style="color: #3F7E5E">// {where MEMBER_STATUS_CODE in (select MEMBER_STATUS_CODE from MEMBER_STATUS where ...)}</span>
-     * cb.query().inScopeMemberStatus(new SubQuery&lt;MemberStatusCB&gt;() {
-     *     public void query(MemberStatusCB subCB) {
-     *         subCB.query().setXxx... <span style="color: #3F7E5E">// relation sub-query condition</span>
-     *     }
-     * });
-     * cb.query().notInScopeMemberStatus...
+     * cb.query().notExistsPurchase...
      * 
      * <span style="color: #3F7E5E">// (Query)DerivedReferrer: (correlated sub-query)</span>
-     * cb.query().derivedPurchaseList().max(new SubQuery&lt;PurchaseCB&gt;() {
-     *     public void query(PurchaseCB subCB) {
-     *         subCB.specify().columnPurchasePrice(); <span style="color: #3F7E5E">// derived column for function</span>
-     *         subCB.query().setXxx... <span style="color: #3F7E5E">// referrer sub-query condition</span>
-     *     }
+     * cb.query().derivedPurchaseList().max(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     purchaseCB.specify().columnPurchasePrice(); <span style="color: #3F7E5E">// derived column for function</span>
+     *     purchaseCB.query().set... <span style="color: #3F7E5E">// referrer sub-query condition</span>
      * }).greaterEqual(value);
      * 
      * <span style="color: #3F7E5E">// ScalarCondition: (self-table sub-query)</span>
-     * cb.query().scalar_Equal().max(new SubQuery&lt;MemberCB&gt;() {
-     *     public void query(MemberCB subCB) {
-     *         subCB.specify().columnBirthdate(); <span style="color: #3F7E5E">// derived column for function</span>
-     *         subCB.query().setXxx... <span style="color: #3F7E5E">// scalar sub-query condition</span>
-     *     }
+     * cb.query().scalar_Equal().max(scalarCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     scalarCB.specify().columnBirthdate(); <span style="color: #3F7E5E">// derived column for function</span>
+     *     scalarCB.query().set... <span style="color: #3F7E5E">// scalar sub-query condition</span>
      * });
      * 
      * <span style="color: #3F7E5E">// OrderBy</span>
      * cb.query().addOrderBy_MemberName_Asc();
-     * cb.query().addOrderBy_MemberName_Desc().withManualOrder(valueList);
+     * cb.query().addOrderBy_MemberName_Desc().withManualOrder(option);
      * cb.query().addOrderBy_MemberName_Desc().withNullsFirst();
      * cb.query().addOrderBy_MemberName_Desc().withNullsLast();
      * cb.query().addSpecifiedDerivedOrderBy_Desc(aliasName);
@@ -244,17 +230,15 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * You don't need to call SetupSelect in union-query,
      * because it inherits calls before. (Don't call SetupSelect after here)
      * <pre>
-     * cb.query().<span style="color: #CC4747">union</span>(new UnionQuery&lt;VendorTheLongAndWindingTableAndColumnRefCB&gt;() {
-     *     public void query(VendorTheLongAndWindingTableAndColumnRefCB unionCB) {
-     *         unionCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">union</span>(<span style="color: #553000">unionCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">unionCB</span>.query().set...
      * });
      * </pre>
-     * @param unionQuery The query of 'union'. (NotNull)
+     * @param unionCBLambda The callback for query of 'union'. (NotNull)
      */
-    public void union(UnionQuery<VendorTheLongAndWindingTableAndColumnRefCB> unionQuery) {
+    public void union(UnionQuery<VendorTheLongAndWindingTableAndColumnRefCB> unionCBLambda) {
         final VendorTheLongAndWindingTableAndColumnRefCB cb = new VendorTheLongAndWindingTableAndColumnRefCB(); cb.xsetupForUnion(this); xsyncUQ(cb); 
-        try { lock(); unionQuery.query(cb); } finally { unlock(); } xsaveUCB(cb);
+        try { lock(); unionCBLambda.query(cb); } finally { unlock(); } xsaveUCB(cb);
         final VendorTheLongAndWindingTableAndColumnRefCQ cq = cb.query(); query().xsetUnionQuery(cq);
     }
 
@@ -263,17 +247,15 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * You don't need to call SetupSelect in union-query,
      * because it inherits calls before. (Don't call SetupSelect after here)
      * <pre>
-     * cb.query().<span style="color: #CC4747">unionAll</span>(new UnionQuery&lt;VendorTheLongAndWindingTableAndColumnRefCB&gt;() {
-     *     public void query(VendorTheLongAndWindingTableAndColumnRefCB unionCB) {
-     *         unionCB.query().setXxx...
-     *     }
+     * cb.query().<span style="color: #CC4747">unionAll</span>(<span style="color: #553000">unionCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">unionCB</span>.query().set...
      * });
      * </pre>
-     * @param unionQuery The query of 'union all'. (NotNull)
+     * @param unionCBLambda The callback for query of 'union all'. (NotNull)
      */
-    public void unionAll(UnionQuery<VendorTheLongAndWindingTableAndColumnRefCB> unionQuery) {
+    public void unionAll(UnionQuery<VendorTheLongAndWindingTableAndColumnRefCB> unionCBLambda) {
         final VendorTheLongAndWindingTableAndColumnRefCB cb = new VendorTheLongAndWindingTableAndColumnRefCB(); cb.xsetupForUnion(this); xsyncUQ(cb);
-        try { lock(); unionQuery.query(cb); } finally { unlock(); } xsaveUCB(cb);
+        try { lock(); unionCBLambda.query(cb); } finally { unlock(); } xsaveUCB(cb);
         final VendorTheLongAndWindingTableAndColumnRefCQ cq = cb.query(); query().xsetUnionAllQuery(cq);
     }
 
@@ -284,11 +266,12 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * Set up relation columns to select clause. <br />
      * VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN by my THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID, named 'vendorTheLongAndWindingTableAndColumn'.
      * <pre>
-     * VendorTheLongAndWindingTableAndColumnRefCB cb = new VendorTheLongAndWindingTableAndColumnRefCB();
-     * cb.<span style="color: #CC4747">setupSelect_VendorTheLongAndWindingTableAndColumn()</span>; <span style="color: #3F7E5E">// ...().with[nested-relation]()</span>
-     * cb.query().setFoo...(value);
-     * VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef = vendorTheLongAndWindingTableAndColumnRefBhv.selectEntityWithDeletedCheck(cb);
-     * ... = vendorTheLongAndWindingTableAndColumnRef.<span style="color: #CC4747">getVendorTheLongAndWindingTableAndColumn()</span>; <span style="color: #3F7E5E">// you can get by using SetupSelect</span>
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">setupSelect_VendorTheLongAndWindingTableAndColumn()</span>; <span style="color: #3F7E5E">// ...().with[nested-relation]()</span>
+     *     <span style="color: #553000">cb</span>.query().set...
+     * }).alwaysPresent(<span style="color: #553000">vendorTheLongAndWindingTableAndColumnRef</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ... = <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRef</span>.<span style="color: #CC4747">getVendorTheLongAndWindingTableAndColumn()</span>; <span style="color: #3F7E5E">// you can get by using SetupSelect</span>
+     * });
      * </pre>
      */
     public void setupSelect_VendorTheLongAndWindingTableAndColumn() {
@@ -296,7 +279,7 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
         if (hasSpecifiedColumn()) { // if reverse call
             specify().columnTheLongAndWindingTableAndColumnId();
         }
-        doSetupSelect(new SsCall() { public ConditionQuery qf() { return query().queryVendorTheLongAndWindingTableAndColumn(); } });
+        doSetupSelect(() -> query().queryVendorTheLongAndWindingTableAndColumn());
     }
 
     // [DBFlute-0.7.4]
@@ -309,25 +292,24 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * Prepare for SpecifyColumn, (Specify)DerivedReferrer. <br />
      * This method should be called after SetupSelect.
      * <pre>
-     * cb.setupSelect_MemberStatus(); <span style="color: #3F7E5E">// should be called before specify()</span>
-     * cb.specify().columnMemberName();
-     * cb.specify().specifyMemberStatus().columnMemberStatusName();
-     * cb.specify().derivedPurchaseList().max(new SubQuery&lt;PurchaseCB&gt;() {
-     *     public void query(PurchaseCB subCB) {
-     *         subCB.specify().columnPurchaseDatetime();
-     *         subCB.query().set...
-     *     }
-     * }, aliasName);
+     * <span style="color: #0000C0">memberBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.setupSelect_MemberStatus(); <span style="color: #3F7E5E">// should be called before specify()</span>
+     *     <span style="color: #553000">cb</span>.specify().columnMemberName();
+     *     <span style="color: #553000">cb</span>.specify().specifyMemberStatus().columnMemberStatusName();
+     *     <span style="color: #553000">cb</span>.specify().derivedPurchaseList().max(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.specify().columnPurchaseDatetime();
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *     }, aliasName);
+     * }).alwaysPresent(<span style="color: #553000">member</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ...
+     * });
      * </pre>
      * @return The instance of specification. (NotNull)
      */
     public HpSpecification specify() {
         assertSpecifyPurpose();
         if (_specification == null) { _specification = new HpSpecification(this
-            , new HpSpQyCall<VendorTheLongAndWindingTableAndColumnRefCQ>() {
-                public boolean has() { return true; }
-                public VendorTheLongAndWindingTableAndColumnRefCQ qy() { return xdfgetConditionQuery(); }
-            }
+            , xcreateSpQyCall(() -> true, () -> xdfgetConditionQuery())
             , _purpose, getDBMetaProvider(), xcSDRFnFc()); }
         return _specification;
     }
@@ -386,15 +368,14 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
         public VendorTheLongAndWindingTableAndColumnCB.HpSpecification specifyVendorTheLongAndWindingTableAndColumn() {
             assertRelation("vendorTheLongAndWindingTableAndColumn");
             if (_vendorTheLongAndWindingTableAndColumn == null) {
-                _vendorTheLongAndWindingTableAndColumn = new VendorTheLongAndWindingTableAndColumnCB.HpSpecification(_baseCB, new HpSpQyCall<VendorTheLongAndWindingTableAndColumnCQ>() {
-                    public boolean has() { return _qyCall.has() && _qyCall.qy().hasConditionQueryVendorTheLongAndWindingTableAndColumn(); }
-                    public VendorTheLongAndWindingTableAndColumnCQ qy() { return _qyCall.qy().queryVendorTheLongAndWindingTableAndColumn(); } }
+                _vendorTheLongAndWindingTableAndColumn = new VendorTheLongAndWindingTableAndColumnCB.HpSpecification(_baseCB
+                    , xcreateSpQyCall(() -> _qyCall.has() && _qyCall.qy().hasConditionQueryVendorTheLongAndWindingTableAndColumn()
+                                    , () -> _qyCall.qy().queryVendorTheLongAndWindingTableAndColumn())
                     , _purpose, _dbmetaProvider, xgetSDRFnFc());
                 if (xhasSyncQyCall()) { // inherits it
-                    _vendorTheLongAndWindingTableAndColumn.xsetSyncQyCall(new HpSpQyCall<VendorTheLongAndWindingTableAndColumnCQ>() {
-                        public boolean has() { return xsyncQyCall().has() && xsyncQyCall().qy().hasConditionQueryVendorTheLongAndWindingTableAndColumn(); }
-                        public VendorTheLongAndWindingTableAndColumnCQ qy() { return xsyncQyCall().qy().queryVendorTheLongAndWindingTableAndColumn(); }
-                    });
+                    _vendorTheLongAndWindingTableAndColumn.xsetSyncQyCall(xcreateSpQyCall(
+                        () -> xsyncQyCall().has() && xsyncQyCall().qy().hasConditionQueryVendorTheLongAndWindingTableAndColumn()
+                      , () -> xsyncQyCall().qy().queryVendorTheLongAndWindingTableAndColumn()));
                 }
             }
             return _vendorTheLongAndWindingTableAndColumn;
@@ -405,9 +386,7 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
          */
         public HpSDRFunction<VendorTheLongAndWindingTableAndColumnRefCB, VendorTheLongAndWindingTableAndColumnRefCQ> myselfDerived() {
             assertDerived("myselfDerived"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return cHSDRF(_baseCB, _qyCall.qy(), new HpSDRSetupper<VendorTheLongAndWindingTableAndColumnRefCB, VendorTheLongAndWindingTableAndColumnRefCQ>() {
-                public void setup(String fn, SubQuery<VendorTheLongAndWindingTableAndColumnRefCB> sq, VendorTheLongAndWindingTableAndColumnRefCQ cq, String al, DerivedReferrerOption op) {
-                    cq.xsmyselfDerive(fn, sq, al, op); } }, _dbmetaProvider);
+            return cHSDRF(_baseCB, _qyCall.qy(), (fn, sq, cq, al, op) -> cq.xsmyselfDerive(fn, sq, al, op), _dbmetaProvider);
         }
     }
 
@@ -433,10 +412,8 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      * @return The object for setting up operand and right column. (NotNull)
      */
     public HpColQyOperand<VendorTheLongAndWindingTableAndColumnRefCB> columnQuery(final SpecifyQuery<VendorTheLongAndWindingTableAndColumnRefCB> colCBLambda) {
-        return xcreateColQyOperand(new HpColQyHandler<VendorTheLongAndWindingTableAndColumnRefCB>() {
-            public ColumnCalculator handle(SpecifyQuery<VendorTheLongAndWindingTableAndColumnRefCB> rightSp, String operand) {
-                return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
-            }
+        return xcreateColQyOperand((rightSp, operand) -> {
+            return xcolqy(xcreateColumnQueryCB(), xcreateColumnQueryCB(), colCBLambda, rightSp, operand);
         });
     }
 
@@ -640,10 +617,7 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
         } else {
             cb = new VendorTheLongAndWindingTableAndColumnRefCB();
         }
-        specify().xsetSyncQyCall(new HpSpQyCall<VendorTheLongAndWindingTableAndColumnRefCQ>() {
-            public boolean has() { return true; }
-            public VendorTheLongAndWindingTableAndColumnRefCQ qy() { return cb.query(); }
-        });
+        specify().xsetSyncQyCall(xcreateSpQyCall(() -> true, () -> cb.query()));
     }
 
     // ===================================================================================

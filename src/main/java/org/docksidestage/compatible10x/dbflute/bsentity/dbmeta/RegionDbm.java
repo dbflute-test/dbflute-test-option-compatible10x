@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -53,16 +53,8 @@ public class RegionDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgRegionId(), "regionId");
-        setupEpg(_epgMap, new EpgRegionName(), "regionName");
-    }
-    public static class EpgRegionId implements PropertyGateway {
-        public Object read(Entity et) { return ((Region)et).getRegionId(); }
-        public void write(Entity et, Object vl) { ((Region)et).setRegionId(cti(vl)); }
-    }
-    public static class EpgRegionName implements PropertyGateway {
-        public Object read(Entity et) { return ((Region)et).getRegionName(); }
-        public void write(Entity et, Object vl) { ((Region)et).setRegionName((String)vl); }
+        setupEpg(_epgMap, et -> ((Region)et).getRegionId(), (et, vl) -> ((Region)et).setRegionId(cti(vl)), "regionId");
+        setupEpg(_epgMap, et -> ((Region)et).getRegionName(), (et, vl) -> ((Region)et).setRegionName((String)vl), "regionName");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }

@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.customize.*;
@@ -53,16 +53,8 @@ public class PmCommentCollectionDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgMemberId(), "memberId");
-        setupEpg(_epgMap, new EpgMemberName(), "memberName");
-    }
-    public static class EpgMemberId implements PropertyGateway {
-        public Object read(Entity et) { return ((PmCommentCollection)et).getMemberId(); }
-        public void write(Entity et, Object vl) { ((PmCommentCollection)et).setMemberId(cti(vl)); }
-    }
-    public static class EpgMemberName implements PropertyGateway {
-        public Object read(Entity et) { return ((PmCommentCollection)et).getMemberName(); }
-        public void write(Entity et, Object vl) { ((PmCommentCollection)et).setMemberName((String)vl); }
+        setupEpg(_epgMap, et -> ((PmCommentCollection)et).getMemberId(), (et, vl) -> ((PmCommentCollection)et).setMemberId(cti(vl)), "memberId");
+        setupEpg(_epgMap, et -> ((PmCommentCollection)et).getMemberName(), (et, vl) -> ((PmCommentCollection)et).setMemberName((String)vl), "memberName");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }

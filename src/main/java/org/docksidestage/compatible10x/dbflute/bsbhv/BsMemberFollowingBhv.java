@@ -105,7 +105,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <pre>
      * MemberFollowingCB cb = new MemberFollowingCB();
      * cb.query().setFoo...(value);
-     * int count = memberFollowingBhv.<span style="color: #CC4747">selectCount</span>(cb);
+     * int count = <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -124,7 +124,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <pre>
      * MemberFollowingCB cb = new MemberFollowingCB();
      * cb.query().setFoo...(value);
-     * MemberFollowing memberFollowing = memberFollowingBhv.<span style="color: #DD4747">selectEntity</span>(cb);
+     * MemberFollowing memberFollowing = <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #DD4747">selectEntity</span>(cb);
      * if (memberFollowing != null) { <span style="color: #3F7E5E">// null check</span>
      *     ... = memberFollowing.get...();
      * } else {
@@ -133,8 +133,8 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * </pre>
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public MemberFollowing selectEntity(MemberFollowingCB cb) {
         return facadeSelectEntity(cb);
@@ -155,15 +155,15 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * MemberFollowingCB cb = new MemberFollowingCB();
-     * cb.query().setFoo...(value);
-     * MemberFollowing memberFollowing = memberFollowingBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
+     * cb.query().set...;
+     * MemberFollowing memberFollowing = <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = memberFollowing.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The entity selected by the condition. (NotNull: if no data, throws exception)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public MemberFollowing selectEntityWithDeletedCheck(MemberFollowingCB cb) {
         return facadeSelectEntityWithDeletedCheck(cb);
@@ -173,8 +173,8 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * Select the entity by the primary-key value.
      * @param memberFollowingId (会員フォローイングID): PK, ID, NotNull, BIGINT(19). (NotNull)
      * @return The entity selected by the PK. (NullAllowed: if no data, it returns null)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public MemberFollowing selectByPKValue(Long memberFollowingId) {
         return facadeSelectByPKValue(memberFollowingId);
@@ -196,9 +196,9 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * Select the entity by the primary-key value with deleted check.
      * @param memberFollowingId (会員フォローイングID): PK, ID, NotNull, BIGINT(19). (NotNull)
      * @return The entity selected by the PK. (NotNull: if no data, throws exception)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public MemberFollowing selectByPKValueWithDeletedCheck(Long memberFollowingId) {
         return doSelectByPKWithDeletedCheck(memberFollowingId, typeOfSelectedEntity());
@@ -218,9 +218,9 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * @param myMemberId (わたし): UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER. (NotNull)
      * @param yourMemberId (あなた): +UQ, IX+, NotNull, INTEGER(10), FK to MEMBER. (NotNull)
      * @return The optional entity selected by the unique key. (NotNull: if no data, empty entity)
-     * @exception EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public OptionalEntity<MemberFollowing> selectByUniqueOf(Integer myMemberId, Integer yourMemberId) {
         return facadeSelectByUniqueOf(myMemberId, yourMemberId);
@@ -246,23 +246,20 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * Select the list as result bean.
      * <pre>
      * MemberFollowingCB cb = new MemberFollowingCB();
-     * cb.query().setFoo...(value);
-     * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;MemberFollowing&gt; memberFollowingList = memberFollowingBhv.<span style="color: #CC4747">selectList</span>(cb);
-     * for (MemberFollowing memberFollowing : memberFollowingList) {
+     * cb.query().set...;
+     * cb.query().addOrderBy...();
+     * ListResultBean&lt;MemberFollowing&gt; <span style="color: #553000">memberFollowingList</span> = <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">selectList</span>(cb);
+     * for (MemberFollowing memberFollowing : <span style="color: #553000">memberFollowingList</span>) {
      *     ... = memberFollowing.get...();
      * }
      * </pre>
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The result bean of selected list. (NotNull: if no data, returns empty list)
-     * @exception DangerousResultSizeException When the result size is over the specified safety size.
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
      */
     public ListResultBean<MemberFollowing> selectList(MemberFollowingCB cb) {
         return facadeSelectList(cb);
     }
-
-    @Override
-    protected boolean isEntityDerivedMappable() { return true; }
 
     // ===================================================================================
     //                                                                         Page Select
@@ -275,19 +272,19 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
      * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;MemberFollowing&gt; page = memberFollowingBhv.<span style="color: #CC4747">selectPage</span>(cb);
-     * int allRecordCount = page.getAllRecordCount();
-     * int allPageCount = page.getAllPageCount();
-     * boolean isExistPrePage = page.isExistPrePage();
-     * boolean isExistNextPage = page.isExistNextPage();
+     * PagingResultBean&lt;MemberFollowing&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">selectPage</span>(cb);
+     * int allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * int allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * boolean isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * boolean isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
      * ...
-     * for (MemberFollowing memberFollowing : page) {
+     * for (MemberFollowing memberFollowing : <span style="color: #553000">page</span>) {
      *     ... = memberFollowing.get...();
      * }
      * </pre>
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
-     * @exception DangerousResultSizeException When the result size is over the specified safety size.
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
      */
     public PagingResultBean<MemberFollowing> selectPage(MemberFollowingCB cb) {
         return facadeSelectPage(cb);
@@ -300,8 +297,8 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * Select the cursor by the condition-bean.
      * <pre>
      * MemberFollowingCB cb = new MemberFollowingCB();
-     * cb.query().setFoo...(value);
-     * memberFollowingBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;MemberFollowing&gt;() {
+     * cb.query().set...
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;MemberFollowing&gt;() {
      *     public void handle(MemberFollowing entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -321,11 +318,9 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * memberFollowingBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
-     *     public void query(MemberFollowingCB cb) {
-     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
-     *         cb.query().setBarName_PrefixSearch("S");
-     *     }
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...()</span>; <span style="color: #3F7E5E">// required for the function</span>
+     *     <span style="color: #553000">cb</span>.query().set...
      * });
      * </pre>
      * @param <RESULT> The type of result.
@@ -351,23 +346,24 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
     /**
      * Load referrer by the the referrer loader. <br />
      * <pre>
-     * MemberCB cb = new MemberCB();
-     * cb.query().set...
-     * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
-     *         purchaseCB.query().set...
-     *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
+     * List&lt;Member&gt; <span style="color: #553000">memberList</span> = <span style="color: #0000C0">memberBhv</span>.selectList(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * memberBhv.<span style="color: #CC4747">load</span>(<span style="color: #553000">memberList</span>, <span style="color: #553000">memberLoader</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">memberLoader</span>.<span style="color: #CC4747">loadPurchase</span>(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.setupSelect...
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedList(purchaseLoader -&gt {</span>
-     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePaymentList(...);</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
      *     <span style="color: #3F7E5E">// you can also pull out foreign table and load its referrer</span>
      *     <span style="color: #3F7E5E">// (setupSelect of the foreign table should be called)</span>
-     *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
-     * }
-     * for (Member member : memberList) {
+     *     <span style="color: #3F7E5E">//memberLoader.pulloutMemberStatus().loadMemberLogin(...)</span>
+     * });
+     * for (Member member : <span style="color: #553000">memberList</span>) {
      *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
@@ -387,27 +383,24 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
     /**
      * Load referrer of ${referrer.referrerJavaBeansRulePropertyName} by the referrer loader. <br />
      * <pre>
-     * MemberCB cb = new MemberCB();
-     * cb.query().set...
-     * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
-     *         purchaseCB.query().set...
-     *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
+     * Member <span style="color: #553000">member</span> = <span style="color: #0000C0">memberBhv</span>.selectEntityWithDeletedCheck(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> <span style="color: #553000">cb</span>.acceptPK(1));
+     * <span style="color: #0000C0">memberBhv</span>.<span style="color: #CC4747">load</span>(<span style="color: #553000">member</span>, <span style="color: #553000">memberLoader</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">memberLoader</span>.<span style="color: #CC4747">loadPurchase</span>(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.setupSelect...
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedList(purchaseLoader -&gt {</span>
-     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePaymentList(...);</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
      *     <span style="color: #3F7E5E">// you can also pull out foreign table and load its referrer</span>
      *     <span style="color: #3F7E5E">// (setupSelect of the foreign table should be called)</span>
-     *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
-     * }
-     * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
-     *     for (Purchase purchase : purchaseList) {
-     *         ...
-     *     }
+     *     <span style="color: #3F7E5E">//memberLoader.pulloutMemberStatus().loadMemberLogin(...)</span>
+     * });
+     * List&lt;Purchase&gt; purchaseList = <span style="color: #553000">member</span>.<span style="color: #CC4747">getPurchaseList()</span>;
+     * for (Purchase purchase : purchaseList) {
+     *     ...
      * }
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
@@ -463,12 +456,12 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
      * <span style="color: #3F7E5E">//memberFollowing.setRegisterUser(value);</span>
      * <span style="color: #3F7E5E">//memberFollowing.set...;</span>
-     * memberFollowingBhv.<span style="color: #CC4747">insert</span>(memberFollowing);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">insert</span>(memberFollowing);
      * ... = memberFollowing.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * <p>While, when the entity is created by select, all columns are registered.</p>
      * @param memberFollowing The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void insert(MemberFollowing memberFollowing) {
         doInsert(memberFollowing, null);
@@ -486,15 +479,15 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * memberFollowing.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     memberFollowingBhv.<span style="color: #CC4747">update</span>(memberFollowing);
+     *     <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">update</span>(memberFollowing);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
      * </pre>
      * @param memberFollowing The entity of update. (NotNull, PrimaryKeyNotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void update(MemberFollowing memberFollowing) {
         doUpdate(memberFollowing, null);
@@ -505,9 +498,9 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
      * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param memberFollowing The entity of insert or update. (NotNull, ...depends on insert or update)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void insertOrUpdate(MemberFollowing memberFollowing) {
         doInsertOrUpdate(memberFollowing, null, null);
@@ -521,14 +514,14 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * memberFollowing.<span style="color: #CC4747">setVersionNo</span>(value);
      * try {
-     *     memberFollowingBhv.<span style="color: #CC4747">delete</span>(memberFollowing);
+     *     <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">delete</span>(memberFollowing);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
      * </pre>
      * @param memberFollowing The entity of delete. (NotNull, PrimaryKeyNotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
      */
     public void delete(MemberFollowing memberFollowing) {
         doDelete(memberFollowing, null);
@@ -553,7 +546,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      *     <span style="color: #3F7E5E">// columns not-called in all entities are registered as null or default value</span>
      *     memberFollowingList.add(memberFollowing);
      * }
-     * memberFollowingBhv.<span style="color: #CC4747">batchInsert</span>(memberFollowingList);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">batchInsert</span>(memberFollowingList);
      * </pre>
      * <p>While, when the entities are created by select, all columns are registered.</p>
      * <p>And if the table has an identity, entities after the process don't have incremented values.
@@ -583,11 +576,11 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      *     <span style="color: #3F7E5E">// (others are not updated: their values are kept)</span>
      *     memberFollowingList.add(memberFollowing);
      * }
-     * memberFollowingBhv.<span style="color: #CC4747">batchUpdate</span>(memberFollowingList);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">batchUpdate</span>(memberFollowingList);
      * </pre>
      * @param memberFollowingList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public int[] batchUpdate(List<MemberFollowing> memberFollowingList) {
         return doBatchUpdate(memberFollowingList, null);
@@ -605,7 +598,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * memberFollowingBhv.<span style="color: #CC4747">batchUpdate</span>(memberFollowingList, new SpecifyQuery<MemberFollowingCB>() {
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">batchUpdate</span>(memberFollowingList, new SpecifyQuery<MemberFollowingCB>() {
      *     public void specify(MemberFollowingCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
      *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
@@ -619,7 +612,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * @param memberFollowingList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @param colCBLambda The callback for specification of update columns. (NotNull)
      * @return The array of updated count. (NotNull, EmptyAllowed)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public int[] batchUpdate(List<MemberFollowing> memberFollowingList, SpecifyQuery<MemberFollowingCB> colCBLambda) {
         return doBatchUpdate(memberFollowingList, createSpecifiedUpdateOption(colCBLambda));
@@ -630,7 +623,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * @param memberFollowingList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public int[] batchDelete(List<MemberFollowing> memberFollowingList) {
         return doBatchDelete(memberFollowingList, null);
@@ -642,7 +635,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
     /**
      * Insert the several entities by query (modified-only for fixed value).
      * <pre>
-     * memberFollowingBhv.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;MemberFollowing, MemberFollowingCB&gt;() {
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">queryInsert</span>(new QueryInsertSetupper&lt;MemberFollowing, MemberFollowingCB&gt;() {
      *     public ConditionBean setup(MemberFollowing entity, MemberFollowingCB intoCB) {
      *         FooCB cb = FooCB();
      *         cb.setupSelect_Bar();
@@ -684,12 +677,12 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <span style="color: #3F7E5E">//memberFollowing.setVersionNo(value);</span>
      * MemberFollowingCB cb = new MemberFollowingCB();
      * cb.query().setFoo...(value);
-     * memberFollowingBhv.<span style="color: #CC4747">queryUpdate</span>(memberFollowing, cb);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">queryUpdate</span>(memberFollowing, cb);
      * </pre>
      * @param memberFollowing The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The updated count.
-     * @exception NonQueryUpdateNotAllowedException When the query has no condition.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition.
      */
     public int queryUpdate(MemberFollowing memberFollowing, MemberFollowingCB cb) {
         return doQueryUpdate(memberFollowing, cb, null);
@@ -700,11 +693,11 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * <pre>
      * MemberFollowingCB cb = new MemberFollowingCB();
      * cb.query().setFoo...(value);
-     * memberFollowingBhv.<span style="color: #CC4747">queryDelete</span>(memberFollowing, cb);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">queryDelete</span>(memberFollowing, cb);
      * </pre>
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @return The deleted count.
-     * @exception NonQueryDeleteNotAllowedException When the query has no condition.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition.
      */
     public int queryDelete(MemberFollowingCB cb) {
         return doQueryDelete(cb, null);
@@ -728,12 +721,12 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * InsertOption<MemberFollowingCB> option = new InsertOption<MemberFollowingCB>();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
-     * memberFollowingBhv.<span style="color: #CC4747">varyingInsert</span>(memberFollowing, option);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">varyingInsert</span>(memberFollowing, option);
      * ... = memberFollowing.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param memberFollowing The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void varyingInsert(MemberFollowing memberFollowing, WritableOptionCall<MemberFollowingCB, InsertOption<MemberFollowingCB>> opLambda) {
         doInsert(memberFollowing, createInsertOption(opLambda));
@@ -757,16 +750,16 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *         }
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     memberFollowingBhv.<span style="color: #CC4747">varyingUpdate</span>(memberFollowing, option);
+     *     <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">varyingUpdate</span>(memberFollowing, option);
      * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
      *     ...
      * }
      * </pre>
      * @param memberFollowing The entity of update. (NotNull, PrimaryKeyNotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void varyingUpdate(MemberFollowing memberFollowing, WritableOptionCall<MemberFollowingCB, UpdateOption<MemberFollowingCB>> opLambda) {
         doUpdate(memberFollowing, createUpdateOption(opLambda));
@@ -778,9 +771,9 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * @param memberFollowing The entity of insert or update. (NotNull)
      * @param insertOpLambda The callback for option of insert for varying requests. (NotNull)
      * @param updateOpLambda The callback for option of update for varying requests. (NotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyExistsException When the entity already exists. (unique constraint violation)
      */
     public void varyingInsertOrUpdate(MemberFollowing memberFollowing, WritableOptionCall<MemberFollowingCB, InsertOption<MemberFollowingCB>> insertOpLambda, WritableOptionCall<MemberFollowingCB, UpdateOption<MemberFollowingCB>> updateOpLambda) {
         doInsertOrUpdate(memberFollowing, createInsertOption(insertOpLambda), createUpdateOption(updateOpLambda));
@@ -792,8 +785,8 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * Other specifications are same as delete(entity).
      * @param memberFollowing The entity of delete. (NotNull, PrimaryKeyNotNull, ConcurrencyColumnNotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
      */
     public void varyingDelete(MemberFollowing memberFollowing, WritableOptionCall<MemberFollowingCB, DeleteOption<MemberFollowingCB>> opLambda) {
         doDelete(memberFollowing, createDeleteOption(opLambda));
@@ -877,13 +870,13 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
      *     }
      * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * memberFollowingBhv.<span style="color: #CC4747">varyingQueryUpdate</span>(memberFollowing, cb, option);
+     * <span style="color: #0000C0">memberFollowingBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(memberFollowing, cb, option);
      * </pre>
      * @param memberFollowing The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
      * @return The updated count.
-     * @exception NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
      */
     public int varyingQueryUpdate(MemberFollowing memberFollowing, MemberFollowingCB cb, WritableOptionCall<MemberFollowingCB, UpdateOption<MemberFollowingCB>> opLambda) {
         return doQueryUpdate(memberFollowing, cb, createUpdateOption(opLambda));
@@ -896,7 +889,7 @@ public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<Memb
      * @param cb The condition-bean of MemberFollowing. (NotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The deleted count.
-     * @exception NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
      */
     public int varyingQueryDelete(MemberFollowingCB cb, WritableOptionCall<MemberFollowingCB, DeleteOption<MemberFollowingCB>> opLambda) {
         return doQueryDelete(cb, createDeleteOption(opLambda));

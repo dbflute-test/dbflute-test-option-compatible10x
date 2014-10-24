@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -53,21 +53,9 @@ public class WithdrawalReasonDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgWithdrawalReasonCode(), "withdrawalReasonCode");
-        setupEpg(_epgMap, new EpgWithdrawalReasonText(), "withdrawalReasonText");
-        setupEpg(_epgMap, new EpgDisplayOrder(), "displayOrder");
-    }
-    public static class EpgWithdrawalReasonCode implements PropertyGateway {
-        public Object read(Entity et) { return ((WithdrawalReason)et).getWithdrawalReasonCode(); }
-        public void write(Entity et, Object vl) { ((WithdrawalReason)et).setWithdrawalReasonCode((String)vl); }
-    }
-    public static class EpgWithdrawalReasonText implements PropertyGateway {
-        public Object read(Entity et) { return ((WithdrawalReason)et).getWithdrawalReasonText(); }
-        public void write(Entity et, Object vl) { ((WithdrawalReason)et).setWithdrawalReasonText((String)vl); }
-    }
-    public static class EpgDisplayOrder implements PropertyGateway {
-        public Object read(Entity et) { return ((WithdrawalReason)et).getDisplayOrder(); }
-        public void write(Entity et, Object vl) { ((WithdrawalReason)et).setDisplayOrder(cti(vl)); }
+        setupEpg(_epgMap, et -> ((WithdrawalReason)et).getWithdrawalReasonCode(), (et, vl) -> ((WithdrawalReason)et).setWithdrawalReasonCode((String)vl), "withdrawalReasonCode");
+        setupEpg(_epgMap, et -> ((WithdrawalReason)et).getWithdrawalReasonText(), (et, vl) -> ((WithdrawalReason)et).setWithdrawalReasonText((String)vl), "withdrawalReasonText");
+        setupEpg(_epgMap, et -> ((WithdrawalReason)et).getDisplayOrder(), (et, vl) -> ((WithdrawalReason)et).setDisplayOrder(cti(vl)), "displayOrder");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }

@@ -84,7 +84,6 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
     /** (会員アカウント)MEMBER_ACCOUNT: {VARCHAR(50), refers to MEMBER.MEMBER_ACCOUNT} */
     protected String _memberAccount;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -158,9 +157,9 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_memberId);
-        sb.append(dm).append(_memberName);
-        sb.append(dm).append(_memberAccount);
+        sb.append(dm).append(xfND(_memberId));
+        sb.append(dm).append(xfND(_memberName));
+        sb.append(dm).append(xfND(_memberAccount));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -187,6 +186,7 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
      * @return The value of the column 'MEMBER_ID'. (NullAllowed even if selected: for no constraint)
      */
     public Integer getMemberId() {
+        checkSpecifiedProperty("memberId");
         return _memberId;
     }
 
@@ -196,7 +196,7 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
      * @param memberId The value of the column 'MEMBER_ID'. (NullAllowed: null update allowed for no constraint)
      */
     public void setMemberId(Integer memberId) {
-        __modifiedProperties.addPropertyName("memberId");
+        registerModifiedProperty("memberId");
         _memberId = memberId;
     }
 
@@ -207,6 +207,7 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
      * @return The value of the column 'MEMBER_NAME'. (NullAllowed even if selected: for no constraint)
      */
     public String getMemberName() {
+        checkSpecifiedProperty("memberName");
         return _memberName;
     }
 
@@ -217,7 +218,7 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
      * @param memberName The value of the column 'MEMBER_NAME'. (NullAllowed: null update allowed for no constraint)
      */
     public void setMemberName(String memberName) {
-        __modifiedProperties.addPropertyName("memberName");
+        registerModifiedProperty("memberName");
         _memberName = memberName;
     }
 
@@ -228,6 +229,7 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
      * @return The value of the column 'MEMBER_ACCOUNT'. (NullAllowed even if selected: for no constraint)
      */
     public String getMemberAccount() {
+        checkSpecifiedProperty("memberAccount");
         return _memberAccount;
     }
 
@@ -238,7 +240,7 @@ public abstract class BsPmCommentOrderByIf extends AbstractEntity {
      * @param memberAccount The value of the column 'MEMBER_ACCOUNT'. (NullAllowed: null update allowed for no constraint)
      */
     public void setMemberAccount(String memberAccount) {
-        __modifiedProperties.addPropertyName("memberAccount");
+        registerModifiedProperty("memberAccount");
         _memberAccount = memberAccount;
     }
 }

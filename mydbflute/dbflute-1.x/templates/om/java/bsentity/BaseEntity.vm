@@ -25,7 +25,7 @@ import org.dbflute.Entity;
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
 #if ($table.needsMappingValueType())
-import org.dbflute.dbmeta.MappingValueType;
+import org.dbflute.dbmeta.accessory.MappingValueType;
 #end
 #if ($table.needsRelationOptionalEntityImport())
 import ${database.relationOptionalEntityClassName};
@@ -114,7 +114,6 @@ public abstract class $myClassName extends AbstractEntity${myEntityInterfaceDef}
     protected ${col.javaNative} _${col.uncapitalisedJavaName};
 
 #end
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -498,12 +497,20 @@ public abstract class $myClassName extends AbstractEntity${myEntityInterfaceDef}
         StringBuilder sb = new StringBuilder();
 #foreach ($fk in $table.foreignKeys)
 #set ($foreignVariableName = "_${fk.foreignPropertyName}")
+#if ($fk.isForeignPropertyOptionalEntity())
+        if (${foreignVariableName} != null && ${foreignVariableName}.isPresent())
+#else
         if (${foreignVariableName} != null)
+#end
         { sb.append(li).append(xbRDS(${foreignVariableName}, "${fk.foreignPropertyName}")); }
 #end
 #foreach ($referrer in $table.referrerAsOneList)
 #set ($referrerVariableName = "_${referrer.referrerPropertyNameAsOne}")
+#if ($fk.isForeignPropertyOptionalEntity())
+        if (${referrerVariableName} != null && ${referrerVariableName}.isPresent())
+#else
         if (${referrerVariableName} != null)
+#end
         { sb.append(li).append(xbRDS(${referrerVariableName}, "${referrer.referrerPropertyNameAsOne}")); }
 #end
 #foreach ($referrer in $table.referrerAsManyList)
@@ -531,7 +538,7 @@ public abstract class $myClassName extends AbstractEntity${myEntityInterfaceDef}
 #elseif ($col.isJavaNativeByteArray())
         sb.append(dm).append(xfBA(_${col.uncapitalisedJavaName}));
 #else
-        sb.append(dm).append(_${col.uncapitalisedJavaName});
+        sb.append(dm).append(xfND(_${col.uncapitalisedJavaName}));
 #end
 #end
         if (sb.length() > dm.length()) {
@@ -599,6 +606,7 @@ public abstract class $myClassName extends AbstractEntity${myEntityInterfaceDef}
     @MappingValueType(keyName = "bytesOidType")
 #end
     public ${col.javaNative} get${col.javaName}() {
+        checkSpecifiedProperty("${col.javaBeansRulePropertyName}");
 #if ($col.isEntityConvertEmptyStringToNull())
         return convertEmptyToNull(_${col.uncapitalisedJavaName});
 #else
@@ -621,7 +629,7 @@ public abstract class $myClassName extends AbstractEntity${myEntityInterfaceDef}
 #if ($col.hasCheckClassificationCodeOnEntity())
         checkClassificationCode("${col.name}", ${glCDef}.DefMeta.${col.classificationName}, ${col.uncapitalisedJavaName});
 #end
-        __modifiedProperties.addPropertyName("${col.javaBeansRulePropertyName}");
+        registerModifiedProperty("${col.javaBeansRulePropertyName}");
         _${col.uncapitalisedJavaName} = ${col.uncapitalisedJavaName};
     }
 #set ($propertyLoopIndex = $propertyLoopIndex + 1)
@@ -636,16 +644,12 @@ public abstract class $myClassName extends AbstractEntity${myEntityInterfaceDef}
 #set ($uncapitalisedJavaName = ${database.convertUncapitalisedJavaNameByJdbcNameAsColumn(${filteredColumnName})})
 #set ($targetJavaName = ${table.findTargetColumnJavaNameByCommonColumnName(${columnName})})
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public ${javaNative} get${javaName}() {
         return get${targetJavaName}();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public void set${javaName}(${javaNative} ${uncapitalisedJavaName}) {
         set${targetJavaName}(${uncapitalisedJavaName});
     }

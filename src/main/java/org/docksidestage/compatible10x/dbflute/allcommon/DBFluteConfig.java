@@ -78,6 +78,7 @@ public class DBFluteConfig {
     protected boolean _emptyStringQueryAllowed;
     protected boolean _emptyStringParameterAllowed;
     protected boolean _overridingQueryAllowed = true;
+    protected boolean _nonSpecifiedColumnAccessAllowed = true;
     protected boolean _disableSelectIndex;
     protected boolean _queryUpdateCountPreCheck = false;
 
@@ -278,6 +279,26 @@ public class DBFluteConfig {
             _log.info("...Setting overridingQueryAllowed: " + overridingQueryAllowed);
         }
         _overridingQueryAllowed = overridingQueryAllowed;
+    }
+
+    // ===================================================================================
+    //                                                                Non-Specified Access
+    //                                                                ====================
+    public boolean isNonSpecifiedColumnAccessAllowed() {
+        return _nonSpecifiedColumnAccessAllowed;
+    }
+
+    /**
+     * Set whether non-specified column access is allowed or not. <br />
+     * This configuration is only for ConditionBean.
+     * @param nonSpecifiedColumnAccessAllowed The determination, true or false.
+     */
+    public void setNonSpecifiedColumnAccessAllowed(boolean nonSpecifiedColumnAccessAllowed) {
+        assertUnlocked();
+        if (_log.isInfoEnabled()) {
+            _log.info("...Setting nonSpecifiedColumnAccessAllowed: " + nonSpecifiedColumnAccessAllowed);
+        }
+        _nonSpecifiedColumnAccessAllowed = nonSpecifiedColumnAccessAllowed;
     }
 
     // ===================================================================================

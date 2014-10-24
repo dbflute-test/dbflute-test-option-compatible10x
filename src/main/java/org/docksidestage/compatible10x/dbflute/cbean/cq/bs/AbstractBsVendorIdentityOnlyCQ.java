@@ -306,9 +306,7 @@ public abstract class AbstractBsVendorIdentityOnlyCQ extends AbstractConditionQu
     public void xsmyselfDerive(String fn, SubQuery<VendorIdentityOnlyCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepSpecifyMyselfDerived(cb.query());
-        String pk = "IDENTITY_ONLY_ID";
+        lockCall(() -> sq.query(cb)); String pp = keepSpecifyMyselfDerived(cb.query()); String pk = "IDENTITY_ONLY_ID";
         registerSpecifyMyselfDerived(fn, cb.query(), pk, pk, pp, "myselfDerived", al, op);
     }
     public abstract String keepSpecifyMyselfDerived(VendorIdentityOnlyCQ sq);
@@ -342,8 +340,7 @@ public abstract class AbstractBsVendorIdentityOnlyCQ extends AbstractConditionQu
     public void myselfExists(SubQuery<VendorIdentityOnlyCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         VendorIdentityOnlyCB cb = new VendorIdentityOnlyCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyselfExists(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(VendorIdentityOnlyCQ sq);

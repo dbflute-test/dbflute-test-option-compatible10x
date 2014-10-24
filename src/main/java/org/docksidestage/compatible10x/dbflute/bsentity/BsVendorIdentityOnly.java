@@ -75,7 +75,6 @@ public abstract class BsVendorIdentityOnly extends AbstractEntity {
     /** IDENTITY_ONLY_ID: {PK, ID, NotNull, BIGINT(19)} */
     protected Long _identityOnlyId;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -146,7 +145,7 @@ public abstract class BsVendorIdentityOnly extends AbstractEntity {
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_identityOnlyId);
+        sb.append(dm).append(xfND(_identityOnlyId));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -172,6 +171,7 @@ public abstract class BsVendorIdentityOnly extends AbstractEntity {
      * @return The value of the column 'IDENTITY_ONLY_ID'. (basically NotNull if selected: for the constraint)
      */
     public Long getIdentityOnlyId() {
+        checkSpecifiedProperty("identityOnlyId");
         return _identityOnlyId;
     }
 
@@ -180,7 +180,7 @@ public abstract class BsVendorIdentityOnly extends AbstractEntity {
      * @param identityOnlyId The value of the column 'IDENTITY_ONLY_ID'. (basically NotNull if update: for the constraint)
      */
     public void setIdentityOnlyId(Long identityOnlyId) {
-        __modifiedProperties.addPropertyName("identityOnlyId");
+        registerModifiedProperty("identityOnlyId");
         _identityOnlyId = identityOnlyId;
     }
 }

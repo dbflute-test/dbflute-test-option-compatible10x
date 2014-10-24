@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -53,11 +53,7 @@ public class VendorPrimaryKeyOnlyDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgPrimaryKeyOnlyId(), "primaryKeyOnlyId");
-    }
-    public static class EpgPrimaryKeyOnlyId implements PropertyGateway {
-        public Object read(Entity et) { return ((VendorPrimaryKeyOnly)et).getPrimaryKeyOnlyId(); }
-        public void write(Entity et, Object vl) { ((VendorPrimaryKeyOnly)et).setPrimaryKeyOnlyId(ctl(vl)); }
+        setupEpg(_epgMap, et -> ((VendorPrimaryKeyOnly)et).getPrimaryKeyOnlyId(), (et, vl) -> ((VendorPrimaryKeyOnly)et).setPrimaryKeyOnlyId(ctl(vl)), "primaryKeyOnlyId");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }

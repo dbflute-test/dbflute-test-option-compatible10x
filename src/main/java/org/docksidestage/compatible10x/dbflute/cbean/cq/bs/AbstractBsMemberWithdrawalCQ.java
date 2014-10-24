@@ -1199,9 +1199,7 @@ public abstract class AbstractBsMemberWithdrawalCQ extends AbstractConditionQuer
     public void xsmyselfDerive(String fn, SubQuery<MemberWithdrawalCB> sq, String al, DerivedReferrerOption op) {
         assertObjectNotNull("subQuery", sq);
         MemberWithdrawalCB cb = new MemberWithdrawalCB(); cb.xsetupForDerivedReferrer(this);
-        try { lock(); sq.query(cb); } finally { unlock(); }
-        String pp = keepSpecifyMyselfDerived(cb.query());
-        String pk = "MEMBER_ID";
+        lockCall(() -> sq.query(cb)); String pp = keepSpecifyMyselfDerived(cb.query()); String pk = "MEMBER_ID";
         registerSpecifyMyselfDerived(fn, cb.query(), pk, pk, pp, "myselfDerived", al, op);
     }
     public abstract String keepSpecifyMyselfDerived(MemberWithdrawalCQ sq);
@@ -1235,8 +1233,7 @@ public abstract class AbstractBsMemberWithdrawalCQ extends AbstractConditionQuer
     public void myselfExists(SubQuery<MemberWithdrawalCB> subCBLambda) {
         assertObjectNotNull("subCBLambda", subCBLambda);
         MemberWithdrawalCB cb = new MemberWithdrawalCB(); cb.xsetupForMyselfExists(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyselfExists(cb.query());
+        lockCall(() -> subCBLambda.query(cb)); String pp = keepMyselfExists(cb.query());
         registerMyselfExists(cb.query(), pp);
     }
     public abstract String keepMyselfExists(MemberWithdrawalCQ sq);

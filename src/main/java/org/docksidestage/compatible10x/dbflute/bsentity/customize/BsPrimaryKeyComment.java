@@ -101,7 +101,6 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
     /** (更新ユーザ)UPDATE_USER: {VARCHAR(200), refers to MEMBER.UPDATE_USER} */
     protected String _updateUser;
 
-
     // ===================================================================================
     //                                                                          Table Name
     //                                                                          ==========
@@ -242,12 +241,12 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
     @Override
     protected String doBuildColumnString(String dm) {
         StringBuilder sb = new StringBuilder();
-        sb.append(dm).append(_memberId);
-        sb.append(dm).append(_memberName);
-        sb.append(dm).append(_registerDatetime);
-        sb.append(dm).append(_registerUser);
-        sb.append(dm).append(_updateDatetime);
-        sb.append(dm).append(_updateUser);
+        sb.append(dm).append(xfND(_memberId));
+        sb.append(dm).append(xfND(_memberName));
+        sb.append(dm).append(xfND(_registerDatetime));
+        sb.append(dm).append(xfND(_registerUser));
+        sb.append(dm).append(xfND(_updateDatetime));
+        sb.append(dm).append(xfND(_updateUser));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -274,6 +273,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @return The value of the column 'MEMBER_ID'. (NullAllowed even if selected: for no constraint)
      */
     public Integer getMemberId() {
+        checkSpecifiedProperty("memberId");
         return _memberId;
     }
 
@@ -283,7 +283,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @param memberId The value of the column 'MEMBER_ID'. (NullAllowed: null update allowed for no constraint)
      */
     public void setMemberId(Integer memberId) {
-        __modifiedProperties.addPropertyName("memberId");
+        registerModifiedProperty("memberId");
         _memberId = memberId;
     }
 
@@ -294,6 +294,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @return The value of the column 'MEMBER_NAME'. (NullAllowed even if selected: for no constraint)
      */
     public String getMemberName() {
+        checkSpecifiedProperty("memberName");
         return _memberName;
     }
 
@@ -304,7 +305,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @param memberName The value of the column 'MEMBER_NAME'. (NullAllowed: null update allowed for no constraint)
      */
     public void setMemberName(String memberName) {
-        __modifiedProperties.addPropertyName("memberName");
+        registerModifiedProperty("memberName");
         _memberName = memberName;
     }
 
@@ -316,6 +317,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @return The value of the column 'REGISTER_DATETIME'. (NullAllowed even if selected: for no constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
+        checkSpecifiedProperty("registerDatetime");
         return _registerDatetime;
     }
 
@@ -327,7 +329,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (NullAllowed: null update allowed for no constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
-        __modifiedProperties.addPropertyName("registerDatetime");
+        registerModifiedProperty("registerDatetime");
         _registerDatetime = registerDatetime;
     }
 
@@ -338,6 +340,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @return The value of the column 'REGISTER_USER'. (NullAllowed even if selected: for no constraint)
      */
     public String getRegisterUser() {
+        checkSpecifiedProperty("registerUser");
         return _registerUser;
     }
 
@@ -348,7 +351,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @param registerUser The value of the column 'REGISTER_USER'. (NullAllowed: null update allowed for no constraint)
      */
     public void setRegisterUser(String registerUser) {
-        __modifiedProperties.addPropertyName("registerUser");
+        registerModifiedProperty("registerUser");
         _registerUser = registerUser;
     }
 
@@ -359,6 +362,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @return The value of the column 'UPDATE_DATETIME'. (NullAllowed even if selected: for no constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
+        checkSpecifiedProperty("updateDatetime");
         return _updateDatetime;
     }
 
@@ -369,7 +373,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (NullAllowed: null update allowed for no constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {
-        __modifiedProperties.addPropertyName("updateDatetime");
+        registerModifiedProperty("updateDatetime");
         _updateDatetime = updateDatetime;
     }
 
@@ -380,6 +384,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @return The value of the column 'UPDATE_USER'. (NullAllowed even if selected: for no constraint)
      */
     public String getUpdateUser() {
+        checkSpecifiedProperty("updateUser");
         return _updateUser;
     }
 
@@ -390,7 +395,7 @@ public abstract class BsPrimaryKeyComment extends AbstractEntity implements Enti
      * @param updateUser The value of the column 'UPDATE_USER'. (NullAllowed: null update allowed for no constraint)
      */
     public void setUpdateUser(String updateUser) {
-        __modifiedProperties.addPropertyName("updateUser");
+        registerModifiedProperty("updateUser");
         _updateUser = updateUser;
     }
 }

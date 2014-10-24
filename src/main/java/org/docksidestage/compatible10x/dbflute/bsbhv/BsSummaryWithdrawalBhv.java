@@ -103,7 +103,7 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * <pre>
      * SummaryWithdrawalCB cb = new SummaryWithdrawalCB();
      * cb.query().setFoo...(value);
-     * int count = summaryWithdrawalBhv.<span style="color: #CC4747">selectCount</span>(cb);
+     * int count = <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #CC4747">selectCount</span>(cb);
      * </pre>
      * @param cb The condition-bean of SummaryWithdrawal. (NotNull)
      * @return The count for the condition. (NotMinus)
@@ -122,7 +122,7 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * <pre>
      * SummaryWithdrawalCB cb = new SummaryWithdrawalCB();
      * cb.query().setFoo...(value);
-     * SummaryWithdrawal summaryWithdrawal = summaryWithdrawalBhv.<span style="color: #DD4747">selectEntity</span>(cb);
+     * SummaryWithdrawal summaryWithdrawal = <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #DD4747">selectEntity</span>(cb);
      * if (summaryWithdrawal != null) { <span style="color: #3F7E5E">// null check</span>
      *     ... = summaryWithdrawal.get...();
      * } else {
@@ -131,8 +131,8 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * </pre>
      * @param cb The condition-bean of SummaryWithdrawal. (NotNull)
      * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public SummaryWithdrawal selectEntity(SummaryWithdrawalCB cb) {
         return facadeSelectEntity(cb);
@@ -153,15 +153,15 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * SummaryWithdrawalCB cb = new SummaryWithdrawalCB();
-     * cb.query().setFoo...(value);
-     * SummaryWithdrawal summaryWithdrawal = summaryWithdrawalBhv.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
+     * cb.query().set...;
+     * SummaryWithdrawal summaryWithdrawal = <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
      * ... = summaryWithdrawal.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
      * </pre>
      * @param cb The condition-bean of SummaryWithdrawal. (NotNull)
      * @return The entity selected by the condition. (NotNull: if no data, throws exception)
-     * @exception EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @exception EntityDuplicatedException When the entity has been duplicated.
-     * @exception SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
     public SummaryWithdrawal selectEntityWithDeletedCheck(SummaryWithdrawalCB cb) {
         return facadeSelectEntityWithDeletedCheck(cb);
@@ -174,23 +174,20 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * Select the list as result bean.
      * <pre>
      * SummaryWithdrawalCB cb = new SummaryWithdrawalCB();
-     * cb.query().setFoo...(value);
-     * cb.query().addOrderBy_Bar...();
-     * ListResultBean&lt;SummaryWithdrawal&gt; summaryWithdrawalList = summaryWithdrawalBhv.<span style="color: #CC4747">selectList</span>(cb);
-     * for (SummaryWithdrawal summaryWithdrawal : summaryWithdrawalList) {
+     * cb.query().set...;
+     * cb.query().addOrderBy...();
+     * ListResultBean&lt;SummaryWithdrawal&gt; <span style="color: #553000">summaryWithdrawalList</span> = <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #CC4747">selectList</span>(cb);
+     * for (SummaryWithdrawal summaryWithdrawal : <span style="color: #553000">summaryWithdrawalList</span>) {
      *     ... = summaryWithdrawal.get...();
      * }
      * </pre>
      * @param cb The condition-bean of SummaryWithdrawal. (NotNull)
      * @return The result bean of selected list. (NotNull: if no data, returns empty list)
-     * @exception DangerousResultSizeException When the result size is over the specified safety size.
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
      */
     public ListResultBean<SummaryWithdrawal> selectList(SummaryWithdrawalCB cb) {
         return facadeSelectList(cb);
     }
-
-    @Override
-    protected boolean isEntityDerivedMappable() { return true; }
 
     // ===================================================================================
     //                                                                         Page Select
@@ -203,19 +200,19 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * cb.query().setFoo...(value);
      * cb.query().addOrderBy_Bar...();
      * cb.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
-     * PagingResultBean&lt;SummaryWithdrawal&gt; page = summaryWithdrawalBhv.<span style="color: #CC4747">selectPage</span>(cb);
-     * int allRecordCount = page.getAllRecordCount();
-     * int allPageCount = page.getAllPageCount();
-     * boolean isExistPrePage = page.isExistPrePage();
-     * boolean isExistNextPage = page.isExistNextPage();
+     * PagingResultBean&lt;SummaryWithdrawal&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #CC4747">selectPage</span>(cb);
+     * int allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * int allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * boolean isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * boolean isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
      * ...
-     * for (SummaryWithdrawal summaryWithdrawal : page) {
+     * for (SummaryWithdrawal summaryWithdrawal : <span style="color: #553000">page</span>) {
      *     ... = summaryWithdrawal.get...();
      * }
      * </pre>
      * @param cb The condition-bean of SummaryWithdrawal. (NotNull)
      * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
-     * @exception DangerousResultSizeException When the result size is over the specified safety size.
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
      */
     public PagingResultBean<SummaryWithdrawal> selectPage(SummaryWithdrawalCB cb) {
         return facadeSelectPage(cb);
@@ -228,8 +225,8 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * Select the cursor by the condition-bean.
      * <pre>
      * SummaryWithdrawalCB cb = new SummaryWithdrawalCB();
-     * cb.query().setFoo...(value);
-     * summaryWithdrawalBhv.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;SummaryWithdrawal&gt;() {
+     * cb.query().set...
+     * <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #CC4747">selectCursor</span>(cb, new EntityRowHandler&lt;SummaryWithdrawal&gt;() {
      *     public void handle(SummaryWithdrawal entity) {
      *         ... = entity.getFoo...();
      *     }
@@ -249,11 +246,9 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * Select the scalar value derived by a function from uniquely-selected records. <br />
      * You should call a function method after this method called like as follows:
      * <pre>
-     * summaryWithdrawalBhv.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(new ScalarQuery() {
-     *     public void query(SummaryWithdrawalCB cb) {
-     *         cb.specify().<span style="color: #CC4747">columnFooDatetime()</span>; <span style="color: #3F7E5E">// required for a function</span>
-     *         cb.query().setBarName_PrefixSearch("S");
-     *     }
+     * <span style="color: #0000C0">summaryWithdrawalBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...()</span>; <span style="color: #3F7E5E">// required for the function</span>
+     *     <span style="color: #553000">cb</span>.query().set...
      * });
      * </pre>
      * @param <RESULT> The type of result.
@@ -279,23 +274,24 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
     /**
      * Load referrer by the the referrer loader. <br />
      * <pre>
-     * MemberCB cb = new MemberCB();
-     * cb.query().set...
-     * List&lt;Member&gt; memberList = memberBhv.selectList(cb);
-     * memberBhv.<span style="color: #CC4747">load</span>(memberList, loader -&gt; {
-     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
-     *         purchaseCB.query().set...
-     *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
+     * List&lt;Member&gt; <span style="color: #553000">memberList</span> = <span style="color: #0000C0">memberBhv</span>.selectList(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * memberBhv.<span style="color: #CC4747">load</span>(<span style="color: #553000">memberList</span>, <span style="color: #553000">memberLoader</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">memberLoader</span>.<span style="color: #CC4747">loadPurchase</span>(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.setupSelect...
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedList(purchaseLoader -&gt {</span>
-     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePaymentList(...);</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
      *     <span style="color: #3F7E5E">// you can also pull out foreign table and load its referrer</span>
      *     <span style="color: #3F7E5E">// (setupSelect of the foreign table should be called)</span>
-     *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
-     * }
-     * for (Member member : memberList) {
+     *     <span style="color: #3F7E5E">//memberLoader.pulloutMemberStatus().loadMemberLogin(...)</span>
+     * });
+     * for (Member member : <span style="color: #553000">memberList</span>) {
      *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
      *     for (Purchase purchase : purchaseList) {
      *         ...
@@ -315,27 +311,24 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
     /**
      * Load referrer of ${referrer.referrerJavaBeansRulePropertyName} by the referrer loader. <br />
      * <pre>
-     * MemberCB cb = new MemberCB();
-     * cb.query().set...
-     * Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-     * memberBhv.<span style="color: #CC4747">load</span>(member, loader -&gt; {
-     *     loader.<span style="color: #CC4747">loadPurchaseList</span>(purchaseCB -&gt; {
-     *         purchaseCB.query().set...
-     *         purchaseCB.query().addOrderBy_PurchasePrice_Desc();
+     * Member <span style="color: #553000">member</span> = <span style="color: #0000C0">memberBhv</span>.selectEntityWithDeletedCheck(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> <span style="color: #553000">cb</span>.acceptPK(1));
+     * <span style="color: #0000C0">memberBhv</span>.<span style="color: #CC4747">load</span>(<span style="color: #553000">member</span>, <span style="color: #553000">memberLoader</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">memberLoader</span>.<span style="color: #CC4747">loadPurchase</span>(<span style="color: #553000">purchaseCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">purchaseCB</span>.setupSelect...
+     *         <span style="color: #553000">purchaseCB</span>.query().set...
+     *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedList(purchaseLoader -&gt {</span>
-     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePaymentList(...);</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
      *     <span style="color: #3F7E5E">// you can also pull out foreign table and load its referrer</span>
      *     <span style="color: #3F7E5E">// (setupSelect of the foreign table should be called)</span>
-     *     <span style="color: #3F7E5E">//loader.pulloutMemberStatus().loadMemberLoginList(...)</span>
-     * }
-     * for (Member member : memberList) {
-     *     List&lt;Purchase&gt; purchaseList = member.<span style="color: #CC4747">getPurchaseList()</span>;
-     *     for (Purchase purchase : purchaseList) {
-     *         ...
-     *     }
+     *     <span style="color: #3F7E5E">//memberLoader.pulloutMemberStatus().loadMemberLogin(...)</span>
+     * });
+     * List&lt;Purchase&gt; purchaseList = <span style="color: #553000">member</span>.<span style="color: #CC4747">getPurchaseList()</span>;
+     * for (Purchase purchase : purchaseList) {
+     *     ...
      * }
      * </pre>
      * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />

@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -53,51 +53,15 @@ public class MemberServiceDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgMemberServiceId(), "memberServiceId");
-        setupEpg(_epgMap, new EpgMemberId(), "memberId");
-        setupEpg(_epgMap, new EpgServicePointCount(), "servicePointCount");
-        setupEpg(_epgMap, new EpgServiceRankCode(), "serviceRankCode");
-        setupEpg(_epgMap, new EpgRegisterDatetime(), "registerDatetime");
-        setupEpg(_epgMap, new EpgRegisterUser(), "registerUser");
-        setupEpg(_epgMap, new EpgUpdateDatetime(), "updateDatetime");
-        setupEpg(_epgMap, new EpgUpdateUser(), "updateUser");
-        setupEpg(_epgMap, new EpgVersionNo(), "versionNo");
-    }
-    public static class EpgMemberServiceId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getMemberServiceId(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setMemberServiceId(cti(vl)); }
-    }
-    public static class EpgMemberId implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getMemberId(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setMemberId(cti(vl)); }
-    }
-    public static class EpgServicePointCount implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getServicePointCount(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setServicePointCount(cti(vl)); }
-    }
-    public static class EpgServiceRankCode implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getServiceRankCode(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setServiceRankCode((String)vl); }
-    }
-    public static class EpgRegisterDatetime implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getRegisterDatetime(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setRegisterDatetime((java.sql.Timestamp)vl); }
-    }
-    public static class EpgRegisterUser implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getRegisterUser(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setRegisterUser((String)vl); }
-    }
-    public static class EpgUpdateDatetime implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getUpdateDatetime(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setUpdateDatetime((java.sql.Timestamp)vl); }
-    }
-    public static class EpgUpdateUser implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getUpdateUser(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setUpdateUser((String)vl); }
-    }
-    public static class EpgVersionNo implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getVersionNo(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setVersionNo(ctl(vl)); }
+        setupEpg(_epgMap, et -> ((MemberService)et).getMemberServiceId(), (et, vl) -> ((MemberService)et).setMemberServiceId(cti(vl)), "memberServiceId");
+        setupEpg(_epgMap, et -> ((MemberService)et).getMemberId(), (et, vl) -> ((MemberService)et).setMemberId(cti(vl)), "memberId");
+        setupEpg(_epgMap, et -> ((MemberService)et).getServicePointCount(), (et, vl) -> ((MemberService)et).setServicePointCount(cti(vl)), "servicePointCount");
+        setupEpg(_epgMap, et -> ((MemberService)et).getServiceRankCode(), (et, vl) -> ((MemberService)et).setServiceRankCode((String)vl), "serviceRankCode");
+        setupEpg(_epgMap, et -> ((MemberService)et).getRegisterDatetime(), (et, vl) -> ((MemberService)et).setRegisterDatetime((java.sql.Timestamp)vl), "registerDatetime");
+        setupEpg(_epgMap, et -> ((MemberService)et).getRegisterUser(), (et, vl) -> ((MemberService)et).setRegisterUser((String)vl), "registerUser");
+        setupEpg(_epgMap, et -> ((MemberService)et).getUpdateDatetime(), (et, vl) -> ((MemberService)et).setUpdateDatetime((java.sql.Timestamp)vl), "updateDatetime");
+        setupEpg(_epgMap, et -> ((MemberService)et).getUpdateUser(), (et, vl) -> ((MemberService)et).setUpdateUser((String)vl), "updateUser");
+        setupEpg(_epgMap, et -> ((MemberService)et).getVersionNo(), (et, vl) -> ((MemberService)et).setVersionNo(ctl(vl)), "versionNo");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -106,17 +70,10 @@ public class MemberServiceDbm extends AbstractDBMeta {
     //                                      Foreign Property
     //                                      ----------------
     protected final Map<String, PropertyGateway> _efpgMap = newHashMap();
-    {
-        setupEfpg(_efpgMap, new EfpgMember(), "member");
-        setupEfpg(_efpgMap, new EfpgServiceRank(), "serviceRank");
-    }
-    public class EfpgMember implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getMember(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setMember((Member)vl); }
-    }
-    public class EfpgServiceRank implements PropertyGateway {
-        public Object read(Entity et) { return ((MemberService)et).getServiceRank(); }
-        public void write(Entity et, Object vl) { ((MemberService)et).setServiceRank((ServiceRank)vl); }
+    { xsetupEfpg(); }
+    protected void xsetupEfpg() {
+        setupEfpg(_efpgMap, et -> ((MemberService)et).getMember(), (et, vl) -> ((MemberService)et).setMember((Member)vl), "member");
+        setupEfpg(_efpgMap, et -> ((MemberService)et).getServiceRank(), (et, vl) -> ((MemberService)et).setServiceRank((ServiceRank)vl), "serviceRank");
     }
     public PropertyGateway findForeignPropertyGateway(String prop)
     { return doFindEfpg(_efpgMap, prop); }
@@ -139,7 +96,7 @@ public class MemberServiceDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberServiceId = cci("MEMBER_SERVICE_ID", "MEMBER_SERVICE_ID", null, "会員サービスID", Integer.class, "memberServiceId", null, true, true, true, "INTEGER", 10, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_F5DDD04F_F3F2_426A_A1EC_FB3E9C0E78BE", false, null, "独立した主キーとなるが、実質的に会員IDとは one-to-one である。", null, null, null);
+    protected final ColumnInfo _columnMemberServiceId = cci("MEMBER_SERVICE_ID", "MEMBER_SERVICE_ID", null, "会員サービスID", Integer.class, "memberServiceId", null, true, true, true, "INTEGER", 10, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_BBAD2F6B_E7DE_4582_88FA_FE064D1F5534", false, null, "独立した主キーとなるが、実質的に会員IDとは one-to-one である。", null, null, null);
     protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, "会員ID", Integer.class, "memberId", null, false, false, true, "INTEGER", 10, 0, null, false, null, "会員を参照するID。ユニークなので、会員とは one-to-one の関係に。", "member", null, null);
     protected final ColumnInfo _columnServicePointCount = cci("SERVICE_POINT_COUNT", "SERVICE_POINT_COUNT", null, "サービスポイント数", Integer.class, "servicePointCount", null, false, false, true, "INTEGER", 10, 0, null, false, null, "購入したら増えて使ったら減る。", null, null, null);
     protected final ColumnInfo _columnServiceRankCode = cci("SERVICE_RANK_CODE", "SERVICE_RANK_CODE", null, "サービスランクコード", String.class, "serviceRankCode", null, false, false, true, "CHAR", 3, 0, null, false, null, "どんなランクがあるのかドキドキですね。", "serviceRank", null, CDef.DefMeta.ServiceRank);

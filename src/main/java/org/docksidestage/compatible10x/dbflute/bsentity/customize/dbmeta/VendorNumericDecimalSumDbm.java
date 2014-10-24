@@ -20,9 +20,9 @@ import java.util.Map;
 
 import org.dbflute.Entity;
 import org.dbflute.dbmeta.AbstractDBMeta;
-import org.dbflute.dbmeta.PropertyGateway;
 import org.dbflute.dbmeta.info.*;
 import org.dbflute.dbmeta.name.*;
+import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exentity.customize.*;
@@ -53,11 +53,7 @@ public class VendorNumericDecimalSumDbm extends AbstractDBMeta {
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     {
-        setupEpg(_epgMap, new EpgDecimalDigitSum(), "decimalDigitSum");
-    }
-    public static class EpgDecimalDigitSum implements PropertyGateway {
-        public Object read(Entity et) { return ((VendorNumericDecimalSum)et).getDecimalDigitSum(); }
-        public void write(Entity et, Object vl) { ((VendorNumericDecimalSum)et).setDecimalDigitSum(ctb(vl)); }
+        setupEpg(_epgMap, et -> ((VendorNumericDecimalSum)et).getDecimalDigitSum(), (et, vl) -> ((VendorNumericDecimalSum)et).setDecimalDigitSum(ctb(vl)), "decimalDigitSum");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
