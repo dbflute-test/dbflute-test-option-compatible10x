@@ -13,10 +13,10 @@
 	<inceptionYear>2014</inceptionYear>
 
 	<properties>
-		<dbflute.version>1.1-pilot8-SNAPSHOT</dbflute.version>
+		<dbflute.version>1.1.0-pilotA-SNAPSHOT</dbflute.version>
 		<h2.jdbc.version>1.4.182</h2.jdbc.version>
 		<spring.version>3.0.5.RELEASE</spring.version>
-		<utflute.version>0.5.0-pilot8-SNAPSHOT</utflute.version>
+		<utflute.version>0.5.0-pilotA-SNAPSHOT</utflute.version>
 	</properties>
 
 	<licenses>
@@ -156,6 +156,16 @@
 
 	<repositories>
 		<repository>
+			<id>sonatype-oss-public</id>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>maven.seasar.org</id>
 			<name>The Seasar Foundation Maven2 Repository</name>
 			<url>http://maven.seasar.org/maven2</url>
@@ -189,7 +199,7 @@
 		<!--                                                                 = = = = = = = -->
 		<!-- dbflute -->
 		<dependency>
-			<groupId>org.seasar.dbflute</groupId>
+			<groupId>org.dbflute</groupId>
 			<artifactId>dbflute-runtime</artifactId>
 			<version>${dbflute.version}</version>
 		</dependency>
@@ -234,7 +244,7 @@
 		<!--                                                                       Testing -->
 		<!--                                                                       = = = = -->
 		<dependency>
-			<groupId>org.seasar.dbflute.utflute</groupId>
+			<groupId>org.dbflute.utflute</groupId>
 			<artifactId>utflute-spring</artifactId>
 			<version>${utflute.version}</version>
 			<scope>test</scope>

@@ -46,7 +46,7 @@ public class WxCBDerivedReferrerOptionTest extends UnitContainerTestCase {
             public void query(MemberLoginCB subCB) {
                 subCB.specify().columnLoginDatetime();
             }
-        }, Member.ALIAS_latestLoginDatetime, op -> op.coalesce("1192-01-01"));
+        }, Member.ALIAS_latestLoginDatetime, op -> op.coalesce("1970-01-01"));
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);
@@ -59,7 +59,7 @@ public class WxCBDerivedReferrerOptionTest extends UnitContainerTestCase {
             Date latestLoginDatetime = member.getLatestLoginDatetime();
             String loginDateView = DfTypeUtil.toString(latestLoginDatetime, "yyyy-MM-dd");
             log(member.getMemberName() + ":" + loginDateView);
-            if ("1192-01-01".equals(loginDateView)) {
+            if ("1970-01-01".equals(loginDateView)) {
                 exists = true;
             }
         }

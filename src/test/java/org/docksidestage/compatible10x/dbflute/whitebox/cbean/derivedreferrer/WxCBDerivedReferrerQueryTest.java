@@ -3,7 +3,6 @@ package org.docksidestage.compatible10x.dbflute.whitebox.cbean.derivedreferrer;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.dbflute.cbean.coption.FromToOption;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.SubQuery;
 import org.dbflute.cbean.scoping.UnionQuery;
@@ -117,7 +116,7 @@ public class WxCBDerivedReferrerQueryTest extends UnitContainerTestCase {
             public void query(PurchaseCB subCB) {
                 subCB.specify().columnPurchaseCount();
             }
-        }).rangeOf(fromCount, toCount);
+        }).rangeOf(fromCount, toCount, op -> {});
 
         // ## Act ##
         // Expect no exception
@@ -147,7 +146,7 @@ public class WxCBDerivedReferrerQueryTest extends UnitContainerTestCase {
             public void query(PurchaseCB subCB) {
                 subCB.specify().columnPurchaseDatetime();
             }
-        }).fromTo(fromDate, toDate, new FromToOption());
+        }).fromTo(fromDate, toDate, op -> {});
 
         // ## Act ##
         // Expect no exception

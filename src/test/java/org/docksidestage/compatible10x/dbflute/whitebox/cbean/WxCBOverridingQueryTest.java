@@ -109,8 +109,8 @@ public class WxCBOverridingQueryTest extends UnitContainerTestCase {
 
         // ## Assert ##
         String sql = cb.toDisplaySql();
-        assertNotContains(sql, "2014-08-08");
-        assertContains(sql, "2014-08-07");
+        assertNotContains(sql, "2014-08-07");
+        assertContains(sql, "2014-08-08"); // because of exception after overriding
         assertMarked("exists");
     }
 
@@ -124,9 +124,7 @@ public class WxCBOverridingQueryTest extends UnitContainerTestCase {
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
                 subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-07"));
-                subCB.enableOverridingQuery(() -> {
-                    subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-08"));
-                });
+                subCB.enableOverridingQuery(() -> subCB.query().setPurchaseDatetime_GreaterEqual(toTimestamp("2014-08-08")));
             }
         });
         try {
@@ -140,8 +138,8 @@ public class WxCBOverridingQueryTest extends UnitContainerTestCase {
         String sql = cb.toDisplaySql();
         assertNotContains(sql, "2014-08-07");
         assertContains(sql, "2014-08-08");
-        assertNotContains(sql, "sea");
-        assertContains(sql, "land");
+        assertNotContains(sql, "land");
+        assertContains(sql, "sea");
     }
 
     // ===================================================================================
