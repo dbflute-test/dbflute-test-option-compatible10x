@@ -144,7 +144,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     //                                                                               Query
     //                                                                               =====
     /**
-     * Prepare for various queries. <br />
+     * Prepare for various queries. <br>
      * Examples of main functions are following:
      * <pre>
      * <span style="color: #3F7E5E">// Basic Queries</span>
@@ -241,7 +241,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     //                                                                               Union
     //                                                                               =====
     /**
-     * Set up 'union' for base-point table. <br />
+     * Set up 'union' for base-point table. <br>
      * You don't need to call SetupSelect in union-query,
      * because it inherits calls before. (Don't call SetupSelect after here)
      * <pre>
@@ -258,7 +258,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Set up 'union all' for base-point table. <br />
+     * Set up 'union all' for base-point table. <br>
      * You don't need to call SetupSelect in union-query,
      * because it inherits calls before. (Don't call SetupSelect after here)
      * <pre>
@@ -283,7 +283,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
         return _nssMember;
     }
     /**
-     * Set up relation columns to select clause. <br />
+     * Set up relation columns to select clause. <br>
      * (会員)MEMBER by my MEMBER_ID, named 'member'.
      * <pre>
      * <span style="color: #0000C0">purchaseBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -312,7 +312,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
         return _nssProduct;
     }
     /**
-     * Set up relation columns to select clause. <br />
+     * Set up relation columns to select clause. <br>
      * (商品)PRODUCT by my PRODUCT_ID, named 'product'.
      * <pre>
      * <span style="color: #0000C0">purchaseBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -341,7 +341,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
         return _nssSummaryProduct;
     }
     /**
-     * Set up relation columns to select clause. <br />
+     * Set up relation columns to select clause. <br>
      * SUMMARY_PRODUCT by my PRODUCT_ID, named 'summaryProduct'.
      * <pre>
      * <span style="color: #0000C0">purchaseBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -371,7 +371,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     protected HpSpecification _specification;
 
     /**
-     * Prepare for SpecifyColumn, (Specify)DerivedReferrer. <br />
+     * Prepare for SpecifyColumn, (Specify)DerivedReferrer. <br>
      * This method should be called after SetupSelect.
      * <pre>
      * <span style="color: #0000C0">memberBhv</span>.selectEntity(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -493,7 +493,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
         @Override
         protected String getTableDbName() { return "PURCHASE"; }
         /**
-         * Prepare to specify functions about relation table. <br />
+         * Prepare to specify functions about relation table. <br>
          * (会員)MEMBER by my MEMBER_ID, named 'member'.
          * @return The instance for specification for relation table to specify. (NotNull)
          */
@@ -513,7 +513,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
             return _member;
         }
         /**
-         * Prepare to specify functions about relation table. <br />
+         * Prepare to specify functions about relation table. <br>
          * (商品)PRODUCT by my PRODUCT_ID, named 'product'.
          * @return The instance for specification for relation table to specify. (NotNull)
          */
@@ -533,7 +533,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
             return _product;
         }
         /**
-         * Prepare to specify functions about relation table. <br />
+         * Prepare to specify functions about relation table. <br>
          * SUMMARY_PRODUCT by my PRODUCT_ID, named 'summaryProduct'.
          * @return The instance for specification for relation table to specify. (NotNull)
          */
@@ -553,8 +553,8 @@ public class BsPurchaseCB extends AbstractConditionBean {
             return _summaryProduct;
         }
         /**
-         * Prepare for (Specify)DerivedReferrer (correlated sub-query). <br />
-         * {select max(FOO) from PURCHASE_PAYMENT where ...) as FOO_MAX} <br />
+         * Prepare for (Specify)DerivedReferrer (correlated sub-query). <br>
+         * {select max(FOO) from PURCHASE_PAYMENT where ...) as FOO_MAX} <br>
          * (購入支払)PURCHASE_PAYMENT by PURCHASE_ID, named 'purchasePaymentList'.
          * <pre>
          * cb.specify().<span style="color: #CC4747">derived${relationMethodIdentityName}()</span>.<span style="color: #CC4747">max</span>(paymentCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -615,7 +615,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     //                                                                        Dream Cruise
     //                                                                        ============
     /**
-     * Welcome to the Dream Cruise for condition-bean deep world. <br />
+     * Welcome to the Dream Cruise for condition-bean deep world. <br>
      * This is very specialty so you can get the frontier spirit. Bon voyage!
      * @return The condition-bean for dream cruise, which is linked to main condition-bean.
      */
@@ -634,7 +634,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     //                                                                       OrScope Query
     //                                                                       =============
     /**
-     * Set up the query for or-scope. <br />
+     * Set up the query for or-scope. <br>
      * (Same-column-and-same-condition-key conditions are allowed in or-scope)
      * <pre>
      * <span style="color: #3F7E5E">// where (FOO = '...' or BAR = '...')</span>
@@ -657,7 +657,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Set up the and-part of or-scope. <br />
+     * Set up the and-part of or-scope. <br>
      * (However nested or-scope query and as-or-split of like-search in and-part are unsupported)
      * <pre>
      * <span style="color: #3F7E5E">// where (FOO = '...' or (BAR = '...' and QUX = '...'))</span>
@@ -680,10 +680,10 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Check invalid query when query is set. <br />
-     * (it throws an exception if set query is invalid) <br />
-     * You should call this before registrations of where clause and other queries. <br />
-     * Union and SubQuery and other sub condition-bean inherit this. <br />
+     * Check invalid query when query is set. <br>
+     * (it throws an exception if set query is invalid) <br>
+     * You should call this before registrations of where clause and other queries. <br>
+     * Union and SubQuery and other sub condition-bean inherit this. <br>
      * 
      * <p>renamed to checkNullOrEmptyQuery() since 1.1,
      * but not deprecated because it might have many use.</p>
@@ -695,9 +695,9 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Accept (no check) an invalid query when a query is set. <br />
-     * (no condition if a set query is invalid) <br />
-     * You should call this before registrations of where clause and other queries. <br />
+     * Accept (no check) an invalid query when a query is set. <br>
+     * (no condition if a set query is invalid) <br>
+     * You should call this before registrations of where clause and other queries. <br>
      * Union and SubQuery and other sub condition-bean inherit this.
      * @deprecated use ignoreNullOrEmptyQuery()
      */
@@ -706,7 +706,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Allow to auto-detect joins that can be inner-join. <br />
+     * Allow to auto-detect joins that can be inner-join. <br>
      * <pre>
      * o You should call this before registrations of where clause.
      * o Union and SubQuery and other sub condition-bean inherit this.
@@ -719,7 +719,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Suppress auto-detecting inner-join. <br />
+     * Suppress auto-detecting inner-join. <br>
      * You should call this before registrations of where clause.
      * @deprecated use disableInnerJoinAutoDetect()
      */
@@ -728,9 +728,9 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Allow an empty string for query. <br />
-     * (you can use an empty string as condition) <br />
-     * You should call this before registrations of where clause and other queries. <br />
+     * Allow an empty string for query. <br>
+     * (you can use an empty string as condition) <br>
+     * You should call this before registrations of where clause and other queries. <br>
      * Union and SubQuery and other sub condition-bean inherit this.
      * @deprecated use enableEmptyStringQuery()
      */
@@ -739,7 +739,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Enable checking record count before QueryUpdate (contains QueryDelete). (default is disabled) <br />
+     * Enable checking record count before QueryUpdate (contains QueryDelete). (default is disabled) <br>
      * No query update if zero count. (basically for MySQL's deadlock by next-key lock)
      * @deprecated use enableQueryUpdateCountPreCheck()
      */
@@ -748,7 +748,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
     }
 
     /**
-     * Disable checking record count before QueryUpdate (contains QueryDelete). (back to default) <br />
+     * Disable checking record count before QueryUpdate (contains QueryDelete). (back to default) <br>
      * Executes query update even if zero count. (normal specification)
      * @deprecated use disableQueryUpdateCountPreCheck()
      */

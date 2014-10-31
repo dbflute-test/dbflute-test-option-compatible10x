@@ -36,7 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN as TABLE. <br />
+ * The behavior of VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN as TABLE. <br>
  * <pre>
  * [primary key]
  *     THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID
@@ -100,7 +100,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                                                        Count Select
     //                                                                        ============
     /**
-     * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br />
+     * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
      * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
      * <pre>
      * VendorTheLongAndWindingTableAndColumnCB cb = new VendorTheLongAndWindingTableAndColumnCB();
@@ -118,8 +118,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                                                       Entity Select
     //                                                                       =============
     /**
-     * Select the entity by the condition-bean. #beforejava8 <br />
-     * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br />
+     * Select the entity by the condition-bean. #beforejava8 <br>
+     * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
      * <span style="color: #AD4747; font-size: 120%">If the data always exists as your business rule, use selectEntityWithDeletedCheck().</span>
      * <pre>
      * VendorTheLongAndWindingTableAndColumnCB cb = new VendorTheLongAndWindingTableAndColumnCB();
@@ -151,7 +151,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     protected Entity doReadEntity(ConditionBean cb) { return facadeSelectEntity(downcast(cb)); }
 
     /**
-     * Select the entity by the condition-bean with deleted check. <br />
+     * Select the entity by the condition-bean with deleted check. <br>
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
      * VendorTheLongAndWindingTableAndColumnCB cb = new VendorTheLongAndWindingTableAndColumnCB();
@@ -264,7 +264,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                                                         Page Select
     //                                                                         ===========
     /**
-     * Select the page as result bean. <br />
+     * Select the page as result bean. <br>
      * (both count-select and paging-select are executed)
      * <pre>
      * VendorTheLongAndWindingTableAndColumnCB cb = new VendorTheLongAndWindingTableAndColumnCB();
@@ -314,7 +314,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                                                       Scalar Select
     //                                                                       =============
     /**
-     * Select the scalar value derived by a function from uniquely-selected records. <br />
+     * Select the scalar value derived by a function from uniquely-selected records. <br>
      * You should call a function method after this method called like as follows:
      * <pre>
      * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -354,7 +354,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      *         <span style="color: #553000">purchaseCB</span>.query().set...
      *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt; {</span>
      *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
@@ -369,7 +369,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      *     }
      * }
      * </pre>
-     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
+     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br>
      * The condition-bean, which the set-upper provides, has order by FK before callback.
      * @param vendorTheLongAndWindingTableAndColumnList The entity list of vendorTheLongAndWindingTableAndColumn. (NotNull)
      * @param loaderLambda The callback to handle the referrer loader for actually loading referrer. (NotNull)
@@ -389,7 +389,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      *         <span style="color: #553000">purchaseCB</span>.query().set...
      *         <span style="color: #553000">purchaseCB</span>.query().addOrderBy...
      *     }); <span style="color: #3F7E5E">// you can also load nested referrer from here</span>
-     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt {</span>
+     *     <span style="color: #3F7E5E">//}).withNestedReferrer(purchaseLoader -&gt; {</span>
      *     <span style="color: #3F7E5E">//    purchaseLoader.loadPurchasePayment(...);</span>
      *     <span style="color: #3F7E5E">//});</span>
      *
@@ -402,7 +402,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      *     ...
      * }
      * </pre>
-     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
+     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br>
      * The condition-bean, which the set-upper provides, has order by FK before callback.
      * @param vendorTheLongAndWindingTableAndColumn The entity of vendorTheLongAndWindingTableAndColumn. (NotNull)
      * @param loaderLambda The callback to handle the referrer loader for actually loading referrer. (NotNull)
@@ -413,7 +413,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Load referrer of vendorTheLongAndWindingTableAndColumnRefList by the set-upper of referrer. <br />
+     * Load referrer of vendorTheLongAndWindingTableAndColumnRefList by the set-upper of referrer. <br>
      * VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF by THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID, named 'vendorTheLongAndWindingTableAndColumnRefList'.
      * <pre>
      * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnBhv</span>.<span style="color: #CC4747">loadVendorTheLongAndWindingTableAndColumnRefList</span>(<span style="color: #553000">vendorTheLongAndWindingTableAndColumnList</span>, <span style="color: #553000">refCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -421,14 +421,14 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      *     <span style="color: #553000">refCB</span>.query().set...
      *     <span style="color: #553000">refCB</span>.query().addOrderBy...
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
-     * <span style="color: #3F7E5E">//}).withNestedReferrer(referrerList -&gt {</span>
+     * <span style="color: #3F7E5E">//}).withNestedReferrer(referrerList -&gt; {</span>
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
      * for (VendorTheLongAndWindingTableAndColumn vendorTheLongAndWindingTableAndColumn : <span style="color: #553000">vendorTheLongAndWindingTableAndColumnList</span>) {
      *     ... = vendorTheLongAndWindingTableAndColumn.<span style="color: #CC4747">getVendorTheLongAndWindingTableAndColumnRefList()</span>;
      * }
      * </pre>
-     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
+     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br>
      * The condition-bean, which the set-upper provides, has settings before callback as follows:
      * <pre>
      * cb.query().setTheLongAndWindingTableAndColumnId_InScope(pkList);
@@ -444,7 +444,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Load referrer of vendorTheLongAndWindingTableAndColumnRefList by the set-upper of referrer. <br />
+     * Load referrer of vendorTheLongAndWindingTableAndColumnRefList by the set-upper of referrer. <br>
      * VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF by THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID, named 'vendorTheLongAndWindingTableAndColumnRefList'.
      * <pre>
      * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnBhv</span>.<span style="color: #CC4747">loadVendorTheLongAndWindingTableAndColumnRefList</span>(<span style="color: #553000">vendorTheLongAndWindingTableAndColumn</span>, <span style="color: #553000">refCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -452,12 +452,12 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      *     <span style="color: #553000">refCB</span>.query().set...
      *     <span style="color: #553000">refCB</span>.query().addOrderBy...
      * }); <span style="color: #3F7E5E">// you can load nested referrer from here</span>
-     * <span style="color: #3F7E5E">//}).withNestedReferrer(referrerList -&gt {</span>
+     * <span style="color: #3F7E5E">//}).withNestedReferrer(referrerList -&gt; {</span>
      * <span style="color: #3F7E5E">//    ...</span>
      * <span style="color: #3F7E5E">//});</span>
      * ... = <span style="color: #553000">vendorTheLongAndWindingTableAndColumn</span>.<span style="color: #CC4747">getVendorTheLongAndWindingTableAndColumnRefList()</span>;
      * </pre>
-     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br />
+     * About internal policy, the value of primary key (and others too) is treated as case-insensitive. <br>
      * The condition-bean, which the set-upper provides, has settings before callback as follows:
      * <pre>
      * cb.query().setTheLongAndWindingTableAndColumnId_InScope(pkList);
@@ -573,8 +573,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Insert or update the entity modified-only. (DefaultConstraintsEnabled, NonExclusiveControl) <br />
-     * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br />
+     * Insert or update the entity modified-only. (DefaultConstraintsEnabled, NonExclusiveControl) <br>
+     * if (the entity has no PK) { insert() } else { update(), but no data, insert() } <br>
      * <p><span style="color: #CC4747; font-size: 120%">Attention, you cannot update by unique keys instead of PK.</span></p>
      * @param vendorTheLongAndWindingTableAndColumn The entity of insert or update. (NotNull, ...depends on insert or update)
      * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
@@ -610,8 +610,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                                                        Batch Update
     //                                                                        ============
     /**
-     * Batch-insert the entity list modified-only of same-set columns. (DefaultConstraintsEnabled) <br />
-     * This method uses executeBatch() of java.sql.PreparedStatement. <br />
+     * Batch-insert the entity list modified-only of same-set columns. (DefaultConstraintsEnabled) <br>
+     * This method uses executeBatch() of java.sql.PreparedStatement. <br>
      * <p><span style="color: #CC4747; font-size: 120%">The columns of least common multiple are registered like this:</span></p>
      * <pre>
      * for (... : ...) {
@@ -638,8 +638,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Batch-update the entity list modified-only of same-set columns. (NonExclusiveControl) <br />
-     * This method uses executeBatch() of java.sql.PreparedStatement. <br />
+     * Batch-update the entity list modified-only of same-set columns. (NonExclusiveControl) <br>
+     * This method uses executeBatch() of java.sql.PreparedStatement. <br>
      * <span style="color: #CC4747; font-size: 120%">You should specify same-set columns to all entities like this:</span>
      * <pre>
      * for (... : ...) {
@@ -666,18 +666,18 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Batch-update the entity list specified-only. (NonExclusiveControl) <br />
+     * Batch-update the entity list specified-only. (NonExclusiveControl) <br>
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * vendorTheLongAndWindingTableAndColumnBhv.<span style="color: #CC4747">batchUpdate</span>(vendorTheLongAndWindingTableAndColumnList, new SpecifyQuery<VendorTheLongAndWindingTableAndColumnCB>() {
+     * vendorTheLongAndWindingTableAndColumnBhv.<span style="color: #CC4747">batchUpdate</span>(vendorTheLongAndWindingTableAndColumnList, new SpecifyQuery&lt;VendorTheLongAndWindingTableAndColumnCB&gt;() {
      *     public void specify(VendorTheLongAndWindingTableAndColumnCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
      *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      *     }
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnBhv</span>.<span style="color: #CC4747">batchUpdate</span>(vendorTheLongAndWindingTableAndColumnList, new SpecifyQuery<VendorTheLongAndWindingTableAndColumnCB>() {
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnBhv</span>.<span style="color: #CC4747">batchUpdate</span>(vendorTheLongAndWindingTableAndColumnList, new SpecifyQuery&lt;VendorTheLongAndWindingTableAndColumnCB&gt;() {
      *     public void specify(VendorTheLongAndWindingTableAndColumnCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
      *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      *     }
@@ -698,7 +698,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Batch-delete the entity list. (NonExclusiveControl) <br />
+     * Batch-delete the entity list. (NonExclusiveControl) <br>
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * @param vendorTheLongAndWindingTableAndColumnList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @return The array of deleted count. (NotNull, EmptyAllowed)
@@ -789,15 +789,15 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                         Entity Update
     //                                         -------------
     /**
-     * Insert the entity with varying requests. <br />
-     * For example, disableCommonColumnAutoSetup(), disablePrimaryKeyIdentity(). <br />
+     * Insert the entity with varying requests. <br>
+     * For example, disableCommonColumnAutoSetup(), disablePrimaryKeyIdentity(). <br>
      * Other specifications are same as insert(entity).
      * <pre>
      * VendorTheLongAndWindingTableAndColumn vendorTheLongAndWindingTableAndColumn = new VendorTheLongAndWindingTableAndColumn();
      * <span style="color: #3F7E5E">// if auto-increment, you don't need to set the PK value</span>
      * vendorTheLongAndWindingTableAndColumn.setFoo...(value);
      * vendorTheLongAndWindingTableAndColumn.setBar...(value);
-     * InsertOption<VendorTheLongAndWindingTableAndColumnCB> option = new InsertOption<VendorTheLongAndWindingTableAndColumnCB>();
+     * InsertOption&lt;VendorTheLongAndWindingTableAndColumnCB&gt; option = new InsertOption&lt;VendorTheLongAndWindingTableAndColumnCB&gt;();
      * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
      * option.disableCommonColumnAutoSetup();
      * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnBhv</span>.<span style="color: #CC4747">varyingInsert</span>(vendorTheLongAndWindingTableAndColumn, option);
@@ -812,8 +812,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Update the entity with varying requests modified-only. (ZeroUpdateException, NonExclusiveControl) <br />
-     * For example, self(selfCalculationSpecification), specify(updateColumnSpecification), disableCommonColumnAutoSetup(). <br />
+     * Update the entity with varying requests modified-only. (ZeroUpdateException, NonExclusiveControl) <br>
+     * For example, self(selfCalculationSpecification), specify(updateColumnSpecification), disableCommonColumnAutoSetup(). <br>
      * Other specifications are same as update(entity).
      * <pre>
      * VendorTheLongAndWindingTableAndColumn vendorTheLongAndWindingTableAndColumn = new VendorTheLongAndWindingTableAndColumn();
@@ -845,7 +845,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Insert or update the entity with varying requests. (ExclusiveControl: when update) <br />
+     * Insert or update the entity with varying requests. (ExclusiveControl: when update) <br>
      * Other specifications are same as insertOrUpdate(entity).
      * @param vendorTheLongAndWindingTableAndColumn The entity of insert or update. (NotNull)
      * @param insertOpLambda The callback for option of insert for varying requests. (NotNull)
@@ -859,8 +859,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Delete the entity with varying requests. (ZeroUpdateException, NonExclusiveControl) <br />
-     * Now a valid option does not exist. <br />
+     * Delete the entity with varying requests. (ZeroUpdateException, NonExclusiveControl) <br>
+     * Now a valid option does not exist. <br>
      * Other specifications are same as delete(entity).
      * @param vendorTheLongAndWindingTableAndColumn The entity of delete. (NotNull, PrimaryKeyNotNull, ConcurrencyColumnNotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
@@ -875,9 +875,9 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                          Batch Update
     //                                          ------------
     /**
-     * Batch-insert the list with varying requests. <br />
+     * Batch-insert the list with varying requests. <br>
      * For example, disableCommonColumnAutoSetup()
-     * , disablePrimaryKeyIdentity(), limitBatchInsertLogging(). <br />
+     * , disablePrimaryKeyIdentity(), limitBatchInsertLogging(). <br>
      * Other specifications are same as batchInsert(entityList).
      * @param vendorTheLongAndWindingTableAndColumnList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
@@ -888,9 +888,9 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Batch-update the list with varying requests. <br />
+     * Batch-update the list with varying requests. <br>
      * For example, self(selfCalculationSpecification), specify(updateColumnSpecification)
-     * , disableCommonColumnAutoSetup(), limitBatchUpdateLogging(). <br />
+     * , disableCommonColumnAutoSetup(), limitBatchUpdateLogging(). <br>
      * Other specifications are same as batchUpdate(entityList).
      * @param vendorTheLongAndWindingTableAndColumnList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
@@ -901,8 +901,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Batch-delete the list with varying requests. <br />
-     * For example, limitBatchDeleteLogging(). <br />
+     * Batch-delete the list with varying requests. <br>
+     * For example, limitBatchDeleteLogging(). <br>
      * Other specifications are same as batchDelete(entityList).
      * @param vendorTheLongAndWindingTableAndColumnList The list of the entity. (NotNull, EmptyAllowed, PrimaryKeyNotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
@@ -916,8 +916,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     //                                          Query Update
     //                                          ------------
     /**
-     * Insert the several entities by query with varying requests (modified-only for fixed value). <br />
-     * For example, disableCommonColumnAutoSetup(), disablePrimaryKeyIdentity(). <br />
+     * Insert the several entities by query with varying requests (modified-only for fixed value). <br>
+     * For example, disableCommonColumnAutoSetup(), disablePrimaryKeyIdentity(). <br>
      * Other specifications are same as queryInsert(entity, setupper).
      * @param manyArgLambda The set-upper of query-insert. (NotNull)
      * @param opLambda The callback for option of insert for varying requests. (NotNull)
@@ -928,9 +928,9 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Update the several entities by query with varying requests non-strictly modified-only. {NonExclusiveControl} <br />
+     * Update the several entities by query with varying requests non-strictly modified-only. {NonExclusiveControl} <br>
      * For example, self(selfCalculationSpecification), specify(updateColumnSpecification)
-     * , disableCommonColumnAutoSetup(), allowNonQueryUpdate(). <br />
+     * , disableCommonColumnAutoSetup(), allowNonQueryUpdate(). <br>
      * Other specifications are same as queryUpdate(entity, cb).
      * <pre>
      * <span style="color: #3F7E5E">// ex) you can update by self calculation values</span>
@@ -962,8 +962,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     }
 
     /**
-     * Delete the several entities by query with varying requests non-strictly. <br />
-     * For example, allowNonQueryDelete(). <br />
+     * Delete the several entities by query with varying requests non-strictly. <br>
+     * For example, allowNonQueryDelete(). <br>
      * Other specifications are same as batchUpdateNonstrict(entityList).
      * @param cb The condition-bean of VendorTheLongAndWindingTableAndColumn. (NotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)

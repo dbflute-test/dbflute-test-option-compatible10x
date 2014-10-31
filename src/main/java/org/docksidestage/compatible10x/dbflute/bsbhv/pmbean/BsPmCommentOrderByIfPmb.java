@@ -26,7 +26,7 @@ import org.docksidestage.compatible10x.dbflute.exbhv.*;
 import org.docksidestage.compatible10x.dbflute.exentity.customize.*;
 
 /**
- * The base class for typed parameter-bean of PmCommentOrderByIf. <br />
+ * The base class for typed parameter-bean of PmCommentOrderByIf. <br>
  * This is related to "<span style="color: #AD4747">whitebox:pmcomment:selectPmCommentOrderByIf</span>" on MemberBhv.
  * @author DBFlute(AutoGenerator)
  */
@@ -51,7 +51,7 @@ public class BsPmCommentOrderByIfPmb implements ListHandlingPmb<MemberBhv, PmCom
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor for the typed parameter-bean of PmCommentOrderByIf. <br />
+     * Constructor for the typed parameter-bean of PmCommentOrderByIf. <br>
      * This is related to "<span style="color: #AD4747">whitebox:pmcomment:selectPmCommentOrderByIf</span>" on MemberBhv.
      */
     public BsPmCommentOrderByIfPmb() {
@@ -139,7 +139,7 @@ public class BsPmCommentOrderByIfPmb implements ListHandlingPmb<MemberBhv, PmCom
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] orderByMemberId <br />
+     * [get] orderByMemberId <br>
      * @return The value of orderByMemberId. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public boolean getOrderByMemberId() {
@@ -147,7 +147,7 @@ public class BsPmCommentOrderByIfPmb implements ListHandlingPmb<MemberBhv, PmCom
     }
 
     /**
-     * [set] orderByMemberId <br />
+     * [set] orderByMemberId <br>
      * @param orderByMemberId The value of orderByMemberId. (NullAllowed)
      */
     public void setOrderByMemberId(boolean orderByMemberId) {
@@ -155,7 +155,7 @@ public class BsPmCommentOrderByIfPmb implements ListHandlingPmb<MemberBhv, PmCom
     }
 
     /**
-     * [get] orderByMemberAccount <br />
+     * [get] orderByMemberAccount <br>
      * @return The value of orderByMemberAccount. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public boolean getOrderByMemberAccount() {
@@ -163,7 +163,7 @@ public class BsPmCommentOrderByIfPmb implements ListHandlingPmb<MemberBhv, PmCom
     }
 
     /**
-     * [set] orderByMemberAccount <br />
+     * [set] orderByMemberAccount <br>
      * @param orderByMemberAccount The value of orderByMemberAccount. (NullAllowed)
      */
     public void setOrderByMemberAccount(boolean orderByMemberAccount) {

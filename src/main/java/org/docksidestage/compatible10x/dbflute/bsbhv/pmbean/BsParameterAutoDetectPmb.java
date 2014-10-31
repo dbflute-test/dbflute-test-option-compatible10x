@@ -27,7 +27,7 @@ import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exbhv.*;
 
 /**
- * The base class for typed parameter-bean of ParameterAutoDetect. <br />
+ * The base class for typed parameter-bean of ParameterAutoDetect. <br>
  * This is related to "<span style="color: #AD4747">whitebox:pmbean:selectParameterAutoDetect</span>" on MemberBhv.
  * @author DBFlute(AutoGenerator)
  */
@@ -136,7 +136,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor for the typed parameter-bean of ParameterAutoDetect. <br />
+     * Constructor for the typed parameter-bean of ParameterAutoDetect. <br>
      * This is related to "<span style="color: #AD4747">whitebox:pmbean:selectParameterAutoDetect</span>" on MemberBhv.
      */
     public BsParameterAutoDetectPmb() {
@@ -273,7 +273,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] normalInteger <br />
+     * [get] normalInteger <br>
      * memberId's comment
      * @return The value of normalInteger. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
@@ -282,7 +282,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] normalInteger <br />
+     * [set] normalInteger <br>
      * memberId's comment
      * @param normalInteger The value of normalInteger. (NullAllowed)
      */
@@ -291,7 +291,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] noTestValue <br />
+     * [get] noTestValue <br>
      * @return The value of noTestValue. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getNoTestValue() {
@@ -299,7 +299,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] noTestValue <br />
+     * [set] noTestValue <br>
      * @param noTestValue The value of noTestValue. (NullAllowed)
      */
     public void setNoTestValue(String noTestValue) {
@@ -307,7 +307,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] prefixSearchOption:likePrefix <br />
+     * [get] prefixSearchOption:likePrefix <br>
      * @return The value of prefixSearchOption. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getPrefixSearchOption() {
@@ -315,7 +315,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as prefixSearch] prefixSearchOption:likePrefix <br />
+     * [set as prefixSearch] prefixSearchOption:likePrefix <br>
      * @param prefixSearchOption The value of prefixSearchOption. (NullAllowed)
      */
     public void setPrefixSearchOption_PrefixSearch(String prefixSearchOption) {
@@ -332,7 +332,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] suffixSearchOption:ref(MEMBER.MEMBER_NAME)|likeSuffix :: refers to (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)} <br />
+     * [get] suffixSearchOption:ref(MEMBER.MEMBER_NAME)|likeSuffix :: refers to (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)} <br>
      * @return The value of suffixSearchOption. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getSuffixSearchOption() {
@@ -340,7 +340,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as suffixSearch] suffixSearchOption:ref(MEMBER.MEMBER_NAME)|likeSuffix :: refers to (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)} <br />
+     * [set as suffixSearch] suffixSearchOption:ref(MEMBER.MEMBER_NAME)|likeSuffix :: refers to (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)} <br>
      * @param suffixSearchOption The value of suffixSearchOption. (NullAllowed)
      */
     public void setSuffixSearchOption_SuffixSearch(String suffixSearchOption) {
@@ -357,7 +357,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] containSearchOption:likeContain <br />
+     * [get] containSearchOption:likeContain <br>
      * comment with implicit(likeContain)
      * @return The value of containSearchOption. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
@@ -366,7 +366,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as containSearch] containSearchOption:likeContain <br />
+     * [set as containSearch] containSearchOption:likeContain <br>
      * comment with implicit(likeContain)
      * @param containSearchOption The value of containSearchOption. (NullAllowed)
      */
@@ -384,7 +384,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] normalLikeSearchOption:like <br />
+     * [get] normalLikeSearchOption:like <br>
      * @return The value of normalLikeSearchOption. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getNormalLikeSearchOption() {
@@ -392,7 +392,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as likeSearch] normalLikeSearchOption:like <br />
+     * [set as likeSearch] normalLikeSearchOption:like <br>
      * @param normalLikeSearchOption The value of normalLikeSearchOption. (NullAllowed)
      * @param normalLikeSearchOptionOption The option of likeSearch for normalLikeSearchOption which is NOT split mode. (NotNull)
      */
@@ -411,7 +411,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] normalCls:cls(MemberStatus.Withdrawal) <br />
+     * [get] normalCls:cls(MemberStatus.Withdrawal) <br>
      * fixed classification
      * @return The value of normalCls. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
@@ -420,7 +420,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] normalDate <br />
+     * [get] normalDate <br>
      * @return The value of normalDate. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Date getNormalDate() {
@@ -428,7 +428,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] normalDate <br />
+     * [set] normalDate <br>
      * @param normalDate The value of normalDate. (NullAllowed)
      */
     public void setNormalDate(Date normalDate) {
@@ -436,7 +436,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] fromDateOption:fromDate <br />
+     * [get] fromDateOption:fromDate <br>
      * @return The value of fromDateOption. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Date getFromDateOption() {
@@ -444,7 +444,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as fromDate] fromDateOption:fromDate <br />
+     * [set as fromDate] fromDateOption:fromDate <br>
      * @param fromDateOption The value of fromDateOption. (NullAllowed)
      */
     public void setFromDateOption_FromDate(Date fromDateOption) {
@@ -452,7 +452,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] toDateOption:toDate <br />
+     * [get] toDateOption:toDate <br>
      * @return The value of toDateOption. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Date getToDateOption() {
@@ -460,7 +460,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as toDate] toDateOption:toDate <br />
+     * [set as toDate] toDateOption:toDate <br>
      * @param toDateOption The value of toDateOption. (NullAllowed)
      */
     public void setToDateOption_ToDate(Date toDateOption) {
@@ -468,7 +468,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] duplicateFromDate:fromDate <br />
+     * [get] duplicateFromDate:fromDate <br>
      * @return The value of duplicateFromDate. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Date getDuplicateFromDate() {
@@ -476,7 +476,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as fromDate] duplicateFromDate:fromDate <br />
+     * [set as fromDate] duplicateFromDate:fromDate <br>
      * @param duplicateFromDate The value of duplicateFromDate. (NullAllowed)
      */
     public void setDuplicateFromDate_FromDate(Date duplicateFromDate) {
@@ -484,7 +484,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] integerList <br />
+     * [get] integerList <br>
      * @return The value of integerList. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<Integer> getIntegerList() {
@@ -492,7 +492,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] integerList <br />
+     * [set] integerList <br>
      * @param integerList The value of integerList. (NullAllowed)
      */
     public void setIntegerList(List<Integer> integerList) {
@@ -500,7 +500,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] cdefList:cls(MemberStatus)|ref(MEMBER.MEMBER_STATUS_CODE) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * [get] cdefList:cls(MemberStatus)|ref(MEMBER.MEMBER_STATUS_CODE) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * @return The value of cdefList. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<org.docksidestage.compatible10x.dbflute.allcommon.CDef.MemberStatus> getCdefList() {
@@ -508,7 +508,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] cdefList:cls(MemberStatus)|ref(MEMBER.MEMBER_STATUS_CODE) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * [set] cdefList:cls(MemberStatus)|ref(MEMBER.MEMBER_STATUS_CODE) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * @param cdefList The value of cdefList. (NullAllowed)
      */
     public void setCdefList(List<org.docksidestage.compatible10x.dbflute.allcommon.CDef.MemberStatus> cdefList) {
@@ -516,7 +516,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] memberStatusCodeList:cls(MemberStatus)|ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * [get] memberStatusCodeList:cls(MemberStatus)|ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * @return The value of memberStatusCodeList. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<org.docksidestage.compatible10x.dbflute.allcommon.CDef.MemberStatus> getMemberStatusCodeList() {
@@ -524,7 +524,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] memberStatusCodeList:cls(MemberStatus)|ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * [set] memberStatusCodeList:cls(MemberStatus)|ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * @param memberStatusCodeList The value of memberStatusCodeList. (NullAllowed)
      */
     public void setMemberStatusCodeList(List<org.docksidestage.compatible10x.dbflute.allcommon.CDef.MemberStatus> memberStatusCodeList) {
@@ -532,7 +532,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] forCommentBasic:likePrefix <br />
+     * [get] forCommentBasic:likePrefix <br>
      * @return The value of forCommentBasic. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<String> getForCommentBasic() {
@@ -540,7 +540,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set as prefixSearch] forCommentBasic:likePrefix <br />
+     * [set as prefixSearch] forCommentBasic:likePrefix <br>
      * @param forCommentBasic The value of forCommentBasic. (NullAllowed)
      */
     public void setForCommentBasic_PrefixSearch(List<String> forCommentBasic) {
@@ -557,7 +557,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] nestedForList <br />
+     * [get] nestedForList <br>
      * @return The value of nestedForList. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<List<List<Integer>>> getNestedForList() {
@@ -565,7 +565,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] nestedForList <br />
+     * [set] nestedForList <br>
      * @param nestedForList The value of nestedForList. (NullAllowed)
      */
     public void setNestedForList(List<List<List<Integer>>> nestedForList) {
@@ -573,7 +573,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] bindInIfCommentForList <br />
+     * [get] bindInIfCommentForList <br>
      * @return The value of bindInIfCommentForList. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<Date> getBindInIfCommentForList() {
@@ -581,7 +581,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] bindInIfCommentForList <br />
+     * [set] bindInIfCommentForList <br>
      * @param bindInIfCommentForList The value of bindInIfCommentForList. (NullAllowed)
      */
     public void setBindInIfCommentForList(List<Date> bindInIfCommentForList) {
@@ -589,7 +589,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] ifCommentOnly <br />
+     * [get] ifCommentOnly <br>
      * @return The value of ifCommentOnly. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public boolean getIfCommentOnly() {
@@ -597,7 +597,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] ifCommentOnly <br />
+     * [set] ifCommentOnly <br>
      * @param ifCommentOnly The value of ifCommentOnly. (NullAllowed)
      */
     public void setIfCommentOnly(boolean ifCommentOnly) {
@@ -605,7 +605,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] ifCommentAndFirst <br />
+     * [get] ifCommentAndFirst <br>
      * @return The value of ifCommentAndFirst. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public boolean getIfCommentAndFirst() {
@@ -613,7 +613,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] ifCommentAndFirst <br />
+     * [set] ifCommentAndFirst <br>
      * @param ifCommentAndFirst The value of ifCommentAndFirst. (NullAllowed)
      */
     public void setIfCommentAndFirst(boolean ifCommentAndFirst) {
@@ -621,7 +621,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] ifCommentAndSecond <br />
+     * [get] ifCommentAndSecond <br>
      * @return The value of ifCommentAndSecond. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getIfCommentAndSecond() {
@@ -629,7 +629,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] ifCommentAndSecond <br />
+     * [set] ifCommentAndSecond <br>
      * @param ifCommentAndSecond The value of ifCommentAndSecond. (NullAllowed)
      */
     public void setIfCommentAndSecond(String ifCommentAndSecond) {
@@ -637,7 +637,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] ifCommentAndThird <br />
+     * [get] ifCommentAndThird <br>
      * @return The value of ifCommentAndThird. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Integer getIfCommentAndThird() {
@@ -645,7 +645,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] ifCommentAndThird <br />
+     * [set] ifCommentAndThird <br>
      * @param ifCommentAndThird The value of ifCommentAndThird. (NullAllowed)
      */
     public void setIfCommentAndThird(Integer ifCommentAndThird) {
@@ -653,7 +653,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] ifCommentBooleanNotFormal <br />
+     * [get] ifCommentBooleanNotFormal <br>
      * @return The value of ifCommentBooleanNotFormal. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public boolean getIfCommentBooleanNotFormal() {
@@ -661,7 +661,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] ifCommentBooleanNotFormal <br />
+     * [set] ifCommentBooleanNotFormal <br>
      * @param ifCommentBooleanNotFormal The value of ifCommentBooleanNotFormal. (NullAllowed)
      */
     public void setIfCommentBooleanNotFormal(boolean ifCommentBooleanNotFormal) {
@@ -669,7 +669,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] ifCommentBooleanNotWrongSyntax <br />
+     * [get] ifCommentBooleanNotWrongSyntax <br>
      * @return The value of ifCommentBooleanNotWrongSyntax. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getIfCommentBooleanNotWrongSyntax() {
@@ -677,7 +677,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] ifCommentBooleanNotWrongSyntax <br />
+     * [set] ifCommentBooleanNotWrongSyntax <br>
      * @param ifCommentBooleanNotWrongSyntax The value of ifCommentBooleanNotWrongSyntax. (NullAllowed)
      */
     public void setIfCommentBooleanNotWrongSyntax(String ifCommentBooleanNotWrongSyntax) {
@@ -685,7 +685,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] overriddenFromDate <br />
+     * [get] overriddenFromDate <br>
      * @return The value of overriddenFromDate. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getOverriddenFromDate() {
@@ -693,7 +693,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] overriddenFromDate <br />
+     * [set] overriddenFromDate <br>
      * @param overriddenFromDate The value of overriddenFromDate. (NullAllowed)
      */
     public void setOverriddenFromDate(String overriddenFromDate) {
@@ -701,7 +701,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [get] definedBoolean <br />
+     * [get] definedBoolean <br>
      * @return The value of definedBoolean. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public boolean getDefinedBoolean() {
@@ -709,7 +709,7 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
     }
 
     /**
-     * [set] definedBoolean <br />
+     * [set] definedBoolean <br>
      * @param definedBoolean The value of definedBoolean. (NullAllowed)
      */
     public void setDefinedBoolean(boolean definedBoolean) {

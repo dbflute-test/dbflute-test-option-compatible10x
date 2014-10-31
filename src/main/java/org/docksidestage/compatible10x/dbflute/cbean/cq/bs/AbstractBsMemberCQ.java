@@ -62,7 +62,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     //                                                                               Query
     //                                                                               =====
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberId The value of memberId as equal. (NullAllowed: if null, no condition)
      */
@@ -75,7 +75,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberId The value of memberId as notEqual. (NullAllowed: if null, no condition)
      */
@@ -88,7 +88,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberId The value of memberId as greaterThan. (NullAllowed: if null, no condition)
      */
@@ -97,7 +97,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberId The value of memberId as lessThan. (NullAllowed: if null, no condition)
      */
@@ -106,7 +106,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberId The value of memberId as greaterEqual. (NullAllowed: if null, no condition)
      */
@@ -115,7 +115,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberId The value of memberId as lessEqual. (NullAllowed: if null, no condition)
      */
@@ -124,9 +124,9 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * RangeOf with various options. (versatile) <br />
-     * {(default) minNumber &lt;= column &lt;= maxNumber} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param minNumber The min number of memberId. (NullAllowed: if null, no from-condition)
      * @param maxNumber The max number of memberId. (NullAllowed: if null, no to-condition)
@@ -137,7 +137,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br />
+     * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberIdList The collection of memberId as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -150,7 +150,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      * @param memberIdList The collection of memberId as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -163,8 +163,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MEMBER_ID from MEMBER_ADDRESS where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MEMBER_ID from MEMBER_ADDRESS where ...)} <br>
      * (会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberAddressList</span>(addressCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -182,8 +182,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberAddressList(MemberAddressCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MY_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MY_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br>
      * (会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberFollowingByMyMemberIdList</span>(followingCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -201,8 +201,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberFollowingByMyMemberIdList(MemberFollowingCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select YOUR_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select YOUR_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br>
      * (会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberFollowingByYourMemberIdList</span>(followingCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -220,8 +220,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberFollowingByYourMemberIdList(MemberFollowingCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MEMBER_ID from MEMBER_LOGIN where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MEMBER_ID from MEMBER_LOGIN where ...)} <br>
      * (会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberLoginList</span>(loginCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -239,8 +239,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberLoginList(MemberLoginCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MEMBER_ID from MEMBER_SECURITY where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MEMBER_ID from MEMBER_SECURITY where ...)} <br>
      * (会員セキュリティ情報)MEMBER_SECURITY by MEMBER_ID, named 'memberSecurityAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberSecurityAsOne</span>(securityCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -258,8 +258,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberSecurityAsOne(MemberSecurityCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MEMBER_ID from MEMBER_SERVICE where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MEMBER_ID from MEMBER_SERVICE where ...)} <br>
      * (会員サービス)MEMBER_SERVICE by MEMBER_ID, named 'memberServiceAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberServiceAsOne</span>(serviceCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -277,8 +277,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberServiceAsOne(MemberServiceCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MEMBER_ID from MEMBER_WITHDRAWAL where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MEMBER_ID from MEMBER_WITHDRAWAL where ...)} <br>
      * (会員退会情報)MEMBER_WITHDRAWAL by MEMBER_ID, named 'memberWithdrawalAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsMemberWithdrawalAsOne</span>(withdrawalCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -296,8 +296,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_MemberWithdrawalAsOne(MemberWithdrawalCQ sq);
 
     /**
-     * Set up ExistsReferrer (correlated sub-query). <br />
-     * {exists (select MEMBER_ID from PURCHASE where ...)} <br />
+     * Set up ExistsReferrer (correlated sub-query). <br>
+     * {exists (select MEMBER_ID from PURCHASE where ...)} <br>
      * (購入)PURCHASE by MEMBER_ID, named 'purchaseAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">existsPurchaseList</span>(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -315,8 +315,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_ExistsReferrer_PurchaseList(PurchaseCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MEMBER_ID from MEMBER_ADDRESS where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MEMBER_ID from MEMBER_ADDRESS where ...)} <br>
      * (会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberAddressList</span>(addressCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -334,8 +334,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberAddressList(MemberAddressCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MY_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MY_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br>
      * (会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberFollowingByMyMemberIdList</span>(followingCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -353,8 +353,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberFollowingByMyMemberIdList(MemberFollowingCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select YOUR_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select YOUR_MEMBER_ID from MEMBER_FOLLOWING where ...)} <br>
      * (会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberFollowingByYourMemberIdList</span>(followingCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -372,8 +372,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberFollowingByYourMemberIdList(MemberFollowingCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MEMBER_ID from MEMBER_LOGIN where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MEMBER_ID from MEMBER_LOGIN where ...)} <br>
      * (会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberLoginList</span>(loginCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -391,8 +391,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberLoginList(MemberLoginCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MEMBER_ID from MEMBER_SECURITY where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MEMBER_ID from MEMBER_SECURITY where ...)} <br>
      * (会員セキュリティ情報)MEMBER_SECURITY by MEMBER_ID, named 'memberSecurityAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberSecurityAsOne</span>(securityCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -410,8 +410,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberSecurityAsOne(MemberSecurityCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MEMBER_ID from MEMBER_SERVICE where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MEMBER_ID from MEMBER_SERVICE where ...)} <br>
      * (会員サービス)MEMBER_SERVICE by MEMBER_ID, named 'memberServiceAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberServiceAsOne</span>(serviceCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -429,8 +429,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberServiceAsOne(MemberServiceCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MEMBER_ID from MEMBER_WITHDRAWAL where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MEMBER_ID from MEMBER_WITHDRAWAL where ...)} <br>
      * (会員退会情報)MEMBER_WITHDRAWAL by MEMBER_ID, named 'memberWithdrawalAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsMemberWithdrawalAsOne</span>(withdrawalCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -448,8 +448,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_NotExistsReferrer_MemberWithdrawalAsOne(MemberWithdrawalCQ sq);
 
     /**
-     * Set up NotExistsReferrer (correlated sub-query). <br />
-     * {not exists (select MEMBER_ID from PURCHASE where ...)} <br />
+     * Set up NotExistsReferrer (correlated sub-query). <br>
+     * {not exists (select MEMBER_ID from PURCHASE where ...)} <br>
      * (購入)PURCHASE by MEMBER_ID, named 'purchaseAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">notExistsPurchaseList</span>(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -507,8 +507,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_SpecifyDerivedReferrer_PurchaseList(PurchaseCQ sq);
 
     /**
-     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br />
-     * {FOO &lt;= (select max(BAR) from MEMBER_ADDRESS where ...)} <br />
+     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br>
+     * {FOO &lt;= (select max(BAR) from MEMBER_ADDRESS where ...)} <br>
      * (会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">derivedMemberAddressList()</span>.<span style="color: #CC4747">max</span>(addressCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -534,8 +534,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_QueryDerivedReferrer_MemberAddressListParameter(Object vl);
 
     /**
-     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br />
-     * {FOO &lt;= (select max(BAR) from MEMBER_FOLLOWING where ...)} <br />
+     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br>
+     * {FOO &lt;= (select max(BAR) from MEMBER_FOLLOWING where ...)} <br>
      * (会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">derivedMemberFollowingByMyMemberIdList()</span>.<span style="color: #CC4747">max</span>(followingCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -561,8 +561,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_QueryDerivedReferrer_MemberFollowingByMyMemberIdListParameter(Object vl);
 
     /**
-     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br />
-     * {FOO &lt;= (select max(BAR) from MEMBER_FOLLOWING where ...)} <br />
+     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br>
+     * {FOO &lt;= (select max(BAR) from MEMBER_FOLLOWING where ...)} <br>
      * (会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">derivedMemberFollowingByYourMemberIdList()</span>.<span style="color: #CC4747">max</span>(followingCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -588,8 +588,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_QueryDerivedReferrer_MemberFollowingByYourMemberIdListParameter(Object vl);
 
     /**
-     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br />
-     * {FOO &lt;= (select max(BAR) from MEMBER_LOGIN where ...)} <br />
+     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br>
+     * {FOO &lt;= (select max(BAR) from MEMBER_LOGIN where ...)} <br>
      * (会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">derivedMemberLoginList()</span>.<span style="color: #CC4747">max</span>(loginCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -615,8 +615,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_QueryDerivedReferrer_MemberLoginListParameter(Object vl);
 
     /**
-     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br />
-     * {FOO &lt;= (select max(BAR) from PURCHASE where ...)} <br />
+     * Prepare for (Query)DerivedReferrer (correlated sub-query). <br>
+     * {FOO &lt;= (select max(BAR) from PURCHASE where ...)} <br>
      * (購入)PURCHASE by MEMBER_ID, named 'purchaseAsOne'.
      * <pre>
      * cb.query().<span style="color: #CC4747">derivedPurchaseList()</span>.<span style="color: #CC4747">max</span>(purchaseCB <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -642,13 +642,13 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     public abstract String keepMemberId_QueryDerivedReferrer_PurchaseListParameter(Object vl);
 
     /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br />
+     * IsNull {is null}. And OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      */
     public void setMemberId_IsNull() { regMemberId(CK_ISN, DOBJ); }
 
     /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br />
+     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
      */
     public void setMemberId_IsNotNull() { regMemberId(CK_ISNN, DOBJ); }
@@ -657,7 +657,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueMemberId();
 
     /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as equal. (NullAllowed: if null (or empty), no condition)
      */
@@ -670,7 +670,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as notEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -683,7 +683,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as greaterThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -692,7 +692,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as lessThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -701,7 +701,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as greaterEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -710,7 +710,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as lessEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -719,7 +719,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberNameList The collection of memberName as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -732,7 +732,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberNameList The collection of memberName as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -745,8 +745,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
-     * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)} <br />
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setMemberName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param memberName The value of memberName as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -756,8 +756,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br />
-     * And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as notLikeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of not-like-search. (NotNull)
@@ -767,7 +767,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(200)}
      * @param memberName The value of memberName as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
@@ -779,7 +779,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueMemberName();
 
     /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as equal. (NullAllowed: if null (or empty), no condition)
      */
@@ -792,7 +792,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as notEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -805,7 +805,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as greaterThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -814,7 +814,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as lessThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -823,7 +823,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as greaterEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -832,7 +832,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as lessEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -841,7 +841,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccountList The collection of memberAccount as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -854,7 +854,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccountList The collection of memberAccount as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -867,8 +867,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
-     * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)} <br />
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setMemberAccount_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param memberAccount The value of memberAccount as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -878,8 +878,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br />
-     * And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as notLikeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of not-like-search. (NotNull)
@@ -889,7 +889,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}
      * @param memberAccount The value of memberAccount as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
@@ -901,7 +901,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueMemberAccount();
 
     /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
      * @param memberStatusCode The value of memberStatusCode as equal. (NullAllowed: if null (or empty), no condition)
      */
@@ -910,8 +910,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Equal(=). As MemberStatus. And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
-     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * Equal(=). As MemberStatus. And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * status of member from entry to withdrawal
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, no condition)
      */
@@ -920,7 +920,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Equal(=). As Formalized (FML). And OnlyOnceRegistered. <br />
+     * Equal(=). As Formalized (FML). And OnlyOnceRegistered. <br>
      * Formalized: as formal member, allowed to use all service
      */
     public void setMemberStatusCode_Equal_Formalized() {
@@ -928,7 +928,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Equal(=). As Withdrawal (WDL). And OnlyOnceRegistered. <br />
+     * Equal(=). As Withdrawal (WDL). And OnlyOnceRegistered. <br>
      * Withdrawal: withdrawal is fixed, not allowed to use service
      */
     public void setMemberStatusCode_Equal_Withdrawal() {
@@ -936,7 +936,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Equal(=). As Provisional (PRV). And OnlyOnceRegistered. <br />
+     * Equal(=). As Provisional (PRV). And OnlyOnceRegistered. <br>
      * Provisional: first status after entry, allowed to use only part of service
      */
     public void setMemberStatusCode_Equal_Provisional() {
@@ -948,7 +948,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
      * @param memberStatusCode The value of memberStatusCode as notEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -957,8 +957,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). As MemberStatus. And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
-     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * NotEqual(&lt;&gt;). As MemberStatus. And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * status of member from entry to withdrawal
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, no condition)
      */
@@ -967,7 +967,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). As Formalized (FML). And OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). As Formalized (FML). And OnlyOnceRegistered. <br>
      * Formalized: as formal member, allowed to use all service
      */
     public void setMemberStatusCode_NotEqual_Formalized() {
@@ -975,7 +975,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). As Withdrawal (WDL). And OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). As Withdrawal (WDL). And OnlyOnceRegistered. <br>
      * Withdrawal: withdrawal is fixed, not allowed to use service
      */
     public void setMemberStatusCode_NotEqual_Withdrawal() {
@@ -983,7 +983,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). As Provisional (PRV). And OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). As Provisional (PRV). And OnlyOnceRegistered. <br>
      * Provisional: first status after entry, allowed to use only part of service
      */
     public void setMemberStatusCode_NotEqual_Provisional() {
@@ -995,7 +995,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
      * @param memberStatusCodeList The collection of memberStatusCode as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1004,8 +1004,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. As MemberStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
-     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * InScope {in ('a', 'b')}. As MemberStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * status of member from entry to withdrawal
      * @param cdefList The list of classification definition (as ENUM type). (NullAllowed: if null (or empty), no condition)
      */
@@ -1014,9 +1014,9 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. As MemberStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
-     * status of member from entry to withdrawal <br />
-     * means member that can use services <br />
+     * InScope {in ('a', 'b')}. As MemberStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * status of member from entry to withdrawal <br>
+     * means member that can use services <br>
      * The group elements:[Formalized, Provisional]
      */
     public void setMemberStatusCode_InScope_ServiceAvailable() {
@@ -1028,7 +1028,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
      * @param memberStatusCodeList The collection of memberStatusCode as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1037,8 +1037,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. As MemberStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
-     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br />
+     * NotInScope {not in ('a', 'b')}. As MemberStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * status of member from entry to withdrawal
      * @param cdefList The list of classification definition (as ENUM type). (NullAllowed: if null (or empty), no condition)
      */
@@ -1054,7 +1054,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueMemberStatusCode();
 
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * @param formalizedDatetime The value of formalizedDatetime as equal. (NullAllowed: if null, no condition)
      */
@@ -1063,7 +1063,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * @param formalizedDatetime The value of formalizedDatetime as greaterThan. (NullAllowed: if null, no condition)
      */
@@ -1072,7 +1072,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * @param formalizedDatetime The value of formalizedDatetime as lessThan. (NullAllowed: if null, no condition)
      */
@@ -1081,7 +1081,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * @param formalizedDatetime The value of formalizedDatetime as greaterEqual. (NullAllowed: if null, no condition)
      */
@@ -1090,7 +1090,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * @param formalizedDatetime The value of formalizedDatetime as lessEqual. (NullAllowed: if null, no condition)
      */
@@ -1099,8 +1099,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * <pre>e.g. setFormalizedDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of formalizedDatetime. (NullAllowed: if null, no from-condition)
@@ -1112,8 +1112,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
@@ -1127,13 +1127,13 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br />
+     * IsNull {is null}. And OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      */
     public void setFormalizedDatetime_IsNull() { regFormalizedDatetime(CK_ISN, DOBJ); }
 
     /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br />
+     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
      * (正式会員日時)FORMALIZED_DATETIME: {IX, TIMESTAMP(23, 10)}
      */
     public void setFormalizedDatetime_IsNotNull() { regFormalizedDatetime(CK_ISNN, DOBJ); }
@@ -1142,7 +1142,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueFormalizedDatetime();
 
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * @param birthdate The value of birthdate as equal. (NullAllowed: if null, no condition)
      */
@@ -1151,7 +1151,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * @param birthdate The value of birthdate as greaterThan. (NullAllowed: if null, no condition)
      */
@@ -1160,7 +1160,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * @param birthdate The value of birthdate as lessThan. (NullAllowed: if null, no condition)
      */
@@ -1169,7 +1169,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * @param birthdate The value of birthdate as greaterEqual. (NullAllowed: if null, no condition)
      */
@@ -1178,7 +1178,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * @param birthdate The value of birthdate as lessEqual. (NullAllowed: if null, no condition)
      */
@@ -1187,8 +1187,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * <pre>e.g. setBirthdate_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of birthdate. (NullAllowed: if null, no from-condition)
@@ -1200,8 +1200,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
@@ -1215,13 +1215,13 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br />
+     * IsNull {is null}. And OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      */
     public void setBirthdate_IsNull() { regBirthdate(CK_ISN, DOBJ); }
 
     /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br />
+     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
      * (生年月日)BIRTHDATE: {DATE(8)}
      */
     public void setBirthdate_IsNotNull() { regBirthdate(CK_ISNN, DOBJ); }
@@ -1230,7 +1230,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueBirthdate();
 
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param registerDatetime The value of registerDatetime as equal. (NullAllowed: if null, no condition)
      */
@@ -1239,7 +1239,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param registerDatetime The value of registerDatetime as greaterThan. (NullAllowed: if null, no condition)
      */
@@ -1248,7 +1248,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param registerDatetime The value of registerDatetime as lessThan. (NullAllowed: if null, no condition)
      */
@@ -1257,7 +1257,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param registerDatetime The value of registerDatetime as greaterEqual. (NullAllowed: if null, no condition)
      */
@@ -1266,7 +1266,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param registerDatetime The value of registerDatetime as lessEqual. (NullAllowed: if null, no condition)
      */
@@ -1275,8 +1275,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (NullAllowed: if null, no from-condition)
@@ -1288,8 +1288,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (登録日時)REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
@@ -1306,7 +1306,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueRegisterDatetime();
 
     /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as equal. (NullAllowed: if null (or empty), no condition)
      */
@@ -1319,7 +1319,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as notEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -1332,7 +1332,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as greaterThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -1341,7 +1341,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as lessThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -1350,7 +1350,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as greaterEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -1359,7 +1359,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as lessEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -1368,7 +1368,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUserList The collection of registerUser as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1381,7 +1381,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUserList The collection of registerUser as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1394,8 +1394,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
-     * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setRegisterUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param registerUser The value of registerUser as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1405,8 +1405,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br />
-     * And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as notLikeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of not-like-search. (NotNull)
@@ -1416,7 +1416,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (登録ユーザ)REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
@@ -1428,7 +1428,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueRegisterUser();
 
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param updateDatetime The value of updateDatetime as equal. (NullAllowed: if null, no condition)
      */
@@ -1437,7 +1437,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param updateDatetime The value of updateDatetime as greaterThan. (NullAllowed: if null, no condition)
      */
@@ -1446,7 +1446,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param updateDatetime The value of updateDatetime as lessThan. (NullAllowed: if null, no condition)
      */
@@ -1455,7 +1455,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param updateDatetime The value of updateDatetime as greaterEqual. (NullAllowed: if null, no condition)
      */
@@ -1464,7 +1464,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @param updateDatetime The value of updateDatetime as lessEqual. (NullAllowed: if null, no condition)
      */
@@ -1473,8 +1473,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (NullAllowed: if null, no from-condition)
@@ -1486,8 +1486,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (更新日時)UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
@@ -1504,7 +1504,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueUpdateDatetime();
 
     /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as equal. (NullAllowed: if null (or empty), no condition)
      */
@@ -1517,7 +1517,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as notEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -1530,7 +1530,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as greaterThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -1539,7 +1539,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as lessThan. (NullAllowed: if null (or empty), no condition)
      */
@@ -1548,7 +1548,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as greaterEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -1557,7 +1557,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as lessEqual. (NullAllowed: if null (or empty), no condition)
      */
@@ -1566,7 +1566,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUserList The collection of updateUser as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1579,7 +1579,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUserList The collection of updateUser as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1592,8 +1592,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
-     * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setUpdateUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param updateUser The value of updateUser as likeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1603,8 +1603,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br />
-     * And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as notLikeSearch. (NullAllowed: if null (or empty), no condition)
      * @param likeSearchOption The option of not-like-search. (NotNull)
@@ -1614,7 +1614,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br />
+     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (更新ユーザ)UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as prefixSearch. (NullAllowed: if null (or empty), no condition)
      */
@@ -1626,7 +1626,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueUpdateUser();
 
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br />
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNo The value of versionNo as equal. (NullAllowed: if null, no condition)
      */
@@ -1639,7 +1639,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNo The value of versionNo as notEqual. (NullAllowed: if null, no condition)
      */
@@ -1652,7 +1652,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNo The value of versionNo as greaterThan. (NullAllowed: if null, no condition)
      */
@@ -1661,7 +1661,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNo The value of versionNo as lessThan. (NullAllowed: if null, no condition)
      */
@@ -1670,7 +1670,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNo The value of versionNo as greaterEqual. (NullAllowed: if null, no condition)
      */
@@ -1679,7 +1679,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br />
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNo The value of versionNo as lessEqual. (NullAllowed: if null, no condition)
      */
@@ -1688,9 +1688,9 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * RangeOf with various options. (versatile) <br />
-     * {(default) minNumber &lt;= column &lt;= maxNumber} <br />
-     * And NullIgnored, OnlyOnceRegistered. <br />
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param minNumber The min number of versionNo. (NullAllowed: if null, no from-condition)
      * @param maxNumber The max number of versionNo. (NullAllowed: if null, no to-condition)
@@ -1701,7 +1701,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br />
+     * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNoList The collection of versionNo as inScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1714,7 +1714,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br />
+     * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
      * (バージョンNO)VERSION_NO: {NotNull, BIGINT(19)}
      * @param versionNoList The collection of versionNo as notInScope. (NullAllowed: if null (or empty), no condition)
      */
@@ -1733,7 +1733,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     //                                                                     ScalarCondition
     //                                                                     ===============
     /**
-     * Prepare ScalarCondition as equal. <br />
+     * Prepare ScalarCondition as equal. <br>
      * {where FOO = (select max(BAR) from ...)
      * <pre>
      * cb.query().<span style="color: #CC4747">scalar_Equal()</span>.max(new SubQuery&lt;MemberCB&gt;() {
@@ -1750,7 +1750,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Prepare ScalarCondition as equal. <br />
+     * Prepare ScalarCondition as equal. <br>
      * {where FOO &lt;&gt; (select max(BAR) from ...)
      * <pre>
      * cb.query().<span style="color: #CC4747">scalar_NotEqual()</span>.max(new SubQuery&lt;MemberCB&gt;() {
@@ -1767,7 +1767,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Prepare ScalarCondition as greaterThan. <br />
+     * Prepare ScalarCondition as greaterThan. <br>
      * {where FOO &gt; (select max(BAR) from ...)
      * <pre>
      * cb.query().<span style="color: #CC4747">scalar_GreaterThan()</span>.max(new SubQuery&lt;MemberCB&gt;() {
@@ -1784,7 +1784,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Prepare ScalarCondition as lessThan. <br />
+     * Prepare ScalarCondition as lessThan. <br>
      * {where FOO &lt; (select max(BAR) from ...)
      * <pre>
      * cb.query().<span style="color: #CC4747">scalar_LessThan()</span>.max(new SubQuery&lt;MemberCB&gt;() {
@@ -1801,7 +1801,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Prepare ScalarCondition as greaterEqual. <br />
+     * Prepare ScalarCondition as greaterEqual. <br>
      * {where FOO &gt;= (select max(BAR) from ...)
      * <pre>
      * cb.query().<span style="color: #CC4747">scalar_GreaterEqual()</span>.max(new SubQuery&lt;MemberCB&gt;() {
@@ -1818,7 +1818,7 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     }
 
     /**
-     * Prepare ScalarCondition as lessEqual. <br />
+     * Prepare ScalarCondition as lessEqual. <br>
      * {where FOO &lt;= (select max(BAR) from ...)
      * <pre>
      * cb.query().<span style="color: #CC4747">scalar_LessEqual()</span>.max(new SubQuery&lt;MemberCB&gt;() {
@@ -1939,8 +1939,8 @@ public abstract class AbstractBsMemberCQ extends AbstractConditionQuery {
     //                                                                    Small Adjustment
     //                                                                    ================
     /**
-     * Order along the list of manual values. #beforejava8 <br />
-     * This function with Union is unsupported! <br />
+     * Order along the list of manual values. #beforejava8 <br>
+     * This function with Union is unsupported! <br>
      * The order values are bound (treated as bind parameter).
      * <pre>
      * MemberCB cb = new MemberCB();

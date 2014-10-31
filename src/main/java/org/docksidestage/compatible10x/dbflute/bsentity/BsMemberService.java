@@ -20,14 +20,15 @@ import java.util.ArrayList;
 
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
+import org.dbflute.dbmeta.accessory.DomainEntity;
 import org.docksidestage.compatible10x.dbflute.allcommon.EntityDefinedCommonColumn;
 import org.docksidestage.compatible10x.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
 
 /**
- * The entity of (会員サービス)MEMBER_SERVICE as TABLE. <br />
- * 会員のサービス情報（ポイントサービスなど）。<br />
+ * The entity of (会員サービス)MEMBER_SERVICE as TABLE. <br>
+ * 会員のサービス情報（ポイントサービスなど）。<br>
  * テストケースのために、あえて統一性を崩してユニーク制約経由の one-to-one を表現している。
  * <pre>
  * [primary-key]
@@ -81,7 +82,7 @@ import org.docksidestage.compatible10x.dbflute.exentity.*;
  * </pre>
  * @author DBFlute(AutoGenerator)
  */
-public abstract class BsMemberService extends AbstractEntity implements EntityDefinedCommonColumn {
+public abstract class BsMemberService extends AbstractEntity implements DomainEntity, EntityDefinedCommonColumn {
 
     // ===================================================================================
     //                                                                          Definition
@@ -150,7 +151,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * To be unique by the unique column. <br />
+     * To be unique by the unique column. <br>
      * You can update the entity by the key when entity update (NOT batch update).
      * @param memberId (会員ID): UQ, IX, NotNull, INTEGER(10), FK to MEMBER. (NotNull)
      */
@@ -164,8 +165,8 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     //                                                             Classification Property
     //                                                             =======================
     /**
-     * Get the value of serviceRankCode as the classification of ServiceRank. <br />
-     * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br />
+     * Get the value of serviceRankCode as the classification of ServiceRank. <br>
+     * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
      * rank of service member gets
      * <p>It's treated as case insensitive and if the code value is null, it returns null.</p>
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
@@ -175,8 +176,8 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Set the value of serviceRankCode as the classification of ServiceRank. <br />
-     * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br />
+     * Set the value of serviceRankCode as the classification of ServiceRank. <br>
+     * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
      * rank of service member gets
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the column)
      */
@@ -188,7 +189,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     //                                                              Classification Setting
     //                                                              ======================
     /**
-     * Set the value of serviceRankCode as Platinum (PLT). <br />
+     * Set the value of serviceRankCode as Platinum (PLT). <br>
      * PLATINUM: platinum rank
      */
     public void setServiceRankCode_Platinum() {
@@ -196,7 +197,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Set the value of serviceRankCode as Gold (GLD). <br />
+     * Set the value of serviceRankCode as Gold (GLD). <br>
      * GOLD: gold rank
      */
     public void setServiceRankCode_Gold() {
@@ -204,7 +205,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Set the value of serviceRankCode as Silver (SIL). <br />
+     * Set the value of serviceRankCode as Silver (SIL). <br>
      * SILVER: silver rank
      */
     public void setServiceRankCode_Silver() {
@@ -212,7 +213,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Set the value of serviceRankCode as Bronze (BRZ). <br />
+     * Set the value of serviceRankCode as Bronze (BRZ). <br>
      * BRONZE: bronze rank
      */
     public void setServiceRankCode_Bronze() {
@@ -220,7 +221,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Set the value of serviceRankCode as Plastic (PLS). <br />
+     * Set the value of serviceRankCode as Plastic (PLS). <br>
      * PLASTIC: plastic rank
      */
     public void setServiceRankCode_Plastic() {
@@ -231,7 +232,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     //                                                        Classification Determination
     //                                                        ============================
     /**
-     * Is the value of serviceRankCode Platinum? <br />
+     * Is the value of serviceRankCode Platinum? <br>
      * PLATINUM: platinum rank
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -242,7 +243,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Is the value of serviceRankCode Gold? <br />
+     * Is the value of serviceRankCode Gold? <br>
      * GOLD: gold rank
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -253,7 +254,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Is the value of serviceRankCode Silver? <br />
+     * Is the value of serviceRankCode Silver? <br>
      * SILVER: silver rank
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -264,7 +265,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Is the value of serviceRankCode Bronze? <br />
+     * Is the value of serviceRankCode Bronze? <br>
      * BRONZE: bronze rank
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -275,7 +276,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * Is the value of serviceRankCode Plastic? <br />
+     * Is the value of serviceRankCode Plastic? <br>
      * PLASTIC: plastic rank
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -292,7 +293,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     protected Member _member;
 
     /**
-     * [get] (会員)MEMBER by my MEMBER_ID, named 'member'. <br />
+     * [get] (会員)MEMBER by my MEMBER_ID, named 'member'. <br>
      * @return The entity of foreign property 'member'. (NullAllowed: when e.g. null FK column, no setupSelect)
      */
     public Member getMember() {
@@ -311,7 +312,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     protected ServiceRank _serviceRank;
 
     /**
-     * [get] (サービスランク)SERVICE_RANK by my SERVICE_RANK_CODE, named 'serviceRank'. <br />
+     * [get] (サービスランク)SERVICE_RANK by my SERVICE_RANK_CODE, named 'serviceRank'. <br>
      * @return The entity of foreign property 'serviceRank'. (NullAllowed: when e.g. null FK column, no setupSelect)
      */
     public ServiceRank getServiceRank() {
@@ -406,7 +407,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] (会員サービスID)MEMBER_SERVICE_ID: {PK, ID, NotNull, INTEGER(10)} <br />
+     * [get] (会員サービスID)MEMBER_SERVICE_ID: {PK, ID, NotNull, INTEGER(10)} <br>
      * 独立した主キーとなるが、実質的に会員IDとは one-to-one である。
      * @return The value of the column 'MEMBER_SERVICE_ID'. (basically NotNull if selected: for the constraint)
      */
@@ -416,7 +417,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] (会員サービスID)MEMBER_SERVICE_ID: {PK, ID, NotNull, INTEGER(10)} <br />
+     * [set] (会員サービスID)MEMBER_SERVICE_ID: {PK, ID, NotNull, INTEGER(10)} <br>
      * 独立した主キーとなるが、実質的に会員IDとは one-to-one である。
      * @param memberServiceId The value of the column 'MEMBER_SERVICE_ID'. (basically NotNull if update: for the constraint)
      */
@@ -426,7 +427,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] (会員ID)MEMBER_ID: {UQ, IX, NotNull, INTEGER(10), FK to MEMBER} <br />
+     * [get] (会員ID)MEMBER_ID: {UQ, IX, NotNull, INTEGER(10), FK to MEMBER} <br>
      * 会員を参照するID。ユニークなので、会員とは one-to-one の関係に。
      * @return The value of the column 'MEMBER_ID'. (basically NotNull if selected: for the constraint)
      */
@@ -436,7 +437,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] (会員ID)MEMBER_ID: {UQ, IX, NotNull, INTEGER(10), FK to MEMBER} <br />
+     * [set] (会員ID)MEMBER_ID: {UQ, IX, NotNull, INTEGER(10), FK to MEMBER} <br>
      * 会員を参照するID。ユニークなので、会員とは one-to-one の関係に。
      * @param memberId The value of the column 'MEMBER_ID'. (basically NotNull if update: for the constraint)
      */
@@ -446,7 +447,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] (サービスポイント数)SERVICE_POINT_COUNT: {IX, NotNull, INTEGER(10)} <br />
+     * [get] (サービスポイント数)SERVICE_POINT_COUNT: {IX, NotNull, INTEGER(10)} <br>
      * 購入したら増えて使ったら減る。
      * @return The value of the column 'SERVICE_POINT_COUNT'. (basically NotNull if selected: for the constraint)
      */
@@ -456,7 +457,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] (サービスポイント数)SERVICE_POINT_COUNT: {IX, NotNull, INTEGER(10)} <br />
+     * [set] (サービスポイント数)SERVICE_POINT_COUNT: {IX, NotNull, INTEGER(10)} <br>
      * 購入したら増えて使ったら減る。
      * @param servicePointCount The value of the column 'SERVICE_POINT_COUNT'. (basically NotNull if update: for the constraint)
      */
@@ -466,7 +467,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br />
+     * [get] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
      * どんなランクがあるのかドキドキですね。
      * @return The value of the column 'SERVICE_RANK_CODE'. (basically NotNull if selected: for the constraint)
      */
@@ -476,7 +477,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br />
+     * [set] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
      * どんなランクがあるのかドキドキですね。
      * @param serviceRankCode The value of the column 'SERVICE_RANK_CODE'. (basically NotNull if update: for the constraint)
      */
@@ -486,7 +487,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @return The value of the column 'REGISTER_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
@@ -495,7 +496,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
@@ -504,7 +505,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * [get] REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * @return The value of the column 'REGISTER_USER'. (basically NotNull if selected: for the constraint)
      */
     public String getRegisterUser() {
@@ -513,7 +514,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * [set] REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * @param registerUser The value of the column 'REGISTER_USER'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterUser(String registerUser) {
@@ -522,7 +523,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @return The value of the column 'UPDATE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
@@ -531,7 +532,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {
@@ -540,7 +541,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * [get] UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * @return The value of the column 'UPDATE_USER'. (basically NotNull if selected: for the constraint)
      */
     public String getUpdateUser() {
@@ -549,7 +550,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * [set] UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * @param updateUser The value of the column 'UPDATE_USER'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateUser(String updateUser) {
@@ -558,7 +559,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [get] VERSION_NO: {NotNull, BIGINT(19)} <br />
+     * [get] VERSION_NO: {NotNull, BIGINT(19)} <br>
      * @return The value of the column 'VERSION_NO'. (basically NotNull if selected: for the constraint)
      */
     public Long getVersionNo() {
@@ -567,7 +568,7 @@ public abstract class BsMemberService extends AbstractEntity implements EntityDe
     }
 
     /**
-     * [set] VERSION_NO: {NotNull, BIGINT(19)} <br />
+     * [set] VERSION_NO: {NotNull, BIGINT(19)} <br>
      * @param versionNo The value of the column 'VERSION_NO'. (basically NotNull if update: for the constraint)
      */
     public void setVersionNo(Long versionNo) {

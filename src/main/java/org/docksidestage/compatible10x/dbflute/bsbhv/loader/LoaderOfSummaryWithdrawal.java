@@ -22,7 +22,7 @@ import org.docksidestage.compatible10x.dbflute.exbhv.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
 
 /**
- * The referrer loader of SUMMARY_WITHDRAWAL as VIEW. <br />
+ * The referrer loader of SUMMARY_WITHDRAWAL as VIEW. <br>
  * <pre>
  * [primary key]
  *     

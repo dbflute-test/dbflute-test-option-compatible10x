@@ -25,7 +25,7 @@ import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exbhv.*;
 
 /**
- * The base class for typed parameter-bean of ParameterNonAutoDetect. <br />
+ * The base class for typed parameter-bean of ParameterNonAutoDetect. <br>
  * This is related to "<span style="color: #AD4747">whitebox:pmbean:selectParameterNonAutoDetect</span>" on MemberBhv.
  * @author DBFlute(AutoGenerator)
  */
@@ -50,7 +50,7 @@ public class BsParameterNonAutoDetectPmb implements ExecuteHandlingPmb<MemberBhv
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor for the typed parameter-bean of ParameterNonAutoDetect. <br />
+     * Constructor for the typed parameter-bean of ParameterNonAutoDetect. <br>
      * This is related to "<span style="color: #AD4747">whitebox:pmbean:selectParameterNonAutoDetect</span>" on MemberBhv.
      */
     public BsParameterNonAutoDetectPmb() {
@@ -132,7 +132,7 @@ public class BsParameterNonAutoDetectPmb implements ExecuteHandlingPmb<MemberBhv
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] normalInteger <br />
+     * [get] normalInteger <br>
      * @return The value of normalInteger. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Integer getNormalInteger() {
@@ -140,7 +140,7 @@ public class BsParameterNonAutoDetectPmb implements ExecuteHandlingPmb<MemberBhv
     }
 
     /**
-     * [set] normalInteger <br />
+     * [set] normalInteger <br>
      * @param normalInteger The value of normalInteger. (NullAllowed)
      */
     public void setNormalInteger(Integer normalInteger) {
@@ -148,7 +148,7 @@ public class BsParameterNonAutoDetectPmb implements ExecuteHandlingPmb<MemberBhv
     }
 
     /**
-     * [get] noTestValue <br />
+     * [get] noTestValue <br>
      * @return The value of noTestValue. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Integer getNoTestValue() {
@@ -156,7 +156,7 @@ public class BsParameterNonAutoDetectPmb implements ExecuteHandlingPmb<MemberBhv
     }
 
     /**
-     * [set] noTestValue <br />
+     * [set] noTestValue <br>
      * @param noTestValue The value of noTestValue. (NullAllowed)
      */
     public void setNoTestValue(Integer noTestValue) {

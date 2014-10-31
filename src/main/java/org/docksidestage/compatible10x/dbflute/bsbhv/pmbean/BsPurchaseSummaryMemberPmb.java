@@ -26,7 +26,7 @@ import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exbhv.*;
 
 /**
- * The base class for typed parameter-bean of PurchaseSummaryMember. <br />
+ * The base class for typed parameter-bean of PurchaseSummaryMember. <br>
  * This is related to "<span style="color: #AD4747">selectPurchaseSummaryMember</span>" on MemberBhv.
  * @author DBFlute(AutoGenerator)
  */
@@ -57,7 +57,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor for the typed parameter-bean of PurchaseSummaryMember. <br />
+     * Constructor for the typed parameter-bean of PurchaseSummaryMember. <br>
      * This is related to "<span style="color: #AD4747">selectPurchaseSummaryMember</span>" on MemberBhv.
      */
     public BsPurchaseSummaryMemberPmb() {
@@ -148,7 +148,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] memberNameList:likeContain <br />
+     * [get] memberNameList:likeContain <br>
      * @return The value of memberNameList. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public List<String> getMemberNameList() {
@@ -156,7 +156,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set as containSearch] memberNameList:likeContain <br />
+     * [set as containSearch] memberNameList:likeContain <br>
      * @param memberNameList The value of memberNameList. (NullAllowed)
      */
     public void setMemberNameList_ContainSearch(List<String> memberNameList) {
@@ -173,7 +173,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [get] memberStatusCode:cls(MemberStatus) <br />
+     * [get] memberStatusCode:cls(MemberStatus) <br>
      * @return The value of memberStatusCode. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getMemberStatusCode() {
@@ -181,7 +181,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set] memberStatusCode:cls(MemberStatus) <br />
+     * [set] memberStatusCode:cls(MemberStatus) <br>
      * @param memberStatusCode The value of memberStatusCode. (NullAllowed)
      */
     public void setMemberStatusCode(String memberStatusCode) {
@@ -189,7 +189,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set as Formalized] memberStatusCode:cls(MemberStatus) <br />
+     * [set as Formalized] memberStatusCode:cls(MemberStatus) <br>
      * as formal member, allowed to use all service
      */
     public void setMemberStatusCode_Formalized() {
@@ -197,7 +197,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set as Withdrawal] memberStatusCode:cls(MemberStatus) <br />
+     * [set as Withdrawal] memberStatusCode:cls(MemberStatus) <br>
      * withdrawal is fixed, not allowed to use service
      */
     public void setMemberStatusCode_Withdrawal() {
@@ -205,7 +205,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set as Provisional] memberStatusCode:cls(MemberStatus) <br />
+     * [set as Provisional] memberStatusCode:cls(MemberStatus) <br>
      * first status after entry, allowed to use only part of service
      */
     public void setMemberStatusCode_Provisional() {
@@ -213,7 +213,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [get] formalizedDatetime <br />
+     * [get] formalizedDatetime <br>
      * @return The value of formalizedDatetime. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public java.sql.Timestamp getFormalizedDatetime() {
@@ -221,7 +221,7 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set] formalizedDatetime <br />
+     * [set] formalizedDatetime <br>
      * @param formalizedDatetime The value of formalizedDatetime. (NullAllowed)
      */
     public void setFormalizedDatetime(java.sql.Timestamp formalizedDatetime) {

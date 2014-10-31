@@ -26,7 +26,7 @@ import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exbhv.*;
 
 /**
- * The base class for typed parameter-bean of MemberChangedToWithdrawalForcedly. <br />
+ * The base class for typed parameter-bean of MemberChangedToWithdrawalForcedly. <br>
  * This is related to "<span style="color: #AD4747">updateMemberChangedToWithdrawalForcedly</span>" on MemberBhv.
  * @author DBFlute(AutoGenerator)
  */
@@ -54,7 +54,7 @@ public class BsMemberChangedToWithdrawalForcedlyPmb implements ExecuteHandlingPm
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor for the typed parameter-bean of MemberChangedToWithdrawalForcedly. <br />
+     * Constructor for the typed parameter-bean of MemberChangedToWithdrawalForcedly. <br>
      * This is related to "<span style="color: #AD4747">updateMemberChangedToWithdrawalForcedly</span>" on MemberBhv.
      */
     public BsMemberChangedToWithdrawalForcedlyPmb() {
@@ -138,7 +138,7 @@ public class BsMemberChangedToWithdrawalForcedlyPmb implements ExecuteHandlingPm
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] memberName:likePrefix <br />
+     * [get] memberName:likePrefix <br>
      * @return The value of memberName. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public String getMemberName() {
@@ -146,7 +146,7 @@ public class BsMemberChangedToWithdrawalForcedlyPmb implements ExecuteHandlingPm
     }
 
     /**
-     * [set as prefixSearch] memberName:likePrefix <br />
+     * [set as prefixSearch] memberName:likePrefix <br>
      * @param memberName The value of memberName. (NullAllowed)
      */
     public void setMemberName_PrefixSearch(String memberName) {
@@ -163,7 +163,7 @@ public class BsMemberChangedToWithdrawalForcedlyPmb implements ExecuteHandlingPm
     }
 
     /**
-     * [get] formalizedDatetime <br />
+     * [get] formalizedDatetime <br>
      * @return The value of formalizedDatetime. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public java.sql.Timestamp getFormalizedDatetime() {
@@ -171,7 +171,7 @@ public class BsMemberChangedToWithdrawalForcedlyPmb implements ExecuteHandlingPm
     }
 
     /**
-     * [set] formalizedDatetime <br />
+     * [set] formalizedDatetime <br>
      * @param formalizedDatetime The value of formalizedDatetime. (NullAllowed)
      */
     public void setFormalizedDatetime(java.sql.Timestamp formalizedDatetime) {

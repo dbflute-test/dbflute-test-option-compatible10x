@@ -25,7 +25,7 @@ import org.docksidestage.compatible10x.dbflute.allcommon.*;
 import org.docksidestage.compatible10x.dbflute.exbhv.*;
 
 /**
- * The base class for typed parameter-bean of MemberStatusInitialized. <br />
+ * The base class for typed parameter-bean of MemberStatusInitialized. <br>
  * This is related to "<span style="color: #AD4747">truncateMemberStatusInitialized</span>" on MemberStatusBhv.
  * @author DBFlute(AutoGenerator)
  */
@@ -44,7 +44,7 @@ public class BsMemberStatusInitializedPmb implements ExecuteHandlingPmb<MemberSt
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor for the typed parameter-bean of MemberStatusInitialized. <br />
+     * Constructor for the typed parameter-bean of MemberStatusInitialized. <br>
      * This is related to "<span style="color: #AD4747">truncateMemberStatusInitialized</span>" on MemberStatusBhv.
      */
     public BsMemberStatusInitializedPmb() {

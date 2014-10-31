@@ -22,7 +22,7 @@ import org.docksidestage.compatible10x.dbflute.exbhv.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
 
 /**
- * The referrer loader of VENDOR_IDENTITY_ONLY as TABLE. <br />
+ * The referrer loader of VENDOR_IDENTITY_ONLY as TABLE. <br>
  * <pre>
  * [primary key]
  *     IDENTITY_ONLY_ID

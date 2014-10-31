@@ -20,16 +20,17 @@ import java.util.ArrayList;
 
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
+import org.dbflute.dbmeta.accessory.DomainEntity;
 import org.docksidestage.compatible10x.dbflute.allcommon.EntityDefinedCommonColumn;
 import org.docksidestage.compatible10x.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
 
 /**
- * The entity of (会員退会情報)MEMBER_WITHDRAWAL as TABLE. <br />
- * 退会会員の退会に関する詳細な情報。<br />
- * 退会会員のみデータが存在し、"1 : 0..1" のパターンの one-to-one である。<br />
- * 共通カラムがあってバージョンNOがないパターン。<br />
+ * The entity of (会員退会情報)MEMBER_WITHDRAWAL as TABLE. <br>
+ * 退会会員の退会に関する詳細な情報。<br>
+ * 退会会員のみデータが存在し、"1 : 0..1" のパターンの one-to-one である。<br>
+ * 共通カラムがあってバージョンNOがないパターン。<br>
  * 基本的に更新は入らないが、重要なデータなので万が一のために更新系の共通カラムも。
  * <pre>
  * [primary-key]
@@ -83,7 +84,7 @@ import org.docksidestage.compatible10x.dbflute.exentity.*;
  * </pre>
  * @author DBFlute(AutoGenerator)
  */
-public abstract class BsMemberWithdrawal extends AbstractEntity implements EntityDefinedCommonColumn {
+public abstract class BsMemberWithdrawal extends AbstractEntity implements DomainEntity, EntityDefinedCommonColumn {
 
     // ===================================================================================
     //                                                                          Definition
@@ -155,8 +156,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     //                                                             Classification Property
     //                                                             =======================
     /**
-     * Get the value of withdrawalReasonCode as the classification of WithdrawalReason. <br />
-     * (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br />
+     * Get the value of withdrawalReasonCode as the classification of WithdrawalReason. <br>
+     * (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br>
      * reason for member withdrawal
      * <p>It's treated as case insensitive and if the code value is null, it returns null.</p>
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
@@ -166,8 +167,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Set the value of withdrawalReasonCode as the classification of WithdrawalReason. <br />
-     * (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br />
+     * Set the value of withdrawalReasonCode as the classification of WithdrawalReason. <br>
+     * (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br>
      * reason for member withdrawal
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the column)
      */
@@ -179,7 +180,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     //                                                              Classification Setting
     //                                                              ======================
     /**
-     * Set the value of withdrawalReasonCode as Sit (SIT). <br />
+     * Set the value of withdrawalReasonCode as Sit (SIT). <br>
      * SIT: サイトが使いにくいから
      */
     public void setWithdrawalReasonCode_Sit() {
@@ -187,7 +188,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Set the value of withdrawalReasonCode as Prd (PRD). <br />
+     * Set the value of withdrawalReasonCode as Prd (PRD). <br>
      * PRD: 商品に魅力がないから
      */
     public void setWithdrawalReasonCode_Prd() {
@@ -195,7 +196,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Set the value of withdrawalReasonCode as Frt (FRT). <br />
+     * Set the value of withdrawalReasonCode as Frt (FRT). <br>
      * FRT: フリテンだから
      */
     public void setWithdrawalReasonCode_Frt() {
@@ -203,7 +204,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Set the value of withdrawalReasonCode as Oth (OTH). <br />
+     * Set the value of withdrawalReasonCode as Oth (OTH). <br>
      * OTH: その他理由
      */
     public void setWithdrawalReasonCode_Oth() {
@@ -214,7 +215,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     //                                                        Classification Determination
     //                                                        ============================
     /**
-     * Is the value of withdrawalReasonCode Sit? <br />
+     * Is the value of withdrawalReasonCode Sit? <br>
      * SIT: サイトが使いにくいから
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -225,7 +226,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Is the value of withdrawalReasonCode Prd? <br />
+     * Is the value of withdrawalReasonCode Prd? <br>
      * PRD: 商品に魅力がないから
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -236,7 +237,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Is the value of withdrawalReasonCode Frt? <br />
+     * Is the value of withdrawalReasonCode Frt? <br>
      * FRT: フリテンだから
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -247,7 +248,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * Is the value of withdrawalReasonCode Oth? <br />
+     * Is the value of withdrawalReasonCode Oth? <br>
      * OTH: その他理由
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -264,7 +265,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     protected Member _member;
 
     /**
-     * [get] (会員)MEMBER by my MEMBER_ID, named 'member'. <br />
+     * [get] (会員)MEMBER by my MEMBER_ID, named 'member'. <br>
      * @return The entity of foreign property 'member'. (NullAllowed: when e.g. null FK column, no setupSelect)
      */
     public Member getMember() {
@@ -283,7 +284,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     protected WithdrawalReason _withdrawalReason;
 
     /**
-     * [get] (退会理由)WITHDRAWAL_REASON by my WITHDRAWAL_REASON_CODE, named 'withdrawalReason'. <br />
+     * [get] (退会理由)WITHDRAWAL_REASON by my WITHDRAWAL_REASON_CODE, named 'withdrawalReason'. <br>
      * @return The entity of foreign property 'withdrawalReason'. (NullAllowed: when e.g. null FK column, no setupSelect)
      */
     public WithdrawalReason getWithdrawalReason() {
@@ -378,7 +379,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER} <br />
+     * [get] MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER} <br>
      * @return The value of the column 'MEMBER_ID'. (basically NotNull if selected: for the constraint)
      */
     public Integer getMemberId() {
@@ -387,7 +388,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER} <br />
+     * [set] MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER} <br>
      * @param memberId The value of the column 'MEMBER_ID'. (basically NotNull if update: for the constraint)
      */
     public void setMemberId(Integer memberId) {
@@ -396,8 +397,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br />
-     * 定型的な退会した理由を参照するコード。<br />
+     * [get] (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br>
+     * 定型的な退会した理由を参照するコード。<br>
      * 何も言わずに退会する会員もいるので必須項目ではない。
      * @return The value of the column 'WITHDRAWAL_REASON_CODE'. (NullAllowed even if selected: for no constraint)
      */
@@ -407,8 +408,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br />
-     * 定型的な退会した理由を参照するコード。<br />
+     * [set] (退会理由コード)WITHDRAWAL_REASON_CODE: {IX, CHAR(3), FK to WITHDRAWAL_REASON, classification=WithdrawalReason} <br>
+     * 定型的な退会した理由を参照するコード。<br>
      * 何も言わずに退会する会員もいるので必須項目ではない。
      * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (NullAllowed: null update allowed for no constraint)
      */
@@ -418,8 +419,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] (退会理由入力テキスト)WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)} <br />
-     * 会員がフリーテキストで入力できる退会理由。<br />
+     * [get] (退会理由入力テキスト)WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)} <br>
+     * 会員がフリーテキストで入力できる退会理由。<br>
      * もう言いたいこと言ってもらう感じ。サイト運営側としてはこういうのは真摯に受け止めて改善していきたいところ。
      * @return The value of the column 'WITHDRAWAL_REASON_INPUT_TEXT'. (NullAllowed even if selected: for no constraint)
      */
@@ -429,8 +430,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] (退会理由入力テキスト)WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)} <br />
-     * 会員がフリーテキストで入力できる退会理由。<br />
+     * [set] (退会理由入力テキスト)WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)} <br>
+     * 会員がフリーテキストで入力できる退会理由。<br>
      * もう言いたいこと言ってもらう感じ。サイト運営側としてはこういうのは真摯に受け止めて改善していきたいところ。
      * @param withdrawalReasonInputText The value of the column 'WITHDRAWAL_REASON_INPUT_TEXT'. (NullAllowed: null update allowed for no constraint)
      */
@@ -440,8 +441,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] (退会日時)WITHDRAWAL_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
-     * 退会した瞬間の日時。<br />
+     * [get] (退会日時)WITHDRAWAL_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * 退会した瞬間の日時。<br>
      * 正式会員日時と違い、こっちは one-to-one の別テーブルで管理されている。
      * @return The value of the column 'WITHDRAWAL_DATETIME'. (basically NotNull if selected: for the constraint)
      */
@@ -451,8 +452,8 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] (退会日時)WITHDRAWAL_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
-     * 退会した瞬間の日時。<br />
+     * [set] (退会日時)WITHDRAWAL_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * 退会した瞬間の日時。<br>
      * 正式会員日時と違い、こっちは one-to-one の別テーブルで管理されている。
      * @param withdrawalDatetime The value of the column 'WITHDRAWAL_DATETIME'. (basically NotNull if update: for the constraint)
      */
@@ -462,7 +463,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @return The value of the column 'REGISTER_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
@@ -471,7 +472,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
@@ -480,7 +481,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * [get] REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * @return The value of the column 'REGISTER_USER'. (basically NotNull if selected: for the constraint)
      */
     public String getRegisterUser() {
@@ -489,7 +490,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * [set] REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * @param registerUser The value of the column 'REGISTER_USER'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterUser(String registerUser) {
@@ -498,7 +499,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @return The value of the column 'UPDATE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
@@ -507,7 +508,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {
@@ -516,7 +517,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * [get] UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * @return The value of the column 'UPDATE_USER'. (basically NotNull if selected: for the constraint)
      */
     public String getUpdateUser() {
@@ -525,7 +526,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * [set] UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * @param updateUser The value of the column 'UPDATE_USER'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateUser(String updateUser) {
@@ -534,7 +535,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [get] VERSION_NO: {NotNull, BIGINT(19)} <br />
+     * [get] VERSION_NO: {NotNull, BIGINT(19)} <br>
      * @return The value of the column 'VERSION_NO'. (basically NotNull if selected: for the constraint)
      */
     public Long getVersionNo() {
@@ -543,7 +544,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Entit
     }
 
     /**
-     * [set] VERSION_NO: {NotNull, BIGINT(19)} <br />
+     * [set] VERSION_NO: {NotNull, BIGINT(19)} <br>
      * @param versionNo The value of the column 'VERSION_NO'. (basically NotNull if update: for the constraint)
      */
     public void setVersionNo(Long versionNo) {

@@ -20,13 +20,14 @@ import java.util.ArrayList;
 
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
+import org.dbflute.dbmeta.accessory.DomainEntity;
 import org.docksidestage.compatible10x.dbflute.allcommon.EntityDefinedCommonColumn;
 import org.docksidestage.compatible10x.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
 
 /**
- * The entity of (商品)PRODUCT as TABLE. <br />
+ * The entity of (商品)PRODUCT as TABLE. <br>
  * <pre>
  * [primary-key]
  *     PRODUCT_ID
@@ -83,7 +84,7 @@ import org.docksidestage.compatible10x.dbflute.exentity.*;
  * </pre>
  * @author DBFlute(AutoGenerator)
  */
-public abstract class BsProduct extends AbstractEntity implements EntityDefinedCommonColumn {
+public abstract class BsProduct extends AbstractEntity implements DomainEntity, EntityDefinedCommonColumn {
 
     // ===================================================================================
     //                                                                          Definition
@@ -158,7 +159,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * To be unique by the unique column. <br />
+     * To be unique by the unique column. <br>
      * You can update the entity by the key when entity update (NOT batch update).
      * @param productHandleCode (商品ハンドルコード): UQ, NotNull, VARCHAR(100). (NotNull)
      */
@@ -172,8 +173,8 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     //                                                             Classification Property
     //                                                             =======================
     /**
-     * Get the value of productStatusCode as the classification of ProductStatus. <br />
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br />
+     * Get the value of productStatusCode as the classification of ProductStatus. <br>
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
      * status for product
      * <p>It's treated as case insensitive and if the code value is null, it returns null.</p>
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
@@ -183,8 +184,8 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * Set the value of productStatusCode as the classification of ProductStatus. <br />
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br />
+     * Set the value of productStatusCode as the classification of ProductStatus. <br>
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
      * status for product
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the column)
      */
@@ -196,7 +197,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     //                                                              Classification Setting
     //                                                              ======================
     /**
-     * Set the value of productStatusCode as 生産販売可能 (ONS). <br />
+     * Set the value of productStatusCode as 生産販売可能 (ONS). <br>
      * 生産販売可能
      */
     public void setProductStatusCode_生産販売可能() {
@@ -204,7 +205,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * Set the value of productStatusCode as 生産中止 (PST). <br />
+     * Set the value of productStatusCode as 生産中止 (PST). <br>
      * 生産中止
      */
     public void setProductStatusCode_生産中止() {
@@ -212,7 +213,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * Set the value of productStatusCode as 販売中止 (SST). <br />
+     * Set the value of productStatusCode as 販売中止 (SST). <br>
      * 販売中止
      */
     public void setProductStatusCode_販売中止() {
@@ -223,7 +224,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     //                                                        Classification Determination
     //                                                        ============================
     /**
-     * Is the value of productStatusCode 生産販売可能? <br />
+     * Is the value of productStatusCode 生産販売可能? <br>
      * 生産販売可能
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -234,7 +235,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * Is the value of productStatusCode 生産中止? <br />
+     * Is the value of productStatusCode 生産中止? <br>
      * 生産中止
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -245,7 +246,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * Is the value of productStatusCode 販売中止? <br />
+     * Is the value of productStatusCode 販売中止? <br>
      * 販売中止
      * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
      * @return The determination, true or false.
@@ -262,7 +263,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     protected ProductCategory _productCategory;
 
     /**
-     * [get] (商品カテゴリ)PRODUCT_CATEGORY by my PRODUCT_CATEGORY_CODE, named 'productCategory'. <br />
+     * [get] (商品カテゴリ)PRODUCT_CATEGORY by my PRODUCT_CATEGORY_CODE, named 'productCategory'. <br>
      * @return The entity of foreign property 'productCategory'. (NullAllowed: when e.g. null FK column, no setupSelect)
      */
     public ProductCategory getProductCategory() {
@@ -281,7 +282,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     protected ProductStatus _productStatus;
 
     /**
-     * [get] (商品ステータス)PRODUCT_STATUS by my PRODUCT_STATUS_CODE, named 'productStatus'. <br />
+     * [get] (商品ステータス)PRODUCT_STATUS by my PRODUCT_STATUS_CODE, named 'productStatus'. <br>
      * @return The entity of foreign property 'productStatus'. (NullAllowed: when e.g. null FK column, no setupSelect)
      */
     public ProductStatus getProductStatus() {
@@ -402,7 +403,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)} <br />
+     * [get] PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)} <br>
      * @return The value of the column 'PRODUCT_ID'. (basically NotNull if selected: for the constraint)
      */
     public Integer getProductId() {
@@ -411,7 +412,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)} <br />
+     * [set] PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)} <br>
      * @param productId The value of the column 'PRODUCT_ID'. (basically NotNull if update: for the constraint)
      */
     public void setProductId(Integer productId) {
@@ -420,8 +421,8 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)} <br />
-     * ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br />
+     * [get] (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)} <br>
+     * ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br>
      * 実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜
      * @return The value of the column 'PRODUCT_NAME'. (basically NotNull if selected: for the constraint)
      */
@@ -431,8 +432,8 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)} <br />
-     * ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br />
+     * [set] (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)} <br>
+     * ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br>
      * 実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜
      * @param productName The value of the column 'PRODUCT_NAME'. (basically NotNull if update: for the constraint)
      */
@@ -442,7 +443,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)} <br />
+     * [get] (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)} <br>
      * これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...
      * @return The value of the column 'PRODUCT_HANDLE_CODE'. (basically NotNull if selected: for the constraint)
      */
@@ -452,7 +453,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)} <br />
+     * [set] (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)} <br>
      * これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...
      * @param productHandleCode The value of the column 'PRODUCT_HANDLE_CODE'. (basically NotNull if update: for the constraint)
      */
@@ -462,7 +463,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY} <br />
+     * [get] PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY} <br>
      * @return The value of the column 'PRODUCT_CATEGORY_CODE'. (basically NotNull if selected: for the constraint)
      */
     public String getProductCategoryCode() {
@@ -471,7 +472,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY} <br />
+     * [set] PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY} <br>
      * @param productCategoryCode The value of the column 'PRODUCT_CATEGORY_CODE'. (basically NotNull if update: for the constraint)
      */
     public void setProductCategoryCode(String productCategoryCode) {
@@ -480,7 +481,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br />
+     * [get] PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
      * @return The value of the column 'PRODUCT_STATUS_CODE'. (basically NotNull if selected: for the constraint)
      */
     public String getProductStatusCode() {
@@ -489,7 +490,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br />
+     * [set] PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
      * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (basically NotNull if update: for the constraint)
      */
     public void setProductStatusCode(String productStatusCode) {
@@ -498,7 +499,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] (定価)REGULAR_PRICE: {NotNull, INTEGER(10)} <br />
+     * [get] (定価)REGULAR_PRICE: {NotNull, INTEGER(10)} <br>
      * @return The value of the column 'REGULAR_PRICE'. (basically NotNull if selected: for the constraint)
      */
     public Integer getRegularPrice() {
@@ -507,7 +508,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] (定価)REGULAR_PRICE: {NotNull, INTEGER(10)} <br />
+     * [set] (定価)REGULAR_PRICE: {NotNull, INTEGER(10)} <br>
      * @param regularPrice The value of the column 'REGULAR_PRICE'. (basically NotNull if update: for the constraint)
      */
     public void setRegularPrice(Integer regularPrice) {
@@ -516,7 +517,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @return The value of the column 'REGISTER_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
@@ -525,7 +526,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
@@ -534,7 +535,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * [get] REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * @return The value of the column 'REGISTER_USER'. (basically NotNull if selected: for the constraint)
      */
     public String getRegisterUser() {
@@ -543,7 +544,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] REGISTER_USER: {NotNull, VARCHAR(200)} <br />
+     * [set] REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * @param registerUser The value of the column 'REGISTER_USER'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterUser(String registerUser) {
@@ -552,7 +553,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @return The value of the column 'UPDATE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
@@ -561,7 +562,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br />
+     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {
@@ -570,7 +571,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * [get] UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * @return The value of the column 'UPDATE_USER'. (basically NotNull if selected: for the constraint)
      */
     public String getUpdateUser() {
@@ -579,7 +580,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] UPDATE_USER: {NotNull, VARCHAR(200)} <br />
+     * [set] UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * @param updateUser The value of the column 'UPDATE_USER'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateUser(String updateUser) {
@@ -588,7 +589,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [get] VERSION_NO: {NotNull, BIGINT(19)} <br />
+     * [get] VERSION_NO: {NotNull, BIGINT(19)} <br>
      * @return The value of the column 'VERSION_NO'. (basically NotNull if selected: for the constraint)
      */
     public Long getVersionNo() {
@@ -597,7 +598,7 @@ public abstract class BsProduct extends AbstractEntity implements EntityDefinedC
     }
 
     /**
-     * [set] VERSION_NO: {NotNull, BIGINT(19)} <br />
+     * [set] VERSION_NO: {NotNull, BIGINT(19)} <br>
      * @param versionNo The value of the column 'VERSION_NO'. (basically NotNull if update: for the constraint)
      */
     public void setVersionNo(Long versionNo) {
