@@ -30,6 +30,7 @@ public class WxCBPagingBasicTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                               Basic
     //                                                                               =====
+    @SuppressWarnings("deprecation")
     public void test_paging_basic() {
         // ## Arrange ##
         int countAll = memberBhv.selectCount(new MemberCB());

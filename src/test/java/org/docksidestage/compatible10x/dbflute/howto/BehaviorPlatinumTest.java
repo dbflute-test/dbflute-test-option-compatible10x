@@ -73,6 +73,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                         Page Select
     //                                                                         ===========
+    @SuppressWarnings("deprecation")
     public void test_selectPage_PageRangeOption_PageGroupOption() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();

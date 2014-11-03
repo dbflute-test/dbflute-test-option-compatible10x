@@ -52,7 +52,8 @@ public class MemberStatusDbm extends AbstractDBMeta {
     //                                       Column Property
     //                                       ---------------
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
-    {
+    { xsetupEpg(); }
+    protected void xsetupEpg() {
         setupEpg(_epgMap, et -> ((MemberStatus)et).getMemberStatusCode(), (et, vl) -> ((MemberStatus)et).setMemberStatusCode((String)vl), "memberStatusCode");
         setupEpg(_epgMap, et -> ((MemberStatus)et).getMemberStatusName(), (et, vl) -> ((MemberStatus)et).setMemberStatusName((String)vl), "memberStatusName");
         setupEpg(_epgMap, et -> ((MemberStatus)et).getDescription(), (et, vl) -> ((MemberStatus)et).setDescription((String)vl), "description");

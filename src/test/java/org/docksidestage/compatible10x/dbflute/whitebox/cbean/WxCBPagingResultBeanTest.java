@@ -54,6 +54,7 @@ public class WxCBPagingResultBeanTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                     PageGroup/Range
     //                                                                     ===============
+    @SuppressWarnings("deprecation")
     public void test_selectPage_PageRangeOption_PageGroupOption() {
         // ## Arrange ##
         // ## Act ##

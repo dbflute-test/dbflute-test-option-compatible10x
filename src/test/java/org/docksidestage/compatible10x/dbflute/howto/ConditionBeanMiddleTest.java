@@ -1229,6 +1229,7 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
      * 会員名称の昇順のリストを「１ページ４件」の「３ページ目」(９件目から１２件目)を検索。
      * ※詳しくはBehaviorMiddleTestの「ページング検索: selectPage().」を参照。
      */
+    @SuppressWarnings("deprecation")
     public void test_paging() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();

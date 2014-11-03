@@ -54,6 +54,7 @@ public class WxCBPagingCountLeastJoinTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                               Basic
     //                                                                               =====
+    @SuppressWarnings("deprecation")
     public void test_CountLeastJoin_basic() {
         // ## Arrange ##
         int countAll = memberBhv.selectCount(new MemberCB());
@@ -307,6 +308,7 @@ public class WxCBPagingCountLeastJoinTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                               Union
     //                                                                               =====
+    @SuppressWarnings("deprecation")
     public void test_CountLeastJoin_union() {
         // ## Arrange ##
         int countAll = memberBhv.selectCount(new MemberCB());
