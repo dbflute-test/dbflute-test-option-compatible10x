@@ -15,7 +15,6 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.cbean.scoping.SpecifyQuery;
 import org.dbflute.cbean.scoping.SubQuery;
 import org.dbflute.cbean.scoping.UnionQuery;
-import org.dbflute.jdbc.StatementConfig;
 import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberAddressCB;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
@@ -1241,7 +1240,7 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
     public void test_configure_statementConfig() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.configure(new StatementConfig().typeForwardOnly().queryTimeout(7).fetchSize(4).maxRows(3));
+        cb.configure(conf -> conf.typeForwardOnly().queryTimeout(7).fetchSize(4).maxRows(3));
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);

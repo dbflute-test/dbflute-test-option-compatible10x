@@ -269,12 +269,14 @@ public class ImplementedInvokerAssistant implements InvokerAssistant {
     //                               First OutsideSql Option
     //                               -----------------------
     /** {@inheritDoc} */
-    public OutsideSqlOption assistFirstOutsideSqlOption() {
-        return prepareFirstOutsideSqlOption();
+    public OutsideSqlOption assistFirstOutsideSqlOption(String tableDbName) {
+        return prepareFirstOutsideSqlOption(tableDbName);
     }
 
-    protected OutsideSqlOption prepareFirstOutsideSqlOption() {
-        return new OutsideSqlOption().enableNonSpecifiedColumnAccess();
+    protected OutsideSqlOption prepareFirstOutsideSqlOption(String tableDbName) {
+        OutsideSqlOption option = new OutsideSqlOption();
+        option.setTableDbName(tableDbName);
+        return option.enableNonSpecifiedColumnAccess();
     }
 
     // -----------------------------------------------------

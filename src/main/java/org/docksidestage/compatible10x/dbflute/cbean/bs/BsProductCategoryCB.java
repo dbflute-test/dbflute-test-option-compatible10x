@@ -399,7 +399,8 @@ public class BsProductCategoryCB extends AbstractConditionBean {
          */
         public HpSDRFunction<ProductCB, ProductCategoryCQ> derivedProductList() {
             assertDerived("productList"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return cHSDRF(_baseCB, _qyCall.qy(), (fn, sq, cq, al, op) -> cq.xsderiveProductList(fn, sq, al, op), _dbmetaProvider);
+            return cHSDRF(_baseCB, _qyCall.qy(), (String fn, SubQuery<ProductCB> sq, ProductCategoryCQ cq, String al, DerivedReferrerOption op)
+                    -> cq.xsderiveProductList(fn, sq, al, op), _dbmetaProvider);
         }
         /**
          * Prepare for (Specify)DerivedReferrer (correlated sub-query). <br>
@@ -415,7 +416,8 @@ public class BsProductCategoryCB extends AbstractConditionBean {
          */
         public HpSDRFunction<ProductCategoryCB, ProductCategoryCQ> derivedProductCategorySelfList() {
             assertDerived("productCategorySelfList"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return cHSDRF(_baseCB, _qyCall.qy(), (fn, sq, cq, al, op) -> cq.xsderiveProductCategorySelfList(fn, sq, al, op), _dbmetaProvider);
+            return cHSDRF(_baseCB, _qyCall.qy(), (String fn, SubQuery<ProductCategoryCB> sq, ProductCategoryCQ cq, String al, DerivedReferrerOption op)
+                    -> cq.xsderiveProductCategorySelfList(fn, sq, al, op), _dbmetaProvider);
         }
         /**
          * Prepare for (Specify)MyselfDerived (SubQuery).
@@ -423,7 +425,8 @@ public class BsProductCategoryCB extends AbstractConditionBean {
          */
         public HpSDRFunction<ProductCategoryCB, ProductCategoryCQ> myselfDerived() {
             assertDerived("myselfDerived"); if (xhasSyncQyCall()) { xsyncQyCall().qy(); } // for sync (for example, this in ColumnQuery)
-            return cHSDRF(_baseCB, _qyCall.qy(), (fn, sq, cq, al, op) -> cq.xsmyselfDerive(fn, sq, al, op), _dbmetaProvider);
+            return cHSDRF(_baseCB, _qyCall.qy(), (String fn, SubQuery<ProductCategoryCB> sq, ProductCategoryCQ cq, String al, DerivedReferrerOption op)
+                    -> cq.xsmyselfDerive(fn, sq, al, op), _dbmetaProvider);
         }
     }
 

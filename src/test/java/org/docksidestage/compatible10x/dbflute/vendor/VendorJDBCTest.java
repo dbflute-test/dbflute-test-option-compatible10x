@@ -13,7 +13,6 @@ import org.dbflute.exception.EntityAlreadyUpdatedException;
 import org.dbflute.hook.CallbackContext;
 import org.dbflute.hook.SqlLogHandler;
 import org.dbflute.hook.SqlLogInfo;
-import org.dbflute.jdbc.StatementConfig;
 import org.dbflute.utflute.core.cannonball.CannonballCar;
 import org.dbflute.utflute.core.cannonball.CannonballOption;
 import org.dbflute.utflute.core.cannonball.CannonballRun;
@@ -93,7 +92,7 @@ public class VendorJDBCTest extends UnitContainerTestCase {
                     member.setMemberAccount("same"); // same value to wait for lock
                     member.setMemberStatusCode_Formalized();
                     sleep(1000);
-                    memberBhv.varyingInsert(member, op -> op.configure(new StatementConfig().queryTimeout(1)));
+                    memberBhv.varyingInsert(member, op -> op.configure(conf -> conf.queryTimeout(1)));
                 }
             }
         }, new CannonballOption().threadCount(2).expectExceptionAny("timed out"));
