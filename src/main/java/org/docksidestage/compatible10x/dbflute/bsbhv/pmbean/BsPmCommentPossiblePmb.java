@@ -148,7 +148,7 @@ public class BsPmCommentPossiblePmb implements ExecuteHandlingPmb<MemberBhv>, Fe
         sb.append(dm).append(_string);
         sb.append(dm).append(_integer);
         sb.append(dm).append(_bigDecimal);
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_date, "yyyy-MM-dd", _timeZone));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_date, _timeZone, "yyyy-MM-dd"));
         sb.append(dm).append(_timestamp);
         sb.append(dm).append(_exists);
         sb.append(dm).append(_notExists);

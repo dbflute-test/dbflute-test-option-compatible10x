@@ -139,7 +139,7 @@ public class BsSimpleMemberPmb implements ListHandlingPmb<MemberBhv, SimpleMembe
         final StringBuilder sb = new StringBuilder();
         sb.append(dm).append(_memberId);
         sb.append(dm).append(_memberName);
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_birthdate, "yyyy-MM-dd", _timeZone));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_birthdate, _timeZone, "yyyy-MM-dd"));
         if (sb.length() > 0) { sb.delete(0, dm.length()); }
         sb.insert(0, "{").append("}");
         return sb.toString();

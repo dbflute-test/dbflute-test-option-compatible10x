@@ -74,10 +74,12 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
     /*df:endQueryPath*/
 
     // ===================================================================================
-    //                                                                              DBMeta
-    //                                                                              ======
+    //                                                                             DB Meta
+    //                                                                             =======
     /** {@inheritDoc} */
-    public SummaryWithdrawalDbm getDBMeta() { return SummaryWithdrawalDbm.getInstance(); }
+    public SummaryWithdrawalDbm asDBMeta() { return SummaryWithdrawalDbm.getInstance(); }
+    /** {@inheritDoc} */
+    public String asTableDbName() { return "SUMMARY_WITHDRAWAL"; }
 
     /** @return The instance of DBMeta as my table type. (NotNull) */
     public SummaryWithdrawalDbm getMyDBMeta() { return SummaryWithdrawalDbm.getInstance(); }
@@ -279,7 +281,7 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
     //                                                                            ========
     @Override
     protected Number doReadNextVal() {
-        String msg = "This table is NOT related to sequence: " + getTableDbName();
+        String msg = "This table is NOT related to sequence: " + asTableDbName();
         throw new UnsupportedOperationException(msg);
     }
 

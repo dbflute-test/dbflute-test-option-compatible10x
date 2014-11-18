@@ -125,7 +125,7 @@ public class BsCompareDatePmb implements ExecuteHandlingPmb<MemberBhv>, FetchBea
         final String dm = ", ";
         final StringBuilder sb = new StringBuilder();
         sb.append(dm).append(_memberId);
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_birthdateFrom, "yyyy-MM-dd", _timeZone));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_birthdateFrom, _timeZone, "yyyy-MM-dd"));
         sb.append(dm).append(_formalizedDatetimeFrom);
         if (sb.length() > 0) { sb.delete(0, dm.length()); }
         sb.insert(0, "{").append("}");

@@ -76,10 +76,12 @@ public abstract class BsPurchasePaymentBhv extends AbstractBehaviorWritable<Purc
     /*df:endQueryPath*/
 
     // ===================================================================================
-    //                                                                              DBMeta
-    //                                                                              ======
+    //                                                                             DB Meta
+    //                                                                             =======
     /** {@inheritDoc} */
-    public PurchasePaymentDbm getDBMeta() { return PurchasePaymentDbm.getInstance(); }
+    public PurchasePaymentDbm asDBMeta() { return PurchasePaymentDbm.getInstance(); }
+    /** {@inheritDoc} */
+    public String asTableDbName() { return "PURCHASE_PAYMENT"; }
 
     /** @return The instance of DBMeta as my table type. (NotNull) */
     public PurchasePaymentDbm getMyDBMeta() { return PurchasePaymentDbm.getInstance(); }
@@ -325,7 +327,7 @@ public abstract class BsPurchasePaymentBhv extends AbstractBehaviorWritable<Purc
     //                                                                            ========
     @Override
     protected Number doReadNextVal() {
-        String msg = "This table is NOT related to sequence: " + getTableDbName();
+        String msg = "This table is NOT related to sequence: " + asTableDbName();
         throw new UnsupportedOperationException(msg);
     }
 

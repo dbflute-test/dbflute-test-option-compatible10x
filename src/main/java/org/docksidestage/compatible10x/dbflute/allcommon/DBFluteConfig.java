@@ -75,6 +75,8 @@ public class DBFluteConfig {
     protected boolean _emptyStringParameterAllowed;
     protected boolean _overridingQueryAllowed = true;
     protected boolean _nonSpecifiedColumnAccessAllowed = true;
+    protected boolean _columnNullObjectAllowed = false;
+    protected boolean _columnNullObjectGearedToSpecify = false;
     protected boolean _disableSelectIndex;
     protected boolean _queryUpdateCountPreCheck = false;
 
@@ -88,11 +90,14 @@ public class DBFluteConfig {
 
     // environment
     protected StatementConfig _defaultStatementConfig;
-    protected Integer _cursorSelectFetchSize;
+    protected Integer _cursorSelectFetchSize = null;
+    protected Integer _entitySelectFetchSize = null;
+    protected boolean _usePagingByCursorSkipSynchronizedFetchSize = false;
+    protected Integer _fixedPagingByCursorSkipSynchronizedFetchSize = null;
     protected DataSourceHandler _dataSourceHandler;
     protected PhysicalConnectionDigger _physicalConnectionDigger;
     protected SQLExceptionDigger _sqlExceptionDigger;
-    protected String _outsideSqlPackage;
+    protected String _outsideSqlPackage = null;
     protected boolean _useSqlLogRegistry = false;
     protected MappingDateTimeZoneProvider _mappingDateTimeZoneProvider;
 
@@ -290,6 +295,43 @@ public class DBFluteConfig {
     }
 
     // ===================================================================================
+    //                                                                  Column Null Object
+    //                                                                  ==================
+    public boolean isColumnNullObjectAllowed() {
+        return _columnNullObjectAllowed;
+    }
+
+    /**
+     * Set whether column null object is allowed or not. <br>
+     * This configuration is only for ConditionBean.
+     * @param columnNullObjectAllowed The determination, true or false.
+     */
+    public void setColumnNullObjectAllowed(boolean columnNullObjectAllowed) {
+        assertUnlocked();
+        if (_log.isInfoEnabled()) {
+            _log.info("...Setting columnNullObjectAllowed: " + columnNullObjectAllowed);
+        }
+        _columnNullObjectAllowed = columnNullObjectAllowed;
+    }
+
+    public boolean isColumnNullObjectGearedToSpecify() {
+        return _columnNullObjectGearedToSpecify;
+    }
+
+    /**
+     * Set whether column null object is geared to specify or not. <br>
+     * This configuration is only for ConditionBean.
+     * @param columnNullObjectGearedToSpecify The determination, true or false.
+     */
+    public void setColumnNullObjectGearedToSpecify(boolean columnNullObjectGearedToSpecify) {
+        assertUnlocked();
+        if (_log.isInfoEnabled()) {
+            _log.info("...Setting columnNullObjectGearedToSpecify: " + columnNullObjectGearedToSpecify);
+        }
+        _columnNullObjectGearedToSpecify = columnNullObjectGearedToSpecify;
+    }
+
+    // ===================================================================================
     //                                                                        Select Index
     //                                                                        ============
     public boolean isDisableSelectIndex() {
@@ -424,6 +466,48 @@ public class DBFluteConfig {
             _log.info("...Setting cursorSelectFetchSize: " + cursorSelectFetchSize);
         }
         _cursorSelectFetchSize = cursorSelectFetchSize;
+    }
+
+    // ===================================================================================
+    //                                                              EntitySelect FetchSize
+    //                                                              ======================
+    public Integer getEntitySelectFetchSize() {
+        return _entitySelectFetchSize;
+    }
+
+    public void setEntitySelectFetchSize(Integer entitySelectFetchSize) {
+        assertUnlocked();
+        if (_log.isInfoEnabled()) {
+            _log.info("...Setting entitySelectFetchSize: " + entitySelectFetchSize);
+        }
+        _entitySelectFetchSize = entitySelectFetchSize;
+    }
+
+    // ===================================================================================
+    //                                                              PagingSelect FetchSize
+    //                                                              ======================
+    public boolean isUsePagingByCursorSkipSynchronizedFetchSize() {
+        return _usePagingByCursorSkipSynchronizedFetchSize;
+    }
+
+    public void setUsePagingByCursorSkipSynchronizedFetchSize(boolean usePagingByCursorSkipSynchronizedFetchSize) {
+        assertUnlocked();
+        if (_log.isInfoEnabled()) {
+            _log.info("...Setting usePagingByCursorSkipSynchronizedFetchSize: " + usePagingByCursorSkipSynchronizedFetchSize);
+        }
+        _usePagingByCursorSkipSynchronizedFetchSize = usePagingByCursorSkipSynchronizedFetchSize;
+    }
+
+    public Integer getFixedPagingByCursorSkipSynchronizedFetchSize() {
+        return _fixedPagingByCursorSkipSynchronizedFetchSize;
+    }
+
+    public void setFixedPagingByCursorSkipSynchronizedFetchSize(Integer fixedPagingByCursorSkipSynchronizedFetchSize) {
+        assertUnlocked();
+        if (_log.isInfoEnabled()) {
+            _log.info("...Setting fixedPagingByCursorSkipSynchronizedFetchSize: " + fixedPagingByCursorSkipSynchronizedFetchSize);
+        }
+        _fixedPagingByCursorSkipSynchronizedFetchSize = fixedPagingByCursorSkipSynchronizedFetchSize;
     }
 
     // [DBFlute-0.9.0]

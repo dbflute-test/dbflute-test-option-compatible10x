@@ -81,10 +81,12 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /*df:endQueryPath*/
 
     // ===================================================================================
-    //                                                                              DBMeta
-    //                                                                              ======
+    //                                                                             DB Meta
+    //                                                                             =======
     /** {@inheritDoc} */
-    public VendorCheckDbm getDBMeta() { return VendorCheckDbm.getInstance(); }
+    public VendorCheckDbm asDBMeta() { return VendorCheckDbm.getInstance(); }
+    /** {@inheritDoc} */
+    public String asTableDbName() { return "VENDOR_CHECK"; }
 
     /** @return The instance of DBMeta as my table type. (NotNull) */
     public VendorCheckDbm getMyDBMeta() { return VendorCheckDbm.getInstance(); }
@@ -330,7 +332,7 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     //                                                                            ========
     @Override
     protected Number doReadNextVal() {
-        String msg = "This table is NOT related to sequence: " + getTableDbName();
+        String msg = "This table is NOT related to sequence: " + asTableDbName();
         throw new UnsupportedOperationException(msg);
     }
 

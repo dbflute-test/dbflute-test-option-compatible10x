@@ -76,10 +76,12 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     /*df:endQueryPath*/
 
     // ===================================================================================
-    //                                                                              DBMeta
-    //                                                                              ======
+    //                                                                             DB Meta
+    //                                                                             =======
     /** {@inheritDoc} */
-    public Vendor$DollarDbm getDBMeta() { return Vendor$DollarDbm.getInstance(); }
+    public Vendor$DollarDbm asDBMeta() { return Vendor$DollarDbm.getInstance(); }
+    /** {@inheritDoc} */
+    public String asTableDbName() { return "VENDOR_$_DOLLAR"; }
 
     /** @return The instance of DBMeta as my table type. (NotNull) */
     public Vendor$DollarDbm getMyDBMeta() { return Vendor$DollarDbm.getInstance(); }
@@ -325,7 +327,7 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     //                                                                            ========
     @Override
     protected Number doReadNextVal() {
-        String msg = "This table is NOT related to sequence: " + getTableDbName();
+        String msg = "This table is NOT related to sequence: " + asTableDbName();
         throw new UnsupportedOperationException(msg);
     }
 

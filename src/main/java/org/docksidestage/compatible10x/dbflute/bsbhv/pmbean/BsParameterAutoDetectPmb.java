@@ -246,10 +246,10 @@ public abstract class BsParameterAutoDetectPmb implements ExecuteHandlingPmb<Mem
         sb.append(dm).append(_containSearchOption);
         sb.append(dm).append(_normalLikeSearchOption);
         sb.append(dm).append(_normalCls);
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_normalDate, "yyyy-MM-dd", _timeZone));
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_fromDateOption, "yyyy-MM-dd", _timeZone));
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_toDateOption, "yyyy-MM-dd", _timeZone));
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_duplicateFromDate, "yyyy-MM-dd", _timeZone));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_normalDate, _timeZone, "yyyy-MM-dd"));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_fromDateOption, _timeZone, "yyyy-MM-dd"));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_toDateOption, _timeZone, "yyyy-MM-dd"));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_duplicateFromDate, _timeZone, "yyyy-MM-dd"));
         sb.append(dm).append(_integerList);
         sb.append(dm).append(_cdefList);
         sb.append(dm).append(_memberStatusCodeList);

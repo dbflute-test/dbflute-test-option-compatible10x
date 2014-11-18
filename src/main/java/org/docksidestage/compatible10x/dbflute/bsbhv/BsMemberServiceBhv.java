@@ -76,10 +76,12 @@ public abstract class BsMemberServiceBhv extends AbstractBehaviorWritable<Member
     /*df:endQueryPath*/
 
     // ===================================================================================
-    //                                                                              DBMeta
-    //                                                                              ======
+    //                                                                             DB Meta
+    //                                                                             =======
     /** {@inheritDoc} */
-    public MemberServiceDbm getDBMeta() { return MemberServiceDbm.getInstance(); }
+    public MemberServiceDbm asDBMeta() { return MemberServiceDbm.getInstance(); }
+    /** {@inheritDoc} */
+    public String asTableDbName() { return "MEMBER_SERVICE"; }
 
     /** @return The instance of DBMeta as my table type. (NotNull) */
     public MemberServiceDbm getMyDBMeta() { return MemberServiceDbm.getInstance(); }
@@ -350,7 +352,7 @@ public abstract class BsMemberServiceBhv extends AbstractBehaviorWritable<Member
     //                                                                            ========
     @Override
     protected Number doReadNextVal() {
-        String msg = "This table is NOT related to sequence: " + getTableDbName();
+        String msg = "This table is NOT related to sequence: " + asTableDbName();
         throw new UnsupportedOperationException(msg);
     }
 
