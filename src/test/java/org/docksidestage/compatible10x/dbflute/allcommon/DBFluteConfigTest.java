@@ -57,9 +57,7 @@ public class DBFluteConfigTest extends UnitContainerTestCase {
     public void test_ConditionBean_configure_default_is_overridden() throws Exception {
         // ## Arrange ##
         final MemberCB cb = new MemberCB();
-        final StatementConfig statementConfig = new StatementConfig();
-        statementConfig.typeScrollSensitive().fetchSize(123).maxRows(1);
-        cb.configure(statementConfig);
+        cb.configure(conf -> conf.typeScrollSensitive().fetchSize(123).maxRows(1));
 
         // ## Act ##
         final ListResultBean<Member> memberList = memberBhv.selectList(cb);

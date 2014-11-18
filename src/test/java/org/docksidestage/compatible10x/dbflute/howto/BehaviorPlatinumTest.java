@@ -73,6 +73,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                         Page Select
     //                                                                         ===========
+    @SuppressWarnings("deprecation")
     public void test_selectPage_PageRangeOption_PageGroupOption() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
@@ -823,7 +824,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
 
         // ## Assert ##
         final MemberCB cb = new MemberCB();
-        cb.acceptPrimaryKeyMap(member.getDBMeta().extractPrimaryKeyMap(member));
+        cb.acceptPrimaryKeyMap(member.asDBMeta().extractPrimaryKeyMap(member));
         final Member actualMember = memberBhv.selectEntityWithDeletedCheck(cb);
         final Timestamp registerDatetime = actualMember.getRegisterDatetime();
         final String registerUser = actualMember.getRegisterUser();

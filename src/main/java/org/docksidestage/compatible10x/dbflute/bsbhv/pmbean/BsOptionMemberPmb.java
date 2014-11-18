@@ -186,13 +186,13 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
         sb.append(dm).append(_memberId);
         sb.append(dm).append(_memberName);
         sb.append(dm).append(_memberAccount);
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_fromFormalizedDate, "yyyy-MM-dd", _timeZone));
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_toFormalizedDate, "yyyy-MM-dd", _timeZone));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_fromFormalizedDate, _timeZone, "yyyy-MM-dd"));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_toFormalizedDate, _timeZone, "yyyy-MM-dd"));
         sb.append(dm).append(_fromFormalizedMonth);
         sb.append(dm).append(_toFormalizedMonth);
         sb.append(dm).append(_memberStatusCode);
         sb.append(dm).append(_displayOrder);
-        sb.append(dm).append(PmbCustodial.formatUtilDate(_birthdate, "yyyy-MM-dd", _timeZone));
+        sb.append(dm).append(PmbCustodial.formatUtilDate(_birthdate, _timeZone, "yyyy-MM-dd"));
         sb.append(dm).append(_status);
         sb.append(dm).append(_statusFormalized);
         sb.append(dm).append(_statusList);
