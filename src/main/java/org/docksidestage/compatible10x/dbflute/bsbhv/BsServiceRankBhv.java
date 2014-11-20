@@ -574,11 +574,7 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * <span style="color: #3F7E5E">//serviceRank.set...;</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * serviceRank.<span style="color: #CC4747">setVersionNo</span>(value);
-     * try {
-     *     <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">update</span>(serviceRank);
-     * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
-     *     ...
-     * }
+     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">update</span>(serviceRank);
      * </pre>
      * @param serviceRank The entity of update. (NotNull, PrimaryKeyNotNull)
      * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
@@ -687,17 +683,15 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * serviceRankBhv.<span style="color: #CC4747">batchUpdate</span>(serviceRankList, new SpecifyQuery&lt;ServiceRankCB&gt;() {
-     *     public void specify(ServiceRankCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *     }
+     * serviceRankBhv.<span style="color: #CC4747">batchUpdate</span>(serviceRankList, <span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// the two only updated</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">batchUpdate</span>(serviceRankList, new SpecifyQuery&lt;ServiceRankCB&gt;() {
-     *     public void specify(ServiceRankCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
-     *     }
+     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">batchUpdate</span>(serviceRankList, <span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// all columns are updated</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      * });
      * </pre>
      * <p>You can specify update columns used on set clause of update statement.
@@ -814,10 +808,10 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * <span style="color: #3F7E5E">// if auto-increment, you don't need to set the PK value</span>
      * serviceRank.setFoo...(value);
      * serviceRank.setBar...(value);
-     * InsertOption&lt;ServiceRankCB&gt; option = new InsertOption&lt;ServiceRankCB&gt;();
-     * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
-     * option.disableCommonColumnAutoSetup();
-     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">varyingInsert</span>(serviceRank, option);
+     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">varyingInsert</span>(serviceRank, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
+     *     <span style="color: #553000">op</span>.disableCommonColumnAutoSetup();
+     * });
      * ... = serviceRank.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param serviceRank The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
@@ -838,18 +832,12 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * serviceRank.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * serviceRank.<span style="color: #CC4747">setVersionNo</span>(value);
-     * <span style="color: #70226C">try</span> {
-     *     <span style="color: #3F7E5E">// you can update by self calculation values</span>
-     *     UpdateOption&lt;ServiceRankCB&gt; option = new UpdateOption&lt;ServiceRankCB&gt;();
-     *     option.self(new SpecifyQuery&lt;ServiceRankCB&gt;() {
-     *         public void specify(ServiceRankCB cb) {
-     *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
-     *         }
+     * <span style="color: #3F7E5E">// you can update by self calculation values</span>
+     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">varyingUpdate</span>(serviceRank, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">varyingUpdate</span>(serviceRank, option);
-     * } <span style="color: #70226C">catch</span> (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
-     *     ...
-     * }
+     * });
      * </pre>
      * @param serviceRank The entity of update. (NotNull, PrimaryKeyNotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
@@ -960,13 +948,11 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * <span style="color: #3F7E5E">//serviceRank.setVersionNo(value);</span>
      * ServiceRankCB cb = <span style="color: #70226C">new</span> ServiceRankCB();
      * cb.query().setFoo...(value);
-     * UpdateOption&lt;ServiceRankCB&gt; option = <span style="color: #70226C">new</span> UpdateOption&lt;ServiceRankCB&gt;();
-     * option.self(new SpecifyQuery&lt;ServiceRankCB&gt;() {
-     *     public void specify(ServiceRankCB cb) {
-     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
-     *     }
-     * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(serviceRank, cb, option);
+     * <span style="color: #0000C0">serviceRankBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(serviceRank, cb, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
+     * });
      * </pre>
      * @param serviceRank The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of ServiceRank. (NotNull)
@@ -981,7 +967,7 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
     /**
      * Delete the several entities by query with varying requests non-strictly. <br>
      * For example, allowNonQueryDelete(). <br>
-     * Other specifications are same as batchUpdateNonstrict(entityList).
+     * Other specifications are same as queryDelete(cb).
      * @param cb The condition-bean of ServiceRank. (NotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The deleted count.

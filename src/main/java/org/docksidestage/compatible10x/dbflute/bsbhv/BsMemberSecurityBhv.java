@@ -461,11 +461,7 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * <span style="color: #3F7E5E">//memberSecurity.set...;</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * memberSecurity.<span style="color: #CC4747">setVersionNo</span>(value);
-     * try {
-     *     <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">update</span>(memberSecurity);
-     * } catch (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
-     *     ...
-     * }
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">update</span>(memberSecurity);
      * </pre>
      * @param memberSecurity The entity of update. (NotNull, PrimaryKeyNotNull, ConcurrencyColumnNotNull)
      * @throws EntityAlreadyUpdatedException When the entity has already been updated.
@@ -650,17 +646,15 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * memberSecurityBhv.<span style="color: #CC4747">batchUpdate</span>(memberSecurityList, new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *     public void specify(MemberSecurityCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *     }
+     * memberSecurityBhv.<span style="color: #CC4747">batchUpdate</span>(memberSecurityList, <span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// the two only updated</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">batchUpdate</span>(memberSecurityList, new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *     public void specify(MemberSecurityCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
-     *     }
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">batchUpdate</span>(memberSecurityList, <span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// all columns are updated</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      * });
      * </pre>
      * <p>You can specify update columns used on set clause of update statement.
@@ -710,17 +704,15 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * This method uses executeBatch() of java.sql.PreparedStatement.
      * <pre>
      * <span style="color: #3F7E5E">// e.g. update two columns only</span>
-     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">batchUpdateNonstrict</span>(memberSecurityList, new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *     public void specify(MemberSecurityCB cb) { <span style="color: #3F7E5E">// the two only updated</span>
-     *         cb.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *         cb.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
-     *     }
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">batchUpdateNonstrict</span>(memberSecurityList, <span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// the two only updated</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooStatusCode()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnBarDate()</span>; <span style="color: #3F7E5E">// should be modified in any entities</span>
      * });
      * <span style="color: #3F7E5E">// e.g. update every column in the table</span>
-     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">batchUpdateNonstrict</span>(memberSecurityList, new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *     public void specify(MemberSecurityCB cb) { <span style="color: #3F7E5E">// all columns are updated</span>
-     *         cb.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
-     *     }
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">batchUpdateNonstrict</span>(memberSecurityList, <span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// all columns are updated</span>
+     *     <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnEveryColumn()</span>; <span style="color: #3F7E5E">// no check of modified properties</span>
      * });
      * </pre>
      * <p>You can specify update columns used on set clause of update statement.
@@ -847,10 +839,10 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * <span style="color: #3F7E5E">// if auto-increment, you don't need to set the PK value</span>
      * memberSecurity.setFoo...(value);
      * memberSecurity.setBar...(value);
-     * InsertOption&lt;MemberSecurityCB&gt; option = new InsertOption&lt;MemberSecurityCB&gt;();
-     * <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
-     * option.disableCommonColumnAutoSetup();
-     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingInsert</span>(memberSecurity, option);
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingInsert</span>(memberSecurity, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #3F7E5E">// you can insert by your values for common columns</span>
+     *     <span style="color: #553000">op</span>.disableCommonColumnAutoSetup();
+     * });
      * ... = memberSecurity.getPK...(); <span style="color: #3F7E5E">// if auto-increment, you can get the value after</span>
      * </pre>
      * @param memberSecurity The entity of insert. (NotNull, PrimaryKeyNullAllowed: when auto-increment)
@@ -871,18 +863,12 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * memberSecurity.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
      * <span style="color: #3F7E5E">// if exclusive control, the value of concurrency column is required</span>
      * memberSecurity.<span style="color: #CC4747">setVersionNo</span>(value);
-     * <span style="color: #70226C">try</span> {
-     *     <span style="color: #3F7E5E">// you can update by self calculation values</span>
-     *     UpdateOption&lt;MemberSecurityCB&gt; option = new UpdateOption&lt;MemberSecurityCB&gt;();
-     *     option.self(new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *         public void specify(MemberSecurityCB cb) {
-     *             cb.specify().<span style="color: #CC4747">columnXxxCount()</span>;
-     *         }
+     * <span style="color: #3F7E5E">// you can update by self calculation values</span>
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingUpdate</span>(memberSecurity, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">columnXxxCount()</span>;
      *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
-     *     <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingUpdate</span>(memberSecurity, option);
-     * } <span style="color: #70226C">catch</span> (EntityAlreadyUpdatedException e) { <span style="color: #3F7E5E">// if concurrent update</span>
-     *     ...
-     * }
+     * });
      * </pre>
      * @param memberSecurity The entity of update. (NotNull, PrimaryKeyNotNull, ConcurrencyColumnNotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
@@ -906,13 +892,11 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//memberSecurity.setVersionNo(value);</span>
-     * UpdateOption&lt;MemberSecurityCB&gt; option = <span style="color: #70226C">new</span> UpdateOption&lt;MemberSecurityCB&gt;();
-     * option.self(new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *     public void specify(MemberSecurityCB cb) {
-     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
-     *     }
-     * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingUpdateNonstrict</span>(memberSecurity, option);
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingUpdateNonstrict</span>(memberSecurity, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">columnXxxCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// XXX_COUNT = XXX_COUNT + 1</span>
+     * });
      * </pre>
      * @param memberSecurity The entity of update. (NotNull, PrimaryKeyNotNull)
      * @param opLambda The callback for option of update for varying requests. (NotNull)
@@ -1075,13 +1059,11 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * <span style="color: #3F7E5E">//memberSecurity.setVersionNo(value);</span>
      * MemberSecurityCB cb = <span style="color: #70226C">new</span> MemberSecurityCB();
      * cb.query().setFoo...(value);
-     * UpdateOption&lt;MemberSecurityCB&gt; option = <span style="color: #70226C">new</span> UpdateOption&lt;MemberSecurityCB&gt;();
-     * option.self(new SpecifyQuery&lt;MemberSecurityCB&gt;() {
-     *     public void specify(MemberSecurityCB cb) {
-     *         cb.specify().<span style="color: #CC4747">columnFooCount()</span>;
-     *     }
-     * }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
-     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(memberSecurity, cb, option);
+     * <span style="color: #0000C0">memberSecurityBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(memberSecurity, cb, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
+     * });
      * </pre>
      * @param memberSecurity The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
      * @param cb The condition-bean of MemberSecurity. (NotNull)
@@ -1096,7 +1078,7 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
     /**
      * Delete the several entities by query with varying requests non-strictly. <br>
      * For example, allowNonQueryDelete(). <br>
-     * Other specifications are same as batchUpdateNonstrict(entityList).
+     * Other specifications are same as queryDelete(cb).
      * @param cb The condition-bean of MemberSecurity. (NotNull)
      * @param opLambda The callback for option of delete for varying requests. (NotNull)
      * @return The deleted count.
