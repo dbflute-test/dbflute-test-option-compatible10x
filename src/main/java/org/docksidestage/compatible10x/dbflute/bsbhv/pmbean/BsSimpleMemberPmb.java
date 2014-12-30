@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -191,7 +191,7 @@ public class BsSimpleMemberPmb implements ListHandlingPmb<MemberBhv, SimpleMembe
 
     /**
      * [get] birthdate <br>
-     * used as equal
+     * // used as equal
      * @return The value of birthdate. (NullAllowed, NotEmptyString(when String): if empty string, returns null)
      */
     public Date getBirthdate() {
@@ -200,7 +200,7 @@ public class BsSimpleMemberPmb implements ListHandlingPmb<MemberBhv, SimpleMembe
 
     /**
      * [set] birthdate <br>
-     * used as equal
+     * // used as equal
      * @param birthdate The value of birthdate. (NullAllowed)
      */
     public void setBirthdate(Date birthdate) {
