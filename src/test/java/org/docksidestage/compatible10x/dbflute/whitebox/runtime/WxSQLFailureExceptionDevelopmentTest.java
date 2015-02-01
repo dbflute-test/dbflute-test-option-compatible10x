@@ -204,7 +204,7 @@ public class WxSQLFailureExceptionDevelopmentTest extends UnitContainerTestCase 
             assertTrue(msg.contains("Failed to execute the SQL for batch insert."));
             assertTrue(msg.contains("test_batchInsert_basic()"));
             assertTrue(msg.contains("MemberBhv.batchInsert()"));
-            assertTrue(msg.contains("Display SQL (part of SQLs)"));
+            assertTrue(msg.contains("Part of Display SQLs"));
             assertTrue(msg.contains("'batch insert exception'"));
         }
     }
@@ -235,7 +235,7 @@ public class WxSQLFailureExceptionDevelopmentTest extends UnitContainerTestCase 
             assertTrue(msg.contains("Failed to execute the SQL for batch update."));
             assertTrue(msg.contains("test_batchUpdate_basic()"));
             assertTrue(msg.contains("MemberBhv.batchUpdate()"));
-            assertTrue(msg.contains("Display SQL (part of SQLs)"));
+            assertTrue(msg.contains("Part of Display SQLs"));
             assertTrue(msg.contains("'batch update exception'"));
         }
     }
@@ -259,7 +259,7 @@ public class WxSQLFailureExceptionDevelopmentTest extends UnitContainerTestCase 
             assertTrue(msg.contains("Failed to execute the SQL for batch delete."));
             assertTrue(msg.contains("test_batchDelete_basic()"));
             assertTrue(msg.contains("MemberBhv.batchDelete()"));
-            assertTrue(msg.contains("Display SQL (part of SQLs)"));
+            assertTrue(msg.contains("Part of Display SQLs"));
         }
     }
 
