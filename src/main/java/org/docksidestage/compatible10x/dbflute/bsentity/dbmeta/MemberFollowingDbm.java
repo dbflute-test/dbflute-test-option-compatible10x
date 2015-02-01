@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,9 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
+    public String getProjectName() { return DBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return DBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return DBCurrent.getInstance().generationGapBasePrefix(); }
     public DBDef getCurrentDBDef() { return DBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
@@ -57,7 +60,7 @@ public class MemberFollowingDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((MemberFollowing)et).getMemberFollowingId(), (et, vl) -> ((MemberFollowing)et).setMemberFollowingId(ctl(vl)), "memberFollowingId");
         setupEpg(_epgMap, et -> ((MemberFollowing)et).getMyMemberId(), (et, vl) -> ((MemberFollowing)et).setMyMemberId(cti(vl)), "myMemberId");
         setupEpg(_epgMap, et -> ((MemberFollowing)et).getYourMemberId(), (et, vl) -> ((MemberFollowing)et).setYourMemberId(cti(vl)), "yourMemberId");
-        setupEpg(_epgMap, et -> ((MemberFollowing)et).getFollowDatetime(), (et, vl) -> ((MemberFollowing)et).setFollowDatetime((java.sql.Timestamp)vl), "followDatetime");
+        setupEpg(_epgMap, et -> ((MemberFollowing)et).getFollowDatetime(), (et, vl) -> ((MemberFollowing)et).setFollowDatetime(cttp(vl)), "followDatetime");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -78,10 +81,12 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "MEMBER_FOLLOWING";
+    protected final String _tableDispName = "MEMBER_FOLLOWING";
     protected final String _tablePropertyName = "memberFollowing";
     protected final TableSqlName _tableSqlName = new TableSqlName("MEMBER_FOLLOWING", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
+    public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
     protected final String _tableAlias = "会員フォローイング";
@@ -92,7 +97,7 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberFollowingId = cci("MEMBER_FOLLOWING_ID", "MEMBER_FOLLOWING_ID", null, "会員フォローイングID", Long.class, "memberFollowingId", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_D400AF1D_8C2B_4062_87D9_1275212C33BC", false, null, "連番", null, null, null, false);
+    protected final ColumnInfo _columnMemberFollowingId = cci("MEMBER_FOLLOWING_ID", "MEMBER_FOLLOWING_ID", null, "会員フォローイングID", Long.class, "memberFollowingId", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_CED32141_E6BB_4D66_8CFB_CA55583644E3", false, null, "連番", null, null, null, false);
     protected final ColumnInfo _columnMyMemberId = cci("MY_MEMBER_ID", "MY_MEMBER_ID", null, "わたし", Integer.class, "myMemberId", null, false, false, true, "INTEGER", 10, 0, null, false, null, "気になった人がいて...勇気を振り絞った会員のID。", "memberByMyMemberId", null, null, false);
     protected final ColumnInfo _columnYourMemberId = cci("YOUR_MEMBER_ID", "YOUR_MEMBER_ID", null, "あなた", Integer.class, "yourMemberId", null, false, false, true, "INTEGER", 10, 0, null, false, null, "いきなりのアクションに...ちょっと心揺らいだ会員のID。", "memberByYourMemberId", null, null, false);
     protected final ColumnInfo _columnFollowDatetime = cci("FOLLOW_DATETIME", "FOLLOW_DATETIME", null, "その瞬間", java.sql.Timestamp.class, "followDatetime", null, false, false, true, "TIMESTAMP", 23, 10, null, false, null, "ふりかえるとちょっと恥ずかしい気持ちになる日時", null, null, null, false);
@@ -138,6 +143,16 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     protected UniqueInfo cpui() { return hpcpui(columnMemberFollowingId()); }
     public boolean hasPrimaryKey() { return true; }
     public boolean hasCompoundPrimaryKey() { return false; }
+
+    // -----------------------------------------------------
+    //                                        Unique Element
+    //                                        --------------
+    public UniqueInfo uniqueOf() {
+        List<ColumnInfo> ls = newArrayListSized(4);
+        ls.add(columnMyMemberId());
+        ls.add(columnYourMemberId());
+        return hpcui(ls);
+    }
 
     // ===================================================================================
     //                                                                       Relation Info

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,9 @@ public class ProductCategoryDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
+    public String getProjectName() { return DBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return DBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return DBCurrent.getInstance().generationGapBasePrefix(); }
     public DBDef getCurrentDBDef() { return DBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
@@ -76,10 +79,12 @@ public class ProductCategoryDbm extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "PRODUCT_CATEGORY";
+    protected final String _tableDispName = "PRODUCT_CATEGORY";
     protected final String _tablePropertyName = "productCategory";
     protected final TableSqlName _tableSqlName = new TableSqlName("PRODUCT_CATEGORY", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
+    public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
     protected final String _tableAlias = "商品カテゴリ";

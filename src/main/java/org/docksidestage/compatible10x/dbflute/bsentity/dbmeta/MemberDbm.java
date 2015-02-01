@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,9 @@ public class MemberDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
+    public String getProjectName() { return DBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return DBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return DBCurrent.getInstance().generationGapBasePrefix(); }
     public DBDef getCurrentDBDef() { return DBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
@@ -58,11 +61,11 @@ public class MemberDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((Member)et).getMemberName(), (et, vl) -> ((Member)et).setMemberName((String)vl), "memberName");
         setupEpg(_epgMap, et -> ((Member)et).getMemberAccount(), (et, vl) -> ((Member)et).setMemberAccount((String)vl), "memberAccount");
         setupEpg(_epgMap, et -> ((Member)et).getMemberStatusCode(), (et, vl) -> ((Member)et).setMemberStatusCode((String)vl), "memberStatusCode");
-        setupEpg(_epgMap, et -> ((Member)et).getFormalizedDatetime(), (et, vl) -> ((Member)et).setFormalizedDatetime((java.sql.Timestamp)vl), "formalizedDatetime");
-        setupEpg(_epgMap, et -> ((Member)et).getBirthdate(), (et, vl) -> ((Member)et).setBirthdate((java.util.Date)vl), "birthdate");
-        setupEpg(_epgMap, et -> ((Member)et).getRegisterDatetime(), (et, vl) -> ((Member)et).setRegisterDatetime((java.sql.Timestamp)vl), "registerDatetime");
+        setupEpg(_epgMap, et -> ((Member)et).getFormalizedDatetime(), (et, vl) -> ((Member)et).setFormalizedDatetime(cttp(vl)), "formalizedDatetime");
+        setupEpg(_epgMap, et -> ((Member)et).getBirthdate(), (et, vl) -> ((Member)et).setBirthdate(ctdt(vl)), "birthdate");
+        setupEpg(_epgMap, et -> ((Member)et).getRegisterDatetime(), (et, vl) -> ((Member)et).setRegisterDatetime(cttp(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((Member)et).getRegisterUser(), (et, vl) -> ((Member)et).setRegisterUser((String)vl), "registerUser");
-        setupEpg(_epgMap, et -> ((Member)et).getUpdateDatetime(), (et, vl) -> ((Member)et).setUpdateDatetime((java.sql.Timestamp)vl), "updateDatetime");
+        setupEpg(_epgMap, et -> ((Member)et).getUpdateDatetime(), (et, vl) -> ((Member)et).setUpdateDatetime(cttp(vl)), "updateDatetime");
         setupEpg(_epgMap, et -> ((Member)et).getUpdateUser(), (et, vl) -> ((Member)et).setUpdateUser((String)vl), "updateUser");
         setupEpg(_epgMap, et -> ((Member)et).getVersionNo(), (et, vl) -> ((Member)et).setVersionNo(ctl(vl)), "versionNo");
     }
@@ -89,10 +92,12 @@ public class MemberDbm extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "MEMBER";
+    protected final String _tableDispName = "MEMBER";
     protected final String _tablePropertyName = "member";
     protected final TableSqlName _tableSqlName = new TableSqlName("MEMBER", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
+    public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
     protected final String _tableAlias = "会員";
@@ -103,7 +108,7 @@ public class MemberDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, "会員ID", Integer.class, "memberId", null, true, true, true, "INTEGER", 10, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_00213865_7FC4_4FE2_B86E_F29C7A251846", false, null, "連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。", "memberAddressAsValid,memberLoginAsLatest,memberSecurityAsOne,memberServiceAsOne,memberWithdrawalAsOne", "memberAddressList,memberFollowingByMyMemberIdList,memberFollowingByYourMemberIdList,memberLoginList,purchaseList", null, false);
+    protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, "会員ID", Integer.class, "memberId", null, true, true, true, "INTEGER", 10, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_003225C0_2B09_4758_95A1_B8F09E32B8A6", false, null, "連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。", "memberAddressAsValid,memberLoginAsLatest,memberSecurityAsOne,memberServiceAsOne,memberWithdrawalAsOne", "memberAddressList,memberFollowingByMyMemberIdList,memberFollowingByYourMemberIdList,memberLoginList,purchaseList", null, false);
     protected final ColumnInfo _columnMemberName = cci("MEMBER_NAME", "MEMBER_NAME", null, "会員名称", String.class, "memberName", null, false, false, true, "VARCHAR", 200, 0, null, false, null, "会員のフルネームの名称。\n苗字と名前を分けて管理することが多いが、ここでは単純にひとまとめ。", null, null, null, false);
     protected final ColumnInfo _columnMemberAccount = cci("MEMBER_ACCOUNT", "MEMBER_ACCOUNT", null, "会員アカウント", String.class, "memberAccount", null, false, false, true, "VARCHAR", 50, 0, null, false, null, "ログインIDとして利用する。\n昨今メールアドレスをログインIDとすることが多いので、あまり見かけないかも!?", null, null, null, false);
     protected final ColumnInfo _columnMemberStatusCode = cci("MEMBER_STATUS_CODE", "MEMBER_STATUS_CODE", null, "会員ステータスコード", String.class, "memberStatusCode", null, false, false, true, "CHAR", 3, 0, null, false, null, "会員ステータスを参照するコード。\nステータスが変わるたびに、このカラムが更新される。", "memberStatus", null, CDef.DefMeta.MemberStatus, false);
@@ -198,6 +203,11 @@ public class MemberDbm extends AbstractDBMeta {
     protected UniqueInfo cpui() { return hpcpui(columnMemberId()); }
     public boolean hasPrimaryKey() { return true; }
     public boolean hasCompoundPrimaryKey() { return false; }
+
+    // -----------------------------------------------------
+    //                                        Unique Element
+    //                                        --------------
+    public UniqueInfo uniqueOf() { return hpcui(columnMemberAccount()); }
 
     // ===================================================================================
     //                                                                       Relation Info

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,9 @@ public class MemberWithdrawalDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
+    public String getProjectName() { return DBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return DBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return DBCurrent.getInstance().generationGapBasePrefix(); }
     public DBDef getCurrentDBDef() { return DBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
@@ -57,10 +60,10 @@ public class MemberWithdrawalDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getMemberId(), (et, vl) -> ((MemberWithdrawal)et).setMemberId(cti(vl)), "memberId");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalReasonCode(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalReasonCode((String)vl), "withdrawalReasonCode");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalReasonInputText(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalReasonInputText((String)vl), "withdrawalReasonInputText");
-        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalDatetime(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalDatetime((java.sql.Timestamp)vl), "withdrawalDatetime");
-        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getRegisterDatetime(), (et, vl) -> ((MemberWithdrawal)et).setRegisterDatetime((java.sql.Timestamp)vl), "registerDatetime");
+        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalDatetime(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalDatetime(cttp(vl)), "withdrawalDatetime");
+        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getRegisterDatetime(), (et, vl) -> ((MemberWithdrawal)et).setRegisterDatetime(cttp(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getRegisterUser(), (et, vl) -> ((MemberWithdrawal)et).setRegisterUser((String)vl), "registerUser");
-        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getUpdateDatetime(), (et, vl) -> ((MemberWithdrawal)et).setUpdateDatetime((java.sql.Timestamp)vl), "updateDatetime");
+        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getUpdateDatetime(), (et, vl) -> ((MemberWithdrawal)et).setUpdateDatetime(cttp(vl)), "updateDatetime");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getUpdateUser(), (et, vl) -> ((MemberWithdrawal)et).setUpdateUser((String)vl), "updateUser");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getVersionNo(), (et, vl) -> ((MemberWithdrawal)et).setVersionNo(ctl(vl)), "versionNo");
     }
@@ -83,10 +86,12 @@ public class MemberWithdrawalDbm extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "MEMBER_WITHDRAWAL";
+    protected final String _tableDispName = "MEMBER_WITHDRAWAL";
     protected final String _tablePropertyName = "memberWithdrawal";
     protected final TableSqlName _tableSqlName = new TableSqlName("MEMBER_WITHDRAWAL", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
+    public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
     protected final String _tableAlias = "会員退会情報";

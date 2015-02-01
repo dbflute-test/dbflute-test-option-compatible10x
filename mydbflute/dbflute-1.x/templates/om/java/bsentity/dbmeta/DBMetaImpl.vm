@@ -47,6 +47,9 @@ public class ${myClassName} extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
+    public String getProjectName() { return ${glDBCurrent}.getInstance().projectName(); }
+    public String getProjectPrefix() { return ${glDBCurrent}.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return ${glDBCurrent}.getInstance().generationGapBasePrefix(); }
     public DBDef getCurrentDBDef() { return ${glDBCurrent}.getInstance().currentDBDef(); }
 
     // ===================================================================================
@@ -114,12 +117,33 @@ public class ${myClassName} extends AbstractDBMeta {
 #elseif ($col.isJavaNativeBigDecimal())
         setupEpg(_epgMap, ${reader}, ${writerSet}(ctb(vl)), "${propName}");
 #else
+## unknown number
         setupEpg(_epgMap, ${reader}, ${writerSet}(ctn(vl, ${col.javaNative}.class)), "${propName}");
 #end
+#elseif ($col.isJavaNativeDateObject())
+## #dataParade
+#if ($col.isJavaNativeJava8LocalDate())
+        setupEpg(_epgMap, ${reader}, ${writerSet}(ctld(vl)), "${propName}");
+#elseif ($col.isJavaNativeJava8LocalDateTime())
+        setupEpg(_epgMap, ${reader}, ${writerSet}(ctldt(vl)), "${propName}");
+#elseif ($col.isJavaNativeJava8LocalTime())
+        setupEpg(_epgMap, ${reader}, ${writerSet}(ctlt(vl)), "${propName}");
+#elseif ($col.isJavaNativeUtilDate())
+        setupEpg(_epgMap, ${reader}, ${writerSet}(ctdt(vl)), "${propName}");
+#elseif ($col.isJavaNativeTimestamp())
+        setupEpg(_epgMap, ${reader}, ${writerSet}(cttp(vl)), "${propName}");
+#elseif ($col.isJavaNativeTime())
+        setupEpg(_epgMap, ${reader}, ${writerSet}(cttm(vl)), "${propName}");
 #else
+## unknown date
+        setupEpg(_epgMap, ${reader}, ${writerSet}((${col.javaNative})vl), "${propName}");
+#end
+#else
+## other types
 #if ($col.isJavaNativeUtilList())
         setupEpg(_epgMap, ${reader}, ${writerSet}((${col.javaNative})vl), "${propName}");
 #else
+## string here
         setupEpg(_epgMap, ${reader}, ${writerSet}((${col.javaNative})vl), "${propName}");
 #end
 #end
@@ -159,10 +183,12 @@ public class ${myClassName} extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "${table.tableDbName}";
+    protected final String _tableDispName = "${table.tableDispName}";
     protected final String _tablePropertyName = "${table.javaBeansRulePropertyName}";
     protected final TableSqlName _tableSqlName = new TableSqlName("${table.tableSqlName}", _tableDbName);
     { _tableSqlName.xacceptFilter(${glDBFluteConfig}.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
+    public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
 #if ($table.hasAlias())
@@ -224,6 +250,25 @@ public class ${myClassName} extends AbstractDBMeta {
 #end
     public boolean hasPrimaryKey() { return ${table.hasPrimaryKey()}; }
     public boolean hasCompoundPrimaryKey() { return ${table.hasCompoundPrimaryKey()}; }
+#if ($table.hasUnique())
+
+    // -----------------------------------------------------
+    //                                        Unique Element
+    //                                        --------------
+#foreach ($uq in $table.keyableUniqueList)
+#if ($uq.isOnlyOneColumn())
+    public UniqueInfo uniqueOf${uq.javaNameKeyword}() { return hpcui(column${uq.columnAsOne.javaBeansRulePropertyNameInitCap}()); }
+#else
+    public UniqueInfo uniqueOf${uq.javaNameKeyword}() {
+        List<ColumnInfo> ls = newArrayListSized(4);
+#foreach ($col in $uq.columnList)
+        ls.add(column${col.javaBeansRulePropertyNameInitCap}());
+#end
+        return hpcui(ls);
+    }
+#end
+#end
+#end
 
     // ===================================================================================
     //                                                                       Relation Info

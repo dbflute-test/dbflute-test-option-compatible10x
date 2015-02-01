@@ -33,7 +33,7 @@ import org.dbflute.util.Srl;
  */
 public class WxAllClassCopyrightTest extends PlainTestCase {
 
-    private static final String COPYRIGHT = "Copyright 2014-2014 the original author or authors.";
+    private static final String COPYRIGHT = "Copyright 2014-2015 the original author or authors.";
 
     public void test_licensed_main() {
         // ## Arrange ##

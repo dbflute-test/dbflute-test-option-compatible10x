@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,7 +82,7 @@ public class DBMetaInstanceHandler implements DBMetaProvider {
     }
 
     /**
-     * Get the unmodifiable map of DB meta.
+     * Get the unmodifiable map of DB meta. map:{tableDbName = DBMeta}
      * @return The unmodifiable map that contains all instances of DB meta. (NotNull, NotEmpty)
      */
     public static Map<String, DBMeta> getUnmodifiableDBMetaMap() {

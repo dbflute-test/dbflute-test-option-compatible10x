@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2014 the original author or authors.
+ * Copyright 2014-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,9 @@ public class CommonColumnMemberDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
+    public String getProjectName() { return DBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return DBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return DBCurrent.getInstance().generationGapBasePrefix(); }
     public DBDef getCurrentDBDef() { return DBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
@@ -56,9 +59,9 @@ public class CommonColumnMemberDbm extends AbstractDBMeta {
     protected void xsetupEpg() {
         setupEpg(_epgMap, et -> ((CommonColumnMember)et).getMemberId(), (et, vl) -> ((CommonColumnMember)et).setMemberId(cti(vl)), "memberId");
         setupEpg(_epgMap, et -> ((CommonColumnMember)et).getMemberName(), (et, vl) -> ((CommonColumnMember)et).setMemberName((String)vl), "memberName");
-        setupEpg(_epgMap, et -> ((CommonColumnMember)et).getRegisterDatetime(), (et, vl) -> ((CommonColumnMember)et).setRegisterDatetime((java.sql.Timestamp)vl), "registerDatetime");
+        setupEpg(_epgMap, et -> ((CommonColumnMember)et).getRegisterDatetime(), (et, vl) -> ((CommonColumnMember)et).setRegisterDatetime(cttp(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((CommonColumnMember)et).getRegisterUser(), (et, vl) -> ((CommonColumnMember)et).setRegisterUser((String)vl), "registerUser");
-        setupEpg(_epgMap, et -> ((CommonColumnMember)et).getUpdateDatetime(), (et, vl) -> ((CommonColumnMember)et).setUpdateDatetime((java.sql.Timestamp)vl), "updateDatetime");
+        setupEpg(_epgMap, et -> ((CommonColumnMember)et).getUpdateDatetime(), (et, vl) -> ((CommonColumnMember)et).setUpdateDatetime(cttp(vl)), "updateDatetime");
         setupEpg(_epgMap, et -> ((CommonColumnMember)et).getUpdateUser(), (et, vl) -> ((CommonColumnMember)et).setUpdateUser((String)vl), "updateUser");
     }
     public PropertyGateway findPropertyGateway(String prop)
@@ -68,10 +71,12 @@ public class CommonColumnMemberDbm extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "CommonColumnMember";
+    protected final String _tableDispName = "CommonColumnMember";
     protected final String _tablePropertyName = "commonColumnMember";
     protected final TableSqlName _tableSqlName = new TableSqlName("CommonColumnMember", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
+    public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
 
