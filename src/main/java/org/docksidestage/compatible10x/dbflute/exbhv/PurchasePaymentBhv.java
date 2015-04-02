@@ -25,5 +25,6 @@ import org.docksidestage.compatible10x.dbflute.bsbhv.BsPurchasePaymentBhv;
  * </p>
  * @author DBFlute(AutoGenerator)
  */
+@org.springframework.stereotype.Component("purchasePaymentBhv")
 public class PurchasePaymentBhv extends BsPurchasePaymentBhv {
 }

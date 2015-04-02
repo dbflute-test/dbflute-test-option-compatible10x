@@ -25,5 +25,6 @@ import org.docksidestage.compatible10x.dbflute.bsbhv.BsVendorTheLongAndWindingTa
  * </p>
  * @author DBFlute(AutoGenerator)
  */
+@org.springframework.stereotype.Component("vendorTheLongAndWindingTableAndColumnBhv")
 public class VendorTheLongAndWindingTableAndColumnBhv extends BsVendorTheLongAndWindingTableAndColumnBhv {
 }

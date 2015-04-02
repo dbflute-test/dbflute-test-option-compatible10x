@@ -25,5 +25,6 @@ import org.docksidestage.compatible10x.dbflute.bsbhv.BsVendorCheckBhv;
  * </p>
  * @author DBFlute(AutoGenerator)
  */
+@org.springframework.stereotype.Component("vendorCheckBhv")
 public class VendorCheckBhv extends BsVendorCheckBhv {
 }
