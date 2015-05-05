@@ -293,7 +293,7 @@ public class BsMemberFollowingCB extends AbstractConditionBean {
      */
     public MemberNss setupSelect_MemberByMyMemberId() {
         assertSetupSelectPurpose("memberByMyMemberId");
-        if (hasSpecifiedColumn()) { // if reverse call
+        if (hasSpecifiedLocalColumn()) {
             specify().columnMyMemberId();
         }
         doSetupSelect(() -> query().queryMemberByMyMemberId());
@@ -322,7 +322,7 @@ public class BsMemberFollowingCB extends AbstractConditionBean {
      */
     public MemberNss setupSelect_MemberByYourMemberId() {
         assertSetupSelectPurpose("memberByYourMemberId");
-        if (hasSpecifiedColumn()) { // if reverse call
+        if (hasSpecifiedLocalColumn()) {
             specify().columnYourMemberId();
         }
         doSetupSelect(() -> query().queryMemberByYourMemberId());
@@ -367,8 +367,8 @@ public class BsMemberFollowingCB extends AbstractConditionBean {
         return specify();
     }
 
-    public boolean hasSpecifiedColumn() {
-        return _specification != null && _specification.isAlreadySpecifiedRequiredColumn();
+    public boolean hasSpecifiedLocalColumn() {
+        return _specification != null && _specification.hasSpecifiedColumn();
     }
 
     public static class HpSpecification extends HpAbstractSpecification<MemberFollowingCQ> {

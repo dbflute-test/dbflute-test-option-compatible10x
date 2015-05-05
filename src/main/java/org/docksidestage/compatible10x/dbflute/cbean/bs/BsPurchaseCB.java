@@ -294,7 +294,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
      */
     public MemberNss setupSelect_Member() {
         assertSetupSelectPurpose("member");
-        if (hasSpecifiedColumn()) { // if reverse call
+        if (hasSpecifiedLocalColumn()) {
             specify().columnMemberId();
         }
         doSetupSelect(() -> query().queryMember());
@@ -323,7 +323,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
      */
     public ProductNss setupSelect_Product() {
         assertSetupSelectPurpose("product");
-        if (hasSpecifiedColumn()) { // if reverse call
+        if (hasSpecifiedLocalColumn()) {
             specify().columnProductId();
         }
         doSetupSelect(() -> query().queryProduct());
@@ -352,7 +352,7 @@ public class BsPurchaseCB extends AbstractConditionBean {
      */
     public SummaryProductNss setupSelect_SummaryProduct() {
         assertSetupSelectPurpose("summaryProduct");
-        if (hasSpecifiedColumn()) { // if reverse call
+        if (hasSpecifiedLocalColumn()) {
             specify().columnProductId();
         }
         doSetupSelect(() -> query().querySummaryProduct());
@@ -397,8 +397,8 @@ public class BsPurchaseCB extends AbstractConditionBean {
         return specify();
     }
 
-    public boolean hasSpecifiedColumn() {
-        return _specification != null && _specification.isAlreadySpecifiedRequiredColumn();
+    public boolean hasSpecifiedLocalColumn() {
+        return _specification != null && _specification.hasSpecifiedColumn();
     }
 
     public static class HpSpecification extends HpAbstractSpecification<PurchaseCQ> {
