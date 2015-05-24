@@ -46,8 +46,10 @@ map:{
     ; isMakeConditionQueryInScopeRelationToOne = true
     ; isMakeConditionQueryPlainListManualOrder = true
     ; isMakeDirectConditionBeanSetup = true
+    #; makeDirectConditionBeanSetupTableList = list:{}
     ; isMakeBatchUpdateSpecifyColumn = true
     ; isAvailableSelectEntityPlainReturn = true
+    #; availableSelectEntityPlainReturnTableList = list:{ MEMBER ; MEMBER_STATUS ; MEMBER_LOGIN ; PURCHASE }
     ; isAvailableRelationPlainEntity = true
     ; isMakeConditionQueryPrefixSearch = true
     ; isMakeConditionQueryDateFromTo = true
