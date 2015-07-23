@@ -55,6 +55,7 @@ public class WxCBPagingBasicTest extends UnitContainerTestCase {
         assertTrue(page3.isExistNextPage());
     }
 
+    @SuppressWarnings("deprecation")
     public void test_paging_zeroResult() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();

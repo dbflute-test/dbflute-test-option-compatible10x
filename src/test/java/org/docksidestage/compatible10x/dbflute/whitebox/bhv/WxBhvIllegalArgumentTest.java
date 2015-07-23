@@ -23,7 +23,7 @@ public class WxBhvIllegalArgumentTest extends UnitContainerTestCase {
         // ## Arrange ##
         // ## Act ##
         try {
-            memberBhv.selectEntity(null);
+            memberBhv.selectEntity((MemberCB)null);
 
             // ## Assert ##
             fail();
@@ -51,7 +51,7 @@ public class WxBhvIllegalArgumentTest extends UnitContainerTestCase {
         // ## Arrange ##
         // ## Act ##
         try {
-            memberBhv.selectEntityWithDeletedCheck(null);
+            memberBhv.selectEntityWithDeletedCheck((MemberCB)null);
 
             // ## Assert ##
             fail();

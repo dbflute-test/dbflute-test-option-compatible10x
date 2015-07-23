@@ -30,6 +30,7 @@ public class WxListResultBeanTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                       Grouping List
     //                                                                       =============
+    @SuppressWarnings("deprecation")
     public void test_groupingList_count() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
@@ -98,6 +99,7 @@ public class WxListResultBeanTest extends UnitContainerTestCase {
     // ===================================================================================
     //                                                                        Grouping Map
     //                                                                        ============
+    @SuppressWarnings("deprecation")
     public void test_groupingMap_initChar() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();

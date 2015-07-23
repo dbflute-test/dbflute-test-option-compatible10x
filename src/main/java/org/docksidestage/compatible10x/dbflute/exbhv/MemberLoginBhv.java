@@ -25,5 +25,6 @@ import org.docksidestage.compatible10x.dbflute.bsbhv.BsMemberLoginBhv;
  * </p>
  * @author DBFlute(AutoGenerator)
  */
+@org.springframework.stereotype.Component("memberLoginBhv")
 public class MemberLoginBhv extends BsMemberLoginBhv {
 }

@@ -273,7 +273,7 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
      */
     public void setupSelect_VendorTheLongAndWindingTableAndColumn() {
         assertSetupSelectPurpose("vendorTheLongAndWindingTableAndColumn");
-        if (hasSpecifiedColumn()) { // if reverse call
+        if (hasSpecifiedLocalColumn()) {
             specify().columnTheLongAndWindingTableAndColumnId();
         }
         doSetupSelect(() -> query().queryVendorTheLongAndWindingTableAndColumn());
@@ -315,8 +315,8 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCB extends AbstractCondit
         return specify();
     }
 
-    public boolean hasSpecifiedColumn() {
-        return _specification != null && _specification.isAlreadySpecifiedRequiredColumn();
+    public boolean hasSpecifiedLocalColumn() {
+        return _specification != null && _specification.hasSpecifiedColumn();
     }
 
     public static class HpSpecification extends HpAbstractSpecification<VendorTheLongAndWindingTableAndColumnRefCQ> {

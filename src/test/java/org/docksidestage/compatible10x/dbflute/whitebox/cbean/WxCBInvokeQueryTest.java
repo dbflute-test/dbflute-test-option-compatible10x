@@ -332,11 +332,11 @@ public class WxCBInvokeQueryTest extends UnitContainerTestCase {
         cb.localCQ().invokeQuery(name, ConditionKey.CK_IS_NOT_NULL.getConditionKey(), null);
 
         // ## Assert ##
-        assertFalse(cb.hasWhereClauseOnBaseQuery());
+        assertTrue(cb.hasWhereClauseOnBaseQuery());
         String sql = cb.toDisplaySql();
         log(ln() + sql);
-        assertFalse(sql.contains(" is null"));
-        assertFalse(sql.contains(" is not null"));
+        assertTrue(sql.contains(" is null"));
+        assertTrue(sql.contains(" is not null"));
     }
 
     // -----------------------------------------------------

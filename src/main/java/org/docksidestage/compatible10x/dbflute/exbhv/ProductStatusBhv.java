@@ -25,5 +25,6 @@ import org.docksidestage.compatible10x.dbflute.bsbhv.BsProductStatusBhv;
  * </p>
  * @author DBFlute(AutoGenerator)
  */
+@org.springframework.stereotype.Component("productStatusBhv")
 public class ProductStatusBhv extends BsProductStatusBhv {
 }

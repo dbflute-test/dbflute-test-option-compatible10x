@@ -30,6 +30,7 @@ import org.docksidestage.compatible10x.dbflute.exbhv.pmbean.PurchaseSummaryMembe
  * The behavior of MEMBER.
  * @author DBFlute(AutoGenerator)
  */
+@org.springframework.stereotype.Component("memberBhv")
 public class MemberBhv extends BsMemberBhv {
 
     // ===================================================================================
