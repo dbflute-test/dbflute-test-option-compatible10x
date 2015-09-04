@@ -61,7 +61,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員住所ID)MEMBER_ADDRESS_ID: {PK, ID, NotNull, INTEGER(10)}
-     * @param memberAddressId The value of memberAddressId as equal. (NullAllowed: if null, no condition)
+     * @param memberAddressId The value of memberAddressId as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberAddressId_Equal(Integer memberAddressId) {
         doSetMemberAddressId_Equal(memberAddressId);
@@ -74,7 +74,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員住所ID)MEMBER_ADDRESS_ID: {PK, ID, NotNull, INTEGER(10)}
-     * @param memberAddressId The value of memberAddressId as notEqual. (NullAllowed: if null, no condition)
+     * @param memberAddressId The value of memberAddressId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberAddressId_NotEqual(Integer memberAddressId) {
         doSetMemberAddressId_NotEqual(memberAddressId);
@@ -87,7 +87,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員住所ID)MEMBER_ADDRESS_ID: {PK, ID, NotNull, INTEGER(10)}
-     * @param memberAddressId The value of memberAddressId as greaterThan. (NullAllowed: if null, no condition)
+     * @param memberAddressId The value of memberAddressId as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberAddressId_GreaterThan(Integer memberAddressId) {
         regMemberAddressId(CK_GT, memberAddressId);
@@ -96,7 +96,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員住所ID)MEMBER_ADDRESS_ID: {PK, ID, NotNull, INTEGER(10)}
-     * @param memberAddressId The value of memberAddressId as lessThan. (NullAllowed: if null, no condition)
+     * @param memberAddressId The value of memberAddressId as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberAddressId_LessThan(Integer memberAddressId) {
         regMemberAddressId(CK_LT, memberAddressId);
@@ -105,7 +105,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員住所ID)MEMBER_ADDRESS_ID: {PK, ID, NotNull, INTEGER(10)}
-     * @param memberAddressId The value of memberAddressId as greaterEqual. (NullAllowed: if null, no condition)
+     * @param memberAddressId The value of memberAddressId as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberAddressId_GreaterEqual(Integer memberAddressId) {
         regMemberAddressId(CK_GE, memberAddressId);
@@ -114,7 +114,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員住所ID)MEMBER_ADDRESS_ID: {PK, ID, NotNull, INTEGER(10)}
-     * @param memberAddressId The value of memberAddressId as lessEqual. (NullAllowed: if null, no condition)
+     * @param memberAddressId The value of memberAddressId as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberAddressId_LessEqual(Integer memberAddressId) {
         regMemberAddressId(CK_LE, memberAddressId);
@@ -177,7 +177,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
-     * @param memberId The value of memberId as equal. (NullAllowed: if null, no condition)
+     * @param memberId The value of memberId as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberId_Equal(Integer memberId) {
         doSetMemberId_Equal(memberId);
@@ -190,7 +190,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
-     * @param memberId The value of memberId as notEqual. (NullAllowed: if null, no condition)
+     * @param memberId The value of memberId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberId_NotEqual(Integer memberId) {
         doSetMemberId_NotEqual(memberId);
@@ -203,7 +203,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
-     * @param memberId The value of memberId as greaterThan. (NullAllowed: if null, no condition)
+     * @param memberId The value of memberId as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberId_GreaterThan(Integer memberId) {
         regMemberId(CK_GT, memberId);
@@ -212,7 +212,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
-     * @param memberId The value of memberId as lessThan. (NullAllowed: if null, no condition)
+     * @param memberId The value of memberId as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberId_LessThan(Integer memberId) {
         regMemberId(CK_LT, memberId);
@@ -221,7 +221,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
-     * @param memberId The value of memberId as greaterEqual. (NullAllowed: if null, no condition)
+     * @param memberId The value of memberId as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberId_GreaterEqual(Integer memberId) {
         regMemberId(CK_GE, memberId);
@@ -230,7 +230,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
-     * @param memberId The value of memberId as lessEqual. (NullAllowed: if null, no condition)
+     * @param memberId The value of memberId as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setMemberId_LessEqual(Integer memberId) {
         regMemberId(CK_LE, memberId);
@@ -281,7 +281,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(8)}
-     * @param validBeginDate The value of validBeginDate as equal. (NullAllowed: if null, no condition)
+     * @param validBeginDate The value of validBeginDate as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidBeginDate_Equal(java.util.Date validBeginDate) {
         regValidBeginDate(CK_EQ,  fCTPD(validBeginDate));
@@ -290,7 +290,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(8)}
-     * @param validBeginDate The value of validBeginDate as greaterThan. (NullAllowed: if null, no condition)
+     * @param validBeginDate The value of validBeginDate as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidBeginDate_GreaterThan(java.util.Date validBeginDate) {
         regValidBeginDate(CK_GT,  fCTPD(validBeginDate));
@@ -299,7 +299,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(8)}
-     * @param validBeginDate The value of validBeginDate as lessThan. (NullAllowed: if null, no condition)
+     * @param validBeginDate The value of validBeginDate as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidBeginDate_LessThan(java.util.Date validBeginDate) {
         regValidBeginDate(CK_LT,  fCTPD(validBeginDate));
@@ -308,7 +308,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(8)}
-     * @param validBeginDate The value of validBeginDate as greaterEqual. (NullAllowed: if null, no condition)
+     * @param validBeginDate The value of validBeginDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidBeginDate_GreaterEqual(java.util.Date validBeginDate) {
         regValidBeginDate(CK_GE,  fCTPD(validBeginDate));
@@ -317,7 +317,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(8)}
-     * @param validBeginDate The value of validBeginDate as lessEqual. (NullAllowed: if null, no condition)
+     * @param validBeginDate The value of validBeginDate as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidBeginDate_LessEqual(java.util.Date validBeginDate) {
         regValidBeginDate(CK_LE, fCTPD(validBeginDate));
@@ -357,7 +357,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効終了日)VALID_END_DATE: {NotNull, DATE(8)}
-     * @param validEndDate The value of validEndDate as equal. (NullAllowed: if null, no condition)
+     * @param validEndDate The value of validEndDate as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidEndDate_Equal(java.util.Date validEndDate) {
         regValidEndDate(CK_EQ,  fCTPD(validEndDate));
@@ -366,7 +366,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効終了日)VALID_END_DATE: {NotNull, DATE(8)}
-     * @param validEndDate The value of validEndDate as greaterThan. (NullAllowed: if null, no condition)
+     * @param validEndDate The value of validEndDate as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidEndDate_GreaterThan(java.util.Date validEndDate) {
         regValidEndDate(CK_GT,  fCTPD(validEndDate));
@@ -375,7 +375,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効終了日)VALID_END_DATE: {NotNull, DATE(8)}
-     * @param validEndDate The value of validEndDate as lessThan. (NullAllowed: if null, no condition)
+     * @param validEndDate The value of validEndDate as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidEndDate_LessThan(java.util.Date validEndDate) {
         regValidEndDate(CK_LT,  fCTPD(validEndDate));
@@ -384,7 +384,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効終了日)VALID_END_DATE: {NotNull, DATE(8)}
-     * @param validEndDate The value of validEndDate as greaterEqual. (NullAllowed: if null, no condition)
+     * @param validEndDate The value of validEndDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidEndDate_GreaterEqual(java.util.Date validEndDate) {
         regValidEndDate(CK_GE,  fCTPD(validEndDate));
@@ -393,7 +393,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * (有効終了日)VALID_END_DATE: {NotNull, DATE(8)}
-     * @param validEndDate The value of validEndDate as lessEqual. (NullAllowed: if null, no condition)
+     * @param validEndDate The value of validEndDate as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setValidEndDate_LessEqual(java.util.Date validEndDate) {
         regValidEndDate(CK_LE, fCTPD(validEndDate));
@@ -555,7 +555,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * (地域ID)REGION_ID: {IX, NotNull, INTEGER(10), FK to REGION, classification=Region}
-     * @param regionId The value of regionId as equal. (NullAllowed: if null, no condition)
+     * @param regionId The value of regionId as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegionId_Equal(Integer regionId) {
         doSetRegionId_Equal(regionId);
@@ -565,7 +565,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * Equal(=). As Region. And NullIgnored, OnlyOnceRegistered. <br>
      * (地域ID)REGION_ID: {IX, NotNull, INTEGER(10), FK to REGION, classification=Region} <br>
      * mainly region of member address
-     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, no condition)
+     * @param cdef The instance of classification definition (as ENUM type). (basically NotNull: error as default, or no condition as option)
      */
     public void setRegionId_Equal_AsRegion(CDef.Region cdef) {
         doSetRegionId_Equal(cTNum(cdef != null ? cdef.code() : null, Integer.class));
@@ -610,7 +610,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * (地域ID)REGION_ID: {IX, NotNull, INTEGER(10), FK to REGION, classification=Region}
-     * @param regionId The value of regionId as notEqual. (NullAllowed: if null, no condition)
+     * @param regionId The value of regionId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegionId_NotEqual(Integer regionId) {
         doSetRegionId_NotEqual(regionId);
@@ -620,7 +620,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
      * NotEqual(&lt;&gt;). As Region. And NullIgnored, OnlyOnceRegistered. <br>
      * (地域ID)REGION_ID: {IX, NotNull, INTEGER(10), FK to REGION, classification=Region} <br>
      * mainly region of member address
-     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, no condition)
+     * @param cdef The instance of classification definition (as ENUM type). (basically NotNull: error as default, or no condition as option)
      */
     public void setRegionId_NotEqual_AsRegion(CDef.Region cdef) {
         doSetRegionId_NotEqual(cTNum(cdef != null ? cdef.code() : null, Integer.class));
@@ -714,7 +714,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param registerDatetime The value of registerDatetime as equal. (NullAllowed: if null, no condition)
+     * @param registerDatetime The value of registerDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_Equal(java.sql.Timestamp registerDatetime) {
         regRegisterDatetime(CK_EQ,  registerDatetime);
@@ -723,7 +723,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param registerDatetime The value of registerDatetime as greaterThan. (NullAllowed: if null, no condition)
+     * @param registerDatetime The value of registerDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_GreaterThan(java.sql.Timestamp registerDatetime) {
         regRegisterDatetime(CK_GT,  registerDatetime);
@@ -732,7 +732,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param registerDatetime The value of registerDatetime as lessThan. (NullAllowed: if null, no condition)
+     * @param registerDatetime The value of registerDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_LessThan(java.sql.Timestamp registerDatetime) {
         regRegisterDatetime(CK_LT,  registerDatetime);
@@ -741,7 +741,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param registerDatetime The value of registerDatetime as greaterEqual. (NullAllowed: if null, no condition)
+     * @param registerDatetime The value of registerDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_GreaterEqual(java.sql.Timestamp registerDatetime) {
         regRegisterDatetime(CK_GE,  registerDatetime);
@@ -750,7 +750,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param registerDatetime The value of registerDatetime as lessEqual. (NullAllowed: if null, no condition)
+     * @param registerDatetime The value of registerDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_LessEqual(java.sql.Timestamp registerDatetime) {
         regRegisterDatetime(CK_LE, registerDatetime);
@@ -912,7 +912,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param updateDatetime The value of updateDatetime as equal. (NullAllowed: if null, no condition)
+     * @param updateDatetime The value of updateDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_Equal(java.sql.Timestamp updateDatetime) {
         regUpdateDatetime(CK_EQ,  updateDatetime);
@@ -921,7 +921,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param updateDatetime The value of updateDatetime as greaterThan. (NullAllowed: if null, no condition)
+     * @param updateDatetime The value of updateDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_GreaterThan(java.sql.Timestamp updateDatetime) {
         regUpdateDatetime(CK_GT,  updateDatetime);
@@ -930,7 +930,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param updateDatetime The value of updateDatetime as lessThan. (NullAllowed: if null, no condition)
+     * @param updateDatetime The value of updateDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_LessThan(java.sql.Timestamp updateDatetime) {
         regUpdateDatetime(CK_LT,  updateDatetime);
@@ -939,7 +939,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param updateDatetime The value of updateDatetime as greaterEqual. (NullAllowed: if null, no condition)
+     * @param updateDatetime The value of updateDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_GreaterEqual(java.sql.Timestamp updateDatetime) {
         regUpdateDatetime(CK_GE,  updateDatetime);
@@ -948,7 +948,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
-     * @param updateDatetime The value of updateDatetime as lessEqual. (NullAllowed: if null, no condition)
+     * @param updateDatetime The value of updateDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_LessEqual(java.sql.Timestamp updateDatetime) {
         regUpdateDatetime(CK_LE, updateDatetime);
@@ -1110,7 +1110,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
-     * @param versionNo The value of versionNo as equal. (NullAllowed: if null, no condition)
+     * @param versionNo The value of versionNo as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setVersionNo_Equal(Long versionNo) {
         doSetVersionNo_Equal(versionNo);
@@ -1123,7 +1123,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
-     * @param versionNo The value of versionNo as notEqual. (NullAllowed: if null, no condition)
+     * @param versionNo The value of versionNo as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setVersionNo_NotEqual(Long versionNo) {
         doSetVersionNo_NotEqual(versionNo);
@@ -1136,7 +1136,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
-     * @param versionNo The value of versionNo as greaterThan. (NullAllowed: if null, no condition)
+     * @param versionNo The value of versionNo as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setVersionNo_GreaterThan(Long versionNo) {
         regVersionNo(CK_GT, versionNo);
@@ -1145,7 +1145,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
-     * @param versionNo The value of versionNo as lessThan. (NullAllowed: if null, no condition)
+     * @param versionNo The value of versionNo as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setVersionNo_LessThan(Long versionNo) {
         regVersionNo(CK_LT, versionNo);
@@ -1154,7 +1154,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
-     * @param versionNo The value of versionNo as greaterEqual. (NullAllowed: if null, no condition)
+     * @param versionNo The value of versionNo as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setVersionNo_GreaterEqual(Long versionNo) {
         regVersionNo(CK_GE, versionNo);
@@ -1163,7 +1163,7 @@ public abstract class AbstractBsMemberAddressCQ extends AbstractConditionQuery {
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
-     * @param versionNo The value of versionNo as lessEqual. (NullAllowed: if null, no condition)
+     * @param versionNo The value of versionNo as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setVersionNo_LessEqual(Long versionNo) {
         regVersionNo(CK_LE, versionNo);
