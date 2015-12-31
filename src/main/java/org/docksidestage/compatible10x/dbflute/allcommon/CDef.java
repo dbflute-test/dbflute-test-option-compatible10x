@@ -87,7 +87,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<Flg> listAll() {
             return new ArrayList<Flg>(Arrays.asList(values()));
@@ -96,7 +96,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<Flg> groupOf(String groupName) {
             return new ArrayList<Flg>(4);
@@ -171,7 +171,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<MemberStatus> listAll() {
             return new ArrayList<MemberStatus>(Arrays.asList(values()));
@@ -181,7 +181,7 @@ public interface CDef extends Classification {
          * Get the list of group classification elements. (returns new copied list) <br>
          * means member that can use services <br>
          * The group elements:[Formalized, Provisional]
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<MemberStatus> listOfServiceAvailable() {
             return new ArrayList<MemberStatus>(Arrays.asList(Formalized, Provisional));
@@ -190,7 +190,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<MemberStatus> groupOf(String groupName) {
             if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
@@ -261,7 +261,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<ServiceRank> listAll() {
             return new ArrayList<ServiceRank>(Arrays.asList(values()));
@@ -270,7 +270,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<ServiceRank> groupOf(String groupName) {
             return new ArrayList<ServiceRank>(4);
@@ -337,7 +337,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<Region> listAll() {
             return new ArrayList<Region>(Arrays.asList(values()));
@@ -346,7 +346,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<Region> groupOf(String groupName) {
             return new ArrayList<Region>(4);
@@ -413,7 +413,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<WithdrawalReason> listAll() {
             return new ArrayList<WithdrawalReason>(Arrays.asList(values()));
@@ -422,7 +422,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<WithdrawalReason> groupOf(String groupName) {
             return new ArrayList<WithdrawalReason>(4);
@@ -492,7 +492,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<ProductCategory> listAll() {
             return new ArrayList<ProductCategory>(Arrays.asList(values()));
@@ -501,7 +501,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<ProductCategory> groupOf(String groupName) {
             return new ArrayList<ProductCategory>(4);
@@ -565,7 +565,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<ProductStatus> listAll() {
             return new ArrayList<ProductStatus>(Arrays.asList(values()));
@@ -574,7 +574,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<ProductStatus> groupOf(String groupName) {
             return new ArrayList<ProductStatus>(4);
@@ -649,7 +649,7 @@ public interface CDef extends Classification {
 
         /**
          * Get the list of all classification elements. (returns new copied list)
-         * @return The list of all classification elements. (NotNull)
+         * @return The snapshot list of all classification elements. (NotNull)
          */
         public static List<PaymentMethod> listAll() {
             return new ArrayList<PaymentMethod>(Arrays.asList(values()));
@@ -659,7 +659,7 @@ public interface CDef extends Classification {
          * Get the list of group classification elements. (returns new copied list) <br>
          * the most recommended method <br>
          * The group elements:[ByHand]
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<PaymentMethod> listOfRecommended() {
             return new ArrayList<PaymentMethod>(Arrays.asList(ByHand));
@@ -668,7 +668,7 @@ public interface CDef extends Classification {
         /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
-         * @return The list of classification elements in the group. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<PaymentMethod> groupOf(String groupName) {
             if ("recommended".equals(groupName)) { return listOfRecommended(); }
@@ -782,6 +782,19 @@ public interface CDef extends Classification {
             if ("ProductStatus".equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
             if ("PaymentMethod".equals(name())) { return ClassificationUndefinedHandlingType.EXCEPTION; }
             return ClassificationUndefinedHandlingType.LOGGING; // as default
+        }
+
+        public static CDef.DefMeta meta(String classificationName) { // instead of valueOf()
+            if (classificationName == null) { throw new IllegalArgumentException("The argument 'classificationName' should not be null."); }
+            if ("Flg".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.Flg; }
+            if ("MemberStatus".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.MemberStatus; }
+            if ("ServiceRank".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.ServiceRank; }
+            if ("Region".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.Region; }
+            if ("WithdrawalReason".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.WithdrawalReason; }
+            if ("ProductCategory".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.ProductCategory; }
+            if ("ProductStatus".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.ProductStatus; }
+            if ("PaymentMethod".equalsIgnoreCase(classificationName)) { return CDef.DefMeta.PaymentMethod; }
+            throw new IllegalStateException("Unknown classification: " + classificationName);
         }
     }
 }
