@@ -128,6 +128,12 @@ public class BsPurchaseCQ extends AbstractBsPurchaseCQ {
       return _memberId; }
     protected ConditionValue xgetCValueMemberId() { return xdfgetMemberId(); }
 
+    public Map<String, MemberCQ> getMemberId_InScopeRelation_Member() { return xgetSQueMap("memberId_InScopeRelation_Member"); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq) { return xkeepSQue("memberId_InScopeRelation_Member", sq); }
+
+    public Map<String, MemberCQ> getMemberId_NotInScopeRelation_Member() { return xgetSQueMap("memberId_NotInScopeRelation_Member"); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq) { return xkeepSQue("memberId_NotInScopeRelation_Member", sq); }
+
     /** 
      * Add order-by as ascend. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER}
@@ -147,6 +153,12 @@ public class BsPurchaseCQ extends AbstractBsPurchaseCQ {
     { if (_productId == null) { _productId = nCV(); }
       return _productId; }
     protected ConditionValue xgetCValueProductId() { return xdfgetProductId(); }
+
+    public Map<String, ProductCQ> getProductId_InScopeRelation_Product() { return xgetSQueMap("productId_InScopeRelation_Product"); }
+    public String keepProductId_InScopeRelation_Product(ProductCQ sq) { return xkeepSQue("productId_InScopeRelation_Product", sq); }
+
+    public Map<String, ProductCQ> getProductId_NotInScopeRelation_Product() { return xgetSQueMap("productId_NotInScopeRelation_Product"); }
+    public String keepProductId_NotInScopeRelation_Product(ProductCQ sq) { return xkeepSQue("productId_NotInScopeRelation_Product", sq); }
 
     /** 
      * Add order-by as ascend. <br>

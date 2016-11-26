@@ -77,6 +77,10 @@ public class MemberSecurityCIQ extends AbstractBsMemberSecurityCQ {
     //                                                                Override about Query
     //                                                                ====================
     protected ConditionValue xgetCValueMemberId() { return _myCQ.xdfgetMemberId(); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_InScopeRelation_Member(sq); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_NotInScopeRelation_Member(sq); }
     protected ConditionValue xgetCValueLoginPassword() { return _myCQ.xdfgetLoginPassword(); }
     protected ConditionValue xgetCValueReminderQuestion() { return _myCQ.xdfgetReminderQuestion(); }
     protected ConditionValue xgetCValueReminderAnswer() { return _myCQ.xdfgetReminderAnswer(); }

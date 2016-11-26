@@ -78,9 +78,17 @@ public class MemberLoginCIQ extends AbstractBsMemberLoginCQ {
     //                                                                ====================
     protected ConditionValue xgetCValueMemberLoginId() { return _myCQ.xdfgetMemberLoginId(); }
     protected ConditionValue xgetCValueMemberId() { return _myCQ.xdfgetMemberId(); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_InScopeRelation_Member(sq); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_NotInScopeRelation_Member(sq); }
     protected ConditionValue xgetCValueLoginDatetime() { return _myCQ.xdfgetLoginDatetime(); }
     protected ConditionValue xgetCValueMobileLoginFlg() { return _myCQ.xdfgetMobileLoginFlg(); }
     protected ConditionValue xgetCValueLoginMemberStatusCode() { return _myCQ.xdfgetLoginMemberStatusCode(); }
+    public String keepLoginMemberStatusCode_InScopeRelation_MemberStatus(MemberStatusCQ sq)
+    { return _myCQ.keepLoginMemberStatusCode_InScopeRelation_MemberStatus(sq); }
+    public String keepLoginMemberStatusCode_NotInScopeRelation_MemberStatus(MemberStatusCQ sq)
+    { return _myCQ.keepLoginMemberStatusCode_NotInScopeRelation_MemberStatus(sq); }
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String pp) { return null; }
     public String keepScalarCondition(MemberLoginCQ sq)
     { throwIICBOE("ScalarCondition"); return null; }

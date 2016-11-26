@@ -29,31 +29,31 @@ import org.docksidestage.compatible10x.dbflute.exentity.*;
  * <pre>
  * [primary-key]
  *     PRIMARY_KEY_ONLY_ID
- * 
+ *
  * [column]
  *     PRIMARY_KEY_ONLY_ID
- * 
+ *
  * [sequence]
  *     
- * 
+ *
  * [identity]
  *     
- * 
+ *
  * [version-no]
  *     
- * 
+ *
  * [foreign table]
  *     
- * 
+ *
  * [referrer table]
  *     
- * 
+ *
  * [foreign property]
  *     
- * 
+ *
  * [referrer property]
  *     
- * 
+ *
  * [get/set template]
  * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Long primaryKeyOnlyId = entity.getPrimaryKeyOnlyId();
@@ -104,7 +104,7 @@ public abstract class BsVendorPrimaryKeyOnly extends AbstractEntity implements D
     // ===================================================================================
     //                                                                   Referrer Property
     //                                                                   =================
-    protected <ELEMENT> List<ELEMENT> newReferrerList() {
+    protected <ELEMENT> List<ELEMENT> newReferrerList() { // overriding to import
         return new ArrayList<ELEMENT>();
     }
 

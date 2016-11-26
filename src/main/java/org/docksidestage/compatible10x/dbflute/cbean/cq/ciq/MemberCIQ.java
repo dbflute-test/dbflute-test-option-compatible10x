@@ -142,6 +142,10 @@ public class MemberCIQ extends AbstractBsMemberCQ {
     protected ConditionValue xgetCValueMemberName() { return _myCQ.xdfgetMemberName(); }
     protected ConditionValue xgetCValueMemberAccount() { return _myCQ.xdfgetMemberAccount(); }
     protected ConditionValue xgetCValueMemberStatusCode() { return _myCQ.xdfgetMemberStatusCode(); }
+    public String keepMemberStatusCode_InScopeRelation_MemberStatus(MemberStatusCQ sq)
+    { return _myCQ.keepMemberStatusCode_InScopeRelation_MemberStatus(sq); }
+    public String keepMemberStatusCode_NotInScopeRelation_MemberStatus(MemberStatusCQ sq)
+    { return _myCQ.keepMemberStatusCode_NotInScopeRelation_MemberStatus(sq); }
     protected ConditionValue xgetCValueFormalizedDatetime() { return _myCQ.xdfgetFormalizedDatetime(); }
     protected ConditionValue xgetCValueBirthdate() { return _myCQ.xdfgetBirthdate(); }
     protected ConditionValue xgetCValueRegisterDatetime() { return _myCQ.xdfgetRegisterDatetime(); }

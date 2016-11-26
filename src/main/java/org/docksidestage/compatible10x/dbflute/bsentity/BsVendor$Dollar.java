@@ -29,31 +29,31 @@ import org.docksidestage.compatible10x.dbflute.exentity.*;
  * <pre>
  * [primary-key]
  *     VENDOR_$_DOLLAR_ID
- * 
+ *
  * [column]
  *     VENDOR_$_DOLLAR_ID, VENDOR_$_DOLLAR_NAME
- * 
+ *
  * [sequence]
  *     
- * 
+ *
  * [identity]
  *     
- * 
+ *
  * [version-no]
  *     
- * 
+ *
  * [foreign table]
  *     
- * 
+ *
  * [referrer table]
  *     
- * 
+ *
  * [foreign property]
  *     
- * 
+ *
  * [referrer property]
  *     
- * 
+ *
  * [get/set template]
  * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Integer vendor$DollarId = entity.getVendor$DollarId();
@@ -109,7 +109,7 @@ public abstract class BsVendor$Dollar extends AbstractEntity implements DomainEn
     // ===================================================================================
     //                                                                   Referrer Property
     //                                                                   =================
-    protected <ELEMENT> List<ELEMENT> newReferrerList() {
+    protected <ELEMENT> List<ELEMENT> newReferrerList() { // overriding to import
         return new ArrayList<ELEMENT>();
     }
 

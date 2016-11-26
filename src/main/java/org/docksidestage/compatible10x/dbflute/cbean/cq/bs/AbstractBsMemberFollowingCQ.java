@@ -275,6 +275,36 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
         regINS(CK_NINS, cTL(myMemberIdList), xgetCValueMyMemberId(), "MY_MEMBER_ID");
     }
 
+    /**
+     * Set up InScopeRelation (sub-query). <br />
+     * {in (select MY_MEMBER_ID from MEMBER where ...)} <br />
+     * (会員)MEMBER by my MY_MEMBER_ID, named 'memberByMyMemberId'.
+     * @param subCBLambda The callback for sub-query of MemberByMyMemberId for 'in-scope'. (NotNull)
+     */
+    public void inScopeMemberByMyMemberId(SubQuery<MemberCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
+        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
+        String pp = keepMyMemberId_InScopeRelation_MemberByMyMemberId(cb.query());
+        registerInScopeRelation(cb.query(), "MY_MEMBER_ID", "MEMBER_ID", pp, "memberByMyMemberId", false);
+    }
+    public abstract String keepMyMemberId_InScopeRelation_MemberByMyMemberId(MemberCQ sq);
+
+    /**
+     * Set up NotInScopeRelation (sub-query). <br />
+     * {not in (select MY_MEMBER_ID from MEMBER where ...)} <br />
+     * (会員)MEMBER by my MY_MEMBER_ID, named 'memberByMyMemberId'.
+     * @param subCBLambda The callback for sub-query of MemberByMyMemberId for 'not in-scope'. (NotNull)
+     */
+    public void notInScopeMemberByMyMemberId(SubQuery<MemberCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
+        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
+        String pp = keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(cb.query());
+        registerInScopeRelation(cb.query(), "MY_MEMBER_ID", "MEMBER_ID", pp, "memberByMyMemberId", true);
+    }
+    public abstract String keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(MemberCQ sq);
+
     protected void regMyMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueMyMemberId(), "MY_MEMBER_ID"); }
     protected abstract ConditionValue xgetCValueMyMemberId();
 
@@ -379,6 +409,36 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
         regINS(CK_NINS, cTL(yourMemberIdList), xgetCValueYourMemberId(), "YOUR_MEMBER_ID");
     }
 
+    /**
+     * Set up InScopeRelation (sub-query). <br />
+     * {in (select YOUR_MEMBER_ID from MEMBER where ...)} <br />
+     * (会員)MEMBER by my YOUR_MEMBER_ID, named 'memberByYourMemberId'.
+     * @param subCBLambda The callback for sub-query of MemberByYourMemberId for 'in-scope'. (NotNull)
+     */
+    public void inScopeMemberByYourMemberId(SubQuery<MemberCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
+        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
+        String pp = keepYourMemberId_InScopeRelation_MemberByYourMemberId(cb.query());
+        registerInScopeRelation(cb.query(), "YOUR_MEMBER_ID", "MEMBER_ID", pp, "memberByYourMemberId", false);
+    }
+    public abstract String keepYourMemberId_InScopeRelation_MemberByYourMemberId(MemberCQ sq);
+
+    /**
+     * Set up NotInScopeRelation (sub-query). <br />
+     * {not in (select YOUR_MEMBER_ID from MEMBER where ...)} <br />
+     * (会員)MEMBER by my YOUR_MEMBER_ID, named 'memberByYourMemberId'.
+     * @param subCBLambda The callback for sub-query of MemberByYourMemberId for 'not in-scope'. (NotNull)
+     */
+    public void notInScopeMemberByYourMemberId(SubQuery<MemberCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
+        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
+        String pp = keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(cb.query());
+        registerInScopeRelation(cb.query(), "YOUR_MEMBER_ID", "MEMBER_ID", pp, "memberByYourMemberId", true);
+    }
+    public abstract String keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(MemberCQ sq);
+
     protected void regYourMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueYourMemberId(), "YOUR_MEMBER_ID"); }
     protected abstract ConditionValue xgetCValueYourMemberId();
 
@@ -432,8 +492,8 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * And NullIgnored, OnlyOnceRegistered. <br>
      * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
      * <pre>e.g. setFollowDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (NullAllowed: if null, no from-condition)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (NullAllowed: if null, no to-condition)
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param fromToOption The option of from-to. (NotNull)
      */
     public void setFollowDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
@@ -448,8 +508,8 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
      * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of followDatetime. (NullAllowed: if null, no from-condition)
-     * @param toDate The to-date(yyyy/MM/dd) of followDatetime. (NullAllowed: if null, no to-condition)
+     * @param fromDate The from-date(yyyy/MM/dd) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDate The to-date(yyyy/MM/dd) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      */
     public void setFollowDatetime_DateFromTo(Date fromDate, Date toDate) {
         setFollowDatetime_FromTo(fromDate, toDate, xcDFTOP());
@@ -500,7 +560,6 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      *     <span style="color: #553000">purchaseCB</span>.query().setPaymentCompleteFlg_Equal_True();
      * });
      * </pre> 
-     * </pre>
      * @return The object to set up a function. (NotNull)
      */
     public HpSLCFunction<MemberFollowingCB> scalar_GreaterThan() {
@@ -516,7 +575,6 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      *     <span style="color: #553000">purchaseCB</span>.query().setPaymentCompleteFlg_Equal_True();
      * });
      * </pre> 
-     * </pre>
      * @return The object to set up a function. (NotNull)
      */
     public HpSLCFunction<MemberFollowingCB> scalar_LessThan() {

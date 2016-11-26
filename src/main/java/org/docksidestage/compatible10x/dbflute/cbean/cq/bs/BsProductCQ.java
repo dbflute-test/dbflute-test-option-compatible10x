@@ -168,6 +168,12 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _productCategoryCode; }
     protected ConditionValue xgetCValueProductCategoryCode() { return xdfgetProductCategoryCode(); }
 
+    public Map<String, ProductCategoryCQ> getProductCategoryCode_InScopeRelation_ProductCategory() { return xgetSQueMap("productCategoryCode_InScopeRelation_ProductCategory"); }
+    public String keepProductCategoryCode_InScopeRelation_ProductCategory(ProductCategoryCQ sq) { return xkeepSQue("productCategoryCode_InScopeRelation_ProductCategory", sq); }
+
+    public Map<String, ProductCategoryCQ> getProductCategoryCode_NotInScopeRelation_ProductCategory() { return xgetSQueMap("productCategoryCode_NotInScopeRelation_ProductCategory"); }
+    public String keepProductCategoryCode_NotInScopeRelation_ProductCategory(ProductCategoryCQ sq) { return xkeepSQue("productCategoryCode_NotInScopeRelation_ProductCategory", sq); }
+
     /** 
      * Add order-by as ascend. <br>
      * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY}
@@ -187,6 +193,12 @@ public class BsProductCQ extends AbstractBsProductCQ {
     { if (_productStatusCode == null) { _productStatusCode = nCV(); }
       return _productStatusCode; }
     protected ConditionValue xgetCValueProductStatusCode() { return xdfgetProductStatusCode(); }
+
+    public Map<String, ProductStatusCQ> getProductStatusCode_InScopeRelation_ProductStatus() { return xgetSQueMap("productStatusCode_InScopeRelation_ProductStatus"); }
+    public String keepProductStatusCode_InScopeRelation_ProductStatus(ProductStatusCQ sq) { return xkeepSQue("productStatusCode_InScopeRelation_ProductStatus", sq); }
+
+    public Map<String, ProductStatusCQ> getProductStatusCode_NotInScopeRelation_ProductStatus() { return xgetSQueMap("productStatusCode_NotInScopeRelation_ProductStatus"); }
+    public String keepProductStatusCode_NotInScopeRelation_ProductStatus(ProductStatusCQ sq) { return xkeepSQue("productStatusCode_NotInScopeRelation_ProductStatus", sq); }
 
     /** 
      * Add order-by as ascend. <br>

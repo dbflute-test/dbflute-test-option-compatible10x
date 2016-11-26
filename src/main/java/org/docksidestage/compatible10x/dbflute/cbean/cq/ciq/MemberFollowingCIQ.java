@@ -78,7 +78,15 @@ public class MemberFollowingCIQ extends AbstractBsMemberFollowingCQ {
     //                                                                ====================
     protected ConditionValue xgetCValueMemberFollowingId() { return _myCQ.xdfgetMemberFollowingId(); }
     protected ConditionValue xgetCValueMyMemberId() { return _myCQ.xdfgetMyMemberId(); }
+    public String keepMyMemberId_InScopeRelation_MemberByMyMemberId(MemberCQ sq)
+    { return _myCQ.keepMyMemberId_InScopeRelation_MemberByMyMemberId(sq); }
+    public String keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(MemberCQ sq)
+    { return _myCQ.keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(sq); }
     protected ConditionValue xgetCValueYourMemberId() { return _myCQ.xdfgetYourMemberId(); }
+    public String keepYourMemberId_InScopeRelation_MemberByYourMemberId(MemberCQ sq)
+    { return _myCQ.keepYourMemberId_InScopeRelation_MemberByYourMemberId(sq); }
+    public String keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(MemberCQ sq)
+    { return _myCQ.keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(sq); }
     protected ConditionValue xgetCValueFollowDatetime() { return _myCQ.xdfgetFollowDatetime(); }
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String pp) { return null; }
     public String keepScalarCondition(MemberFollowingCQ sq)

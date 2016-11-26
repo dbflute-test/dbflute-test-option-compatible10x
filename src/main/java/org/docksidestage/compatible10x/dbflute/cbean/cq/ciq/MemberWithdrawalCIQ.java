@@ -77,7 +77,15 @@ public class MemberWithdrawalCIQ extends AbstractBsMemberWithdrawalCQ {
     //                                                                Override about Query
     //                                                                ====================
     protected ConditionValue xgetCValueMemberId() { return _myCQ.xdfgetMemberId(); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_InScopeRelation_Member(sq); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_NotInScopeRelation_Member(sq); }
     protected ConditionValue xgetCValueWithdrawalReasonCode() { return _myCQ.xdfgetWithdrawalReasonCode(); }
+    public String keepWithdrawalReasonCode_InScopeRelation_WithdrawalReason(WithdrawalReasonCQ sq)
+    { return _myCQ.keepWithdrawalReasonCode_InScopeRelation_WithdrawalReason(sq); }
+    public String keepWithdrawalReasonCode_NotInScopeRelation_WithdrawalReason(WithdrawalReasonCQ sq)
+    { return _myCQ.keepWithdrawalReasonCode_NotInScopeRelation_WithdrawalReason(sq); }
     protected ConditionValue xgetCValueWithdrawalReasonInputText() { return _myCQ.xdfgetWithdrawalReasonInputText(); }
     protected ConditionValue xgetCValueWithdrawalDatetime() { return _myCQ.xdfgetWithdrawalDatetime(); }
     protected ConditionValue xgetCValueRegisterDatetime() { return _myCQ.xdfgetRegisterDatetime(); }

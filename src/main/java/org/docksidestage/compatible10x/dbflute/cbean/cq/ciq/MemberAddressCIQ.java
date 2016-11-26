@@ -78,10 +78,18 @@ public class MemberAddressCIQ extends AbstractBsMemberAddressCQ {
     //                                                                ====================
     protected ConditionValue xgetCValueMemberAddressId() { return _myCQ.xdfgetMemberAddressId(); }
     protected ConditionValue xgetCValueMemberId() { return _myCQ.xdfgetMemberId(); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_InScopeRelation_Member(sq); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_NotInScopeRelation_Member(sq); }
     protected ConditionValue xgetCValueValidBeginDate() { return _myCQ.xdfgetValidBeginDate(); }
     protected ConditionValue xgetCValueValidEndDate() { return _myCQ.xdfgetValidEndDate(); }
     protected ConditionValue xgetCValueAddress() { return _myCQ.xdfgetAddress(); }
     protected ConditionValue xgetCValueRegionId() { return _myCQ.xdfgetRegionId(); }
+    public String keepRegionId_InScopeRelation_Region(RegionCQ sq)
+    { return _myCQ.keepRegionId_InScopeRelation_Region(sq); }
+    public String keepRegionId_NotInScopeRelation_Region(RegionCQ sq)
+    { return _myCQ.keepRegionId_NotInScopeRelation_Region(sq); }
     protected ConditionValue xgetCValueRegisterDatetime() { return _myCQ.xdfgetRegisterDatetime(); }
     protected ConditionValue xgetCValueRegisterUser() { return _myCQ.xdfgetRegisterUser(); }
     protected ConditionValue xgetCValueUpdateDatetime() { return _myCQ.xdfgetUpdateDatetime(); }

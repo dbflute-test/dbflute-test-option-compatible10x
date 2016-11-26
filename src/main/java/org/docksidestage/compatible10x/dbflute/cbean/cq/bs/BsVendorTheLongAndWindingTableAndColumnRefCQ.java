@@ -114,6 +114,12 @@ public class BsVendorTheLongAndWindingTableAndColumnRefCQ extends AbstractBsVend
       return _theLongAndWindingTableAndColumnId; }
     protected ConditionValue xgetCValueTheLongAndWindingTableAndColumnId() { return xdfgetTheLongAndWindingTableAndColumnId(); }
 
+    public Map<String, VendorTheLongAndWindingTableAndColumnCQ> getTheLongAndWindingTableAndColumnId_InScopeRelation_VendorTheLongAndWindingTableAndColumn() { return xgetSQueMap("theLongAndWindingTableAndColumnId_InScopeRelation_VendorTheLongAndWindingTableAndColumn"); }
+    public String keepTheLongAndWindingTableAndColumnId_InScopeRelation_VendorTheLongAndWindingTableAndColumn(VendorTheLongAndWindingTableAndColumnCQ sq) { return xkeepSQue("theLongAndWindingTableAndColumnId_InScopeRelation_VendorTheLongAndWindingTableAndColumn", sq); }
+
+    public Map<String, VendorTheLongAndWindingTableAndColumnCQ> getTheLongAndWindingTableAndColumnId_NotInScopeRelation_VendorTheLongAndWindingTableAndColumn() { return xgetSQueMap("theLongAndWindingTableAndColumnId_NotInScopeRelation_VendorTheLongAndWindingTableAndColumn"); }
+    public String keepTheLongAndWindingTableAndColumnId_NotInScopeRelation_VendorTheLongAndWindingTableAndColumn(VendorTheLongAndWindingTableAndColumnCQ sq) { return xkeepSQue("theLongAndWindingTableAndColumnId_NotInScopeRelation_VendorTheLongAndWindingTableAndColumn", sq); }
+
     /** 
      * Add order-by as ascend. <br>
      * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID: {IX, NotNull, BIGINT(19), FK to VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN}

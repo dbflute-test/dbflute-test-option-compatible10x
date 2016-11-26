@@ -580,6 +580,36 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     }
 
     /**
+     * Set up InScopeRelation (sub-query). <br />
+     * {in (select PARENT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
+     * (商品カテゴリ)PRODUCT_CATEGORY by my PARENT_CATEGORY_CODE, named 'productCategorySelf'.
+     * @param subCBLambda The callback for sub-query of ProductCategorySelf for 'in-scope'. (NotNull)
+     */
+    public void inScopeProductCategorySelf(SubQuery<ProductCategoryCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
+        ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForInScopeRelation(this);
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
+        String pp = keepParentCategoryCode_InScopeRelation_ProductCategorySelf(cb.query());
+        registerInScopeRelation(cb.query(), "PARENT_CATEGORY_CODE", "PRODUCT_CATEGORY_CODE", pp, "productCategorySelf", false);
+    }
+    public abstract String keepParentCategoryCode_InScopeRelation_ProductCategorySelf(ProductCategoryCQ sq);
+
+    /**
+     * Set up NotInScopeRelation (sub-query). <br />
+     * {not in (select PARENT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
+     * (商品カテゴリ)PRODUCT_CATEGORY by my PARENT_CATEGORY_CODE, named 'productCategorySelf'.
+     * @param subCBLambda The callback for sub-query of ProductCategorySelf for 'not in-scope'. (NotNull)
+     */
+    public void notInScopeProductCategorySelf(SubQuery<ProductCategoryCB> subCBLambda) {
+        assertObjectNotNull("subCBLambda", subCBLambda);
+        ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForInScopeRelation(this);
+        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
+        String pp = keepParentCategoryCode_NotInScopeRelation_ProductCategorySelf(cb.query());
+        registerInScopeRelation(cb.query(), "PARENT_CATEGORY_CODE", "PRODUCT_CATEGORY_CODE", pp, "productCategorySelf", true);
+    }
+    public abstract String keepParentCategoryCode_NotInScopeRelation_ProductCategorySelf(ProductCategoryCQ sq);
+
+    /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
      * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY}
      */
@@ -642,7 +672,6 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      *     <span style="color: #553000">purchaseCB</span>.query().setPaymentCompleteFlg_Equal_True();
      * });
      * </pre> 
-     * </pre>
      * @return The object to set up a function. (NotNull)
      */
     public HpSLCFunction<ProductCategoryCB> scalar_GreaterThan() {
@@ -658,7 +687,6 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      *     <span style="color: #553000">purchaseCB</span>.query().setPaymentCompleteFlg_Equal_True();
      * });
      * </pre> 
-     * </pre>
      * @return The object to set up a function. (NotNull)
      */
     public HpSLCFunction<ProductCategoryCB> scalar_LessThan() {

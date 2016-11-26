@@ -78,8 +78,16 @@ public class MemberServiceCIQ extends AbstractBsMemberServiceCQ {
     //                                                                ====================
     protected ConditionValue xgetCValueMemberServiceId() { return _myCQ.xdfgetMemberServiceId(); }
     protected ConditionValue xgetCValueMemberId() { return _myCQ.xdfgetMemberId(); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_InScopeRelation_Member(sq); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_NotInScopeRelation_Member(sq); }
     protected ConditionValue xgetCValueServicePointCount() { return _myCQ.xdfgetServicePointCount(); }
     protected ConditionValue xgetCValueServiceRankCode() { return _myCQ.xdfgetServiceRankCode(); }
+    public String keepServiceRankCode_InScopeRelation_ServiceRank(ServiceRankCQ sq)
+    { return _myCQ.keepServiceRankCode_InScopeRelation_ServiceRank(sq); }
+    public String keepServiceRankCode_NotInScopeRelation_ServiceRank(ServiceRankCQ sq)
+    { return _myCQ.keepServiceRankCode_NotInScopeRelation_ServiceRank(sq); }
     protected ConditionValue xgetCValueRegisterDatetime() { return _myCQ.xdfgetRegisterDatetime(); }
     protected ConditionValue xgetCValueRegisterUser() { return _myCQ.xdfgetRegisterUser(); }
     protected ConditionValue xgetCValueUpdateDatetime() { return _myCQ.xdfgetUpdateDatetime(); }

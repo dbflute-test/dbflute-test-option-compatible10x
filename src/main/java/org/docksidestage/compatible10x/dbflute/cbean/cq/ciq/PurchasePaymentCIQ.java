@@ -78,6 +78,10 @@ public class PurchasePaymentCIQ extends AbstractBsPurchasePaymentCQ {
     //                                                                ====================
     protected ConditionValue xgetCValuePurchasePaymentId() { return _myCQ.xdfgetPurchasePaymentId(); }
     protected ConditionValue xgetCValuePurchaseId() { return _myCQ.xdfgetPurchaseId(); }
+    public String keepPurchaseId_InScopeRelation_Purchase(PurchaseCQ sq)
+    { return _myCQ.keepPurchaseId_InScopeRelation_Purchase(sq); }
+    public String keepPurchaseId_NotInScopeRelation_Purchase(PurchaseCQ sq)
+    { return _myCQ.keepPurchaseId_NotInScopeRelation_Purchase(sq); }
     protected ConditionValue xgetCValuePaymentAmount() { return _myCQ.xdfgetPaymentAmount(); }
     protected ConditionValue xgetCValuePaymentDatetime() { return _myCQ.xdfgetPaymentDatetime(); }
     protected ConditionValue xgetCValuePaymentMethodCode() { return _myCQ.xdfgetPaymentMethodCode(); }

@@ -88,7 +88,15 @@ public class PurchaseCIQ extends AbstractBsPurchaseCQ {
     public String keepPurchaseId_QueryDerivedReferrer_PurchasePaymentListParameter(Object vl)
     { throwIICBOE("(Query)DerivedReferrer"); return null; }
     protected ConditionValue xgetCValueMemberId() { return _myCQ.xdfgetMemberId(); }
+    public String keepMemberId_InScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_InScopeRelation_Member(sq); }
+    public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq)
+    { return _myCQ.keepMemberId_NotInScopeRelation_Member(sq); }
     protected ConditionValue xgetCValueProductId() { return _myCQ.xdfgetProductId(); }
+    public String keepProductId_InScopeRelation_Product(ProductCQ sq)
+    { return _myCQ.keepProductId_InScopeRelation_Product(sq); }
+    public String keepProductId_NotInScopeRelation_Product(ProductCQ sq)
+    { return _myCQ.keepProductId_NotInScopeRelation_Product(sq); }
     protected ConditionValue xgetCValuePurchaseDatetime() { return _myCQ.xdfgetPurchaseDatetime(); }
     protected ConditionValue xgetCValuePurchaseCount() { return _myCQ.xdfgetPurchaseCount(); }
     protected ConditionValue xgetCValuePurchasePrice() { return _myCQ.xdfgetPurchasePrice(); }
