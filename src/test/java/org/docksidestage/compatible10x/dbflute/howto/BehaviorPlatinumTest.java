@@ -811,7 +811,7 @@ public class BehaviorPlatinumTest extends UnitContainerTestCase {
         Member member = new Member();
         member.setMemberName("Billy Joel");
         member.setMemberAccount("martinjoel");
-        member.setBirthdate(currentDate());
+        member.setBirthdate(currentUtilDate());
         member.setFormalizedDatetime(currentTimestamp());
         member.setMemberStatusCode_Formalized();
         member.setRegisterDatetime(expectedTimestamp);

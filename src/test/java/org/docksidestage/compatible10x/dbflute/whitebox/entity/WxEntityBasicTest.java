@@ -10,7 +10,6 @@ import java.util.Set;
 
 import org.dbflute.Entity;
 import org.dbflute.bhv.referrer.ConditionBeanSetupper;
-import org.dbflute.cbean.scoping.SubQuery;
 import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.compatible10x.dbflute.bsentity.customize.dbmeta.SimpleVendorCheckDbm;
 import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.MemberDbm;
@@ -21,7 +20,6 @@ import org.docksidestage.compatible10x.dbflute.cbean.PurchaseCB;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv;
 import org.docksidestage.compatible10x.dbflute.exentity.Member;
 import org.docksidestage.compatible10x.dbflute.exentity.MemberLogin;
-import org.docksidestage.compatible10x.dbflute.exentity.MemberStatus;
 import org.docksidestage.compatible10x.dbflute.exentity.Product;
 import org.docksidestage.compatible10x.dbflute.exentity.Purchase;
 import org.docksidestage.compatible10x.dbflute.exentity.VendorCheck;
@@ -62,7 +60,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
 
         // ## Act & Assert ##
         assertFalse(member.mymodifiedProperties().contains("birthdate"));
-        member.setBirthdate(currentDate());
+        member.setBirthdate(currentUtilDate());
         assertTrue(member.mymodifiedProperties().contains("birthdate"));
         assertFalse(member.mymodifiedProperties().contains("memberAccount"));
         member.setMemberAccount(null);
@@ -103,7 +101,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
         assertFalse(member.equals(null));
         assertFalse(member.equals(new Object()));
         assertTrue(member.equals(other));
-        member.setBirthdate(currentDate());
+        member.setBirthdate(currentUtilDate());
         assertTrue(member.equals(other));
         member.setMemberId(3);
         assertFalse(member.equals(other));
@@ -276,7 +274,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
     public void test_toString_withOneToOne() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.setupSelect_MemberAddressAsValid(currentDate());
+        cb.setupSelect_MemberAddressAsValid(currentUtilDate());
         cb.setupSelect_MemberSecurityAsOne();
         cb.setupSelect_MemberWithdrawalAsOne();
 
@@ -354,7 +352,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.setupSelect_MemberAddressAsValid(currentDate());
+        cb.setupSelect_MemberAddressAsValid(currentUtilDate());
         cb.setupSelect_MemberSecurityAsOne();
         cb.setupSelect_MemberWithdrawalAsOne().withWithdrawalReason();
 
@@ -483,7 +481,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
     public void test_toStringWithRelation_withOneToOne() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.setupSelect_MemberAddressAsValid(currentDate());
+        cb.setupSelect_MemberAddressAsValid(currentUtilDate());
         cb.setupSelect_MemberSecurityAsOne();
         cb.setupSelect_MemberWithdrawalAsOne();
 
@@ -566,7 +564,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.setupSelect_MemberAddressAsValid(currentDate());
+        cb.setupSelect_MemberAddressAsValid(currentUtilDate());
         cb.setupSelect_MemberSecurityAsOne();
         cb.setupSelect_MemberWithdrawalAsOne().withWithdrawalReason();
 
@@ -675,54 +673,6 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
         assertFalse(nameRelation.contains(member.getMemberName()));
         assertTrue(nameRelation.contains(memberStatusName));
         assertFalse(nameRelation.contains(memberAddressName));
-    }
-
-    // ===================================================================================
-    //                                                                             clone()
-    //                                                                             =======
-    public void test_clone_basic() throws Exception {
-        // ## Arrange ##
-        MemberCB cb = new MemberCB();
-        cb.setupSelect_MemberStatus();
-        cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
-            public void query(PurchaseCB subCB) {
-            }
-        });
-        cb.fetchFirst(1);
-        Member member = memberBhv.selectEntityWithDeletedCheck(cb);
-        memberBhv.loadPurchaseList(member, new ConditionBeanSetupper<PurchaseCB>() {
-            public void setup(PurchaseCB cb) {
-                cb.setupSelect_Product();
-            }
-        });
-
-        // ## Act ##
-        Member clone = member.clone();
-
-        // ## Assert ##
-        MemberStatus cloneStatus = clone.getMemberStatus();
-        MemberStatus memberStatus = member.getMemberStatus();
-        assertNotNull(member);
-        assertNull(clone.getMemberSecurityAsOne());
-        cloneStatus.setDescription("clone-test");
-        assertEquals("clone-test", cloneStatus.getDescription());
-        assertEquals("clone-test", memberStatus.getDescription()); // shallow
-
-        clone.getPurchaseList().get(0).setPurchasePrice(99999999);
-        assertEquals(99999999, clone.getPurchaseList().get(0).getPurchasePrice());
-        assertEquals(99999999, member.getPurchaseList().get(0).getPurchasePrice()); // shallow
-
-        assertEquals(member.mymodifiedProperties().size(), clone.mymodifiedProperties().size());
-        assertFalse(clone.mymodifiedProperties().contains("memberName"));
-        clone.setMemberName("test");
-        assertTrue(clone.mymodifiedProperties().contains("memberName"));
-        assertEquals(member.mymodifiedProperties().size(), clone.mymodifiedProperties().size()); // shallow
-
-        assertEquals(memberStatus.mymodifiedProperties().size(), cloneStatus.mymodifiedProperties().size());
-        assertFalse(cloneStatus.mymodifiedProperties().contains("memberName"));
-        cloneStatus.setMemberStatusName("test");
-        assertTrue(cloneStatus.mymodifiedProperties().contains("memberStatusName"));
-        assertEquals(memberStatus.mymodifiedProperties().size(), cloneStatus.mymodifiedProperties().size()); // shallow
     }
 
     // ===================================================================================
@@ -896,7 +846,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         Member member = new Member();
         member.setMemberName("Stojkovic");
-        member.setBirthdate(currentDate());
+        member.setBirthdate(currentUtilDate());
         member.setMemberStatusCode_Formalized();
 
         // ## Act ##
@@ -913,7 +863,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
         member.setMemberName("Stojkovic");
-        member.setBirthdate(currentDate());
+        member.setBirthdate(currentUtilDate());
         member.setMemberStatusCode_Formalized();
 
         // ## Act ##

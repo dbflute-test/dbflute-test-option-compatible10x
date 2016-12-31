@@ -148,7 +148,7 @@ public class VendorJDBCTest extends UnitContainerTestCase {
                 {
                     Member member = new Member();
                     member.setMemberId(3);
-                    member.setBirthdate(currentDate());
+                    member.setBirthdate(currentUtilDate());
                     memberBhv.updateNonstrict(member);
                 }
                 {

@@ -140,8 +140,8 @@ public class VendorNameTest extends UnitContainerTestCase {
             VendorTheLongAndWindingTableAndColumnRef ref = new VendorTheLongAndWindingTableAndColumnRef();
             ref.setTheLongAndWindingTableAndColumnRefId(3L);
             ref.setTheLongAndWindingTableAndColumnId(1L);
-            ref.setTheLongAndWindingTableAndColumnRefDate(toDate("2011/10/17"));
-            ref.setShortDate(toDate("2000/01/01"));
+            ref.setTheLongAndWindingTableAndColumnRefDate(toUtilDate("2011/10/17"));
+            ref.setShortDate(toUtilDate("2000/01/01"));
             vendorTheLongAndWindingTableAndColumnRefBhv.insert(ref);
             refList.add(ref);
         }
@@ -149,8 +149,8 @@ public class VendorNameTest extends UnitContainerTestCase {
             VendorTheLongAndWindingTableAndColumnRef ref = new VendorTheLongAndWindingTableAndColumnRef();
             ref.setTheLongAndWindingTableAndColumnRefId(4L);
             ref.setTheLongAndWindingTableAndColumnId(1L);
-            ref.setTheLongAndWindingTableAndColumnRefDate(toDate("2011/10/18"));
-            ref.setShortDate(toDate("2000/01/02"));
+            ref.setTheLongAndWindingTableAndColumnRefDate(toUtilDate("2011/10/18"));
+            ref.setShortDate(toUtilDate("2000/01/02"));
             vendorTheLongAndWindingTableAndColumnRefBhv.insert(ref);
             refList.add(ref);
         }

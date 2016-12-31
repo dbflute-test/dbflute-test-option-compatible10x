@@ -27,6 +27,14 @@ public abstract class UnitContainerTestCase extends ContainerTestCase {
     private BehaviorSelector _behaviorSelector;
 
     // ===================================================================================
+    //                                                                            Settings
+    //                                                                            ========
+    @Override
+    protected boolean isUseTestCaseLooseBinding() {
+        return true;
+    }
+    
+    // ===================================================================================
     //                                                                         Data Helper
     //                                                                         ===========
     protected void deleteAll(Class<? extends BehaviorWritable> clazz) {
