@@ -560,7 +560,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
                 markHere("noWithdrawal");
             }
         }
-        log(currentDate().getTime());
+        log(currentUtilDate().getTime());
         assertMarked("exists");
         assertMarked("noReason");
         assertMarked("noWithdrawal");

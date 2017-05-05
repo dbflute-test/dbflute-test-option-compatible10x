@@ -394,7 +394,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         MySerializableCB cb = new MySerializableCB();
         cb.setupSelect_MemberStatus();
-        cb.query().setBirthdate_DateFromTo(currentDate(), currentDate());
+        cb.query().setBirthdate_DateFromTo(currentUtilDate(), currentUtilDate());
 
         // ## Act ##
         byte[] binary = DfTypeUtil.toBinary(cb);

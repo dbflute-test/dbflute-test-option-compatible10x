@@ -259,7 +259,7 @@ public class WxCBRelationMappingBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         PurchaseCB cb = new PurchaseCB();
         cb.setupSelect_Member().withMemberStatus();
-        cb.setupSelect_Member().withMemberAddressAsValid(currentDate());
+        cb.setupSelect_Member().withMemberAddressAsValid(currentUtilDate());
         cb.setupSelect_Member().withMemberLoginAsLatest().withMemberStatus();
         cb.setupSelect_Member().withMemberSecurityAsOne().withMember().withMemberStatus();
         cb.setupSelect_Member().withMemberWithdrawalAsOne().withWithdrawalReason();
@@ -379,7 +379,7 @@ public class WxCBRelationMappingBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         PurchaseCB cb = new PurchaseCB();
         cb.setupSelect_Member().withMemberStatus();
-        cb.setupSelect_Member().withMemberAddressAsValid(currentDate());
+        cb.setupSelect_Member().withMemberAddressAsValid(currentUtilDate());
         cb.setupSelect_Member().withMemberLoginAsLatest().withMemberStatus();
         cb.setupSelect_Member().withMemberSecurityAsOne().withMember().withMemberStatus();
         cb.setupSelect_Member().withMemberWithdrawalAsOne().withWithdrawalReason();
@@ -412,7 +412,7 @@ public class WxCBRelationMappingBasicTest extends UnitContainerTestCase {
         PurchaseCB cb = new PurchaseCB();
         //cb.disableRelationMappingCache();
         cb.setupSelect_Member().withMemberStatus();
-        cb.setupSelect_Member().withMemberAddressAsValid(currentDate());
+        cb.setupSelect_Member().withMemberAddressAsValid(currentUtilDate());
         cb.setupSelect_Member().withMemberLoginAsLatest().withMemberStatus();
         cb.setupSelect_Member().withMemberSecurityAsOne().withMember().withMemberStatus();
         cb.setupSelect_Member().withMemberWithdrawalAsOne().withWithdrawalReason();

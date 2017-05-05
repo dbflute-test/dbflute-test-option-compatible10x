@@ -65,7 +65,7 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.setupSelect_MemberAddressAsValid(currentDate());
+        cb.setupSelect_MemberAddressAsValid(currentUtilDate());
         cb.query().inline().setMemberName_PrefixSearch("S");
         // unsupported since 1.1
         //cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {

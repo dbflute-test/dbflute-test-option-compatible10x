@@ -799,7 +799,7 @@ public class WxCBColumnQueryCollaborationTest extends UnitContainerTestCase {
                 cb.specify().specifyMemberAddressAsValid().columnRegionId();
             }
         });
-        cb.query().queryMemberAddressAsValid(currentDate());
+        cb.query().queryMemberAddressAsValid(currentUtilDate());
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);

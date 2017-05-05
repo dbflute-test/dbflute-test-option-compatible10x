@@ -84,7 +84,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setVersionNo(before.getVersionNo());
             // no update target
             //member.setFormalizedDatetime(currentTimestamp());
-            member.setBirthdate(new HandyDate(currentDate()).addDay(7).getDate());
+            member.setBirthdate(new HandyDate(currentUtilDate()).addDay(7).getDate());
             expectedVersionNoList.add(member.getVersionNo());
             memberList.add(member);
             ++count;
@@ -137,7 +137,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setMemberStatusCode_Provisional();
             // no update target
             //member.setFormalizedDatetime(currentTimestamp());
-            member.setBirthdate(new HandyDate(currentDate()).addDay(7).getDate());
+            member.setBirthdate(new HandyDate(currentUtilDate()).addDay(7).getDate());
             expectedVersionNoList.add(member.getVersionNo());
             ++count;
         }
@@ -223,7 +223,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setMemberId(before.getMemberId());
             member.setMemberName(memberName);
             if (before.getMemberId().equals(1)) {
-                member.setBirthdate(currentDate());
+                member.setBirthdate(currentUtilDate());
             }
             member.setVersionNo(before.getVersionNo());
             memberList.add(member);
@@ -253,7 +253,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
         }
         String memberName = "oneColumn";
         List<Member> memberList = new ArrayList<Member>();
-        Date currentDate = currentDate();
+        Date currentDate = currentUtilDate();
         for (Member before : beforeList) {
             Member member = new Member();
             member.setMemberId(before.getMemberId());
@@ -293,7 +293,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
         for (Member member : memberList) {
             member.setMemberName(memberName);
             if (member.getMemberId().equals(1)) {
-                member.setBirthdate(currentDate());
+                member.setBirthdate(currentUtilDate());
             }
         }
 
@@ -320,7 +320,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             memberList = memberBhv.selectList(cb);
         }
         String memberName = "oneColumn";
-        Date currentDate = currentDate();
+        Date currentDate = currentUtilDate();
         for (Member member : memberList) {
             member.setMemberName(memberName);
             if (member.getMemberId().equals(1)) {
@@ -360,7 +360,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
         }
         List<Member> memberList = new ArrayList<Member>();
         String memberName = "oneColumn";
-        Date currentDate = currentDate();
+        Date currentDate = currentUtilDate();
         for (Member before : beforeList) {
             Member member = new Member();
             member.setMemberId(before.getMemberId());
@@ -527,7 +527,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
         {
             Member member = new Member();
             member.setMemberId(3); // only one record
-            member.setBirthdate(currentDate());
+            member.setBirthdate(currentUtilDate());
             memberBhv.updateNonstrict(member);
         }
 
@@ -844,7 +844,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setMemberStatusCode_Provisional();
             // no update target
             //member.setFormalizedDatetime(currentTimestamp());
-            member.setBirthdate(new HandyDate(currentDate()).addDay(7).getDate());
+            member.setBirthdate(new HandyDate(currentUtilDate()).addDay(7).getDate());
             memberList.add(member);
             ++count;
         }
@@ -890,7 +890,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setMemberId(before.getMemberId());
             member.setMemberName(memberName);
             if (before.getMemberId().equals(1)) {
-                member.setBirthdate(currentDate());
+                member.setBirthdate(currentUtilDate());
             }
             member.setVersionNo(before.getVersionNo());
             memberList.add(member);
@@ -931,7 +931,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setMemberStatusCode_Provisional();
             // no update target
             //member.setFormalizedDatetime(currentTimestamp());
-            member.setBirthdate(new HandyDate(currentDate()).addDay(7).getDate());
+            member.setBirthdate(new HandyDate(currentUtilDate()).addDay(7).getDate());
             member.setRegisterDatetime(registerDatetime);
             member.setRegisterUser(registerUser);
             memberList.add(member);
@@ -1035,7 +1035,7 @@ public class WxBhvBatchUpdateTest extends UnitContainerTestCase {
             member.setVersionNo(before.getVersionNo());
             // no update target
             //member.setFormalizedDatetime(currentTimestamp());
-            member.setBirthdate(new HandyDate(currentDate()).addDay(7).getDate());
+            member.setBirthdate(new HandyDate(currentUtilDate()).addDay(7).getDate());
             expectedVersionNoList.add(member.getVersionNo());
             memberList.add(member);
             ++count;

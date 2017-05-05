@@ -40,7 +40,7 @@ public class WxCBInnerJoinStructuralPossibleTest extends UnitContainerTestCase {
         PurchaseCB cb = new PurchaseCB();
         cb.enableInnerJoinAutoDetect();
         cb.setupSelect_Member().withMemberStatus();
-        cb.setupSelect_Member().withMemberAddressAsValid(currentDate());
+        cb.setupSelect_Member().withMemberAddressAsValid(currentUtilDate());
         cb.setupSelect_Member().withMemberServiceAsOne().withServiceRank();
         cb.setupSelect_Member().withMemberWithdrawalAsOne().withWithdrawalReason();
         cb.setupSelect_Product().withProductStatus();
@@ -93,7 +93,7 @@ public class WxCBInnerJoinStructuralPossibleTest extends UnitContainerTestCase {
         PurchaseCB cb = new PurchaseCB();
         cb.enableInnerJoinAutoDetect();
         cb.setupSelect_Member().withMemberStatus();
-        cb.setupSelect_Member().withMemberAddressAsValid(currentDate());
+        cb.setupSelect_Member().withMemberAddressAsValid(currentUtilDate());
         cb.setupSelect_Member().withMemberServiceAsOne().withServiceRank();
         cb.setupSelect_Member().withMemberWithdrawalAsOne().withWithdrawalReason();
         cb.setupSelect_Product().withProductStatus();
@@ -147,7 +147,7 @@ public class WxCBInnerJoinStructuralPossibleTest extends UnitContainerTestCase {
         PurchaseCB cb = new PurchaseCB();
         cb.enableInnerJoinAutoDetect();
         cb.setupSelect_Member().withMemberStatus();
-        cb.setupSelect_Member().withMemberAddressAsValid(currentDate());
+        cb.setupSelect_Member().withMemberAddressAsValid(currentUtilDate());
         cb.setupSelect_Member().withMemberServiceAsOne().withServiceRank();
         cb.setupSelect_Member().withMemberWithdrawalAsOne().withWithdrawalReason();
         cb.setupSelect_Product().withProductStatus();

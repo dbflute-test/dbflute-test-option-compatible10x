@@ -351,7 +351,7 @@ public class WxCBScalarConditionBasicTest extends UnitContainerTestCase {
 
     public void test_ScalarCondition_PartitionBy_outerQuery() {
         // ## Arrange ##
-        Date maxBirthdate = toDate("9999/12/31");
+        Date maxBirthdate = toUtilDate("9999/12/31");
         {
             Member member = new Member();
             member.setMemberId(1);
@@ -402,7 +402,7 @@ public class WxCBScalarConditionBasicTest extends UnitContainerTestCase {
 
     public void test_ScalarCondition_PartitionBy_nonOuterQuery() {
         // ## Arrange ##
-        Date maxBirthdate = toDate("9999/12/31");
+        Date maxBirthdate = toUtilDate("9999/12/31");
         {
             Member member = new Member();
             member.setMemberId(1);

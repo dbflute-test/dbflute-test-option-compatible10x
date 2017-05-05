@@ -34,8 +34,8 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         Member updated = updateFormalizedDatetime("2011/11/18 12:34:56.789");
         MemberCB cb = new MemberCB();
         cb.query().setMemberId_Equal(updated.getMemberId());
-        Date fromDate = toDate("2011/11/17 12:34:56.789");
-        Date toDate = toDate("2011/11/19 02:04:06.009");
+        Date fromDate = toUtilDate("2011/11/17 12:34:56.789");
+        Date toDate = toUtilDate("2011/11/19 02:04:06.009");
         FromToOption option = new FromToOption();
         cb.query().setFormalizedDatetime_FromTo(fromDate, toDate, option);
 
@@ -58,8 +58,8 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         // ## Arrange ##
         Member updated = updateFormalizedDatetime("2011/12/30 12:34:56.789");
         MemberCB cb = new MemberCB();
-        Date fromDate = toDate("2011/11/17 12:34:56.789");
-        Date toDate = toDate("2011/11/19 02:04:06.009");
+        Date fromDate = toUtilDate("2011/11/17 12:34:56.789");
+        Date toDate = toUtilDate("2011/11/19 02:04:06.009");
         FromToOption option = new FromToOption().compareAsYear();
         cb.query().setFormalizedDatetime_FromTo(fromDate, toDate, option);
 
@@ -82,8 +82,8 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         // ## Arrange ##
         Member updated = updateFormalizedDatetime("2011/11/29 23:34:56.789");
         MemberCB cb = new MemberCB();
-        Date fromDate = toDate("2011/11/17 12:34:56.789");
-        Date toDate = toDate("2011/11/19 02:04:06.009");
+        Date fromDate = toUtilDate("2011/11/17 12:34:56.789");
+        Date toDate = toUtilDate("2011/11/19 02:04:06.009");
         FromToOption option = new FromToOption().compareAsMonth();
         cb.query().setFormalizedDatetime_FromTo(fromDate, toDate, option);
 
@@ -106,8 +106,8 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         // ## Arrange ##
         Member updated = updateFormalizedDatetime("2011/11/19 23:34:56.789");
         MemberCB cb = new MemberCB();
-        Date fromDate = toDate("2011/11/17 12:34:56.789");
-        Date toDate = toDate("2011/11/19 02:04:06.009");
+        Date fromDate = toUtilDate("2011/11/17 12:34:56.789");
+        Date toDate = toUtilDate("2011/11/19 02:04:06.009");
         FromToOption option = new FromToOption().compareAsDate();
         cb.query().setFormalizedDatetime_FromTo(fromDate, toDate, option);
 
@@ -130,8 +130,8 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         // ## Arrange ##
         Member updated = updateFormalizedDatetime("2011/11/17 18:34:56.789");
         MemberCB cb = new MemberCB();
-        Date fromDate = toDate("2011/11/17 12:34:56.789");
-        Date toDate = toDate("2011/11/17 18:04:06.009");
+        Date fromDate = toUtilDate("2011/11/17 12:34:56.789");
+        Date toDate = toUtilDate("2011/11/17 18:04:06.009");
         FromToOption option = new FromToOption().compareAsHour();
         cb.query().setFormalizedDatetime_FromTo(fromDate, toDate, option);
 
@@ -153,7 +153,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
     public void test_FromTo_compareAsWeek_basic() throws Exception {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        Date targetDate = toDate("2011/11/17");
+        Date targetDate = toUtilDate("2011/11/17");
 
         // ## Act ##
         FromToOption option = new FromToOption().compareAsWeek().beginWeek_DayOfWeek(targetDate);
@@ -167,24 +167,24 @@ public class WxCBFromToTest extends UnitContainerTestCase {
     }
 
     public void test_FromTo_compareAsWeek_beginWeek_moveToScope() throws Exception {
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/10/31"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/01"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/02"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/03"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/04"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/05"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/06"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/07"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/08"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/09"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/10"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/11"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/12"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/13"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/14"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/15"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/16"));
-        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toDate("2011/11/17"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/10/31"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/01"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/02"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/03"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/04"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/05"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/06"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/07"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/08"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/09"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/10"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/11"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/12"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/13"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/14"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/15"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/16"));
+        doTest_FromTo_compareAsWeek_beginWeek_moveToScope(toUtilDate("2011/11/17"));
     }
 
     protected void doTest_FromTo_compareAsWeek_beginWeek_moveToScope(Date targetDate) {
@@ -270,7 +270,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
     //                                                                            ========
     public void test_FromTo_orIsNull_greaterEqual() throws Exception {
         // ## Arrange ##
-        HandyDate date = new HandyDate(toDate("1970/01/01"));
+        HandyDate date = new HandyDate(toUtilDate("1970/01/01"));
 
         MemberCB cb = new MemberCB();
         int countAll = memberBhv.selectCount(cb);
@@ -303,7 +303,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
 
     public void test_FromTo_orIsNull_lessEqual() throws Exception {
         // ## Arrange ##
-        HandyDate date = new HandyDate(toDate("1970/01/01"));
+        HandyDate date = new HandyDate(toUtilDate("1970/01/01"));
 
         MemberCB cb = new MemberCB();
         int countAll = memberBhv.selectCount(cb);
@@ -336,7 +336,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
 
     public void test_FromTo_orIsNull_bothThan() throws Exception {
         // ## Arrange ##
-        HandyDate date = new HandyDate(toDate("1970/01/01"));
+        HandyDate date = new HandyDate(toUtilDate("1970/01/01"));
         MemberCB cb = new MemberCB();
         FromToOption option = new FromToOption().orIsNull().greaterThan().lessThan();
         cb.query().setBirthdate_FromTo(date.getDate(), date.getDate(), option);
@@ -352,7 +352,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
 
     public void test_DateFromTo_orIsNull() throws Exception {
         // ## Arrange ##
-        HandyDate date = new HandyDate(toDate("1970/01/01"));
+        HandyDate date = new HandyDate(toUtilDate("1970/01/01"));
         MemberCB cb = new MemberCB();
         FromToOption option = new FromToOption().compareAsDate().orIsNull();
         cb.query().setBirthdate_FromTo(date.getDate(), date.getDate(), option);
@@ -368,7 +368,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
 
     public void test_FromTo_orIsNull_orScopeQuery() throws Exception {
         // ## Arrange ##
-        final HandyDate date = new HandyDate(toDate("1970/01/01"));
+        final HandyDate date = new HandyDate(toUtilDate("1970/01/01"));
         MemberCB cb = new MemberCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {

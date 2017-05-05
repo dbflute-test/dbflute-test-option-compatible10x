@@ -455,7 +455,7 @@ public class WxCBDerivedReferrerDreamCruiseTest extends UnitContainerTestCase {
                                     public void specify(PurchasePaymentCB cb) {
                                         cb.specify().columnPaymentDatetime();
                                     }
-                                }).convert(op -> op.addDay(6).coalesce(toDate("2014/07/31")));
+                                }).convert(op -> op.addDay(6).coalesce(toUtilDate("2014/07/31")));
                             }
                         });
                     }

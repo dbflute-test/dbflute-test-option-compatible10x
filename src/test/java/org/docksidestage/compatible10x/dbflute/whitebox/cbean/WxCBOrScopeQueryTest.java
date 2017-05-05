@@ -363,23 +363,23 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
     public void test_orScopeQuery_with_fromTo_basic() {
         // ## Arrange ##
         PurchaseCB cb = new PurchaseCB();
-        cb.query().setPurchaseDatetime_DateFromTo(toDate("2012/03/13"), toDate("2012/03/14"));
+        cb.query().setPurchaseDatetime_DateFromTo(toUtilDate("2012/03/13"), toUtilDate("2012/03/14"));
         cb.orScopeQuery(new OrQuery<PurchaseCB>() {
             public void query(PurchaseCB orCB) {
-                orCB.query().setRegisterDatetime_DateFromTo(toDate("2012/03/15"), toDate("2012/03/16"));
+                orCB.query().setRegisterDatetime_DateFromTo(toUtilDate("2012/03/15"), toUtilDate("2012/03/16"));
                 orCB.orScopeQueryAndPart(new AndQuery<PurchaseCB>() {
                     public void query(PurchaseCB andCB) {
-                        andCB.query().queryMember().setBirthdate_DateFromTo(toDate("2012/03/17"), toDate("2012/03/18"));
+                        andCB.query().queryMember().setBirthdate_DateFromTo(toUtilDate("2012/03/17"), toUtilDate("2012/03/18"));
                         FromToOption optionOrIsNull = new FromToOption().orIsNull();
                         andCB.query()
                                 .queryMember()
-                                .setFormalizedDatetime_FromTo(toDate("2012/03/19"), toDate("2012/03/20"),
+                                .setFormalizedDatetime_FromTo(toUtilDate("2012/03/19"), toUtilDate("2012/03/20"),
                                         optionOrIsNull);
                     }
                 });
                 orCB.orScopeQueryAndPart(new AndQuery<PurchaseCB>() {
                     public void query(PurchaseCB andCB) {
-                        andCB.query().setUpdateDatetime_DateFromTo(toDate("2012/03/21"), toDate("2012/03/22"));
+                        andCB.query().setUpdateDatetime_DateFromTo(toUtilDate("2012/03/21"), toUtilDate("2012/03/22"));
                     }
                 });
             }
@@ -590,7 +590,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.query().setBirthdate_GreaterThan(currentDate());
+        cb.query().setBirthdate_GreaterThan(currentUtilDate());
         cb.query().inline().setUpdateUser_NotEqual("UPUSER");
         cb.query().inline().setMemberName_PrefixSearch("IN");
         cb.orScopeQuery(new OrQuery<MemberCB>() {
@@ -642,8 +642,8 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                 orCB.query().inline().setUpdateUser_NotEqual("UPPROC");
                 orCB.union(new UnionQuery<MemberCB>() {
                     public void query(MemberCB unionCB) {
-                        unionCB.query().setBirthdate_GreaterEqual(currentDate());
-                        unionCB.query().setBirthdate_LessEqual(currentDate());
+                        unionCB.query().setBirthdate_GreaterEqual(currentUtilDate());
+                        unionCB.query().setBirthdate_LessEqual(currentUtilDate());
                     }
                 }); // basically unsupported
             }

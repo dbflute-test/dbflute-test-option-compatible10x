@@ -174,7 +174,7 @@ public class WxCBPurposeTypeTest extends UnitContainerTestCase {
                     subCB.specify().columnPurchaseDatetime();
                     cb.setupSelect_MemberStatus();
                 }
-            }).lessEqual(currentDate());
+            }).lessEqual(currentUtilDate());
             // ## Assert ##
             fail();
         } catch (SetupSelectThatsBadTimingException e) { // setupSelect calls query()
@@ -252,7 +252,7 @@ public class WxCBPurposeTypeTest extends UnitContainerTestCase {
                     subCB.specify().columnPurchaseDatetime();
                     cb.specify();
                 }
-            }).lessEqual(currentDate());
+            }).lessEqual(currentUtilDate());
             // ## Assert ##
             fail();
         } catch (SpecifyThatsBadTimingException e) {
@@ -343,7 +343,7 @@ public class WxCBPurposeTypeTest extends UnitContainerTestCase {
                     subCB.specify().columnPurchaseDatetime();
                     cb.query();
                 }
-            }).lessEqual(currentDate());
+            }).lessEqual(currentUtilDate());
             // ## Assert ##
             fail();
         } catch (QueryThatsBadTimingException e) {

@@ -189,9 +189,9 @@ public class WxCBManualOrderSwitchOrderBasicTest extends UnitContainerTestCase {
         adjustMemberStatusCount();
         MemberCB cb = new MemberCB();
         ManualOrderOption mob = new ManualOrderOption().suppressThenBinding().suppressElseBinding();
-        mob.when_Equal(CDef.MemberStatus.Formalized).then(toDate("2012/10/31"));
-        mob.when_Equal(CDef.MemberStatus.Provisional).then(toDate("2001/10/31"));
-        mob.elseEnd(toDate("2007/10/31"));
+        mob.when_Equal(CDef.MemberStatus.Formalized).then(toUtilDate("2012/10/31"));
+        mob.when_Equal(CDef.MemberStatus.Provisional).then(toUtilDate("2001/10/31"));
+        mob.elseEnd(toUtilDate("2007/10/31"));
         cb.query().addOrderBy_MemberStatusCode_Asc().withManualOrder(mob);
 
         // ## Act ##

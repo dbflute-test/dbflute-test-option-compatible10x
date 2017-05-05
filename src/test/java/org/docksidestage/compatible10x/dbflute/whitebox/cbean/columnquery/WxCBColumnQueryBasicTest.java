@@ -259,7 +259,7 @@ public class WxCBColumnQueryBasicTest extends UnitContainerTestCase {
     public void test_ColumnQuery_with_FixedCondition() throws Exception {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().queryMemberAddressAsValid(currentDate());
+        cb.query().queryMemberAddressAsValid(currentUtilDate());
         cb.columnQuery(new SpecifyQuery<MemberCB>() {
             public void specify(MemberCB cb) {
                 cb.specify().specifyMemberAddressAsValid().columnValidBeginDate();

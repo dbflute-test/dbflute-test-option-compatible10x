@@ -211,7 +211,7 @@ public class WxCBDerivedReferrerCollaborationTest extends UnitContainerTestCase 
         cb.specify().derivedMemberList().sum(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {
                 subCB.specify().specifyMemberAddressAsValid().columnRegionId();
-                subCB.query().queryMemberAddressAsValid(currentDate());
+                subCB.query().queryMemberAddressAsValid(currentUtilDate());
             }
         }, MemberStatus.ALIAS_maxPurchasePrice);
 

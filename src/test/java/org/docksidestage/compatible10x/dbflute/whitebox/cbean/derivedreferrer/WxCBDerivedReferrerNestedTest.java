@@ -45,7 +45,7 @@ public class WxCBDerivedReferrerNestedTest extends UnitContainerTestCase {
                                 subCB.query().setPaymentCompleteFlg_Equal_True();
                             }
                         }, null);
-                        subCB.query().setBirthdate_LessThan(currentDate());
+                        subCB.query().setBirthdate_LessThan(currentUtilDate());
                     }
                 }, null);
                 cb.query().setMemberStatusCode_Equal_Formalized();
@@ -61,7 +61,7 @@ public class WxCBDerivedReferrerNestedTest extends UnitContainerTestCase {
                                 subCB.query().setPaymentCompleteFlg_Equal_True();
                             }
                         }, null);
-                        subCB.query().setBirthdate_LessThan(currentDate());
+                        subCB.query().setBirthdate_LessThan(currentUtilDate());
                     }
                 }, null);
                 cb.query().setMemberStatusCode_Equal_Provisional();
@@ -93,7 +93,7 @@ public class WxCBDerivedReferrerNestedTest extends UnitContainerTestCase {
                         subCB.query().setPaymentCompleteFlg_Equal_True();
                     }
                 }, null);
-                subCB.query().setBirthdate_LessThan(currentDate());
+                subCB.query().setBirthdate_LessThan(currentUtilDate());
             }
         }, MemberStatus.ALIAS_maxPurchasePrice);
         cb.orScopeQuery(new OrQuery<MemberStatusCB>() {
