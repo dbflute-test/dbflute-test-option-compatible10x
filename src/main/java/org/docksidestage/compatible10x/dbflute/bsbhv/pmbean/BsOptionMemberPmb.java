@@ -362,6 +362,15 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
     }
 
     /**
+     * [set as MemberStatus] memberStatusCode:ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
+     * status of member from entry to withdrawal
+     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the property)
+     */
+    public void setMemberStatusCodeAsMemberStatus(CDef.MemberStatus cdef) {
+        _memberStatusCode = cdef != null ? cdef.code() : null;
+    }
+
+    /**
      * [set as Formalized] memberStatusCode:ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * // reference option (including classification) <br>
      * as formal member, allowed to use all service
@@ -438,6 +447,15 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
      */
     public void setStatus(String status) {
         _status = status;
+    }
+
+    /**
+     * [set as MemberStatus] status:cls(MemberStatus) <br>
+     * status of member from entry to withdrawal
+     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the property)
+     */
+    public void setStatusAsMemberStatus(CDef.MemberStatus cdef) {
+        _status = cdef != null ? cdef.code() : null;
     }
 
     /**
@@ -519,6 +537,15 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
      */
     public void setPaymentCompleteFlg(Integer paymentCompleteFlg) {
         _paymentCompleteFlg = paymentCompleteFlg;
+    }
+
+    /**
+     * [set as Flg] paymentCompleteFlg:cls(Flg) <br>
+     * general boolean classification for every flg-column
+     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the property)
+     */
+    public void setPaymentCompleteFlgAsFlg(CDef.Flg cdef) {
+        _paymentCompleteFlg = cdef != null ? toNumber(cdef.code(), Integer.class) : null;
     }
 
     /**
