@@ -1650,8 +1650,8 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * memberBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * memberBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * memberBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * memberBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * memberBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -1659,7 +1659,7 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * memberBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * memberBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * memberBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * memberBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * memberBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -1667,7 +1667,7 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      * memberBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * memberBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * memberBhv.outideSql().removeBlockComment().selectList()
      * memberBhv.outideSql().removeLineComment().selectList()
      * memberBhv.outideSql().formatSql().selectList()

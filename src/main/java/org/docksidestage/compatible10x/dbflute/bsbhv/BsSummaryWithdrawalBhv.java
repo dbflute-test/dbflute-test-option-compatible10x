@@ -371,8 +371,8 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * summaryWithdrawalBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * summaryWithdrawalBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * summaryWithdrawalBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * summaryWithdrawalBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * summaryWithdrawalBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -380,7 +380,7 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * summaryWithdrawalBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * summaryWithdrawalBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * summaryWithdrawalBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * summaryWithdrawalBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * summaryWithdrawalBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -388,7 +388,7 @@ public abstract class BsSummaryWithdrawalBhv extends AbstractBehaviorReadable<Su
      * summaryWithdrawalBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * summaryWithdrawalBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * summaryWithdrawalBhv.outideSql().removeBlockComment().selectList()
      * summaryWithdrawalBhv.outideSql().removeLineComment().selectList()
      * summaryWithdrawalBhv.outideSql().formatSql().selectList()

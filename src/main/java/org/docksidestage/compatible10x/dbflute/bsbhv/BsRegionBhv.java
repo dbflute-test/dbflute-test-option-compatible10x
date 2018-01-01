@@ -952,8 +952,8 @@ public abstract class BsRegionBhv extends AbstractBehaviorWritable<Region, Regio
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * regionBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * regionBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * regionBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * regionBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * regionBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -961,7 +961,7 @@ public abstract class BsRegionBhv extends AbstractBehaviorWritable<Region, Regio
      * regionBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * regionBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * regionBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * regionBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * regionBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -969,7 +969,7 @@ public abstract class BsRegionBhv extends AbstractBehaviorWritable<Region, Regio
      * regionBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * regionBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * regionBhv.outideSql().removeBlockComment().selectList()
      * regionBhv.outideSql().removeLineComment().selectList()
      * regionBhv.outideSql().formatSql().selectList()

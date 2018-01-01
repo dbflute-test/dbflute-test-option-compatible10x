@@ -94,7 +94,7 @@ public class BsMemberFollowingCQ extends AbstractBsMemberFollowingCQ {
       return _memberFollowingId; }
     protected ConditionValue xgetCValueMemberFollowingId() { return xdfgetMemberFollowingId(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (会員フォローイングID)MEMBER_FOLLOWING_ID: {PK, ID, NotNull, BIGINT(19)}
      * @return this. (NotNull)
@@ -120,7 +120,7 @@ public class BsMemberFollowingCQ extends AbstractBsMemberFollowingCQ {
     public Map<String, MemberCQ> getMyMemberId_NotInScopeRelation_MemberByMyMemberId() { return xgetSQueMap("myMemberId_NotInScopeRelation_MemberByMyMemberId"); }
     public String keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(MemberCQ sq) { return xkeepSQue("myMemberId_NotInScopeRelation_MemberByMyMemberId", sq); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (わたし)MY_MEMBER_ID: {UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER}
      * @return this. (NotNull)
@@ -146,7 +146,7 @@ public class BsMemberFollowingCQ extends AbstractBsMemberFollowingCQ {
     public Map<String, MemberCQ> getYourMemberId_NotInScopeRelation_MemberByYourMemberId() { return xgetSQueMap("yourMemberId_NotInScopeRelation_MemberByYourMemberId"); }
     public String keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(MemberCQ sq) { return xkeepSQue("yourMemberId_NotInScopeRelation_MemberByYourMemberId", sq); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (あなた)YOUR_MEMBER_ID: {+UQ, IX+, NotNull, INTEGER(10), FK to MEMBER}
      * @return this. (NotNull)
@@ -166,7 +166,7 @@ public class BsMemberFollowingCQ extends AbstractBsMemberFollowingCQ {
       return _followDatetime; }
     protected ConditionValue xgetCValueFollowDatetime() { return xdfgetFollowDatetime(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
      * @return this. (NotNull)

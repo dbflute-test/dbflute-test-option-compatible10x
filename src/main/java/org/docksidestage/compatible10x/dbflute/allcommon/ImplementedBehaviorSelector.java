@@ -155,7 +155,7 @@ public class ImplementedBehaviorSelector implements BehaviorSelector {
         assertObjectNotNull("componentType", componentType);
         assertObjectNotNull("_container", _container);
         // component name in XML cannot contain dollar
-		return (COMPONENT)_container.getBean(replace(initUncap(toClassTitle(componentType)), "$", ""));
+        return (COMPONENT)_container.getBean(replace(initUncap(toClassTitle(componentType)), "$", ""));
     }
 
     // ===================================================================================

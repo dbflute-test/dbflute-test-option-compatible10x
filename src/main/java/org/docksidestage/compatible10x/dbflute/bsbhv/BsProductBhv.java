@@ -1227,8 +1227,8 @@ public abstract class BsProductBhv extends AbstractBehaviorWritable<Product, Pro
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * productBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * productBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * productBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * productBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * productBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -1236,7 +1236,7 @@ public abstract class BsProductBhv extends AbstractBehaviorWritable<Product, Pro
      * productBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * productBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * productBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * productBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * productBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -1244,7 +1244,7 @@ public abstract class BsProductBhv extends AbstractBehaviorWritable<Product, Pro
      * productBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * productBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * productBhv.outideSql().removeBlockComment().selectList()
      * productBhv.outideSql().removeLineComment().selectList()
      * productBhv.outideSql().formatSql().selectList()

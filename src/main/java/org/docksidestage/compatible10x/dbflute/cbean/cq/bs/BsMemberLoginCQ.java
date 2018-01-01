@@ -94,7 +94,7 @@ public class BsMemberLoginCQ extends AbstractBsMemberLoginCQ {
       return _memberLoginId; }
     protected ConditionValue xgetCValueMemberLoginId() { return xdfgetMemberLoginId(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (会員ログインID)MEMBER_LOGIN_ID: {PK, ID, NotNull, BIGINT(19)}
      * @return this. (NotNull)
@@ -120,7 +120,7 @@ public class BsMemberLoginCQ extends AbstractBsMemberLoginCQ {
     public Map<String, MemberCQ> getMemberId_NotInScopeRelation_Member() { return xgetSQueMap("memberId_NotInScopeRelation_Member"); }
     public String keepMemberId_NotInScopeRelation_Member(MemberCQ sq) { return xkeepSQue("memberId_NotInScopeRelation_Member", sq); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (会員ID)MEMBER_ID: {UQ+, IX, NotNull, INTEGER(10), FK to MEMBER}
      * @return this. (NotNull)
@@ -140,7 +140,7 @@ public class BsMemberLoginCQ extends AbstractBsMemberLoginCQ {
       return _loginDatetime; }
     protected ConditionValue xgetCValueLoginDatetime() { return xdfgetLoginDatetime(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (ログイン日時)LOGIN_DATETIME: {+UQ, IX, NotNull, TIMESTAMP(23, 10)}
      * @return this. (NotNull)
@@ -160,7 +160,7 @@ public class BsMemberLoginCQ extends AbstractBsMemberLoginCQ {
       return _mobileLoginFlg; }
     protected ConditionValue xgetCValueMobileLoginFlg() { return xdfgetMobileLoginFlg(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (モバイルログインフラグ)MOBILE_LOGIN_FLG: {NotNull, INTEGER(10), classification=Flg}
      * @return this. (NotNull)
@@ -186,7 +186,7 @@ public class BsMemberLoginCQ extends AbstractBsMemberLoginCQ {
     public Map<String, MemberStatusCQ> getLoginMemberStatusCode_NotInScopeRelation_MemberStatus() { return xgetSQueMap("loginMemberStatusCode_NotInScopeRelation_MemberStatus"); }
     public String keepLoginMemberStatusCode_NotInScopeRelation_MemberStatus(MemberStatusCQ sq) { return xkeepSQue("loginMemberStatusCode_NotInScopeRelation_MemberStatus", sq); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (ログイン時会員ステータスコード)LOGIN_MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus}
      * @return this. (NotNull)

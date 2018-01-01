@@ -108,7 +108,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
     public Map<String, Object> xdfgetProductId_QueryDerivedReferrer_PurchaseListParameter() { return xgetSQuePmMap("productId_QueryDerivedReferrer_PurchaseList"); }
     public String keepProductId_QueryDerivedReferrer_PurchaseListParameter(Object pm) { return xkeepSQuePm("productId_QueryDerivedReferrer_PurchaseList", pm); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)}
      * @return this. (NotNull)
@@ -128,7 +128,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _productName; }
     protected ConditionValue xgetCValueProductName() { return xdfgetProductName(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)}
      * @return this. (NotNull)
@@ -148,7 +148,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _productHandleCode; }
     protected ConditionValue xgetCValueProductHandleCode() { return xdfgetProductHandleCode(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)}
      * @return this. (NotNull)
@@ -174,7 +174,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
     public Map<String, ProductCategoryCQ> getProductCategoryCode_NotInScopeRelation_ProductCategory() { return xgetSQueMap("productCategoryCode_NotInScopeRelation_ProductCategory"); }
     public String keepProductCategoryCode_NotInScopeRelation_ProductCategory(ProductCategoryCQ sq) { return xkeepSQue("productCategoryCode_NotInScopeRelation_ProductCategory", sq); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY}
      * @return this. (NotNull)
@@ -200,7 +200,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
     public Map<String, ProductStatusCQ> getProductStatusCode_NotInScopeRelation_ProductStatus() { return xgetSQueMap("productStatusCode_NotInScopeRelation_ProductStatus"); }
     public String keepProductStatusCode_NotInScopeRelation_ProductStatus(ProductStatusCQ sq) { return xkeepSQue("productStatusCode_NotInScopeRelation_ProductStatus", sq); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
      * @return this. (NotNull)
@@ -220,7 +220,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _regularPrice; }
     protected ConditionValue xgetCValueRegularPrice() { return xdfgetRegularPrice(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * (定価)REGULAR_PRICE: {NotNull, INTEGER(10)}
      * @return this. (NotNull)
@@ -240,7 +240,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _registerDatetime; }
     protected ConditionValue xgetCValueRegisterDatetime() { return xdfgetRegisterDatetime(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @return this. (NotNull)
@@ -260,7 +260,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _registerUser; }
     protected ConditionValue xgetCValueRegisterUser() { return xdfgetRegisterUser(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)}
      * @return this. (NotNull)
@@ -280,7 +280,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _updateDatetime; }
     protected ConditionValue xgetCValueUpdateDatetime() { return xdfgetUpdateDatetime(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
      * @return this. (NotNull)
@@ -300,7 +300,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _updateUser; }
     protected ConditionValue xgetCValueUpdateUser() { return xdfgetUpdateUser(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)}
      * @return this. (NotNull)
@@ -320,7 +320,7 @@ public class BsProductCQ extends AbstractBsProductCQ {
       return _versionNo; }
     protected ConditionValue xgetCValueVersionNo() { return xdfgetVersionNo(); }
 
-    /** 
+    /**
      * Add order-by as ascend. <br>
      * VERSION_NO: {NotNull, BIGINT(19)}
      * @return this. (NotNull)

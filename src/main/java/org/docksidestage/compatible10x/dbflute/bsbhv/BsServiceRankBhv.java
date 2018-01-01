@@ -985,8 +985,8 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * serviceRankBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * serviceRankBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * serviceRankBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * serviceRankBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * serviceRankBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -994,7 +994,7 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * serviceRankBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * serviceRankBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * serviceRankBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * serviceRankBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * serviceRankBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -1002,7 +1002,7 @@ public abstract class BsServiceRankBhv extends AbstractBehaviorWritable<ServiceR
      * serviceRankBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * serviceRankBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * serviceRankBhv.outideSql().removeBlockComment().selectList()
      * serviceRankBhv.outideSql().removeLineComment().selectList()
      * serviceRankBhv.outideSql().formatSql().selectList()

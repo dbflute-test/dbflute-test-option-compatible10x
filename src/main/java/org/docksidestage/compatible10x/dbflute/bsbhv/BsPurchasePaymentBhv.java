@@ -872,8 +872,8 @@ public abstract class BsPurchasePaymentBhv extends AbstractBehaviorWritable<Purc
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * purchasePaymentBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * purchasePaymentBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * purchasePaymentBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * purchasePaymentBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * purchasePaymentBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -881,7 +881,7 @@ public abstract class BsPurchasePaymentBhv extends AbstractBehaviorWritable<Purc
      * purchasePaymentBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * purchasePaymentBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * purchasePaymentBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * purchasePaymentBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * purchasePaymentBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -889,7 +889,7 @@ public abstract class BsPurchasePaymentBhv extends AbstractBehaviorWritable<Purc
      * purchasePaymentBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * purchasePaymentBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * purchasePaymentBhv.outideSql().removeBlockComment().selectList()
      * purchasePaymentBhv.outideSql().removeLineComment().selectList()
      * purchasePaymentBhv.outideSql().formatSql().selectList()

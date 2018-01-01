@@ -1098,8 +1098,8 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * memberSecurityBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * memberSecurityBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * memberSecurityBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * memberSecurityBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * memberSecurityBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -1107,7 +1107,7 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * memberSecurityBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * memberSecurityBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * memberSecurityBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * memberSecurityBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * memberSecurityBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -1115,7 +1115,7 @@ public abstract class BsMemberSecurityBhv extends AbstractBehaviorWritable<Membe
      * memberSecurityBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * memberSecurityBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * memberSecurityBhv.outideSql().removeBlockComment().selectList()
      * memberSecurityBhv.outideSql().removeLineComment().selectList()
      * memberSecurityBhv.outideSql().formatSql().selectList()

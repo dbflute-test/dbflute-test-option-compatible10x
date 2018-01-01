@@ -864,8 +864,8 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * vendorPrimaryKeyOnlyBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * vendorPrimaryKeyOnlyBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * vendorPrimaryKeyOnlyBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * vendorPrimaryKeyOnlyBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * vendorPrimaryKeyOnlyBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -873,7 +873,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * vendorPrimaryKeyOnlyBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * vendorPrimaryKeyOnlyBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -881,7 +881,7 @@ public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable
      * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * vendorPrimaryKeyOnlyBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * vendorPrimaryKeyOnlyBhv.outideSql().removeBlockComment().selectList()
      * vendorPrimaryKeyOnlyBhv.outideSql().removeLineComment().selectList()
      * vendorPrimaryKeyOnlyBhv.outideSql().formatSql().selectList()

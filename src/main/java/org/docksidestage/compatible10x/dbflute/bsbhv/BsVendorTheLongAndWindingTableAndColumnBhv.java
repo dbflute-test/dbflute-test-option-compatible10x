@@ -985,8 +985,8 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * vendorTheLongAndWindingTableAndColumnBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * vendorTheLongAndWindingTableAndColumnBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -994,7 +994,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -1002,7 +1002,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnBhv extends Abstrac
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().removeBlockComment().selectList()
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().removeLineComment().selectList()
      * vendorTheLongAndWindingTableAndColumnBhv.outideSql().formatSql().selectList()

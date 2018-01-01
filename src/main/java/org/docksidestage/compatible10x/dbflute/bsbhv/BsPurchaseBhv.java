@@ -1231,8 +1231,8 @@ public abstract class BsPurchaseBhv extends AbstractBehaviorWritable<Purchase, P
     /**
      * Prepare the all facade executor of outside-SQL to execute it.
      * <pre>
-     * <span style="color: #3F7E5E">// main style</span> 
-     * purchaseBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span> 
+     * <span style="color: #3F7E5E">// main style</span>
+     * purchaseBhv.outideSql().selectEntity(pmb); <span style="color: #3F7E5E">// optional</span>
      * purchaseBhv.outideSql().selectList(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
      * purchaseBhv.outideSql().selectPage(pmb); <span style="color: #3F7E5E">// PagingResultBean</span>
      * purchaseBhv.outideSql().selectPagedListOnly(pmb); <span style="color: #3F7E5E">// ListResultBean</span>
@@ -1240,7 +1240,7 @@ public abstract class BsPurchaseBhv extends AbstractBehaviorWritable<Purchase, P
      * purchaseBhv.outideSql().execute(pmb); <span style="color: #3F7E5E">// int (updated count)</span>
      * purchaseBhv.outideSql().call(pmb); <span style="color: #3F7E5E">// void (pmb has OUT parameters)</span>
      *
-     * <span style="color: #3F7E5E">// traditional style</span> 
+     * <span style="color: #3F7E5E">// traditional style</span>
      * purchaseBhv.outideSql().traditionalStyle().selectEntity(path, pmb, entityType);
      * purchaseBhv.outideSql().traditionalStyle().selectList(path, pmb, entityType);
      * purchaseBhv.outideSql().traditionalStyle().selectPage(path, pmb, entityType);
@@ -1248,7 +1248,7 @@ public abstract class BsPurchaseBhv extends AbstractBehaviorWritable<Purchase, P
      * purchaseBhv.outideSql().traditionalStyle().selectCursor(path, pmb, handler);
      * purchaseBhv.outideSql().traditionalStyle().execute(path, pmb);
      *
-     * <span style="color: #3F7E5E">// options</span> 
+     * <span style="color: #3F7E5E">// options</span>
      * purchaseBhv.outideSql().removeBlockComment().selectList()
      * purchaseBhv.outideSql().removeLineComment().selectList()
      * purchaseBhv.outideSql().formatSql().selectList()
