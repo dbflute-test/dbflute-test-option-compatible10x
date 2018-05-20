@@ -414,7 +414,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * @param paymentDatetime The value of paymentDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setPaymentDatetime_Equal(java.sql.Timestamp paymentDatetime) {
@@ -423,7 +423,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * @param paymentDatetime The value of paymentDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setPaymentDatetime_GreaterThan(java.sql.Timestamp paymentDatetime) {
@@ -432,7 +432,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * @param paymentDatetime The value of paymentDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setPaymentDatetime_LessThan(java.sql.Timestamp paymentDatetime) {
@@ -441,7 +441,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * @param paymentDatetime The value of paymentDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setPaymentDatetime_GreaterEqual(java.sql.Timestamp paymentDatetime) {
@@ -450,7 +450,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * @param paymentDatetime The value of paymentDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setPaymentDatetime_LessEqual(java.sql.Timestamp paymentDatetime) {
@@ -460,7 +460,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setPaymentDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -473,7 +473,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)}
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
@@ -643,7 +643,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param registerDatetime The value of registerDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_Equal(java.sql.Timestamp registerDatetime) {
@@ -652,7 +652,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param registerDatetime The value of registerDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_GreaterThan(java.sql.Timestamp registerDatetime) {
@@ -661,7 +661,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param registerDatetime The value of registerDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_LessThan(java.sql.Timestamp registerDatetime) {
@@ -670,7 +670,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param registerDatetime The value of registerDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_GreaterEqual(java.sql.Timestamp registerDatetime) {
@@ -679,7 +679,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param registerDatetime The value of registerDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setRegisterDatetime_LessEqual(java.sql.Timestamp registerDatetime) {
@@ -689,7 +689,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -702,7 +702,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
@@ -841,7 +841,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param updateDatetime The value of updateDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_Equal(java.sql.Timestamp updateDatetime) {
@@ -850,7 +850,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param updateDatetime The value of updateDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_GreaterThan(java.sql.Timestamp updateDatetime) {
@@ -859,7 +859,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param updateDatetime The value of updateDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_LessThan(java.sql.Timestamp updateDatetime) {
@@ -868,7 +868,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param updateDatetime The value of updateDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_GreaterEqual(java.sql.Timestamp updateDatetime) {
@@ -877,7 +877,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * @param updateDatetime The value of updateDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setUpdateDatetime_LessEqual(java.sql.Timestamp updateDatetime) {
@@ -887,7 +887,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -900,7 +900,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>

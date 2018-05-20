@@ -85,10 +85,10 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     /** THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID: {IX, NotNull, BIGINT(19), FK to VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN} */
     protected Long _theLongAndWindingTableAndColumnId;
 
-    /** THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(8)} */
+    /** THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(10)} */
     protected java.util.Date _theLongAndWindingTableAndColumnRefDate;
 
-    /** SHORT_DATE: {NotNull, DATE(8)} */
+    /** SHORT_DATE: {NotNull, DATE(10)} */
     protected java.util.Date _shortDate;
 
     // ===================================================================================
@@ -242,7 +242,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     }
 
     /**
-     * [get] THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(8)} <br>
+     * [get] THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(10)} <br>
      * @return The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE'. (basically NotNull if selected: for the constraint)
      */
     public java.util.Date getTheLongAndWindingTableAndColumnRefDate() {
@@ -251,7 +251,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     }
 
     /**
-     * [set] THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(8)} <br>
+     * [set] THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE: {NotNull, DATE(10)} <br>
      * @param theLongAndWindingTableAndColumnRefDate The value of the column 'THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF_DATE'. (basically NotNull if update: for the constraint)
      */
     public void setTheLongAndWindingTableAndColumnRefDate(java.util.Date theLongAndWindingTableAndColumnRefDate) {
@@ -260,7 +260,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     }
 
     /**
-     * [get] SHORT_DATE: {NotNull, DATE(8)} <br>
+     * [get] SHORT_DATE: {NotNull, DATE(10)} <br>
      * @return The value of the column 'SHORT_DATE'. (basically NotNull if selected: for the constraint)
      */
     public java.util.Date getShortDate() {
@@ -269,7 +269,7 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRef extends Abstrac
     }
 
     /**
-     * [set] SHORT_DATE: {NotNull, DATE(8)} <br>
+     * [set] SHORT_DATE: {NotNull, DATE(10)} <br>
      * @param shortDate The value of the column 'SHORT_DATE'. (basically NotNull if update: for the constraint)
      */
     public void setShortDate(java.util.Date shortDate) {

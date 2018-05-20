@@ -120,7 +120,7 @@ public class BsMemberAddressCB extends AbstractConditionBean {
     /**
      * Accept the query condition of unique key as equal.
      * @param memberId (会員ID): UQ+, IX, NotNull, INTEGER(10), FK to MEMBER. (NotNull)
-     * @param validBeginDate (有効開始日): +UQ, NotNull, DATE(8). (NotNull)
+     * @param validBeginDate (有効開始日): +UQ, NotNull, DATE(10). (NotNull)
      * @return this. (NotNull)
      */
     public MemberAddressCB acceptUniqueOf(Integer memberId, java.util.Date validBeginDate) {
@@ -384,12 +384,12 @@ public class BsMemberAddressCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnMemberId() { return doColumn("MEMBER_ID"); }
         /**
-         * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(8)}
+         * (有効開始日)VALID_BEGIN_DATE: {+UQ, NotNull, DATE(10)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnValidBeginDate() { return doColumn("VALID_BEGIN_DATE"); }
         /**
-         * (有効終了日)VALID_END_DATE: {NotNull, DATE(8)}
+         * (有効終了日)VALID_END_DATE: {NotNull, DATE(10)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnValidEndDate() { return doColumn("VALID_END_DATE"); }
@@ -404,7 +404,7 @@ public class BsMemberAddressCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnRegionId() { return doColumn("REGION_ID"); }
         /**
-         * REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+         * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnRegisterDatetime() { return doColumn("REGISTER_DATETIME"); }
@@ -414,7 +414,7 @@ public class BsMemberAddressCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnRegisterUser() { return doColumn("REGISTER_USER"); }
         /**
-         * UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)}
+         * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnUpdateDatetime() { return doColumn("UPDATE_DATETIME"); }

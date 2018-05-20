@@ -89,7 +89,7 @@ public abstract class BsMemberFollowing extends AbstractEntity implements Domain
     /** (あなた)YOUR_MEMBER_ID: {+UQ, IX+, NotNull, INTEGER(10), FK to MEMBER} */
     protected Integer _yourMemberId;
 
-    /** (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)} */
+    /** (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _followDatetime;
 
     // ===================================================================================
@@ -303,7 +303,7 @@ public abstract class BsMemberFollowing extends AbstractEntity implements Domain
     }
 
     /**
-     * [get] (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)} <br>
      * ふりかえるとちょっと恥ずかしい気持ちになる日時
      * @return The value of the column 'FOLLOW_DATETIME'. (basically NotNull if selected: for the constraint)
      */
@@ -313,7 +313,7 @@ public abstract class BsMemberFollowing extends AbstractEntity implements Domain
     }
 
     /**
-     * [set] (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)} <br>
      * ふりかえるとちょっと恥ずかしい気持ちになる日時
      * @param followDatetime The value of the column 'FOLLOW_DATETIME'. (basically NotNull if update: for the constraint)
      */

@@ -108,13 +108,13 @@ public abstract class BsMemberSecurity extends AbstractEntity implements DomainE
     /** (リマインダ利用回数)REMINDER_USE_COUNT: {NotNull, INTEGER(10)} */
     protected Integer _reminderUseCount;
 
-    /** REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
+    /** REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _registerDatetime;
 
     /** REGISTER_USER: {NotNull, VARCHAR(200)} */
     protected String _registerUser;
 
-    /** UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
+    /** UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _updateDatetime;
 
     /** UPDATE_USER: {NotNull, VARCHAR(200)} */
@@ -348,7 +348,7 @@ public abstract class BsMemberSecurity extends AbstractEntity implements DomainE
     }
 
     /**
-     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @return The value of the column 'REGISTER_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
@@ -357,7 +357,7 @@ public abstract class BsMemberSecurity extends AbstractEntity implements DomainE
     }
 
     /**
-     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
@@ -384,7 +384,7 @@ public abstract class BsMemberSecurity extends AbstractEntity implements DomainE
     }
 
     /**
-     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @return The value of the column 'UPDATE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
@@ -393,7 +393,7 @@ public abstract class BsMemberSecurity extends AbstractEntity implements DomainE
     }
 
     /**
-     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {

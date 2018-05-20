@@ -108,7 +108,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     /** (商品ID)PRODUCT_ID: {+UQ, IX+, NotNull, INTEGER(10), FK to PRODUCT} */
     protected Integer _productId;
 
-    /** (購入日時)PURCHASE_DATETIME: {+UQ, IX+, NotNull, TIMESTAMP(23, 10)} */
+    /** (購入日時)PURCHASE_DATETIME: {+UQ, IX+, NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _purchaseDatetime;
 
     /** (購入数量)PURCHASE_COUNT: {NotNull, INTEGER(10)} */
@@ -120,13 +120,13 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     /** (支払完了フラグ)PAYMENT_COMPLETE_FLG: {NotNull, INTEGER(10), classification=Flg} */
     protected Integer _paymentCompleteFlg;
 
-    /** REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
+    /** REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _registerDatetime;
 
     /** REGISTER_USER: {NotNull, VARCHAR(200)} */
     protected String _registerUser;
 
-    /** UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
+    /** UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _updateDatetime;
 
     /** UPDATE_USER: {NotNull, VARCHAR(200)} */
@@ -162,7 +162,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
      * You can update the entity by the key when entity update (NOT batch update).
      * @param memberId (会員ID): UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER. (NotNull)
      * @param productId (商品ID): +UQ, IX+, NotNull, INTEGER(10), FK to PRODUCT. (NotNull)
-     * @param purchaseDatetime (購入日時): +UQ, IX+, NotNull, TIMESTAMP(23, 10). (NotNull)
+     * @param purchaseDatetime (購入日時): +UQ, IX+, NotNull, TIMESTAMP(26, 6). (NotNull)
      */
     public void uniqueBy(Integer memberId, Integer productId, java.sql.Timestamp purchaseDatetime) {
         __uniqueDrivenProperties.clear();
@@ -502,7 +502,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     }
 
     /**
-     * [get] (購入日時)PURCHASE_DATETIME: {+UQ, IX+, NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] (購入日時)PURCHASE_DATETIME: {+UQ, IX+, NotNull, TIMESTAMP(26, 6)} <br>
      * 購入した瞬間の日時。
      * @return The value of the column 'PURCHASE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
@@ -512,7 +512,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     }
 
     /**
-     * [set] (購入日時)PURCHASE_DATETIME: {+UQ, IX+, NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] (購入日時)PURCHASE_DATETIME: {+UQ, IX+, NotNull, TIMESTAMP(26, 6)} <br>
      * 購入した瞬間の日時。
      * @param purchaseDatetime The value of the column 'PURCHASE_DATETIME'. (basically NotNull if update: for the constraint)
      */
@@ -585,7 +585,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     }
 
     /**
-     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @return The value of the column 'REGISTER_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
@@ -594,7 +594,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     }
 
     /**
-     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
@@ -621,7 +621,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     }
 
     /**
-     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @return The value of the column 'UPDATE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
@@ -630,7 +630,7 @@ public abstract class BsPurchase extends AbstractEntity implements DomainEntity,
     }
 
     /**
-     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {

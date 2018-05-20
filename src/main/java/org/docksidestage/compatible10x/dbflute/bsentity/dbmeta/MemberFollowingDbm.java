@@ -97,10 +97,10 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberFollowingId = cci("MEMBER_FOLLOWING_ID", "MEMBER_FOLLOWING_ID", null, "会員フォローイングID", Long.class, "memberFollowingId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_BFF03C83_4558_4946_B22F_FD3A7B7A1C59", false, null, "連番", null, null, null, false);
+    protected final ColumnInfo _columnMemberFollowingId = cci("MEMBER_FOLLOWING_ID", "MEMBER_FOLLOWING_ID", null, "会員フォローイングID", Long.class, "memberFollowingId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_6D6CC6BB_8756_4C87_9BEB_6089EAFE696E", false, null, "連番", null, null, null, false);
     protected final ColumnInfo _columnMyMemberId = cci("MY_MEMBER_ID", "MY_MEMBER_ID", null, "わたし", Integer.class, "myMemberId", null, false, false, true, "INTEGER", 10, 0, null, null, false, null, "気になった人がいて...勇気を振り絞った会員のID。", "memberByMyMemberId", null, null, false);
     protected final ColumnInfo _columnYourMemberId = cci("YOUR_MEMBER_ID", "YOUR_MEMBER_ID", null, "あなた", Integer.class, "yourMemberId", null, false, false, true, "INTEGER", 10, 0, null, null, false, null, "いきなりのアクションに...ちょっと心揺らいだ会員のID。", "memberByYourMemberId", null, null, false);
-    protected final ColumnInfo _columnFollowDatetime = cci("FOLLOW_DATETIME", "FOLLOW_DATETIME", null, "その瞬間", java.sql.Timestamp.class, "followDatetime", null, false, false, true, "TIMESTAMP", 23, 10, null, null, false, null, "ふりかえるとちょっと恥ずかしい気持ちになる日時", null, null, null, false);
+    protected final ColumnInfo _columnFollowDatetime = cci("FOLLOW_DATETIME", "FOLLOW_DATETIME", null, "その瞬間", java.sql.Timestamp.class, "followDatetime", null, false, false, true, "TIMESTAMP", 26, 6, null, null, false, null, "ふりかえるとちょっと恥ずかしい気持ちになる日時", null, null, null, false);
 
     /**
      * (会員フォローイングID)MEMBER_FOLLOWING_ID: {PK, ID, NotNull, BIGINT(19)}
@@ -118,7 +118,7 @@ public class MemberFollowingDbm extends AbstractDBMeta {
      */
     public ColumnInfo columnYourMemberId() { return _columnYourMemberId; }
     /**
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnFollowDatetime() { return _columnFollowDatetime; }

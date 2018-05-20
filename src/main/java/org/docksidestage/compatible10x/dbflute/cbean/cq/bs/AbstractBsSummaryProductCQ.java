@@ -720,7 +720,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * @param latestPurchaseDatetime The value of latestPurchaseDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setLatestPurchaseDatetime_Equal(java.sql.Timestamp latestPurchaseDatetime) {
@@ -729,7 +729,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * @param latestPurchaseDatetime The value of latestPurchaseDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setLatestPurchaseDatetime_GreaterThan(java.sql.Timestamp latestPurchaseDatetime) {
@@ -738,7 +738,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * @param latestPurchaseDatetime The value of latestPurchaseDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setLatestPurchaseDatetime_LessThan(java.sql.Timestamp latestPurchaseDatetime) {
@@ -747,7 +747,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * @param latestPurchaseDatetime The value of latestPurchaseDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setLatestPurchaseDatetime_GreaterEqual(java.sql.Timestamp latestPurchaseDatetime) {
@@ -756,7 +756,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * @param latestPurchaseDatetime The value of latestPurchaseDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setLatestPurchaseDatetime_LessEqual(java.sql.Timestamp latestPurchaseDatetime) {
@@ -766,7 +766,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * <pre>e.g. setLatestPurchaseDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of latestPurchaseDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of latestPurchaseDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -779,7 +779,7 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
@@ -793,13 +793,13 @@ public abstract class AbstractBsSummaryProductCQ extends AbstractConditionQuery 
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      */
     public void setLatestPurchaseDatetime_IsNull() { regLatestPurchaseDatetime(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(23, 10)}
+     * LATEST_PURCHASE_DATETIME: {TIMESTAMP(26, 6)}
      */
     public void setLatestPurchaseDatetime_IsNotNull() { regLatestPurchaseDatetime(CK_ISNN, DOBJ); }
 

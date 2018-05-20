@@ -444,7 +444,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * @param followDatetime The value of followDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setFollowDatetime_Equal(java.sql.Timestamp followDatetime) {
@@ -453,7 +453,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * @param followDatetime The value of followDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setFollowDatetime_GreaterThan(java.sql.Timestamp followDatetime) {
@@ -462,7 +462,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * @param followDatetime The value of followDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setFollowDatetime_LessThan(java.sql.Timestamp followDatetime) {
@@ -471,7 +471,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * @param followDatetime The value of followDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setFollowDatetime_GreaterEqual(java.sql.Timestamp followDatetime) {
@@ -480,7 +480,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * @param followDatetime The value of followDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setFollowDatetime_LessEqual(java.sql.Timestamp followDatetime) {
@@ -490,7 +490,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setFollowDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -503,7 +503,7 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(23, 10)}
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>

@@ -2128,7 +2128,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * @param typeOfDate The value of typeOfDate as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfDate_Equal(java.util.Date typeOfDate) {
@@ -2137,7 +2137,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * @param typeOfDate The value of typeOfDate as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfDate_GreaterThan(java.util.Date typeOfDate) {
@@ -2146,7 +2146,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * @param typeOfDate The value of typeOfDate as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfDate_LessThan(java.util.Date typeOfDate) {
@@ -2155,7 +2155,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * @param typeOfDate The value of typeOfDate as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfDate_GreaterEqual(java.util.Date typeOfDate) {
@@ -2164,7 +2164,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * @param typeOfDate The value of typeOfDate as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfDate_LessEqual(java.util.Date typeOfDate) {
@@ -2174,7 +2174,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * <pre>e.g. setTypeOfDate_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of typeOfDate. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of typeOfDate. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -2187,7 +2187,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
@@ -2201,13 +2201,13 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      */
     public void setTypeOfDate_IsNull() { regTypeOfDate(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * TYPE_OF_DATE: {DATE(8)}
+     * TYPE_OF_DATE: {DATE(10)}
      */
     public void setTypeOfDate_IsNotNull() { regTypeOfDate(CK_ISNN, DOBJ); }
 
@@ -2216,7 +2216,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * @param typeOfTimestamp The value of typeOfTimestamp as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTimestamp_Equal(java.sql.Timestamp typeOfTimestamp) {
@@ -2225,7 +2225,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * @param typeOfTimestamp The value of typeOfTimestamp as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTimestamp_GreaterThan(java.sql.Timestamp typeOfTimestamp) {
@@ -2234,7 +2234,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * @param typeOfTimestamp The value of typeOfTimestamp as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTimestamp_LessThan(java.sql.Timestamp typeOfTimestamp) {
@@ -2243,7 +2243,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * @param typeOfTimestamp The value of typeOfTimestamp as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTimestamp_GreaterEqual(java.sql.Timestamp typeOfTimestamp) {
@@ -2252,7 +2252,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * @param typeOfTimestamp The value of typeOfTimestamp as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTimestamp_LessEqual(java.sql.Timestamp typeOfTimestamp) {
@@ -2262,7 +2262,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * <pre>e.g. setTypeOfTimestamp_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of typeOfTimestamp. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of typeOfTimestamp. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -2275,7 +2275,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
@@ -2289,13 +2289,13 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      */
     public void setTypeOfTimestamp_IsNull() { regTypeOfTimestamp(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * TYPE_OF_TIMESTAMP: {TIMESTAMP(23, 10)}
+     * TYPE_OF_TIMESTAMP: {TIMESTAMP(26, 6)}
      */
     public void setTypeOfTimestamp_IsNotNull() { regTypeOfTimestamp(CK_ISNN, DOBJ); }
 
@@ -2304,7 +2304,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      * @param typeOfTime The value of typeOfTime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTime_Equal(java.sql.Time typeOfTime) {
@@ -2313,7 +2313,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      * @param typeOfTime The value of typeOfTime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTime_GreaterThan(java.sql.Time typeOfTime) {
@@ -2322,7 +2322,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      * @param typeOfTime The value of typeOfTime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTime_LessThan(java.sql.Time typeOfTime) {
@@ -2331,7 +2331,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      * @param typeOfTime The value of typeOfTime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTime_GreaterEqual(java.sql.Time typeOfTime) {
@@ -2340,7 +2340,7 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      * @param typeOfTime The value of typeOfTime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setTypeOfTime_LessEqual(java.sql.Time typeOfTime) {
@@ -2349,13 +2349,13 @@ public abstract class AbstractBsVendorCheckCQ extends AbstractConditionQuery {
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      */
     public void setTypeOfTime_IsNull() { regTypeOfTime(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * TYPE_OF_TIME: {TIME(6)}
+     * TYPE_OF_TIME: {TIME(8)}
      */
     public void setTypeOfTime_IsNotNull() { regTypeOfTime(CK_ISNN, DOBJ); }
 

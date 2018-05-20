@@ -736,7 +736,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * @param withdrawalDatetime The value of withdrawalDatetime as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setWithdrawalDatetime_Equal(java.sql.Timestamp withdrawalDatetime) {
@@ -745,7 +745,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * @param withdrawalDatetime The value of withdrawalDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setWithdrawalDatetime_GreaterThan(java.sql.Timestamp withdrawalDatetime) {
@@ -754,7 +754,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * @param withdrawalDatetime The value of withdrawalDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setWithdrawalDatetime_LessThan(java.sql.Timestamp withdrawalDatetime) {
@@ -763,7 +763,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * @param withdrawalDatetime The value of withdrawalDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setWithdrawalDatetime_GreaterEqual(java.sql.Timestamp withdrawalDatetime) {
@@ -772,7 +772,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * @param withdrawalDatetime The value of withdrawalDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setWithdrawalDatetime_LessEqual(java.sql.Timestamp withdrawalDatetime) {
@@ -782,7 +782,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * <pre>e.g. setWithdrawalDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -795,7 +795,7 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * <pre>
      * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
      *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
@@ -809,13 +809,13 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      */
     public void setWithdrawalDatetime_IsNull() { regWithdrawalDatetime(CK_ISN, DOBJ); }
 
     /**
      * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(23, 10)}
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      */
     public void setWithdrawalDatetime_IsNotNull() { regWithdrawalDatetime(CK_ISNN, DOBJ); }
 

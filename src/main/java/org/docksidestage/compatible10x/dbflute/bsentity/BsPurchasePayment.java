@@ -102,19 +102,19 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     /** (支払金額)PAYMENT_AMOUNT: {NotNull, DECIMAL(10, 2)} */
     protected java.math.BigDecimal _paymentAmount;
 
-    /** (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)} */
+    /** (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _paymentDatetime;
 
     /** (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3), classification=PaymentMethod} */
     protected String _paymentMethodCode;
 
-    /** REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
+    /** REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _registerDatetime;
 
     /** REGISTER_USER: {NotNull, VARCHAR(200)} */
     protected String _registerUser;
 
-    /** UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
+    /** UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} */
     protected java.sql.Timestamp _updateDatetime;
 
     /** UPDATE_USER: {NotNull, VARCHAR(200)} */
@@ -418,7 +418,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     }
 
     /**
-     * [get] (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)} <br>
      * 支払ったときの日時
      * @return The value of the column 'PAYMENT_DATETIME'. (basically NotNull if selected: for the constraint)
      */
@@ -428,7 +428,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     }
 
     /**
-     * [set] (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)} <br>
      * 支払ったときの日時
      * @param paymentDatetime The value of the column 'PAYMENT_DATETIME'. (basically NotNull if update: for the constraint)
      */
@@ -459,7 +459,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     }
 
     /**
-     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @return The value of the column 'REGISTER_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getRegisterDatetime() {
@@ -468,7 +468,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     }
 
     /**
-     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @param registerDatetime The value of the column 'REGISTER_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setRegisterDatetime(java.sql.Timestamp registerDatetime) {
@@ -495,7 +495,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     }
 
     /**
-     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [get] UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @return The value of the column 'UPDATE_DATETIME'. (basically NotNull if selected: for the constraint)
      */
     public java.sql.Timestamp getUpdateDatetime() {
@@ -504,7 +504,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     }
 
     /**
-     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(23, 10)} <br>
+     * [set] UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)} <br>
      * @param updateDatetime The value of the column 'UPDATE_DATETIME'. (basically NotNull if update: for the constraint)
      */
     public void setUpdateDatetime(java.sql.Timestamp updateDatetime) {

@@ -95,10 +95,10 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
     /** (会員名称)MEMBER_NAME: {VARCHAR(200), refers to MEMBER.MEMBER_NAME} */
     protected String _memberName;
 
-    /** (生年月日)BIRTHDATE: {DATE(8), refers to MEMBER.BIRTHDATE} */
+    /** (生年月日)BIRTHDATE: {DATE(10), refers to MEMBER.BIRTHDATE} */
     protected java.util.Date _birthdate;
 
-    /** (正式会員日時)FORMALIZED_DATETIME: {TIMESTAMP(23, 10), refers to MEMBER.FORMALIZED_DATETIME} */
+    /** (正式会員日時)FORMALIZED_DATETIME: {TIMESTAMP(26, 6), refers to MEMBER.FORMALIZED_DATETIME} */
     protected java.sql.Timestamp _formalizedDatetime;
 
     /** (会員ステータスコード)MEMBER_STATUS_CODE: {CHAR(3), refers to MEMBER.MEMBER_STATUS_CODE, classification=MemberStatus} */
@@ -452,7 +452,7 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
     }
 
     /**
-     * [get] (生年月日)BIRTHDATE: {DATE(8), refers to MEMBER.BIRTHDATE} <br>
+     * [get] (生年月日)BIRTHDATE: {DATE(10), refers to MEMBER.BIRTHDATE} <br>
      * 必須項目ではないので、このデータがない会員もいる。<br>
      * // select column comment here (no as)
      * @return The value of the column 'BIRTHDATE'. (NullAllowed even if selected: for no constraint)
@@ -463,7 +463,7 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
     }
 
     /**
-     * [set] (生年月日)BIRTHDATE: {DATE(8), refers to MEMBER.BIRTHDATE} <br>
+     * [set] (生年月日)BIRTHDATE: {DATE(10), refers to MEMBER.BIRTHDATE} <br>
      * 必須項目ではないので、このデータがない会員もいる。<br>
      * // select column comment here (no as)
      * @param birthdate The value of the column 'BIRTHDATE'. (NullAllowed: null update allowed for no constraint)
@@ -474,7 +474,7 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
     }
 
     /**
-     * [get] (正式会員日時)FORMALIZED_DATETIME: {TIMESTAMP(23, 10), refers to MEMBER.FORMALIZED_DATETIME} <br>
+     * [get] (正式会員日時)FORMALIZED_DATETIME: {TIMESTAMP(26, 6), refers to MEMBER.FORMALIZED_DATETIME} <br>
      * 会員が正式に確定した(正式会員になった)日時。<br>
      * 一度確定したらもう二度と更新されないはずだ！<br>
      * // select column comment here (using as)
@@ -486,7 +486,7 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
     }
 
     /**
-     * [set] (正式会員日時)FORMALIZED_DATETIME: {TIMESTAMP(23, 10), refers to MEMBER.FORMALIZED_DATETIME} <br>
+     * [set] (正式会員日時)FORMALIZED_DATETIME: {TIMESTAMP(26, 6), refers to MEMBER.FORMALIZED_DATETIME} <br>
      * 会員が正式に確定した(正式会員になった)日時。<br>
      * 一度確定したらもう二度と更新されないはずだ！<br>
      * // select column comment here (using as)
