@@ -181,7 +181,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- spring -->
+		<!-- container -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
