@@ -1,4 +1,137 @@
 map:{
+    ; 2019/08/23 00:53:01 = map:{
+        ; diffDate = 2019/08/23 00:53:01
+        ; diffAuthor = jflute
+        ; diffGitBranch = master
+        ; tableDiff = map:{
+            ; MEMBER = map:{
+                ; tableName = MEMBER
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; MEMBER_ID = map:{
+                        ; columnName = MEMBER_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_DA9B79B5_E777_4543_BE37_D2F34C73F1DA""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_000BE2CB_3CCC_4AA9_B674_7E8C4DF449B9""
+                        }
+                    }
+                }
+            }
+            ; MEMBER_ADDRESS = map:{
+                ; tableName = MEMBER_ADDRESS
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; MEMBER_ADDRESS_ID = map:{
+                        ; columnName = MEMBER_ADDRESS_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_30ED671E_2902_499F_9E82_FC85986464CA""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_6A7422BD_BF35_481C_970B_0C106CCD8B1E""
+                        }
+                    }
+                }
+            }
+            ; MEMBER_FOLLOWING = map:{
+                ; tableName = MEMBER_FOLLOWING
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; MEMBER_FOLLOWING_ID = map:{
+                        ; columnName = MEMBER_FOLLOWING_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_E1602DE5_5117_4155_9B21_B7BEE5094E73""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_9C649713_E868_43C5_8DC1_F030AE0C94C9""
+                        }
+                    }
+                }
+            }
+            ; MEMBER_LOGIN = map:{
+                ; tableName = MEMBER_LOGIN
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; MEMBER_LOGIN_ID = map:{
+                        ; columnName = MEMBER_LOGIN_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_F800D13D_2CF2_442B_9F67_BAE14D26BC39""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_78B1D4FA_8E2C_4DCF_B486_1FC04A50B33D""
+                        }
+                    }
+                }
+            }
+            ; MEMBER_SERVICE = map:{
+                ; tableName = MEMBER_SERVICE
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; MEMBER_SERVICE_ID = map:{
+                        ; columnName = MEMBER_SERVICE_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_08F6E98B_5570_4EBB_B569_A7EAAAE7D79B""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_B4AB3B92_54D3_4433_A53F_0FAB604A5C4F""
+                        }
+                    }
+                }
+            }
+            ; PRODUCT = map:{
+                ; tableName = PRODUCT
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; PRODUCT_ID = map:{
+                        ; columnName = PRODUCT_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_50460E82_C931_41E3_9068_36F270A9FBC0""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_811DAD66_29C1_4F44_8DD8_B495E2897EBF""
+                        }
+                    }
+                }
+            }
+            ; PURCHASE = map:{
+                ; tableName = PURCHASE
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; PURCHASE_ID = map:{
+                        ; columnName = PURCHASE_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_3E840853_F4FE_49B3_B180_47D4BF6A600D""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_0617787B_A7B4_4D29_86FE_8D83EA6D81A4""
+                        }
+                    }
+                }
+            }
+            ; PURCHASE_PAYMENT = map:{
+                ; tableName = PURCHASE_PAYMENT
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; PURCHASE_PAYMENT_ID = map:{
+                        ; columnName = PURCHASE_PAYMENT_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_4C22F119_D8F5_4E0E_A935_C583D80EFF5D""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_689DB37C_1F76_49C5_AC83_A1344507EAA4""
+                        }
+                    }
+                }
+            }
+            ; VENDOR_IDENTITY_ONLY = map:{
+                ; tableName = VENDOR_IDENTITY_ONLY
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; IDENTITY_ONLY_ID = map:{
+                        ; columnName = IDENTITY_ONLY_ID
+                        ; diffType = CHANGE
+                        ; defaultValueDiff = map:{
+                            ; next = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_8C10D8CD_71BA_46AC_B192_219B09EB367D""
+                            ; previous = "NEXT VALUE FOR "PUBLIC"."SYSTEM_SEQUENCE_5EFC27D8_89D4_4839_838D_783CEE5E96F8""
+                        }
+                    }
+                }
+            }
+        }
+    }
     ; 2019/08/21 16:26:57 = map:{
         ; diffDate = 2019/08/21 16:26:57
         ; diffAuthor = jflute
