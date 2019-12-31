@@ -1,4 +1,33 @@
 map:{
+    ; 2020/01/01 00:14:11 = map:{
+        ; diffDate = 2020/01/01 00:14:11
+        ; diffAuthor = jflute
+        ; diffGitBranch = master
+        ; tableDiff = map:{
+            ; VENDOR_CHECK = map:{
+                ; tableName = VENDOR_CHECK
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; TYPE_OF_UUID = map:{
+                        ; columnName = TYPE_OF_UUID
+                        ; diffType = CHANGE
+                        ; columnSizeDiff = map:{
+                            ; next = 16
+                            ; previous = 2147483647
+                        }
+                    }
+                    ; TYPE_OF_ARRAY = map:{
+                        ; columnName = TYPE_OF_ARRAY
+                        ; diffType = CHANGE
+                        ; columnSizeDiff = map:{
+                            ; next = 2147483647
+                            ; previous = null
+                        }
+                    }
+                }
+            }
+        }
+    }
     ; 2019/08/23 00:53:01 = map:{
         ; diffDate = 2019/08/23 00:53:01
         ; diffAuthor = jflute
