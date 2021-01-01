@@ -56,7 +56,10 @@ public class WxCBColumnQueryDreamCruiseCalcOptionTest extends UnitContainerTestC
             public void specify(MemberCB cb) {
                 cb.mysticRhythms(789L);
             }
-        }).divide(cb.dreamCruiseCB().specify().columnMemberId().plus(99)).minus(cb.dreamCruiseCB().specify().columnVersionNo()).left()
+        })
+                .divide(cb.dreamCruiseCB().specify().columnMemberId().plus(99))
+                .minus(cb.dreamCruiseCB().specify().columnVersionNo())
+                .left()
                 .plus(cb.dreamCruiseCB().specify().specifyMemberServiceAsOne().columnServicePointCount());
 
         // ## Act ##
@@ -83,36 +86,21 @@ public class WxCBColumnQueryDreamCruiseCalcOptionTest extends UnitContainerTestC
         }
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.columnQuery(new SpecifyQuery<MemberCB>() {
-            public void specify(MemberCB cb) {
-                cb.specify().columnBirthdate();
-            }
-        }).lessEqual(new SpecifyQuery<MemberCB>() {
-            public void specify(MemberCB cb) {
-                cb.mysticRhythms(toUtilDate("2015/04/05"));
-            }
-        }).convert(op -> op.addMonth(cb.dreamCruiseCB().specify().columnVersionNo()).trunc(cb.dreamCruiseCB().specify().columnMemberId()));
-        cb.columnQuery(new SpecifyQuery<MemberCB>() {
-            public void specify(MemberCB cb) {
-                cb.specify().specifyMemberSecurityAsOne().columnReminderUseCount();
-            }
-        }).lessThan(new SpecifyQuery<MemberCB>() {
-            public void specify(MemberCB cb) {
-                cb.mysticRhythms(1);
-            }
-        }).convert(op -> op.trunc(cb.dreamCruiseCB().specify().columnMemberId()).round(cb.dreamCruiseCB().specify().columnVersionNo()));
-        cb.columnQuery(new SpecifyQuery<MemberCB>() {
-            public void specify(MemberCB cb) {
-                cb.specify().columnBirthdate();
-            }
-        }).greaterEqual(new SpecifyQuery<MemberCB>() {
-            public void specify(MemberCB cb) {
-                cb.mysticRhythms(toUtilDate("2006/09/26"));
-            }
-        }).convert(op -> {
-            op.subtractDay(cb.dreamCruiseCB().specify().columnMemberId().plus(99)) //
-                    .addMinute(-1).coalesce(cb.dreamCruiseCB().specify().columnBirthdate());
-        });
+        cb.columnQuery(colCB -> colCB.specify().columnBirthdate())
+                .lessEqual(colCB -> colCB.mysticRhythms(toUtilDate("2015/04/05")))
+                .convert(op -> op.addMonth(cb.dreamCruiseCB().specify().columnVersionNo())
+                        .trunc(cb.dreamCruiseCB().specify().columnMemberId()));
+        cb.columnQuery(colCB -> colCB.specify().specifyMemberSecurityAsOne().columnReminderUseCount())
+                .lessThan(colCB -> colCB.mysticRhythms(1))
+                .convert(op -> op.trunc(cb.dreamCruiseCB().specify().columnMemberId())
+                        .round(cb.dreamCruiseCB().specify().columnVersionNo()));
+        cb.columnQuery(colCB -> colCB.specify().columnBirthdate())
+                .greaterEqual(colCB -> colCB.mysticRhythms(toUtilDate("2006/09/26")))
+                .convert(op -> {
+                    op.subtractDay(cb.dreamCruiseCB().specify().columnMemberId().plus(99)) //
+                            .addMinute(-1)
+                            .coalesce(cb.dreamCruiseCB().specify().columnBirthdate());
+                });
 
         // ## Act ##
         // conversion error
