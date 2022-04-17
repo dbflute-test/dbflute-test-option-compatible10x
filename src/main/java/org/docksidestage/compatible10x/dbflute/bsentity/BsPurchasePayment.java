@@ -153,7 +153,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
      */
     public CDef.PaymentMethod getPaymentMethodCodeAsPaymentMethod() {
-        return CDef.PaymentMethod.codeOf(getPaymentMethodCode());
+        return CDef.PaymentMethod.of(getPaymentMethodCode()).orElse(null);
     }
 
     /**
