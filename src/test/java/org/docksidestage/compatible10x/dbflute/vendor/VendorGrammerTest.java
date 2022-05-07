@@ -13,6 +13,7 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.cbean.ordering.ManualOrderOption;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.SubQuery;
+import org.dbflute.helper.HandyDate;
 import org.dbflute.hook.AccessContext;
 import org.dbflute.util.DfCollectionUtil;
 import org.dbflute.util.DfTypeUtil;
@@ -81,8 +82,7 @@ public class VendorGrammerTest extends UnitContainerTestCase {
         int countAll;
         {
             PurchaseCB cb = new PurchaseCB();
-            cb.query().queryMember().queryMemberWithdrawalAsOne().queryWithdrawalReason()
-                    .setWithdrawalReasonCode_IsNotNull();
+            cb.query().queryMember().queryMemberWithdrawalAsOne().queryWithdrawalReason().setWithdrawalReasonCode_IsNotNull();
             countAll = purchaseBhv.selectCount(cb);
         }
 
@@ -172,7 +172,6 @@ public class VendorGrammerTest extends UnitContainerTestCase {
         ListResultBean<MemberWithdrawal> actualList = memberWithdrawalBhv.selectList(cb);
         assertNotSame(0, actualList.size());
         assertEquals(memberIdList.size(), actualList.size());
-        String fmt = "yyyy-MM-dd HH:mm:ss.SSS";
         for (MemberWithdrawal actual : actualList) {
             String withdrawalReasonCode = actual.getWithdrawalReasonCode();
             assertNotNull(withdrawalReasonCode);
@@ -181,11 +180,12 @@ public class VendorGrammerTest extends UnitContainerTestCase {
             assertEquals(member.getMemberName(), actual.getWithdrawalReasonInputText());
 
             // common columns
+            // common columns (clearing milliseconds to avoid execution random result)
             AccessContext accessContext = AccessContext.getAccessContextOnThread();
-            String registerTimestamp = DfTypeUtil.toString(accessContext.getAccessTimestamp(), fmt);
-            assertEquals(registerTimestamp, DfTypeUtil.toString(actual.getRegisterDatetime(), fmt));
+            HandyDate accessTimestamp = new HandyDate(accessContext.getAccessTimestamp()).clearMillisecond();
+            assertEquals(accessTimestamp, new HandyDate(actual.getRegisterDatetime()).clearMillisecond());
             assertEquals(accessContext.getAccessUser(), actual.getRegisterUser());
-            assertEquals(registerTimestamp, DfTypeUtil.toString(actual.getUpdateDatetime(), fmt));
+            assertEquals(accessTimestamp, new HandyDate(actual.getUpdateDatetime()).clearMillisecond());
             assertEquals(accessContext.getAccessUser(), actual.getUpdateUser());
 
             // exclusive control column
@@ -227,8 +227,7 @@ public class VendorGrammerTest extends UnitContainerTestCase {
 
                 intoCB.specify().columnMemberId().mappedFrom(cb.specify().columnMemberId());
                 intoCB.specify().columnWithdrawalDatetime().mappedFromDerived(Member.ALIAS_latestLoginDatetime);
-                intoCB.specify().columnWithdrawalReasonInputText()
-                        .mappedFrom(cb.specify().specifyMemberStatus().columnMemberStatusName());
+                intoCB.specify().columnWithdrawalReasonInputText().mappedFrom(cb.specify().specifyMemberStatus().columnMemberStatusName());
 
                 cb.query().setMemberStatusCode_Equal_Formalized();
                 cb.query().addOrderBy_Birthdate_Desc().withNullsLast();
@@ -288,8 +287,8 @@ public class VendorGrammerTest extends UnitContainerTestCase {
 
         // ## Assert ##
         assertHasAnyElement(memberList);
-        List<CDef.MemberStatus> expectedList = newArrayList(CDef.MemberStatus.Withdrawal, CDef.MemberStatus.Formalized,
-                CDef.MemberStatus.Provisional);
+        List<CDef.MemberStatus> expectedList =
+                newArrayList(CDef.MemberStatus.Withdrawal, CDef.MemberStatus.Formalized, CDef.MemberStatus.Provisional);
         Set<CDef.MemberStatus> actualSet = newLinkedHashSet();
         for (Member member : memberList) {
             actualSet.add(member.getMemberStatusCodeAsMemberStatus());
