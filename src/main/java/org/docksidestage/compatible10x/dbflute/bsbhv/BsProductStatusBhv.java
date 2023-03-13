@@ -36,35 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of (商品ステータス)PRODUCT_STATUS as TABLE. <br>
- * <pre>
- * [primary key]
- *     PRODUCT_STATUS_CODE
- *
- * [column]
- *     PRODUCT_STATUS_CODE, PRODUCT_STATUS_NAME, DISPLAY_ORDER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     PRODUCT, SUMMARY_PRODUCT
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     productList, summaryProductList
- * </pre>
+ * The behavior of (商品ステータス)PRODUCT_STATUS as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<ProductStatus, ProductStatusCB> {

@@ -24,43 +24,7 @@ import org.dbflute.dbmeta.accessory.CustomizeEntity;
 import org.docksidestage.compatible10x.dbflute.exentity.customize.*;
 
 /**
- * The entity of PmCommentEmbedded. <br>
- * <pre>
- * [primary-key]
- *     
- *
- * [column]
- *     MEMBER_ID, MEMBER_NAME
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     
- *
- * [get/set template]
- * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
- * Integer memberId = entity.getMemberId();
- * String memberName = entity.getMemberName();
- * entity.setMemberId(memberId);
- * entity.setMemberName(memberName);
- * = = = = = = = = = =/
- * </pre>
+ * The entity of PmCommentEmbedded.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsPmCommentEmbedded extends AbstractEntity implements CustomizeEntity {

@@ -36,35 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of (会員ログイン)MEMBER_LOGIN as TABLE. <br>
- * <pre>
- * [primary key]
- *     MEMBER_LOGIN_ID
- *
- * [column]
- *     MEMBER_LOGIN_ID, MEMBER_ID, LOGIN_DATETIME, MOBILE_LOGIN_FLG, LOGIN_MEMBER_STATUS_CODE
- *
- * [sequence]
- *     
- *
- * [identity]
- *     MEMBER_LOGIN_ID
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     MEMBER_STATUS, MEMBER
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     memberStatus, member
- *
- * [referrer property]
- *     
- * </pre>
+ * The behavior of (会員ログイン)MEMBER_LOGIN as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsMemberLoginBhv extends AbstractBehaviorWritable<MemberLogin, MemberLoginCB> {

@@ -36,35 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of (退会理由)WITHDRAWAL_REASON as TABLE. <br>
- * <pre>
- * [primary key]
- *     WITHDRAWAL_REASON_CODE
- *
- * [column]
- *     WITHDRAWAL_REASON_CODE, WITHDRAWAL_REASON_TEXT, DISPLAY_ORDER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     MEMBER_WITHDRAWAL
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     memberWithdrawalList
- * </pre>
+ * The behavior of (退会理由)WITHDRAWAL_REASON as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsWithdrawalReasonBhv extends AbstractBehaviorWritable<WithdrawalReason, WithdrawalReasonCB> {

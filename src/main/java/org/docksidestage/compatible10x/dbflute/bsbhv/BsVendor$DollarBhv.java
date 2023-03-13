@@ -36,35 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of VENDOR_$_DOLLAR as TABLE. <br>
- * <pre>
- * [primary key]
- *     VENDOR_$_DOLLAR_ID
- *
- * [column]
- *     VENDOR_$_DOLLAR_ID, VENDOR_$_DOLLAR_NAME
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     
- * </pre>
+ * The behavior of VENDOR_$_DOLLAR as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor$Dollar, Vendor$DollarCB> {

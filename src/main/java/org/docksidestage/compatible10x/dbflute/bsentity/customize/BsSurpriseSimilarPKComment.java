@@ -25,51 +25,7 @@ import org.docksidestage.compatible10x.dbflute.allcommon.EntityDefinedCommonColu
 import org.docksidestage.compatible10x.dbflute.exentity.customize.*;
 
 /**
- * The entity of SurpriseSimilarPKComment. <br>
- * <pre>
- * [primary-key]
- *     
- *
- * [column]
- *     MEMBER_ID, MEMBER_NAME, REGISTER_DATETIME, REGISTER_USER, UPDATE_DATETIME, UPDATE_USER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     
- *
- * [get/set template]
- * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
- * Integer memberId = entity.getMemberId();
- * String memberName = entity.getMemberName();
- * java.sql.Timestamp registerDatetime = entity.getRegisterDatetime();
- * String registerUser = entity.getRegisterUser();
- * java.sql.Timestamp updateDatetime = entity.getUpdateDatetime();
- * String updateUser = entity.getUpdateUser();
- * entity.setMemberId(memberId);
- * entity.setMemberName(memberName);
- * entity.setRegisterDatetime(registerDatetime);
- * entity.setRegisterUser(registerUser);
- * entity.setUpdateDatetime(updateDatetime);
- * entity.setUpdateUser(updateUser);
- * = = = = = = = = = =/
- * </pre>
+ * The entity of SurpriseSimilarPKComment.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsSurpriseSimilarPKComment extends AbstractEntity implements CustomizeEntity, EntityDefinedCommonColumn {

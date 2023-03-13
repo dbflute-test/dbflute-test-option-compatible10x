@@ -36,35 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of VENDOR_PRIMARY_KEY_ONLY as TABLE. <br>
- * <pre>
- * [primary key]
- *     PRIMARY_KEY_ONLY_ID
- *
- * [column]
- *     PRIMARY_KEY_ONLY_ID
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     
- * </pre>
+ * The behavior of VENDOR_PRIMARY_KEY_ONLY as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsVendorPrimaryKeyOnlyBhv extends AbstractBehaviorWritable<VendorPrimaryKeyOnly, VendorPrimaryKeyOnlyCB> {

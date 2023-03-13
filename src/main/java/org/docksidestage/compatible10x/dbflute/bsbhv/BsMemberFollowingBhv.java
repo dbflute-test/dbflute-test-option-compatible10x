@@ -36,35 +36,7 @@ import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.compatible10x.dbflute.cbean.*;
 
 /**
- * The behavior of (会員フォローイング)MEMBER_FOLLOWING as TABLE. <br>
- * <pre>
- * [primary key]
- *     MEMBER_FOLLOWING_ID
- *
- * [column]
- *     MEMBER_FOLLOWING_ID, MY_MEMBER_ID, YOUR_MEMBER_ID, FOLLOW_DATETIME
- *
- * [sequence]
- *     
- *
- * [identity]
- *     MEMBER_FOLLOWING_ID
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     MEMBER
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     memberByMyMemberId, memberByYourMemberId
- *
- * [referrer property]
- *     
- * </pre>
+ * The behavior of (会員フォローイング)MEMBER_FOLLOWING as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsMemberFollowingBhv extends AbstractBehaviorWritable<MemberFollowing, MemberFollowingCB> {
