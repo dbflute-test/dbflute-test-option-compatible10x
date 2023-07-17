@@ -75,15 +75,107 @@ map:{
     ; isMakeCallbackConditionManualOrder = false
     ; isAvailableJava8TimeLocalDateEntity = false
 
+    # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    #
     # runtime compatible (true if compatible)
+    # 実行時の挙動の互換オプション (trueなら互換状態)
+    #
+    # _/_/_/_/_/_/_/_/_/_/
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # cb.query().set... でnull指定したときに例外にせず素通りにする互換オプション。
+    # Java8版からは素通り非推奨ということで、本来はfalseにしたい。
+    #
+    # << 移行手順 >> @since 1.2.7
+    # isInvalidQueryAllowedWarning=true でwarningログを出せるので、
+    # warningログが出なくなったらfalseにして移行完了。
+    # - - - - - - - - - -/
     ; isNullOrEmptyQueryAllowed = true
+
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # cb.query().set... で同じカラムに同じ条件の2回呼び出しで例外にせず上書きにする互換オプション。
+    # Java8版からは上書き非推奨ということで、本来はfalseにしたい。
+    #
+    # << 移行手順 >> @since 1.2.7
+    # isInvalidQueryAllowedWarning=true でwarningログを出せるので、
+    # warningログが出なくなったらfalseにして移行完了。
+    # - - - - - - - - - -/
     ; isOverridingQueryAllowed = true
-    ; isNonSpecifiedColumnAccessAllowed = true
+
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # InvalidQueryが発生したらwarningログが出るようになる移行支援オプション。@since 1.2.7
+    # このwarningログを使って該当箇所にif文などを入れるなり実装調整をして少しずつ移行すると良い。
+    # このログが全く出なくなってOKと判断したら、対象のallowed系のプロパティをfalseにする。
+    # 対象のallowed系のプロパティがすべてfalseになったらこのプロパティもfalseにする。
+    # 
+    # InvalidQueryは以下を含む:
+    #  o NullOrEmptyQuery :: #nullOrEmpty_query
+    #  o OverridingQuery :: #overriding_query
+    #  o FromToOneSideのNullOrEmpty :: #nullOrEmpty_query
+    # 上記のハッシュタグでログを検索できる。
+    # - - - - - - - - - -/
+    ; isInvalidQueryAllowedWarning = true
+
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # SpecifyColumnしてないカラムをgetしてしまったときに例外にしない互換オプション。
+    # specify()してないカラムをgetしていたら基本的にアプリの不具合と言えるので、本来はfalseにしたい。
+    #
+    # << 移行手順 >> @since 1.2.7
+    # このAllowedプロパティはfalseにした上で、
+    # isNonSpecifiedColumnAccessWarningOnly=true にするとwarningログだけが出力されるので、
+    # それで実装調整をしたらWarningOnlyの方もfalseにして移行完了。
+    # ハッシュタグは: #nonSpecifiedColumn_access
+    # - - - - - - - - - -/
+    ; isNonSpecifiedColumnAccessAllowed = false
+    ; isNonSpecifiedColumnAccessWarningOnly = true
+
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # fromTo で op.allowOneSide() が自動付与されて、未指定でもnull指定を素通りにする互換オプション。
+    # isNullOrEmptyQueryAllowedがtrueであれば、どのみちnull許容されるので関係ない。
+    #
+    # << 移行手順 >> @since 1.2.7
+    # (isNullOrEmptyQueryAllowedがtrueであることを前提に)
+    # こちらも isInvalidQueryAllowedWarning=true でnull指定のログが出るので、
+    # それで確認をしてif文やallowOneSide()の実装調整をしてからfalseにすると移行完了。
+    # - - - - - - - - - -/
     ; isCompatibleConditionBeanFromToOneSideAllowed = true
+
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # orScopeQuery()にて、orCBでsetupSelectなどのorと無関係の操作を例外ではなく素通りにする互換オプション。
+    # orCBも単なるcbなので動いてしまうが、可読性的に良くないので、本来はfalseにしたい。
+    #
+    # << 移行手順 >>
+    # TODO jflute 移行オプションを検討中 (2023/07/17)
+    # - - - - - - - - - -/
     ; isCompatibleOrScopeQueryPurposeNoCheck = true
+
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # 区分値定義していないコードがDBに含まれていたときに、select時に例外にせず素通りにする互換オプション。
+    # 基本的にはアプリ的におかしい状況なので、素通りせずに何かしらのチェック(例外 or ログ)は掛けたい。
+    #
+    # << 移行手順 >>
+    # 区分値の undefinedHandlingType が LOGGING(デフォルト) で統一されていれば、
+    # このプロパティは false にして実行時のログを確認してDB修正してからfalseにすると移行完了。
+    # (FK制約の掛かってる区分値では基本発生しないので、暗黙の区分値が対象)
+    #
+    # もし、isCheckSelectedClassification=true ならすでに例外チェックされているので、
+    # このプロパティは関係ない。その場合は気にせずfalseにして良い。
+    # - - - - - - - - - -/
     ; isSuppressDefaultCheckClassificationCode = true
 
+    # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    #
     # runtime compatible (false if compatible)
+    # 実行時の挙動の互換オプション (false)
+    #
+    # _/_/_/_/_/_/_/_/_/_/
+    # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # cbを「そのタイミングじゃないでしょ」ってときに使ったりしたときに例外にしない互換オプション。
+    # 例えば基点のcbをExistsReferrerのコールバックの中で使ったりしたときなど。
+    # 可読性的に良くないので基本trueにしてチェックを入れたい。
+    #
+    # << 移行手順 >>
+    # TODO jflute 移行オプションを検討中 (2023/07/17)
+    # - - - - - - - - - -/
     ; isThatsBadTimingDetect = false
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
