@@ -1,7 +1,6 @@
 package org.docksidestage.compatible10x.dbflute.whitebox.outsidesql;
 
 import org.dbflute.cbean.result.ListResultBean;
-import org.dbflute.exception.NonSpecifiedColumnAccessException;
 import org.docksidestage.compatible10x.dbflute.allcommon.DBFluteConfig;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.pmbean.DomainMemberPmb;
@@ -79,18 +78,10 @@ public class WxOutsideSqlDomainTest extends UnitContainerTestCase {
                 assertNotNull(member.getMemberId());
                 assertNotNull(member.getMemberName());
                 assertFalse(member.hasModification());
-                try {
-                    member.getFormalizedDatetime();
-                    fail();
-                } catch (NonSpecifiedColumnAccessException e) {
-                    log(e.getMessage());
-                }
-                try {
-                    member.getMemberStatusCode();
-                    fail();
-                } catch (NonSpecifiedColumnAccessException e) {
-                    log(e.getMessage());
-                }
+
+                // warning only, visual check
+                member.getFormalizedDatetime();
+                member.getMemberStatusCode();
             }
         } finally {
             DBFluteConfig.getInstance().setNonSpecifiedColumnAccessAllowed(originally);
