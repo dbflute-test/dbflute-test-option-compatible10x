@@ -1,4 +1,4 @@
-package org.docksidestage.compatible10x.dbflute.whitebox.cbean;
+package org.docksidestage.compatible10x.dbflute.whitebox.cbean.internal;
 
 import java.util.Date;
 
