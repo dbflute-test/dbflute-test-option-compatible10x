@@ -87,7 +87,7 @@ map:{
     #
     # << 移行手順 >> @since 1.2.7
     # isInvalidQueryAllowedWarning=true でwarningログを出せるので、
-    # warningログが出なくなったらfalseにして移行完了。
+    # warningログが出なくなったらfalse(orコメントアウト)にして移行完了。
     # - - - - - - - - - -/
     ; isNullOrEmptyQueryAllowed = true
 
@@ -97,7 +97,7 @@ map:{
     #
     # << 移行手順 >> @since 1.2.7
     # isInvalidQueryAllowedWarning=true でwarningログを出せるので、
-    # warningログが出なくなったらfalseにして移行完了。
+    # warningログが出なくなったらfalse(orコメントアウト)にして移行完了。
     # - - - - - - - - - -/
     ; isOverridingQueryAllowed = true
 
@@ -122,7 +122,7 @@ map:{
     # << 移行手順 >> @since 1.2.7
     # このAllowedプロパティはfalseにした上で、
     # isNonSpecifiedColumnAccessWarningOnly=true にするとwarningログだけが出力されるので、
-    # それで実装調整をしたらWarningOnlyの方もfalseにして移行完了。
+    # それで実装調整をしたらWarningOnlyの方もfalse(orコメントアウト)にして移行完了。
     # ハッシュタグは: #nonSpecifiedColumn_access
     # - - - - - - - - - -/
     ; isNonSpecifiedColumnAccessAllowed = false
@@ -135,7 +135,7 @@ map:{
     # << 移行手順 >> @since 1.2.7
     # (isNullOrEmptyQueryAllowedがtrueであることを前提に)
     # こちらも isInvalidQueryAllowedWarning=true でnull指定のログが出るので、
-    # それで確認をしてif文やallowOneSide()の実装調整をしてからfalseにすると移行完了。
+    # それで確認をしてif文やallowOneSide()の実装調整をしてからfalse(orコメントアウト)にすると移行完了。
     # - - - - - - - - - -/
     ; isCompatibleConditionBeanFromToOneSideAllowed = true
 
@@ -158,7 +158,7 @@ map:{
     # (FK制約の掛かってる区分値では基本発生しないので、暗黙の区分値が対象)
     #
     # もし、isCheckSelectedClassification=true ならすでに例外チェックされているので、
-    # このプロパティは関係ない。その場合は気にせずfalseにして良い。
+    # このプロパティは関係ない。その場合は気にせずfalse(orコメントアウト)にして良い。
     # - - - - - - - - - -/
     ; isSuppressDefaultCheckClassificationCode = true
 
@@ -173,10 +173,15 @@ map:{
     # 例えば基点のcbをExistsReferrerのコールバックの中で使ったりしたときなど。
     # 可読性的に良くないので基本trueにしてチェックを入れたい。
     #
-    # << 移行手順 >>
-    # TODO jflute 移行オプションを検討中 (2023/07/17)
+    # << 移行手順 >> @since 1.2.7
+    # このプロパティはtrueにした上で、isThatsBadTimingWarningOnlyをtrueにすると、
+    # チェックはされるけれども例外ではなくwarningログが出力されるようになる。
+    # そのwarningログを確認して実装調整を行ってログが出なくなったら、
+    # このプロパティはtrue(orコメントアウト)に。WarningOnlyはfalse(orコメントアウト)に。
+    # ハッシュタグは: #thats_badTiming
     # - - - - - - - - - -/
-    ; isThatsBadTimingDetect = false
+    ; isThatsBadTimingDetect = true
+    ; isThatsBadTimingWarningOnly = true
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o isAvailableAddingSchemaToTableSqlName: (NotRequired - Default false)
