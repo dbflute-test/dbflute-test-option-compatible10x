@@ -8,11 +8,8 @@ import org.dbflute.cbean.scoping.OrQuery;
 import org.dbflute.cbean.scoping.SpecifyQuery;
 import org.dbflute.cbean.scoping.SubQuery;
 import org.dbflute.cbean.scoping.UnionQuery;
-import org.dbflute.exception.QueryThatsBadTimingException;
 import org.dbflute.exception.SetupSelectIllegalPurposeException;
-import org.dbflute.exception.SetupSelectThatsBadTimingException;
 import org.dbflute.exception.SpecifyIllegalPurposeException;
-import org.dbflute.exception.SpecifyThatsBadTimingException;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberLoginCB;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberStatusCB;
@@ -84,9 +81,7 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
     //                                                                         SetupSelect
     //                                                                         ===========
     public void test_badTiming_setupSelect() {
-        // ## Arrange ##
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                 public void query(PurchaseCB subCB) {
@@ -94,24 +89,14 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     cb.setupSelect_MemberStatus();
                 }
             }, Member.ALIAS_latestLoginDatetime);
-            // ## Assert ##
-            fail();
-        } catch (SetupSelectThatsBadTimingException e) { // setupSelect calls query()
-            log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
-
                 public void query(PurchaseCB subCB) {
                     cb.setupSelect_MemberStatus();
                 }
             });
-            // ## Assert ##
-            fail();
-        } catch (SetupSelectThatsBadTimingException e) { // setupSelect calls query()
-            log(e.getMessage());
         }
         try {
             // ## Act ##
@@ -130,8 +115,7 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
         } catch (SetupSelectIllegalPurposeException e) { // depends on order
             log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                 public void query(PurchaseCB subCB) {
@@ -139,10 +123,6 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     cb.setupSelect_MemberStatus();
                 }
             }).lessEqual(currentUtilDate());
-            // ## Assert ##
-            fail();
-        } catch (SetupSelectThatsBadTimingException e) { // setupSelect calls query()
-            log(e.getMessage());
         }
         final MemberCB cb = createCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
@@ -166,9 +146,7 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
     //                                                                           specify()
     //                                                                           =========
     public void test_badTiming_specify() {
-        // ## Arrange ##
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                 public void query(PurchaseCB subCB) {
@@ -176,24 +154,14 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     cb.specify();
                 }
             }, Member.ALIAS_latestLoginDatetime);
-            // ## Assert ##
-            fail();
-        } catch (SpecifyThatsBadTimingException e) {
-            log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
-
                 public void query(PurchaseCB subCB) {
                     cb.specify();
                 }
             });
-            // ## Assert ##
-            fail();
-        } catch (SpecifyThatsBadTimingException e) {
-            log(e.getMessage());
         }
         try {
             // ## Act ##
@@ -212,8 +180,7 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
         } catch (SpecifyIllegalPurposeException e) { // depends on check order
             log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                 public void query(PurchaseCB subCB) {
@@ -221,10 +188,6 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     cb.specify();
                 }
             }).lessEqual(currentUtilDate());
-            // ## Assert ##
-            fail();
-        } catch (SpecifyThatsBadTimingException e) {
-            log(e.getMessage());
         }
         final MemberCB cb = createCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
@@ -248,8 +211,7 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
     //                                                                             query()
     //                                                                             =======
     public void test_badTiming_query() {
-        // ## Arrange ##
-        try {
+        {
             // ## Act ##
             final MemberCB cb = createCB();
             cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
@@ -258,40 +220,24 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     cb.query();
                 }
             }, Member.ALIAS_latestLoginDatetime);
-            // ## Assert ##
-            fail();
-        } catch (QueryThatsBadTimingException e) {
-            log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
-
                 public void query(PurchaseCB subCB) {
                     cb.query();
                 }
             });
-            // ## Assert ##
-            fail();
-        } catch (QueryThatsBadTimingException e) {
-            log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().queryMemberStatus().existsMemberLoginList(new SubQuery<MemberLoginCB>() {
                 public void query(MemberLoginCB subCB) {
                     cb.query();
                 }
             });
-            // ## Assert ##
-            fail();
-        } catch (QueryThatsBadTimingException e) {
-            log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
                 public void query(final PurchaseCB subCB) {
@@ -302,13 +248,8 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     });
                 }
             });
-            // ## Assert ##
-            fail();
-        } catch (QueryThatsBadTimingException e) {
-            log(e.getMessage());
         }
-        try {
-            // ## Act ##
+        {
             final MemberCB cb = createCB();
             cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                 public void query(PurchaseCB subCB) {
@@ -316,10 +257,6 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                     cb.query();
                 }
             }).lessEqual(currentUtilDate());
-            // ## Assert ##
-            fail();
-        } catch (QueryThatsBadTimingException e) {
-            log(e.getMessage());
         }
         final MemberCB cb = createCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {

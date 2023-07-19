@@ -143,10 +143,15 @@ map:{
     # orScopeQuery()にて、orCBでsetupSelectなどのorと無関係の操作を例外ではなく素通りにする互換オプション。
     # orCBも単なるcbなので動いてしまうが、可読性的に良くないので、本来はfalseにしたい。
     #
-    # << 移行手順 >>
-    # TODO jflute 移行オプションを検討中 (2023/07/17)
+    # << 移行手順 >> @since 1.2.7
+    # このプロパティをfalseにした上で、isOrScopeQueryPurposeCheckWarningOnlyをtrueにすると、
+    # チェックはされるけれども例外ではなくwarningログが出力されるようになる。
+    # そのwarningログを確認して実装調整を行ってログが出なくなったら、
+    # WarningOnlyはfalse(orコメントアウト)にして移行完了。
+    # ハッシュタグは: #cb_purpose_check
     # - - - - - - - - - -/
-    ; isCompatibleOrScopeQueryPurposeNoCheck = true
+    ; isCompatibleOrScopeQueryPurposeNoCheck = false
+    ; isOrScopeQueryPurposeCheckWarningOnly = true
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # 区分値定義していないコードがDBに含まれていたときに、select時に例外にせず素通りにする互換オプション。
@@ -174,10 +179,10 @@ map:{
     # 可読性的に良くないので基本trueにしてチェックを入れたい。
     #
     # << 移行手順 >> @since 1.2.7
-    # このプロパティはtrueにした上で、isThatsBadTimingWarningOnlyをtrueにすると、
+    # このプロパティをtrueにした上で、isThatsBadTimingWarningOnlyをtrueにすると、
     # チェックはされるけれども例外ではなくwarningログが出力されるようになる。
     # そのwarningログを確認して実装調整を行ってログが出なくなったら、
-    # このプロパティはtrue(orコメントアウト)に。WarningOnlyはfalse(orコメントアウト)に。
+    # WarningOnlyはfalse(orコメントアウト)にして移行完了。
     # ハッシュタグは: #thats_badTiming
     # - - - - - - - - - -/
     ; isThatsBadTimingDetect = true
