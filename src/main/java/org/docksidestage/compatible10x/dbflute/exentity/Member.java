@@ -16,6 +16,7 @@
 package org.docksidestage.compatible10x.dbflute.exentity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import org.docksidestage.compatible10x.dbflute.bsentity.BsMember;
 
@@ -99,5 +100,48 @@ public class Member extends BsMember {
      */
     public void setTotalPaymentAmount(Integer totalPaymentAmount) {
         _totalPaymentAmount = totalPaymentAmount;
+    }
+
+    // ===================================================================================
+    //                                                             for test: Non-Specified
+    //                                                             =======================
+    public String xznocheckGetMemberName() {
+        return _memberName;
+    }
+
+    public String xznocheckGetMemberAccount() {
+        return _memberAccount;
+    }
+
+    public String xznocheckGetMemberStatusCode() {
+        return _memberStatusCode;
+    }
+
+    public Date xznocheckGetBirthdate() {
+        return _birthdate;
+    }
+
+    public Timestamp xznocheckGetFormalizedDatetime() {
+        return _formalizedDatetime;
+    }
+
+    public Timestamp xznocheckGetRegisterDatetime() {
+        return _registerDatetime;
+    }
+
+    public String xznocheckGetRegisterUser() {
+        return _registerUser;
+    }
+
+    public Timestamp xznocheckGetUpdateDatetime() {
+        return _updateDatetime;
+    }
+
+    public String xznocheckGetUpdateUser() {
+        return _updateUser;
+    }
+
+    public Long xznocheckGetVersionNo() {
+        return _versionNo;
     }
 }

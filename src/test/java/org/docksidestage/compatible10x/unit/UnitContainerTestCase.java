@@ -4,6 +4,8 @@ import org.dbflute.bhv.BehaviorSelector;
 import org.dbflute.bhv.BehaviorWritable;
 import org.dbflute.bhv.writable.DeleteOption;
 import org.dbflute.cbean.ConditionBean;
+import org.dbflute.exception.NonSpecifiedColumnAccessException;
+import org.dbflute.utflute.core.exception.ExceptionExaminer;
 import org.dbflute.utflute.spring.ContainerTestCase;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberAddressBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberFollowingBhv;
@@ -59,5 +61,12 @@ public abstract class UnitContainerTestCase extends ContainerTestCase {
         deleteAll(MemberWithdrawalBhv.class);
         deleteAll(PurchasePaymentBhv.class);
         deleteAll(PurchaseBhv.class);
+    }
+
+    // ===================================================================================
+    //                                                                       Assert Helper
+    //                                                                       =============
+    protected void assertNonSpecifiedAccess(ExceptionExaminer noArgInLambda) {
+        assertException(NonSpecifiedColumnAccessException.class, noArgInLambda);
     }
 }

@@ -94,7 +94,6 @@ public class WxCBThatsBadTimingImplicitTest extends UnitContainerTestCase {
         {
             final MemberCB cb = createCB();
             cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
-
                 public void query(PurchaseCB subCB) {
                     cb.setupSelect_MemberStatus(); // expect no exception
                 }

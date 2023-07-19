@@ -17,6 +17,7 @@ package org.docksidestage.compatible10x.dbflute.allcommon;
 
 import org.dbflute.dbway.DBDef;
 import org.dbflute.jdbc.DataSourceHandler;
+import org.dbflute.hook.PrologueHook;
 import org.dbflute.system.DBFluteSystem;
 
 import org.slf4j.Logger;
@@ -36,7 +37,12 @@ public class DBFluteInitializer {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final String _dataSourceFqcn;
+    protected final String _dataSourceFqcn; // to determine DataSource, not null
+
+    // -----------------------------------------------------
+    //                                                Option
+    //                                                ------
+    protected PrologueHook _prologueHook; // null allowed
 
     // ===================================================================================
     //                                                                         Constructor
@@ -56,6 +62,21 @@ public class DBFluteInitializer {
         standBy();
     }
 
+    /**
+     * Hook the prologue process as you like it. <br>
+     * (basically for your original DBFluteConfig settings)
+     * @param prologueHook The hook interface of prologue process. (NotNull)
+     * @return this. (NotNull)
+     */
+    public DBFluteInitializer hookPrologue(PrologueHook prologueHook) {
+        if (prologueHook == null) {
+            String msg = "The argument 'prologueHook' should not be null!";
+            throw new IllegalArgumentException(msg);
+        }
+        _prologueHook = prologueHook;
+        return this;
+    }
+
     // ===================================================================================
     //                                                                             Curtain
     //                                                                             =======
@@ -72,6 +93,9 @@ public class DBFluteInitializer {
      * with calling super.prologue() in it.
      */
     protected void prologue() {
+        if (_prologueHook != null) {
+            _prologueHook.hookBefore();
+        }
         setupDataSourceHandler(_dataSourceFqcn);
         adjustDBFluteSystem();
     }
