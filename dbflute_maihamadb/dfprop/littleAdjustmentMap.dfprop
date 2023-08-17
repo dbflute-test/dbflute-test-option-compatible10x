@@ -175,7 +175,7 @@ map:{
     # << 移行手順 >>
     # 区分値の undefinedHandlingType を LOGGING(デフォルト) に統一して、
     # (自動生成されたCDefクラスの DefMeta で確認できる)
-    # このプロパティは false にして実行時のログで #undefined_cls を確認して対応したら移行完了。
+    # このプロパティは false にして実行時のログで #undefined_cls を確認して対応したら移行完了。@since 1.2.7
     # さらに、classificationUndefinedHandlingType を EXCEPTION にしてチェックを厳しくすると良い。
     #
     # isCheckSelectedClassification と isForceClassificationSetting が true になってるのであれば、
