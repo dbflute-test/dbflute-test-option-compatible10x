@@ -154,16 +154,34 @@ map:{
     ; isOrScopeQueryPurposeCheckWarningOnly = true
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # 区分値定義していないコードがDBに含まれていたときに、select時に例外にせず素通りにする互換オプション。
-    # 基本的にはアプリ的におかしい状況なので、素通りせずに何かしらのチェック(例外 or ログ)は掛けたい。
+    # Entityのsetterで未定義の区分値コードがsetされたときのデフォルトチェックを抑制する互換オプション。
+    #
+    # 古い仕組み: (オプションにて)DBMetaにて検索された区分値コードが区分値定義されていなければEXCEPTION
+    # 新しい仕組み: (デフォルトで)Entityにてsetされた区分値コードが区分値定義されていなければLOGGING or EXCEPTION
+    #
+    # 新しい仕組みでは、検索されたコードだけでなく、insert時などのsetもチェック対象に広げた。
+    # また、オプションに関わらずデフォルトでチェックが掛かるようにした。(ただデフォルトではLOGGINGによるチェック)
+    # ゆえに、念のため互換性のためにそのチェックを抑制できるようにこのプロパティが導入された。
+    #
+    # littleAdjustmentMap.dfrop の classificationUndefinedHandlingType が undefinedHandlingType と、
+    # classificationDefinitionMap.dfprop の undefinedHandlingType との両方が明示的に指定されていないとき、
+    # デフォルト挙動のチェック(LOGGING or EXCEPTION)が掛かるが、このプロパティはそのデフォルトを抑制する。
+    # (つまり、古い仕組みと同様の挙動 (デフォルトではEntityではチェックなし) になるようにした)
+    #
+    # ただ、すでに isCheckSelectedClassification と isForceClassificationSetting が true になっている場合、
+    # 検索に関しては古い仕組みの方でチェックされつつ、Entityのsetでもメソッドによる区分値指定が強制されるので、
+    # 実質的にチェックは掛かってると言えるので、新しい仕組みのデフォルトのチェックを抑制する必要はないと言える。
     #
     # << 移行手順 >>
-    # 区分値の undefinedHandlingType が LOGGING(デフォルト) で統一されていれば、
-    # このプロパティは false にして実行時のログを確認してDB修正してからfalseにすると移行完了。
-    # (FK制約の掛かってる区分値では基本発生しないので、暗黙の区分値が対象)
+    # 区分値の undefinedHandlingType を LOGGING(デフォルト) に統一して、
+    # (自動生成されたCDefクラスの DefMeta で確認できる)
+    # このプロパティは false にして実行時のログで #undefined_cls を確認して対応したら移行完了。
+    # さらに、classificationUndefinedHandlingType を EXCEPTION にしてチェックを厳しくすると良い。
     #
-    # もし、isCheckSelectedClassification=true ならすでに例外チェックされているので、
-    # このプロパティは関係ない。その場合は気にせずfalse(orコメントアウト)にして良い。
+    # isCheckSelectedClassification と isForceClassificationSetting が true になってるのであれば、
+    # これは現場判断に寄るが、いきなりこのプロパティはfalseにしてもまず問題は発生しないのでそれで移行完了。
+    # (リフレクションや拡張などによる強引なsetを心配しないのであれば)
+    # (念のため undefinedHandlingType を LOGGING(デフォルト) に統一しておいても良い)
     # - - - - - - - - - -/
     ; isSuppressDefaultCheckClassificationCode = true
 
