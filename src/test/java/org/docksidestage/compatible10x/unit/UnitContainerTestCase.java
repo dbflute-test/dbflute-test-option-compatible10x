@@ -7,6 +7,8 @@ import org.dbflute.cbean.ConditionBean;
 import org.dbflute.exception.NonSpecifiedColumnAccessException;
 import org.dbflute.utflute.core.exception.ExceptionExaminer;
 import org.dbflute.utflute.spring.ContainerTestCase;
+import org.docksidestage.compatible10x.JdbcBeansJavaConfig;
+import org.docksidestage.compatible10x.dbflute.allcommon.DBFluteBeansJavaConfig;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberAddressBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberFollowingBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberLoginBhv;
@@ -15,6 +17,8 @@ import org.docksidestage.compatible10x.dbflute.exbhv.MemberServiceBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberWithdrawalBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.PurchaseBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.PurchasePaymentBhv;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * The test case with container for unit test.
@@ -32,15 +36,13 @@ public abstract class UnitContainerTestCase extends ContainerTestCase {
     //                                                                            Settings
     //                                                                            ========
     @Override
-    protected boolean isUseTestCaseLooseBinding() {
-        return true;
+    protected ApplicationContext provideDefaultApplicationContext() {
+        return new AnnotationConfigApplicationContext(JdbcBeansJavaConfig.class, DBFluteBeansJavaConfig.class);
     }
 
     @Override
-    protected String[] prepareConfigFiles() {
-        // ContextSingletonBeanFactoryLocator is already disappeared in Spring-5.1.1
-        // so it needs to define here (and #hope should fix UTFlute)
-        return new String[] { "dbfluteBeans.xml", "jdbcBeans.xml" };
+    protected boolean isUseTestCaseLooseBinding() {
+        return true;
     }
 
     // ===================================================================================
