@@ -1,5 +1,7 @@
 package org.docksidestage.compatible10x.unit;
 
+import java.util.Map;
+
 import org.dbflute.bhv.BehaviorSelector;
 import org.dbflute.bhv.BehaviorWritable;
 import org.dbflute.bhv.writable.DeleteOption;
@@ -8,7 +10,7 @@ import org.dbflute.exception.NonSpecifiedColumnAccessException;
 import org.dbflute.utflute.core.exception.ExceptionExaminer;
 import org.dbflute.utflute.spring.ContainerTestCase;
 import org.docksidestage.compatible10x.JdbcBeansJavaConfig;
-import org.docksidestage.compatible10x.dbflute.allcommon.DBFluteBeansJavaConfig;
+import org.docksidestage.compatible10x.dbflute.allcommon.V10xDBFluteBeansJavaConfig;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberAddressBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberFollowingBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberLoginBhv;
@@ -19,6 +21,9 @@ import org.docksidestage.compatible10x.dbflute.exbhv.PurchaseBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.PurchasePaymentBhv;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.MutablePropertySources;
+import org.springframework.core.env.StandardEnvironment;
 
 /**
  * The test case with container for unit test.
@@ -37,7 +42,17 @@ public abstract class UnitContainerTestCase extends ContainerTestCase {
     //                                                                            ========
     @Override
     protected ApplicationContext provideDefaultApplicationContext() {
-        return new AnnotationConfigApplicationContext(JdbcBeansJavaConfig.class, DBFluteBeansJavaConfig.class);
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(JdbcBeansJavaConfig.class, V10xDBFluteBeansJavaConfig.class);
+
+        // #thinking jflute how to read application.properties (2023/10/11)
+        StandardEnvironment env = new StandardEnvironment();
+        MutablePropertySources sources = env.getPropertySources();
+        Map<String, Object> configMap = newHashMap("dbflute.behavior.log.mask", true);
+        sources.addFirst(new MapPropertySource("MY_MAP", configMap));
+        context.setEnvironment(env);
+
+        return context;
     }
 
     @Override
