@@ -34,15 +34,6 @@ public class DBFluteInitializer {
     /** The logger instance for this class. (NotNull) */
     private static final Logger _log = LoggerFactory.getLogger(DBFluteInitializer.class);
 
-static {
-    _log.warn("_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/");
-    _log.warn("");
-    _log.warn("こちらはDBFluteのSNAPSHOTバージョンなので、このまま本番にリリースしないように注意してください。");
-    _log.warn(" by jflute (2023/07/21)");
-    _log.warn("");
-    _log.warn("_/_/_/_/_/_/_/_/_/_/");
-}
-
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
