@@ -365,7 +365,7 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
     public void test_query_PrefixSearch() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");// *Point!
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());// *Point!
 
         // ## Act ##
         List<Member> memberList = memberBhv.selectList(cb);
@@ -785,7 +785,7 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         // *Point!
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
-                subCB.query().queryProduct().setProductName_PrefixSearch("Storm");
+                subCB.query().queryProduct().setProductName_LikeSearch("Storm", op -> op.likePrefix());
             }
         });
 
@@ -980,7 +980,7 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
                 subCB.useInScopeSubQuery();
-                subCB.query().queryProduct().setProductName_PrefixSearch("Storm");
+                subCB.query().queryProduct().setProductName_LikeSearch("Storm", op -> op.likePrefix());
             }
         });
 
@@ -1095,7 +1095,7 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         Date fromDate = new Date(cal.getTimeInMillis());
         cal.set(2007, 11, 1);// 2007/12/01
         Date toDate = new Date(cal.getTimeInMillis());
-        cb.query().setFormalizedDatetime_DateFromTo(fromDate, toDate);// *Point!
+        cb.query().setFormalizedDatetime_FromTo(fromDate, toDate, op -> op.compareAsDate());// *Point!
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);
@@ -1121,7 +1121,7 @@ public class ConditionBeanMiddleTest extends UnitContainerTestCase {
         cb.query().setMemberStatusCode_Equal_Provisional();
         cb.union(new UnionQuery<MemberCB>() {
             public void query(MemberCB unionCB) {
-                unionCB.query().setMemberName_PrefixSearch("St");
+                unionCB.query().setMemberName_LikeSearch("St", op -> op.likePrefix());
             }
         });
         cb.query().addOrderBy_MemberName_Desc();

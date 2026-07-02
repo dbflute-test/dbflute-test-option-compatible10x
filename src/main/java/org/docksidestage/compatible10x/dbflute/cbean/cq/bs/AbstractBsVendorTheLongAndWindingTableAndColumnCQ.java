@@ -127,6 +127,19 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
      * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID: {PK, NotNull, BIGINT(19)}
      * @param minNumber The min number of theLongAndWindingTableAndColumnId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of theLongAndWindingTableAndColumnId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setTheLongAndWindingTableAndColumnId_RangeOf(Long minNumber, Long maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setTheLongAndWindingTableAndColumnId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_ID: {PK, NotNull, BIGINT(19)}
+     * @param minNumber The min number of theLongAndWindingTableAndColumnId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of theLongAndWindingTableAndColumnId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setTheLongAndWindingTableAndColumnId_RangeOf(Long minNumber, Long maxNumber, RangeOfOption rangeOfOption) {
@@ -338,6 +351,17 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME: {UQ, NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setTheLongAndWindingTableAndColumnName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param theLongAndWindingTableAndColumnName The value of theLongAndWindingTableAndColumnName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setTheLongAndWindingTableAndColumnName_LikeSearch(String theLongAndWindingTableAndColumnName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setTheLongAndWindingTableAndColumnName_LikeSearch(theLongAndWindingTableAndColumnName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME: {UQ, NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setTheLongAndWindingTableAndColumnName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param theLongAndWindingTableAndColumnName The value of theLongAndWindingTableAndColumnName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -351,19 +375,21 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME: {UQ, NotNull, VARCHAR(200)}
      * @param theLongAndWindingTableAndColumnName The value of theLongAndWindingTableAndColumnName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setTheLongAndWindingTableAndColumnName_NotLikeSearch(String theLongAndWindingTableAndColumnName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setTheLongAndWindingTableAndColumnName_NotLikeSearch(theLongAndWindingTableAndColumnName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME: {UQ, NotNull, VARCHAR(200)}
+     * @param theLongAndWindingTableAndColumnName The value of theLongAndWindingTableAndColumnName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setTheLongAndWindingTableAndColumnName_NotLikeSearch(String theLongAndWindingTableAndColumnName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(theLongAndWindingTableAndColumnName), xgetCValueTheLongAndWindingTableAndColumnName(), "THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME: {UQ, NotNull, VARCHAR(200)}
-     * @param theLongAndWindingTableAndColumnName The value of theLongAndWindingTableAndColumnName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setTheLongAndWindingTableAndColumnName_PrefixSearch(String theLongAndWindingTableAndColumnName) {
-        setTheLongAndWindingTableAndColumnName_LikeSearch(theLongAndWindingTableAndColumnName, xcLSOPPre());
     }
 
     protected void regTheLongAndWindingTableAndColumnName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueTheLongAndWindingTableAndColumnName(), "THE_LONG_AND_WINDING_TABLE_AND_COLUMN_NAME"); }
@@ -460,6 +486,17 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * SHORT_NAME: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setShortName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param shortName The value of shortName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setShortName_LikeSearch(String shortName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setShortName_LikeSearch(shortName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * SHORT_NAME: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setShortName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param shortName The value of shortName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -473,19 +510,21 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * SHORT_NAME: {NotNull, VARCHAR(200)}
      * @param shortName The value of shortName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setShortName_NotLikeSearch(String shortName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setShortName_NotLikeSearch(shortName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * SHORT_NAME: {NotNull, VARCHAR(200)}
+     * @param shortName The value of shortName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setShortName_NotLikeSearch(String shortName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(shortName), xgetCValueShortName(), "SHORT_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * SHORT_NAME: {NotNull, VARCHAR(200)}
-     * @param shortName The value of shortName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setShortName_PrefixSearch(String shortName) {
-        setShortName_LikeSearch(shortName, xcLSOPPre());
     }
 
     protected void regShortName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueShortName(), "SHORT_NAME"); }
@@ -551,6 +590,19 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
      */
     public void setShortSize_LessEqual(Integer shortSize) {
         regShortSize(CK_LE, shortSize);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * SHORT_SIZE: {NotNull, INTEGER(10)}
+     * @param minNumber The min number of shortSize. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of shortSize. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setShortSize_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setShortSize_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -756,6 +808,39 @@ public abstract class AbstractBsVendorTheLongAndWindingTableAndColumnCQ extends 
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

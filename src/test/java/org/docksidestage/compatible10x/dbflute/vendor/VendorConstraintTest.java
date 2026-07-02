@@ -106,7 +106,7 @@ public class VendorConstraintTest extends UnitContainerTestCase {
     //                                                ------
     public void test_update_unique_constraint_OriginalException() {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberAccount("Pixy");
 
         // ## Act & Assert ##
@@ -151,7 +151,7 @@ public class VendorConstraintTest extends UnitContainerTestCase {
         member.setMemberAccount("Pixy");
 
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
 
         // ## Act & Assert ##
         try {
@@ -172,12 +172,12 @@ public class VendorConstraintTest extends UnitContainerTestCase {
         // ## Arrange ##
         List<Member> memberList = new ArrayList<Member>();
         {
-            Member member = memberBhv.selectByPKValueWithDeletedCheck(2);
+            Member member = memberBhv.selectByPK(2).orElseThrow();
             member.setMemberAccount("AAA");
             memberList.add(member);
         }
         {
-            Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+            Member member = memberBhv.selectByPK(3).orElseThrow();
             member.setMemberAccount("Pixy");
             memberList.add(member);
         }
@@ -205,12 +205,12 @@ public class VendorConstraintTest extends UnitContainerTestCase {
         // ## Arrange ##
         List<Member> memberList = new ArrayList<Member>();
         {
-            Member member = memberBhv.selectByPKValueWithDeletedCheck(2);
+            Member member = memberBhv.selectByPK(2).orElseThrow();
             member.setMemberAccount("AAA");
             memberList.add(member);
         }
         {
-            Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+            Member member = memberBhv.selectByPK(3).orElseThrow();
             member.setMemberAccount("Pixy");
             memberList.add(member);
         }
@@ -266,7 +266,7 @@ public class VendorConstraintTest extends UnitContainerTestCase {
         Member member = new Member();
         member.setMemberName("testName");
         member.setMemberAccount("testAccount");
-        member.setMemberStatusCode("NO_EXIST");
+        member.mynativeMappingMemberStatusCode("NO_EXIST");
 
         // ## Act & Assert ##
         try {

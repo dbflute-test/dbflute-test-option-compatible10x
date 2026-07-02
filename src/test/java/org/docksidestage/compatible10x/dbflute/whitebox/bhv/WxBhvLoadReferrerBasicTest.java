@@ -112,7 +112,7 @@ public class WxBhvLoadReferrerBasicTest extends UnitContainerTestCase {
     public void test_loadReferrer_union_querySynchronization() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_Birthdate_Desc().withNullsLast();
 
         // ## Act ##
@@ -165,12 +165,12 @@ public class WxBhvLoadReferrerBasicTest extends UnitContainerTestCase {
         List<MemberStatus> statusList = new ArrayList<MemberStatus>();
         {
             MemberStatus status = new MemberStatus();
-            status.setMemberStatusCode("fml");
+            status.mynativeMappingMemberStatusCode("fml");
             statusList.add(status);
         }
         {
             MemberStatus status = new MemberStatus();
-            status.setMemberStatusCode("FML");
+            status.mynativeMappingMemberStatusCode("FML");
             statusList.add(status);
         }
 

@@ -127,6 +127,19 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)}
      * @param minNumber The min number of productId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of productId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setProductId_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setProductId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * PRODUCT_ID: {PK, ID, NotNull, INTEGER(10)}
+     * @param minNumber The min number of productId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of productId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setProductId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
@@ -338,6 +351,17 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setProductName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productName The value of productName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductName_LikeSearch(String productName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductName_LikeSearch(productName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setProductName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productName The value of productName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -351,19 +375,21 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)}
      * @param productName The value of productName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductName_NotLikeSearch(String productName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductName_NotLikeSearch(productName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)}
+     * @param productName The value of productName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setProductName_NotLikeSearch(String productName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(productName), xgetCValueProductName(), "PRODUCT_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (商品名称)PRODUCT_NAME: {IX, NotNull, VARCHAR(50)}
-     * @param productName The value of productName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setProductName_PrefixSearch(String productName) {
-        setProductName_LikeSearch(productName, xcLSOPPre());
     }
 
     protected void regProductName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductName(), "PRODUCT_NAME"); }
@@ -460,6 +486,17 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)} <br>
+     * <pre>e.g. setProductHandleCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productHandleCode The value of productHandleCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductHandleCode_LikeSearch(String productHandleCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductHandleCode_LikeSearch(productHandleCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)} <br>
      * <pre>e.g. setProductHandleCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productHandleCode The value of productHandleCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -473,19 +510,21 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)}
      * @param productHandleCode The value of productHandleCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductHandleCode_NotLikeSearch(String productHandleCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductHandleCode_NotLikeSearch(productHandleCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)}
+     * @param productHandleCode The value of productHandleCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setProductHandleCode_NotLikeSearch(String productHandleCode, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(productHandleCode), xgetCValueProductHandleCode(), "PRODUCT_HANDLE_CODE", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {UQ, NotNull, VARCHAR(100)}
-     * @param productHandleCode The value of productHandleCode as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setProductHandleCode_PrefixSearch(String productHandleCode) {
-        setProductHandleCode_LikeSearch(productHandleCode, xcLSOPPre());
     }
 
     protected void regProductHandleCode(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductHandleCode(), "PRODUCT_HANDLE_CODE"); }
@@ -582,6 +621,17 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY} <br>
+     * <pre>e.g. setProductCategoryCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productCategoryCode The value of productCategoryCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductCategoryCode_LikeSearch(String productCategoryCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductCategoryCode_LikeSearch(productCategoryCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY} <br>
      * <pre>e.g. setProductCategoryCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productCategoryCode The value of productCategoryCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -595,50 +645,22 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY}
      * @param productCategoryCode The value of productCategoryCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductCategoryCode_NotLikeSearch(String productCategoryCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductCategoryCode_NotLikeSearch(productCategoryCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY}
+     * @param productCategoryCode The value of productCategoryCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setProductCategoryCode_NotLikeSearch(String productCategoryCode, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(productCategoryCode), xgetCValueProductCategoryCode(), "PRODUCT_CATEGORY_CODE", likeSearchOption);
     }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * PRODUCT_CATEGORY_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_CATEGORY}
-     * @param productCategoryCode The value of productCategoryCode as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setProductCategoryCode_PrefixSearch(String productCategoryCode) {
-        setProductCategoryCode_LikeSearch(productCategoryCode, xcLSOPPre());
-    }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select PRODUCT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
-     * (商品カテゴリ)PRODUCT_CATEGORY by my PRODUCT_CATEGORY_CODE, named 'productCategory'.
-     * @param subCBLambda The callback for sub-query of ProductCategory for 'in-scope'. (NotNull)
-     */
-    public void inScopeProductCategory(SubQuery<ProductCategoryCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductCategoryCode_InScopeRelation_ProductCategory(cb.query());
-        registerInScopeRelation(cb.query(), "PRODUCT_CATEGORY_CODE", "PRODUCT_CATEGORY_CODE", pp, "productCategory", false);
-    }
-    public abstract String keepProductCategoryCode_InScopeRelation_ProductCategory(ProductCategoryCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select PRODUCT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
-     * (商品カテゴリ)PRODUCT_CATEGORY by my PRODUCT_CATEGORY_CODE, named 'productCategory'.
-     * @param subCBLambda The callback for sub-query of ProductCategory for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeProductCategory(SubQuery<ProductCategoryCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductCategoryCode_NotInScopeRelation_ProductCategory(cb.query());
-        registerInScopeRelation(cb.query(), "PRODUCT_CATEGORY_CODE", "PRODUCT_CATEGORY_CODE", pp, "productCategory", true);
-    }
-    public abstract String keepProductCategoryCode_NotInScopeRelation_ProductCategory(ProductCategoryCQ sq);
 
     protected void regProductCategoryCode(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductCategoryCode(), "PRODUCT_CATEGORY_CODE"); }
     protected abstract ConditionValue xgetCValueProductCategoryCode();
@@ -648,7 +670,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
      * @param productStatusCode The value of productStatusCode as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_Equal(String productStatusCode) {
+    protected void setProductStatusCode_Equal(String productStatusCode) {
         doSetProductStatusCode_Equal(fRES(productStatusCode));
     }
 
@@ -695,7 +717,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
      * @param productStatusCode The value of productStatusCode as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_NotEqual(String productStatusCode) {
+    protected void setProductStatusCode_NotEqual(String productStatusCode) {
         doSetProductStatusCode_NotEqual(fRES(productStatusCode));
     }
 
@@ -742,7 +764,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
      * @param productStatusCodeList The collection of productStatusCode as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_InScope(Collection<String> productStatusCodeList) {
+    protected void setProductStatusCode_InScope(Collection<String> productStatusCodeList) {
         doSetProductStatusCode_InScope(productStatusCodeList);
     }
 
@@ -765,7 +787,7 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
      * @param productStatusCodeList The collection of productStatusCode as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
+    protected void setProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
         doSetProductStatusCode_NotInScope(productStatusCodeList);
     }
 
@@ -782,36 +804,6 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     protected void doSetProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
         regINS(CK_NINS, cTL(productStatusCodeList), xgetCValueProductStatusCode(), "PRODUCT_STATUS_CODE");
     }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select PRODUCT_STATUS_CODE from PRODUCT_STATUS where ...)} <br />
-     * (商品ステータス)PRODUCT_STATUS by my PRODUCT_STATUS_CODE, named 'productStatus'.
-     * @param subCBLambda The callback for sub-query of ProductStatus for 'in-scope'. (NotNull)
-     */
-    public void inScopeProductStatus(SubQuery<ProductStatusCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductStatusCB cb = new ProductStatusCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductStatusCode_InScopeRelation_ProductStatus(cb.query());
-        registerInScopeRelation(cb.query(), "PRODUCT_STATUS_CODE", "PRODUCT_STATUS_CODE", pp, "productStatus", false);
-    }
-    public abstract String keepProductStatusCode_InScopeRelation_ProductStatus(ProductStatusCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select PRODUCT_STATUS_CODE from PRODUCT_STATUS where ...)} <br />
-     * (商品ステータス)PRODUCT_STATUS by my PRODUCT_STATUS_CODE, named 'productStatus'.
-     * @param subCBLambda The callback for sub-query of ProductStatus for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeProductStatus(SubQuery<ProductStatusCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductStatusCB cb = new ProductStatusCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepProductStatusCode_NotInScopeRelation_ProductStatus(cb.query());
-        registerInScopeRelation(cb.query(), "PRODUCT_STATUS_CODE", "PRODUCT_STATUS_CODE", pp, "productStatus", true);
-    }
-    public abstract String keepProductStatusCode_NotInScopeRelation_ProductStatus(ProductStatusCQ sq);
 
     protected void regProductStatusCode(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductStatusCode(), "PRODUCT_STATUS_CODE"); }
     protected abstract ConditionValue xgetCValueProductStatusCode();
@@ -876,6 +868,19 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      */
     public void setRegularPrice_LessEqual(Integer regularPrice) {
         regRegularPrice(CK_LE, regularPrice);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (定価)REGULAR_PRICE: {NotNull, INTEGER(10)}
+     * @param minNumber The min number of regularPrice. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of regularPrice. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setRegularPrice_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setRegularPrice_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -969,6 +974,19 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setRegisterDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setRegisterDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -976,21 +994,6 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      */
     public void setRegisterDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueRegisterDatetime(), "REGISTER_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setRegisterDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterDatetime(), "REGISTER_DATETIME"); }
@@ -1087,6 +1090,17 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setRegisterUser_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param registerUser The value of registerUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegisterUser_LikeSearch(String registerUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegisterUser_LikeSearch(registerUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setRegisterUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param registerUser The value of registerUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1100,19 +1114,21 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegisterUser_NotLikeSearch(String registerUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegisterUser_NotLikeSearch(registerUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * REGISTER_USER: {NotNull, VARCHAR(200)}
+     * @param registerUser The value of registerUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setRegisterUser_NotLikeSearch(String registerUser, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(registerUser), xgetCValueRegisterUser(), "REGISTER_USER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * REGISTER_USER: {NotNull, VARCHAR(200)}
-     * @param registerUser The value of registerUser as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setRegisterUser_PrefixSearch(String registerUser) {
-        setRegisterUser_LikeSearch(registerUser, xcLSOPPre());
     }
 
     protected void regRegisterUser(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterUser(), "REGISTER_USER"); }
@@ -1167,6 +1183,19 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setUpdateDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setUpdateDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -1174,21 +1203,6 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      */
     public void setUpdateDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueUpdateDatetime(), "UPDATE_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setUpdateDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDatetime(), "UPDATE_DATETIME"); }
@@ -1285,6 +1299,17 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setUpdateUser_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param updateUser The value of updateUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setUpdateUser_LikeSearch(String updateUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setUpdateUser_LikeSearch(updateUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setUpdateUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param updateUser The value of updateUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1298,19 +1323,21 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setUpdateUser_NotLikeSearch(String updateUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setUpdateUser_NotLikeSearch(updateUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * UPDATE_USER: {NotNull, VARCHAR(200)}
+     * @param updateUser The value of updateUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setUpdateUser_NotLikeSearch(String updateUser, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(updateUser), xgetCValueUpdateUser(), "UPDATE_USER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * UPDATE_USER: {NotNull, VARCHAR(200)}
-     * @param updateUser The value of updateUser as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setUpdateUser_PrefixSearch(String updateUser) {
-        setUpdateUser_LikeSearch(updateUser, xcLSOPPre());
     }
 
     protected void regUpdateUser(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateUser(), "UPDATE_USER"); }
@@ -1376,6 +1403,19 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
      */
     public void setVersionNo_LessEqual(Long versionNo) {
         regVersionNo(CK_LE, versionNo);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * VERSION_NO: {NotNull, BIGINT(19)}
+     * @param minNumber The min number of versionNo. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of versionNo. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setVersionNo_RangeOf(Long minNumber, Long maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setVersionNo_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -1581,6 +1621,39 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

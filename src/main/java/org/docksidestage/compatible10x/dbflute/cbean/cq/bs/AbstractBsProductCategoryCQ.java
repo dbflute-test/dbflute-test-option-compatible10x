@@ -149,6 +149,17 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品カテゴリコード)PRODUCT_CATEGORY_CODE: {PK, NotNull, CHAR(3)} <br>
+     * <pre>e.g. setProductCategoryCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productCategoryCode The value of productCategoryCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductCategoryCode_LikeSearch(String productCategoryCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductCategoryCode_LikeSearch(productCategoryCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品カテゴリコード)PRODUCT_CATEGORY_CODE: {PK, NotNull, CHAR(3)} <br>
      * <pre>e.g. setProductCategoryCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productCategoryCode The value of productCategoryCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -162,19 +173,21 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品カテゴリコード)PRODUCT_CATEGORY_CODE: {PK, NotNull, CHAR(3)}
      * @param productCategoryCode The value of productCategoryCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductCategoryCode_NotLikeSearch(String productCategoryCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductCategoryCode_NotLikeSearch(productCategoryCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品カテゴリコード)PRODUCT_CATEGORY_CODE: {PK, NotNull, CHAR(3)}
+     * @param productCategoryCode The value of productCategoryCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setProductCategoryCode_NotLikeSearch(String productCategoryCode, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(productCategoryCode), xgetCValueProductCategoryCode(), "PRODUCT_CATEGORY_CODE", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (商品カテゴリコード)PRODUCT_CATEGORY_CODE: {PK, NotNull, CHAR(3)}
-     * @param productCategoryCode The value of productCategoryCode as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setProductCategoryCode_PrefixSearch(String productCategoryCode) {
-        setProductCategoryCode_LikeSearch(productCategoryCode, xcLSOPPre());
     }
 
     /**
@@ -429,6 +442,17 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品カテゴリ名称)PRODUCT_CATEGORY_NAME: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setProductCategoryName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productCategoryName The value of productCategoryName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductCategoryName_LikeSearch(String productCategoryName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductCategoryName_LikeSearch(productCategoryName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品カテゴリ名称)PRODUCT_CATEGORY_NAME: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setProductCategoryName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productCategoryName The value of productCategoryName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -442,19 +466,21 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品カテゴリ名称)PRODUCT_CATEGORY_NAME: {NotNull, VARCHAR(50)}
      * @param productCategoryName The value of productCategoryName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductCategoryName_NotLikeSearch(String productCategoryName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductCategoryName_NotLikeSearch(productCategoryName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品カテゴリ名称)PRODUCT_CATEGORY_NAME: {NotNull, VARCHAR(50)}
+     * @param productCategoryName The value of productCategoryName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setProductCategoryName_NotLikeSearch(String productCategoryName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(productCategoryName), xgetCValueProductCategoryName(), "PRODUCT_CATEGORY_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (商品カテゴリ名称)PRODUCT_CATEGORY_NAME: {NotNull, VARCHAR(50)}
-     * @param productCategoryName The value of productCategoryName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setProductCategoryName_PrefixSearch(String productCategoryName) {
-        setProductCategoryName_LikeSearch(productCategoryName, xcLSOPPre());
     }
 
     protected void regProductCategoryName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductCategoryName(), "PRODUCT_CATEGORY_NAME"); }
@@ -551,6 +577,17 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY} <br>
+     * <pre>e.g. setParentCategoryCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param parentCategoryCode The value of parentCategoryCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setParentCategoryCode_LikeSearch(String parentCategoryCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setParentCategoryCode_LikeSearch(parentCategoryCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY} <br>
      * <pre>e.g. setParentCategoryCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param parentCategoryCode The value of parentCategoryCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -564,50 +601,22 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY}
      * @param parentCategoryCode The value of parentCategoryCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setParentCategoryCode_NotLikeSearch(String parentCategoryCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setParentCategoryCode_NotLikeSearch(parentCategoryCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY}
+     * @param parentCategoryCode The value of parentCategoryCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setParentCategoryCode_NotLikeSearch(String parentCategoryCode, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(parentCategoryCode), xgetCValueParentCategoryCode(), "PARENT_CATEGORY_CODE", likeSearchOption);
     }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (親カテゴリコード)PARENT_CATEGORY_CODE: {IX, CHAR(3), FK to PRODUCT_CATEGORY}
-     * @param parentCategoryCode The value of parentCategoryCode as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setParentCategoryCode_PrefixSearch(String parentCategoryCode) {
-        setParentCategoryCode_LikeSearch(parentCategoryCode, xcLSOPPre());
-    }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select PARENT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
-     * (商品カテゴリ)PRODUCT_CATEGORY by my PARENT_CATEGORY_CODE, named 'productCategorySelf'.
-     * @param subCBLambda The callback for sub-query of ProductCategorySelf for 'in-scope'. (NotNull)
-     */
-    public void inScopeProductCategorySelf(SubQuery<ProductCategoryCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepParentCategoryCode_InScopeRelation_ProductCategorySelf(cb.query());
-        registerInScopeRelation(cb.query(), "PARENT_CATEGORY_CODE", "PRODUCT_CATEGORY_CODE", pp, "productCategorySelf", false);
-    }
-    public abstract String keepParentCategoryCode_InScopeRelation_ProductCategorySelf(ProductCategoryCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select PARENT_CATEGORY_CODE from PRODUCT_CATEGORY where ...)} <br />
-     * (商品カテゴリ)PRODUCT_CATEGORY by my PARENT_CATEGORY_CODE, named 'productCategorySelf'.
-     * @param subCBLambda The callback for sub-query of ProductCategorySelf for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeProductCategorySelf(SubQuery<ProductCategoryCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        ProductCategoryCB cb = new ProductCategoryCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepParentCategoryCode_NotInScopeRelation_ProductCategorySelf(cb.query());
-        registerInScopeRelation(cb.query(), "PARENT_CATEGORY_CODE", "PRODUCT_CATEGORY_CODE", pp, "productCategorySelf", true);
-    }
-    public abstract String keepParentCategoryCode_NotInScopeRelation_ProductCategorySelf(ProductCategoryCQ sq);
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
@@ -791,6 +800,39 @@ public abstract class AbstractBsProductCategoryCQ extends AbstractConditionQuery
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

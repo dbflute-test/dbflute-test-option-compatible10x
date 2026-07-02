@@ -60,7 +60,7 @@ public class WxSqlFireHookBasicTest extends UnitContainerTestCase {
     public void test_SqlFireHook_executeQuery_select_basic() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         final Set<String> displaySqlSet = new HashSet<String>();
         final Set<String> markSet = new HashSet<String>();
         CallbackContext.setSqlFireHookOnThread(new SqlFireHook() {

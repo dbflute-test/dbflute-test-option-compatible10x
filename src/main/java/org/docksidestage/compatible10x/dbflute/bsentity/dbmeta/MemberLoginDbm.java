@@ -60,8 +60,22 @@ public class MemberLoginDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((MemberLogin)et).getMemberLoginId(), (et, vl) -> ((MemberLogin)et).setMemberLoginId(ctl(vl)), "memberLoginId");
         setupEpg(_epgMap, et -> ((MemberLogin)et).getMemberId(), (et, vl) -> ((MemberLogin)et).setMemberId(cti(vl)), "memberId");
         setupEpg(_epgMap, et -> ((MemberLogin)et).getLoginDatetime(), (et, vl) -> ((MemberLogin)et).setLoginDatetime(cttp(vl)), "loginDatetime");
-        setupEpg(_epgMap, et -> ((MemberLogin)et).getMobileLoginFlg(), (et, vl) -> ((MemberLogin)et).setMobileLoginFlg(cti(vl)), "mobileLoginFlg");
-        setupEpg(_epgMap, et -> ((MemberLogin)et).getLoginMemberStatusCode(), (et, vl) -> ((MemberLogin)et).setLoginMemberStatusCode((String)vl), "loginMemberStatusCode");
+        setupEpg(_epgMap, et -> ((MemberLogin)et).getMobileLoginFlg(), (et, vl) -> {
+            CDef.Flg cls = (CDef.Flg)gcls(et, columnMobileLoginFlg(), vl);
+            if (cls != null) {
+                ((MemberLogin)et).setMobileLoginFlgAsFlg(cls);
+            } else {
+                ((MemberLogin)et).mynativeMappingMobileLoginFlg(ctn(vl, Integer.class));
+            }
+        }, "mobileLoginFlg");
+        setupEpg(_epgMap, et -> ((MemberLogin)et).getLoginMemberStatusCode(), (et, vl) -> {
+            CDef.MemberStatus cls = (CDef.MemberStatus)gcls(et, columnLoginMemberStatusCode(), vl);
+            if (cls != null) {
+                ((MemberLogin)et).setLoginMemberStatusCodeAsMemberStatus(cls);
+            } else {
+                ((MemberLogin)et).mynativeMappingLoginMemberStatusCode((String)vl);
+            }
+        }, "loginMemberStatusCode");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -98,7 +112,7 @@ public class MemberLoginDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberLoginId = cci("MEMBER_LOGIN_ID", "MEMBER_LOGIN_ID", null, "会員ログインID", Long.class, "memberLoginId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR \"PUBLIC\".\"SYSTEM_SEQUENCE_6E0E10EF_5E07_4E31_A0F7_0C365B53541B\"", false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnMemberLoginId = cci("MEMBER_LOGIN_ID", "MEMBER_LOGIN_ID", null, "会員ログインID", Long.class, "memberLoginId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR \"PUBLIC\".\"SYSTEM_SEQUENCE_63272A73_9DFB_4E16_9D02_6F11366C4100\"", false, null, null, null, null, null, false);
     protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, "会員ID", Integer.class, "memberId", null, false, false, true, "INTEGER", 10, 0, null, null, false, null, null, "member", null, null, false);
     protected final ColumnInfo _columnLoginDatetime = cci("LOGIN_DATETIME", "LOGIN_DATETIME", null, "ログイン日時", java.sql.Timestamp.class, "loginDatetime", null, false, false, true, "TIMESTAMP", 26, 6, null, null, false, null, "ログインした瞬間の日時。\n同じ会員が同じ日時にログインはできない。(ユニーク制約で重複ログインできないようにしてある)", null, null, null, false);
     protected final ColumnInfo _columnMobileLoginFlg = cci("MOBILE_LOGIN_FLG", "MOBILE_LOGIN_FLG", null, "モバイルログインフラグ", Integer.class, "mobileLoginFlg", null, false, false, true, "INTEGER", 10, 0, null, null, false, null, "モバイル機器からのログインか否か。", null, null, CDef.DefMeta.Flg, false);
@@ -212,7 +226,6 @@ public class MemberLoginDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public MemberLogin newEntity() { return new MemberLogin(); }
-    public MemberLogin newMyEntity() { return new MemberLogin(); }
 
     // ===================================================================================
     //                                                                   Map Communication

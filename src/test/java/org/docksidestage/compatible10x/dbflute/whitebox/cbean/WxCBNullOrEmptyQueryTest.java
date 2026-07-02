@@ -33,7 +33,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.query().setMemberId_Equal(null); // no exception
-        cb.query().setMemberName_PrefixSearch(""); // no exception
+        cb.query().setMemberName_LikeSearch("", op -> op.likePrefix()); // no exception
         cb.checkNullOrEmptyQuery();
 
         // ## Act ##
@@ -48,7 +48,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
             assertTrue(Srl.containsAll(e.getMessage(), "MEMBER_ID equal", "query()"));
         }
         try {
-            cb.query().setMemberName_PrefixSearch("");
+            cb.query().setMemberName_LikeSearch("", op -> op.likePrefix());
 
             fail();
         } catch (InvalidQueryRegisteredException e) {
@@ -69,8 +69,8 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.query().setMemberId_Equal(null); // no exception
-        cb.query().setMemberName_PrefixSearch(""); // no exception
-        cb.checkInvalidQuery();
+        cb.query().setMemberName_LikeSearch("", op -> op.likePrefix()); // no exception
+        cb.checkNullOrEmptyQuery();
 
         // ## Act ##
         try {
@@ -84,7 +84,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
             assertTrue(Srl.containsAll(e.getMessage(), "MEMBER_ID equal", "query()"));
         }
         try {
-            cb.query().setMemberName_PrefixSearch("");
+            cb.query().setMemberName_LikeSearch("", op -> op.likePrefix());
 
             fail();
         } catch (InvalidQueryRegisteredException e) {
@@ -110,13 +110,13 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
         cb.checkNullOrEmptyQuery();
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(DfTypeUtil.toDate("2006-09-26"), null); // OK
+        cb.query().setBirthdate_FromTo(DfTypeUtil.toDate("2006-09-26"), null, op -> op.compareAsDate()); // OK
         assertTrue(Srl.contains(cb.toDisplaySql(), "2006-09-26"));
-        cb.query().setBirthdate_DateFromTo(null, DfTypeUtil.toDate("2011-01-21")); // OK
+        cb.query().setBirthdate_FromTo(null, DfTypeUtil.toDate("2011-01-21"), op -> op.compareAsDate()); // OK
         assertTrue(Srl.contains(cb.toDisplaySql(), "2011-01-22")); // added
 
         try {
-            cb.query().setBirthdate_DateFromTo(null, null);
+            cb.query().setBirthdate_FromTo(null, null, op -> op.compareAsDate());
 
             // ## Assert ##
             fail();
@@ -163,7 +163,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
                 subCB.query().setPurchaseDatetime_Equal(null); // no exception
             }
         });
-        cb.checkInvalidQuery();
+        cb.checkNullOrEmptyQuery();
 
         // ## Act ##
         try {
@@ -193,7 +193,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
                 unionCB.query().setMemberName_Equal("");
             }
         });
-        cb.checkInvalidQuery();
+        cb.checkNullOrEmptyQuery();
 
         // ## Act ##
         try {
@@ -219,8 +219,8 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.query().setMemberId_Equal(null); // no exception
-        cb.query().setMemberName_PrefixSearch(""); // no exception
-        cb.checkInvalidQuery();
+        cb.query().setMemberName_LikeSearch("", op -> op.likePrefix()); // no exception
+        cb.checkNullOrEmptyQuery();
 
         // ## Act ##
         try {
@@ -234,7 +234,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
             assertTrue(Srl.containsAll(e.getMessage(), "MEMBER_ID equal", "query()"));
         }
         try {
-            cb.query().setMemberName_PrefixSearch("");
+            cb.query().setMemberName_LikeSearch("", op -> op.likePrefix());
 
             fail();
         } catch (InvalidQueryRegisteredException e) {
@@ -244,7 +244,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
         }
         cb.ignoreNullOrEmptyQuery();
         cb.query().setMemberId_Equal(null); // no exception
-        cb.query().setMemberName_PrefixSearch(""); // no exception
+        cb.query().setMemberName_LikeSearch("", op -> op.likePrefix()); // no exception
 
         // ## Act ##
         cb.query().setMemberId_Equal(3);
@@ -261,7 +261,7 @@ public class WxCBNullOrEmptyQueryTest extends UnitContainerTestCase {
         cb.ignoreNullOrEmptyQuery();
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(null, null);
+        cb.query().setBirthdate_FromTo(null, null, op -> op.compareAsDate());
 
         String sql = cb.toDisplaySql();
         log(ln() + sql);

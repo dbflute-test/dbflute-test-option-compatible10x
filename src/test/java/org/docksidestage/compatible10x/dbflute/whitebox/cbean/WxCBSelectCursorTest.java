@@ -12,7 +12,6 @@ import org.dbflute.hook.SqlResultHandler;
 import org.dbflute.hook.SqlResultInfo;
 import org.dbflute.outsidesql.OutsideSqlContext;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
-import org.docksidestage.compatible10x.dbflute.cbean.MemberStatusCB;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberStatusBhv;
 import org.docksidestage.compatible10x.dbflute.exentity.Member;
@@ -98,7 +97,7 @@ public class WxCBSelectCursorTest extends UnitContainerTestCase {
                 } else {
                     memberStatusCode = "00" + count;
                 }
-                memberStatus.setMemberStatusCode(memberStatusCode);
+                memberStatus.mynativeMappingMemberStatusCode(memberStatusCode);
                 memberStatus.setMemberStatusName(memberName + count);
                 memberStatus.setDescription("foo");
                 memberStatus.setDisplayOrder(99999 + count);
@@ -113,9 +112,11 @@ public class WxCBSelectCursorTest extends UnitContainerTestCase {
         assertFalse(ContextStack.isExistContextStackOnThread());
         assertFalse(ConditionBeanContext.isExistConditionBeanOnThread());
         assertFalse(OutsideSqlContext.isExistOutsideSqlContextOnThread());
-        MemberStatusCB statusCB = new MemberStatusCB();
-        statusCB.query().setMemberStatusCode_InScope(codeList);
-        assertNotSame(0, memberStatusBhv.selectCount(statusCB));
+        // cannot set unknown classification because of already migrated (2026/07/02)
+        //MemberStatusCB statusCB = new MemberStatusCB();
+        //List<CDef.MemberStatus> statusList = codeList.stream().map(code -> CDef.MemberStatus.of(code).orElseThrow()).collect(Collectors.toList());
+        //statusCB.query().setMemberStatusCode_InScope_AsMemberStatus(statusList);
+        //assertNotSame(0, memberStatusBhv.selectCount(statusCB));
     }
 
     // ===================================================================================

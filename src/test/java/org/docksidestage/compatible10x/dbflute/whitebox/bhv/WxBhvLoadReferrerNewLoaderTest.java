@@ -63,7 +63,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
     public void test_loadReferrer_basic() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_MemberId_Asc();
 
         // ## Act ##
@@ -132,7 +132,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
     public void test_loadReferrer_nest_and_branch() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_MemberId_Asc();
 
         // ## Act ##
@@ -238,7 +238,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_MemberId_Asc();
 
         // ## Act ##
@@ -307,7 +307,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
     public void test_loadReferrer_pullout_noSetupSelect() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_MemberId_Asc();
 
         // ## Act ##
@@ -463,7 +463,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
                             public void handle(LoaderOfMemberLogin loader) {
                                 loader.pulloutMemberStatus().loadMemberList(new ConditionBeanSetupper<MemberCB>() {
                                     public void setup(MemberCB referrerCB) {
-                                        referrerCB.query().setMemberName_PrefixSearch("S");
+                                        referrerCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
                                     }
                                 });
                             }
@@ -590,7 +590,7 @@ public class WxBhvLoadReferrerNewLoaderTest extends UnitContainerTestCase {
                             public void handle(LoaderOfMemberLogin loader) {
                                 loader.pulloutMemberStatus().loadMemberList(new ConditionBeanSetupper<MemberCB>() {
                                     public void setup(MemberCB referrerCB) {
-                                        referrerCB.query().setMemberName_PrefixSearch("S");
+                                        referrerCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
                                     }
                                 });
                             }

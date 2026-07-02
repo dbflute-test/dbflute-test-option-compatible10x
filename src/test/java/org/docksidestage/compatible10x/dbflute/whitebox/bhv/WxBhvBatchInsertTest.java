@@ -78,7 +78,7 @@ public class WxBhvBatchInsertTest extends UnitContainerTestCase {
         // ## Assert ##
         assertEquals(3, result.length);
         MemberCB cb = new MemberCB();
-        cb.query().setMemberAccount_PrefixSearch("testAccount");
+        cb.query().setMemberAccount_LikeSearch("testAccount", op -> op.likePrefix());
         ListResultBean<Member> actualList = memberBhv.selectList(cb);
         assertEquals(3, actualList.size());
         assertEquals("testName1", actualList.get(0).getMemberName());
@@ -127,7 +127,7 @@ public class WxBhvBatchInsertTest extends UnitContainerTestCase {
         // ## Assert ##
         assertEquals(3, result.length);
         MemberCB cb = new MemberCB();
-        cb.query().setMemberAccount_PrefixSearch("testAccount");
+        cb.query().setMemberAccount_LikeSearch("testAccount", op -> op.likePrefix());
         ListResultBean<Member> actualList = memberBhv.selectList(cb);
         assertEquals(3, actualList.size());
         assertEquals("testName1", actualList.get(0).getMemberName());
@@ -233,7 +233,7 @@ public class WxBhvBatchInsertTest extends UnitContainerTestCase {
             assertNotNull(member.getBirthdate());
         }
         MemberCB cb = new MemberCB();
-        cb.query().setMemberAccount_PrefixSearch("testAccount");
+        cb.query().setMemberAccount_LikeSearch("testAccount", op -> op.likePrefix());
         ListResultBean<Member> actualList = memberBhv.selectList(cb);
         assertEquals(memberList.get(0).getFormalizedDatetime(), actualList.get(0).getFormalizedDatetime());
         assertEquals(memberList.get(1).getFormalizedDatetime(), actualList.get(1).getFormalizedDatetime());

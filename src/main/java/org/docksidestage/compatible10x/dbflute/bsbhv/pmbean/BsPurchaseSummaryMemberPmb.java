@@ -181,14 +181,6 @@ public class BsPurchaseSummaryMemberPmb implements CursorHandlingPmb<MemberBhv, 
     }
 
     /**
-     * [set] memberStatusCode:cls(MemberStatus) <br>
-     * @param memberStatusCode The value of memberStatusCode. (NullAllowed)
-     */
-    public void setMemberStatusCode(String memberStatusCode) {
-        _memberStatusCode = memberStatusCode;
-    }
-
-    /**
      * [set as MemberStatus] memberStatusCode:cls(MemberStatus) <br>
      * status of member from entry to withdrawal
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the property)

@@ -41,7 +41,7 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
     //                                                                       =============
     public void test_readScalar_basic() {
         // ## Arrange ##
-        Integer expected = memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+        Integer expected = memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }
@@ -72,20 +72,20 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
         memberBhv.create(member, null);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         assertEquals("foo", actual.getMemberName());
     }
 
     public void test_modify_basic() {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName("foo");
 
         // ## Act ##
         memberBhv.modify(member, null);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         assertEquals("foo", actual.getMemberName());
     }
 
@@ -101,14 +101,14 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
         memberBhv.modifyNonstrict(member, null);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         assertEquals("foo", actual.getMemberName());
         assertEquals("bar", actual.getMemberAccount());
     }
 
     public void test_modifyNonstrict_specify() {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName("foo");
         String preAccount = member.getMemberAccount();
         member.setMemberAccount("bar");
@@ -124,7 +124,7 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
         memberBhv.modifyNonstrict(member, option);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         assertEquals("foo", actual.getMemberName());
         assertEquals(preAccount, actual.getMemberAccount());
     }
@@ -141,7 +141,7 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals("foo", actual.getMemberName());
         }
 
@@ -151,7 +151,7 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals("qux", actual.getMemberName());
         }
     }
@@ -168,7 +168,7 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals("foo", actual.getMemberName());
         }
 
@@ -179,14 +179,14 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals("qux", actual.getMemberName());
         }
     }
 
     public void test_createOrModifyNonstrict_specify() {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName("foo");
         String preAccount = member.getMemberAccount();
         member.setMemberAccount("bar");
@@ -203,7 +203,7 @@ public class WxBhvInterfaceDispatchTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals("foo", actual.getMemberName());
             assertEquals(preAccount, actual.getMemberAccount());
         }

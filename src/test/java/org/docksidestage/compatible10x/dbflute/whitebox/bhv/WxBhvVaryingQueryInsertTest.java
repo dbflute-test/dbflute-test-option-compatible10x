@@ -55,7 +55,7 @@ public class WxBhvVaryingQueryInsertTest extends UnitContainerTestCase {
 
         // ## Act ##
         int inserted = memberWithdrawalBhv.varyingQueryInsert((entity, intoCB) -> {
-            entity.setWithdrawalReasonCode(firstReason.getWithdrawalReasonCode());
+            entity.mynativeMappingWithdrawalReasonCode(firstReason.getWithdrawalReasonCode());
             MemberCB cb = new MemberCB();
 
             intoCB.specify().columnMemberId().mappedFrom(cb.specify().columnMemberId());

@@ -26,7 +26,7 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
     public void test_inline_local_basic() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().inline().setMemberName_PrefixSearch("S");
+        cb.query().inline().setMemberName_LikeSearch("S", op -> op.likePrefix());
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);
@@ -42,7 +42,7 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
     public void test_inline_local_InScopeRelation_basic() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().inline().setMemberName_PrefixSearch("S");
+        cb.query().inline().setMemberName_LikeSearch("S", op -> op.likePrefix());
         // // unsupported since 1.1
         //cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {
         //    public void query(PurchaseCB subCB) {
@@ -66,7 +66,7 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
         cb.setupSelect_MemberAddressAsValid(currentUtilDate());
-        cb.query().inline().setMemberName_PrefixSearch("S");
+        cb.query().inline().setMemberName_LikeSearch("S", op -> op.likePrefix());
         // unsupported since 1.1
         //cb.query().inline().inScopePurchaseList(new SubQuery<PurchaseCB>() {
         //    public void query(PurchaseCB subCB) {
@@ -93,7 +93,7 @@ public class WxCBInlineViewTest extends UnitContainerTestCase {
     public void test_inline_local_ExistsReferrer() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().inline().setMemberName_PrefixSearch("S");
+        cb.query().inline().setMemberName_LikeSearch("S", op -> op.likePrefix());
 
         // ## Act ##
         try {

@@ -63,7 +63,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * (会員ステータスコード)MEMBER_STATUS_CODE: {PK, NotNull, CHAR(3), classification=MemberStatus}
      * @param memberStatusCode The value of memberStatusCode as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setMemberStatusCode_Equal(String memberStatusCode) {
+    protected void setMemberStatusCode_Equal(String memberStatusCode) {
         doSetMemberStatusCode_Equal(fRES(memberStatusCode));
     }
 
@@ -110,7 +110,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * (会員ステータスコード)MEMBER_STATUS_CODE: {PK, NotNull, CHAR(3), classification=MemberStatus}
      * @param memberStatusCode The value of memberStatusCode as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setMemberStatusCode_NotEqual(String memberStatusCode) {
+    protected void setMemberStatusCode_NotEqual(String memberStatusCode) {
         doSetMemberStatusCode_NotEqual(fRES(memberStatusCode));
     }
 
@@ -157,7 +157,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * (会員ステータスコード)MEMBER_STATUS_CODE: {PK, NotNull, CHAR(3), classification=MemberStatus}
      * @param memberStatusCodeList The collection of memberStatusCode as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setMemberStatusCode_InScope(Collection<String> memberStatusCodeList) {
+    protected void setMemberStatusCode_InScope(Collection<String> memberStatusCodeList) {
         doSetMemberStatusCode_InScope(memberStatusCodeList);
     }
 
@@ -190,7 +190,7 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * (会員ステータスコード)MEMBER_STATUS_CODE: {PK, NotNull, CHAR(3), classification=MemberStatus}
      * @param memberStatusCodeList The collection of memberStatusCode as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setMemberStatusCode_NotInScope(Collection<String> memberStatusCodeList) {
+    protected void setMemberStatusCode_NotInScope(Collection<String> memberStatusCodeList) {
         doSetMemberStatusCode_NotInScope(memberStatusCodeList);
     }
 
@@ -460,6 +460,17 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (会員ステータス名称)MEMBER_STATUS_NAME: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setMemberStatusName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param memberStatusName The value of memberStatusName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberStatusName_LikeSearch(String memberStatusName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberStatusName_LikeSearch(memberStatusName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (会員ステータス名称)MEMBER_STATUS_NAME: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setMemberStatusName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param memberStatusName The value of memberStatusName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -473,19 +484,21 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (会員ステータス名称)MEMBER_STATUS_NAME: {NotNull, VARCHAR(50)}
      * @param memberStatusName The value of memberStatusName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberStatusName_NotLikeSearch(String memberStatusName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberStatusName_NotLikeSearch(memberStatusName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (会員ステータス名称)MEMBER_STATUS_NAME: {NotNull, VARCHAR(50)}
+     * @param memberStatusName The value of memberStatusName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setMemberStatusName_NotLikeSearch(String memberStatusName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(memberStatusName), xgetCValueMemberStatusName(), "MEMBER_STATUS_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (会員ステータス名称)MEMBER_STATUS_NAME: {NotNull, VARCHAR(50)}
-     * @param memberStatusName The value of memberStatusName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setMemberStatusName_PrefixSearch(String memberStatusName) {
-        setMemberStatusName_LikeSearch(memberStatusName, xcLSOPPre());
     }
 
     protected void regMemberStatusName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueMemberStatusName(), "MEMBER_STATUS_NAME"); }
@@ -582,6 +595,17 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (説明)DESCRIPTION: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setDescription_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param description The value of description as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setDescription_LikeSearch(String description, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setDescription_LikeSearch(description, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (説明)DESCRIPTION: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setDescription_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param description The value of description as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -595,19 +619,21 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (説明)DESCRIPTION: {NotNull, VARCHAR(200)}
      * @param description The value of description as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setDescription_NotLikeSearch(String description, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setDescription_NotLikeSearch(description, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (説明)DESCRIPTION: {NotNull, VARCHAR(200)}
+     * @param description The value of description as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setDescription_NotLikeSearch(String description, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(description), xgetCValueDescription(), "DESCRIPTION", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (説明)DESCRIPTION: {NotNull, VARCHAR(200)}
-     * @param description The value of description as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setDescription_PrefixSearch(String description) {
-        setDescription_LikeSearch(description, xcLSOPPre());
     }
 
     protected void regDescription(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueDescription(), "DESCRIPTION"); }
@@ -673,6 +699,19 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
      */
     public void setDisplayOrder_LessEqual(Integer displayOrder) {
         regDisplayOrder(CK_LE, displayOrder);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (表示順)DISPLAY_ORDER: {UQ, NotNull, INTEGER(10)}
+     * @param minNumber The min number of displayOrder. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of displayOrder. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setDisplayOrder_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setDisplayOrder_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -878,6 +917,39 @@ public abstract class AbstractBsMemberStatusCQ extends AbstractConditionQuery {
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

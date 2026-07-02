@@ -146,14 +146,6 @@ public class BsPurchaseChangedToPaymentCompletePmb implements ExecuteHandlingPmb
     }
 
     /**
-     * [set] paymentCompleteFlg:ref(PURCHASE) :: refers to (支払完了フラグ)PAYMENT_COMPLETE_FLG: {NotNull, INTEGER(10), classification=Flg} <br>
-     * @param paymentCompleteFlg The value of paymentCompleteFlg. (NullAllowed)
-     */
-    public void setPaymentCompleteFlg(Integer paymentCompleteFlg) {
-        _paymentCompleteFlg = paymentCompleteFlg;
-    }
-
-    /**
      * [set as Flg] paymentCompleteFlg:ref(PURCHASE) :: refers to (支払完了フラグ)PAYMENT_COMPLETE_FLG: {NotNull, INTEGER(10), classification=Flg} <br>
      * general boolean classification for every flg-column
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the property)

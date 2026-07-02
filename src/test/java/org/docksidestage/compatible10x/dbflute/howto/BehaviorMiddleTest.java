@@ -144,7 +144,7 @@ public class BehaviorMiddleTest extends UnitContainerTestCase {
         Date expected = memberBhv.selectEntityWithDeletedCheck(cb).getBirthdate();
 
         // ## Act ##
-        memberBhv.scalarSelect(Date.class).max(new ScalarQuery<MemberCB>() {
+        memberBhv.selectScalar(Date.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnBirthdate(); // *Point!
                 cb.query().setMemberStatusCode_Equal_Formalized();

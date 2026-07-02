@@ -31,6 +31,7 @@ import org.dbflute.exception.*;
 import org.dbflute.hook.CommonColumnAutoSetupper;
 import org.dbflute.optional.OptionalEntity;
 import org.dbflute.outsidesql.executor.*;
+import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.exbhv.*;
 import org.docksidestage.compatible10x.dbflute.bsbhv.loader.*;
 import org.docksidestage.compatible10x.dbflute.exentity.*;
@@ -57,24 +58,30 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /** {@inheritDoc} */
     public String asTableDbName() { return "PRODUCT_STATUS"; }
 
-    /** @return The instance of DBMeta as my table type. (NotNull) */
-    public ProductStatusDbm getMyDBMeta() { return ProductStatusDbm.getInstance(); }
-
     // ===================================================================================
     //                                                                        New Instance
     //                                                                        ============
     /** {@inheritDoc} */
     public ProductStatusCB newConditionBean() { return new ProductStatusCB(); }
 
-    /** @return The instance of new entity as my table type. (NotNull) */
-    public ProductStatus newMyEntity() { return new ProductStatus(); }
-
-    /** @return The instance of new condition-bean as my table type. (NotNull) */
-    public ProductStatusCB newMyConditionBean() { return new ProductStatusCB(); }
-
     // ===================================================================================
     //                                                                        Count Select
     //                                                                        ============
+    /**
+     * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
+     * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
+     * <pre>
+     * <span style="color: #70226C">int</span> count = <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectCount</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The count for the condition. (NotMinus)
+     */
+    public int selectCount(CBCall<ProductStatusCB> cbLambda) {
+        return facadeSelectCount(createCB(cbLambda));
+    }
+
     /**
      * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
      * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
@@ -93,6 +100,29 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     // ===================================================================================
     //                                                                       Entity Select
     //                                                                       =============
+    /**
+     * Select the entity by the condition-bean. #beforejava8 <br>
+     * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, use selectEntityWithDeletedCheck().</span>
+     * <pre>
+     * ProductStatus productStatus = <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectEntity</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * <span style="color: #70226C">if</span> (productStatus != <span style="color: #70226C">null</span>) { <span style="color: #3F7E5E">// null check</span>
+     *     ... = productStatus.get...();
+     * } <span style="color: #70226C">else</span> {
+     *     ...
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public OptionalEntity<ProductStatus> selectEntity(CBCall<ProductStatusCB> cbLambda) {
+        return doSelectOptionalEntity(createCB(cbLambda), typeOfSelectedEntity());
+    }
+
     /**
      * Select the entity by the condition-bean. #beforejava8 <br>
      * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
@@ -130,6 +160,23 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * Select the entity by the condition-bean with deleted check. <br>
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
+     * ProductStatus <span style="color: #553000">productStatus</span> = <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> cb.acceptPK(1));
+     * ... = <span style="color: #553000">productStatus</span>.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The entity selected by the condition. (NotNull: if no data, throws exception)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public ProductStatus selectEntityWithDeletedCheck(CBCall<ProductStatusCB> cbLambda) {
+        return facadeSelectEntityWithDeletedCheck(createCB(cbLambda));
+    }
+
+    /**
+     * Select the entity by the condition-bean with deleted check. <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
+     * <pre>
      * ProductStatusCB cb = <span style="color: #70226C">new</span> ProductStatusCB();
      * cb.query().set...;
      * ProductStatus productStatus = <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
@@ -148,43 +195,28 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /**
      * Select the entity by the primary-key value.
      * @param productStatusCode (商品ステータスコード): PK, NotNull, CHAR(3), classification=ProductStatus. (NotNull)
-     * @return The entity selected by the PK. (NullAllowed: if no data, it returns null)
+     * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
+     * @throws EntityAlreadyDeletedException When get(), alwaysPresent() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public ProductStatus selectByPKValue(String productStatusCode) {
-        return facadeSelectByPKValue(productStatusCode);
+    public OptionalEntity<ProductStatus> selectByPK(CDef.ProductStatus productStatusCode) {
+        return facadeSelectByPK(productStatusCode);
     }
 
-    protected ProductStatus facadeSelectByPKValue(String productStatusCode) {
-        return doSelectByPK(productStatusCode, typeOfSelectedEntity());
+    protected OptionalEntity<ProductStatus> facadeSelectByPK(CDef.ProductStatus productStatusCode) {
+        return doSelectOptionalByPK(productStatusCode, typeOfSelectedEntity());
     }
 
-    protected <ENTITY extends ProductStatus> ENTITY doSelectByPK(String productStatusCode, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends ProductStatus> ENTITY doSelectByPK(CDef.ProductStatus productStatusCode, Class<? extends ENTITY> tp) {
         return doSelectEntity(xprepareCBAsPK(productStatusCode), tp);
     }
 
-    protected <ENTITY extends ProductStatus> OptionalEntity<ENTITY> doSelectOptionalByPK(String productStatusCode, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends ProductStatus> OptionalEntity<ENTITY> doSelectOptionalByPK(CDef.ProductStatus productStatusCode, Class<? extends ENTITY> tp) {
         return createOptionalEntity(doSelectByPK(productStatusCode, tp), productStatusCode);
     }
 
-    /**
-     * Select the entity by the primary-key value with deleted check.
-     * @param productStatusCode (商品ステータスコード): PK, NotNull, CHAR(3), classification=ProductStatus. (NotNull)
-     * @return The entity selected by the PK. (NotNull: if no data, throws exception)
-     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @throws EntityDuplicatedException When the entity has been duplicated.
-     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
-     */
-    public ProductStatus selectByPKValueWithDeletedCheck(String productStatusCode) {
-        return doSelectByPKWithDeletedCheck(productStatusCode, typeOfSelectedEntity());
-    }
-
-    protected <ENTITY extends ProductStatus> ENTITY doSelectByPKWithDeletedCheck(String productStatusCode, Class<ENTITY> tp) {
-        return doSelectEntityWithDeletedCheck(xprepareCBAsPK(productStatusCode), tp);
-    }
-
-    protected ProductStatusCB xprepareCBAsPK(String productStatusCode) {
+    protected ProductStatusCB xprepareCBAsPK(CDef.ProductStatus productStatusCode) {
         assertObjectNotNull("productStatusCode", productStatusCode);
         return newConditionBean().acceptPK(productStatusCode);
     }
@@ -220,6 +252,25 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     /**
      * Select the list as result bean.
      * <pre>
+     * ListResultBean&lt;ProductStatus&gt; <span style="color: #553000">productStatusList</span> = <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectList</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...;
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...;
+     * });
+     * <span style="color: #70226C">for</span> (ProductStatus <span style="color: #553000">productStatus</span> : <span style="color: #553000">productStatusList</span>) {
+     *     ... = <span style="color: #553000">productStatus</span>.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The result bean of selected list. (NotNull: if no data, returns empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public ListResultBean<ProductStatus> selectList(CBCall<ProductStatusCB> cbLambda) {
+        return facadeSelectList(createCB(cbLambda));
+    }
+
+    /**
+     * Select the list as result bean.
+     * <pre>
      * ProductStatusCB cb = <span style="color: #70226C">new</span> ProductStatusCB();
      * cb.query().set...;
      * cb.query().addOrderBy...;
@@ -236,9 +287,38 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
         return facadeSelectList(cb);
     }
 
+    @Override
+    protected boolean isEntityDerivedMappable() { return true; }
+
     // ===================================================================================
     //                                                                         Page Select
     //                                                                         ===========
+    /**
+     * Select the page as result bean. <br>
+     * (both count-select and paging-select are executed)
+     * <pre>
+     * PagingResultBean&lt;ProductStatus&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectPage</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...
+     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * });
+     * <span style="color: #70226C">int</span> allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * <span style="color: #70226C">int</span> allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * <span style="color: #70226C">boolean</span> isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * <span style="color: #70226C">boolean</span> isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
+     * ...
+     * <span style="color: #70226C">for</span> (ProductStatus productStatus : <span style="color: #553000">page</span>) {
+     *     ... = productStatus.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public PagingResultBean<ProductStatus> selectPage(CBCall<ProductStatusCB> cbLambda) {
+        return facadeSelectPage(createCB(cbLambda));
+    }
+
     /**
      * Select the page as result bean. <br>
      * (both count-select and paging-select are executed)
@@ -268,6 +348,22 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
     // ===================================================================================
     //                                                                       Cursor Select
     //                                                                       =============
+    /**
+     * Select the cursor by the condition-bean.
+     * <pre>
+     * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">selectCursor</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * }, <span style="color: #553000">member</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ... = <span style="color: #553000">member</span>.getMemberName();
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @param entityLambda The handler of entity row of ProductStatus. (NotNull)
+     */
+    public void selectCursor(CBCall<ProductStatusCB> cbLambda, EntityRowHandler<ProductStatus> entityLambda) {
+        facadeSelectCursor(createCB(cbLambda), entityLambda);
+    }
+
     /**
      * Select the cursor by the condition-bean.
      * <pre>
@@ -301,23 +397,6 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * @return The scalar function object to specify function for scalar value. (NotNull)
      */
     public <RESULT> HpSLSFunction<ProductStatusCB, RESULT> selectScalar(Class<RESULT> resultType) {
-        return facadeScalarSelect(resultType);
-    }
-
-    /**
-     * Select the scalar value derived by a function from uniquely-selected records. <br>
-     * You should call a function method after this method called like as follows:
-     * <pre>
-     * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...</span>; <span style="color: #3F7E5E">// required for the function</span>
-     *     <span style="color: #553000">cb</span>.query().set...
-     * });
-     * </pre>
-     * @param <RESULT> The type of result.
-     * @param resultType The type of result. (NotNull)
-     * @return The scalar function object to specify function for scalar value. (NotNull)
-     */
-    public <RESULT> HpSLSFunction<ProductStatusCB, RESULT> scalarSelect(Class<RESULT> resultType) {
         return facadeScalarSelect(resultType);
     }
 
@@ -829,6 +908,32 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//productStatus.setVersionNo(value);</span>
+     * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">queryUpdate</span>(productStatus, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param productStatus The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition.
+     */
+    public int queryUpdate(ProductStatus productStatus, CBCall<ProductStatusCB> cbLambda) {
+        return doQueryUpdate(productStatus, createCB(cbLambda), null);
+    }
+
+    /**
+     * Update the several entities by query non-strictly modified-only. (NonExclusiveControl)
+     * <pre>
+     * ProductStatus productStatus = <span style="color: #70226C">new</span> ProductStatus();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//productStatus.setPK...(value);</span>
+     * productStatus.setFoo...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
+     * <span style="color: #3F7E5E">//productStatus.setRegisterUser(value);</span>
+     * <span style="color: #3F7E5E">//productStatus.set...;</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//productStatus.setVersionNo(value);</span>
      * ProductStatusCB cb = <span style="color: #70226C">new</span> ProductStatusCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">queryUpdate</span>(productStatus, cb);
@@ -840,6 +945,21 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      */
     public int queryUpdate(ProductStatus productStatus, ProductStatusCB cb) {
         return doQueryUpdate(productStatus, cb, null);
+    }
+
+    /**
+     * Delete the several entities by query. (NonExclusiveControl)
+     * <pre>
+     * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">queryDelete</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition.
+     */
+    public int queryDelete(CBCall<ProductStatusCB> cbLambda) {
+        return doQueryDelete(createCB(cbLambda), null);
     }
 
     /**
@@ -1010,6 +1130,38 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//productStatus.setVersionNo(value);</span>
+     * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(productStatus, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
+     * });
+     * </pre>
+     * @param productStatus The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @param opLambda The callback for option of update for varying requests. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryUpdate(ProductStatus productStatus, CBCall<ProductStatusCB> cbLambda, WritableOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
+        return doQueryUpdate(productStatus, createCB(cbLambda), createUpdateOption(opLambda));
+    }
+
+    /**
+     * Update the several entities by query with varying requests non-strictly modified-only. {NonExclusiveControl} <br>
+     * For example, self(selfCalculationSpecification), specify(updateColumnSpecification)
+     * , disableCommonColumnAutoSetup(), allowNonQueryUpdate(). <br>
+     * Other specifications are same as queryUpdate(entity, cb).
+     * <pre>
+     * <span style="color: #3F7E5E">// ex) you can update by self calculation values</span>
+     * ProductStatus productStatus = <span style="color: #70226C">new</span> ProductStatus();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//productStatus.setPK...(value);</span>
+     * productStatus.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//productStatus.setVersionNo(value);</span>
      * ProductStatusCB cb = <span style="color: #70226C">new</span> ProductStatusCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(productStatus, cb, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -1026,6 +1178,26 @@ public abstract class BsProductStatusBhv extends AbstractBehaviorWritable<Produc
      */
     public int varyingQueryUpdate(ProductStatus productStatus, ProductStatusCB cb, WritableOptionCall<ProductStatusCB, UpdateOption<ProductStatusCB>> opLambda) {
         return doQueryUpdate(productStatus, cb, createUpdateOption(opLambda));
+    }
+
+    /**
+     * Delete the several entities by query with varying requests non-strictly. <br>
+     * For example, allowNonQueryDelete(). <br>
+     * Other specifications are same as queryDelete(cb).
+     * <pre>
+     * <span style="color: #0000C0">productStatusBhv</span>.<span style="color: #CC4747">queryDelete</span>(productStatus, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of ProductStatus. (NotNull)
+     * @param opLambda The callback for option of delete for varying requests. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryDelete(CBCall<ProductStatusCB> cbLambda, WritableOptionCall<ProductStatusCB, DeleteOption<ProductStatusCB>> opLambda) {
+        return doQueryDelete(createCB(cbLambda), createDeleteOption(opLambda));
     }
 
     /**

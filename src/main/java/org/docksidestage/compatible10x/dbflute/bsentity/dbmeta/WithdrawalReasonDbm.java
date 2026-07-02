@@ -57,7 +57,14 @@ public class WithdrawalReasonDbm extends AbstractDBMeta {
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     { xsetupEpg(); }
     protected void xsetupEpg() {
-        setupEpg(_epgMap, et -> ((WithdrawalReason)et).getWithdrawalReasonCode(), (et, vl) -> ((WithdrawalReason)et).setWithdrawalReasonCode((String)vl), "withdrawalReasonCode");
+        setupEpg(_epgMap, et -> ((WithdrawalReason)et).getWithdrawalReasonCode(), (et, vl) -> {
+            CDef.WithdrawalReason cls = (CDef.WithdrawalReason)gcls(et, columnWithdrawalReasonCode(), vl);
+            if (cls != null) {
+                ((WithdrawalReason)et).setWithdrawalReasonCodeAsWithdrawalReason(cls);
+            } else {
+                ((WithdrawalReason)et).mynativeMappingWithdrawalReasonCode((String)vl);
+            }
+        }, "withdrawalReasonCode");
         setupEpg(_epgMap, et -> ((WithdrawalReason)et).getWithdrawalReasonText(), (et, vl) -> ((WithdrawalReason)et).setWithdrawalReasonText((String)vl), "withdrawalReasonText");
         setupEpg(_epgMap, et -> ((WithdrawalReason)et).getDisplayOrder(), (et, vl) -> ((WithdrawalReason)et).setDisplayOrder(cti(vl)), "displayOrder");
     }
@@ -170,7 +177,6 @@ public class WithdrawalReasonDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public WithdrawalReason newEntity() { return new WithdrawalReason(); }
-    public WithdrawalReason newMyEntity() { return new WithdrawalReason(); }
 
     // ===================================================================================
     //                                                                   Map Communication

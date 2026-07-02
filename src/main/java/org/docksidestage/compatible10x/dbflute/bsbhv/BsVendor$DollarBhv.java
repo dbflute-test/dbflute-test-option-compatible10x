@@ -57,24 +57,30 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     /** {@inheritDoc} */
     public String asTableDbName() { return "VENDOR_$_DOLLAR"; }
 
-    /** @return The instance of DBMeta as my table type. (NotNull) */
-    public Vendor$DollarDbm getMyDBMeta() { return Vendor$DollarDbm.getInstance(); }
-
     // ===================================================================================
     //                                                                        New Instance
     //                                                                        ============
     /** {@inheritDoc} */
     public Vendor$DollarCB newConditionBean() { return new Vendor$DollarCB(); }
 
-    /** @return The instance of new entity as my table type. (NotNull) */
-    public Vendor$Dollar newMyEntity() { return new Vendor$Dollar(); }
-
-    /** @return The instance of new condition-bean as my table type. (NotNull) */
-    public Vendor$DollarCB newMyConditionBean() { return new Vendor$DollarCB(); }
-
     // ===================================================================================
     //                                                                        Count Select
     //                                                                        ============
+    /**
+     * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
+     * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
+     * <pre>
+     * <span style="color: #70226C">int</span> count = <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectCount</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The count for the condition. (NotMinus)
+     */
+    public int selectCount(CBCall<Vendor$DollarCB> cbLambda) {
+        return facadeSelectCount(createCB(cbLambda));
+    }
+
     /**
      * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
      * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
@@ -93,6 +99,29 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     // ===================================================================================
     //                                                                       Entity Select
     //                                                                       =============
+    /**
+     * Select the entity by the condition-bean. #beforejava8 <br>
+     * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, use selectEntityWithDeletedCheck().</span>
+     * <pre>
+     * Vendor$Dollar vendor$Dollar = <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectEntity</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * <span style="color: #70226C">if</span> (vendor$Dollar != <span style="color: #70226C">null</span>) { <span style="color: #3F7E5E">// null check</span>
+     *     ... = vendor$Dollar.get...();
+     * } <span style="color: #70226C">else</span> {
+     *     ...
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public OptionalEntity<Vendor$Dollar> selectEntity(CBCall<Vendor$DollarCB> cbLambda) {
+        return doSelectOptionalEntity(createCB(cbLambda), typeOfSelectedEntity());
+    }
+
     /**
      * Select the entity by the condition-bean. #beforejava8 <br>
      * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
@@ -130,6 +159,23 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
      * Select the entity by the condition-bean with deleted check. <br>
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
+     * Vendor$Dollar <span style="color: #553000">vendor$Dollar</span> = <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> cb.acceptPK(1));
+     * ... = <span style="color: #553000">vendor$Dollar</span>.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The entity selected by the condition. (NotNull: if no data, throws exception)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public Vendor$Dollar selectEntityWithDeletedCheck(CBCall<Vendor$DollarCB> cbLambda) {
+        return facadeSelectEntityWithDeletedCheck(createCB(cbLambda));
+    }
+
+    /**
+     * Select the entity by the condition-bean with deleted check. <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
+     * <pre>
      * Vendor$DollarCB cb = <span style="color: #70226C">new</span> Vendor$DollarCB();
      * cb.query().set...;
      * Vendor$Dollar vendor$Dollar = <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
@@ -148,16 +194,17 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     /**
      * Select the entity by the primary-key value.
      * @param vendor$DollarId : PK, NotNull, INTEGER(10). (NotNull)
-     * @return The entity selected by the PK. (NullAllowed: if no data, it returns null)
+     * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
+     * @throws EntityAlreadyDeletedException When get(), alwaysPresent() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public Vendor$Dollar selectByPKValue(Integer vendor$DollarId) {
-        return facadeSelectByPKValue(vendor$DollarId);
+    public OptionalEntity<Vendor$Dollar> selectByPK(Integer vendor$DollarId) {
+        return facadeSelectByPK(vendor$DollarId);
     }
 
-    protected Vendor$Dollar facadeSelectByPKValue(Integer vendor$DollarId) {
-        return doSelectByPK(vendor$DollarId, typeOfSelectedEntity());
+    protected OptionalEntity<Vendor$Dollar> facadeSelectByPK(Integer vendor$DollarId) {
+        return doSelectOptionalByPK(vendor$DollarId, typeOfSelectedEntity());
     }
 
     protected <ENTITY extends Vendor$Dollar> ENTITY doSelectByPK(Integer vendor$DollarId, Class<? extends ENTITY> tp) {
@@ -168,22 +215,6 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
         return createOptionalEntity(doSelectByPK(vendor$DollarId, tp), vendor$DollarId);
     }
 
-    /**
-     * Select the entity by the primary-key value with deleted check.
-     * @param vendor$DollarId : PK, NotNull, INTEGER(10). (NotNull)
-     * @return The entity selected by the PK. (NotNull: if no data, throws exception)
-     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @throws EntityDuplicatedException When the entity has been duplicated.
-     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
-     */
-    public Vendor$Dollar selectByPKValueWithDeletedCheck(Integer vendor$DollarId) {
-        return doSelectByPKWithDeletedCheck(vendor$DollarId, typeOfSelectedEntity());
-    }
-
-    protected <ENTITY extends Vendor$Dollar> ENTITY doSelectByPKWithDeletedCheck(Integer vendor$DollarId, Class<ENTITY> tp) {
-        return doSelectEntityWithDeletedCheck(xprepareCBAsPK(vendor$DollarId), tp);
-    }
-
     protected Vendor$DollarCB xprepareCBAsPK(Integer vendor$DollarId) {
         assertObjectNotNull("vendor$DollarId", vendor$DollarId);
         return newConditionBean().acceptPK(vendor$DollarId);
@@ -192,6 +223,25 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     // ===================================================================================
     //                                                                         List Select
     //                                                                         ===========
+    /**
+     * Select the list as result bean.
+     * <pre>
+     * ListResultBean&lt;Vendor$Dollar&gt; <span style="color: #553000">vendor$DollarList</span> = <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectList</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...;
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...;
+     * });
+     * <span style="color: #70226C">for</span> (Vendor$Dollar <span style="color: #553000">vendor$Dollar</span> : <span style="color: #553000">vendor$DollarList</span>) {
+     *     ... = <span style="color: #553000">vendor$Dollar</span>.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The result bean of selected list. (NotNull: if no data, returns empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public ListResultBean<Vendor$Dollar> selectList(CBCall<Vendor$DollarCB> cbLambda) {
+        return facadeSelectList(createCB(cbLambda));
+    }
+
     /**
      * Select the list as result bean.
      * <pre>
@@ -211,9 +261,38 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
         return facadeSelectList(cb);
     }
 
+    @Override
+    protected boolean isEntityDerivedMappable() { return true; }
+
     // ===================================================================================
     //                                                                         Page Select
     //                                                                         ===========
+    /**
+     * Select the page as result bean. <br>
+     * (both count-select and paging-select are executed)
+     * <pre>
+     * PagingResultBean&lt;Vendor$Dollar&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectPage</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...
+     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * });
+     * <span style="color: #70226C">int</span> allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * <span style="color: #70226C">int</span> allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * <span style="color: #70226C">boolean</span> isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * <span style="color: #70226C">boolean</span> isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
+     * ...
+     * <span style="color: #70226C">for</span> (Vendor$Dollar vendor$Dollar : <span style="color: #553000">page</span>) {
+     *     ... = vendor$Dollar.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public PagingResultBean<Vendor$Dollar> selectPage(CBCall<Vendor$DollarCB> cbLambda) {
+        return facadeSelectPage(createCB(cbLambda));
+    }
+
     /**
      * Select the page as result bean. <br>
      * (both count-select and paging-select are executed)
@@ -243,6 +322,22 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
     // ===================================================================================
     //                                                                       Cursor Select
     //                                                                       =============
+    /**
+     * Select the cursor by the condition-bean.
+     * <pre>
+     * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">selectCursor</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * }, <span style="color: #553000">member</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ... = <span style="color: #553000">member</span>.getMemberName();
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @param entityLambda The handler of entity row of Vendor$Dollar. (NotNull)
+     */
+    public void selectCursor(CBCall<Vendor$DollarCB> cbLambda, EntityRowHandler<Vendor$Dollar> entityLambda) {
+        facadeSelectCursor(createCB(cbLambda), entityLambda);
+    }
+
     /**
      * Select the cursor by the condition-bean.
      * <pre>
@@ -276,23 +371,6 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
      * @return The scalar function object to specify function for scalar value. (NotNull)
      */
     public <RESULT> HpSLSFunction<Vendor$DollarCB, RESULT> selectScalar(Class<RESULT> resultType) {
-        return facadeScalarSelect(resultType);
-    }
-
-    /**
-     * Select the scalar value derived by a function from uniquely-selected records. <br>
-     * You should call a function method after this method called like as follows:
-     * <pre>
-     * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...</span>; <span style="color: #3F7E5E">// required for the function</span>
-     *     <span style="color: #553000">cb</span>.query().set...
-     * });
-     * </pre>
-     * @param <RESULT> The type of result.
-     * @param resultType The type of result. (NotNull)
-     * @return The scalar function object to specify function for scalar value. (NotNull)
-     */
-    public <RESULT> HpSLSFunction<Vendor$DollarCB, RESULT> scalarSelect(Class<RESULT> resultType) {
         return facadeScalarSelect(resultType);
     }
 
@@ -620,6 +698,32 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//vendor$Dollar.setVersionNo(value);</span>
+     * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendor$Dollar, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param vendor$Dollar The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition.
+     */
+    public int queryUpdate(Vendor$Dollar vendor$Dollar, CBCall<Vendor$DollarCB> cbLambda) {
+        return doQueryUpdate(vendor$Dollar, createCB(cbLambda), null);
+    }
+
+    /**
+     * Update the several entities by query non-strictly modified-only. (NonExclusiveControl)
+     * <pre>
+     * Vendor$Dollar vendor$Dollar = <span style="color: #70226C">new</span> Vendor$Dollar();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//vendor$Dollar.setPK...(value);</span>
+     * vendor$Dollar.setFoo...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
+     * <span style="color: #3F7E5E">//vendor$Dollar.setRegisterUser(value);</span>
+     * <span style="color: #3F7E5E">//vendor$Dollar.set...;</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//vendor$Dollar.setVersionNo(value);</span>
      * Vendor$DollarCB cb = <span style="color: #70226C">new</span> Vendor$DollarCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendor$Dollar, cb);
@@ -631,6 +735,21 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
      */
     public int queryUpdate(Vendor$Dollar vendor$Dollar, Vendor$DollarCB cb) {
         return doQueryUpdate(vendor$Dollar, cb, null);
+    }
+
+    /**
+     * Delete the several entities by query. (NonExclusiveControl)
+     * <pre>
+     * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">queryDelete</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition.
+     */
+    public int queryDelete(CBCall<Vendor$DollarCB> cbLambda) {
+        return doQueryDelete(createCB(cbLambda), null);
     }
 
     /**
@@ -801,6 +920,38 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//vendor$Dollar.setVersionNo(value);</span>
+     * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendor$Dollar, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
+     * });
+     * </pre>
+     * @param vendor$Dollar The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @param opLambda The callback for option of update for varying requests. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryUpdate(Vendor$Dollar vendor$Dollar, CBCall<Vendor$DollarCB> cbLambda, WritableOptionCall<Vendor$DollarCB, UpdateOption<Vendor$DollarCB>> opLambda) {
+        return doQueryUpdate(vendor$Dollar, createCB(cbLambda), createUpdateOption(opLambda));
+    }
+
+    /**
+     * Update the several entities by query with varying requests non-strictly modified-only. {NonExclusiveControl} <br>
+     * For example, self(selfCalculationSpecification), specify(updateColumnSpecification)
+     * , disableCommonColumnAutoSetup(), allowNonQueryUpdate(). <br>
+     * Other specifications are same as queryUpdate(entity, cb).
+     * <pre>
+     * <span style="color: #3F7E5E">// ex) you can update by self calculation values</span>
+     * Vendor$Dollar vendor$Dollar = <span style="color: #70226C">new</span> Vendor$Dollar();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//vendor$Dollar.setPK...(value);</span>
+     * vendor$Dollar.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//vendor$Dollar.setVersionNo(value);</span>
      * Vendor$DollarCB cb = <span style="color: #70226C">new</span> Vendor$DollarCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendor$Dollar, cb, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -817,6 +968,26 @@ public abstract class BsVendor$DollarBhv extends AbstractBehaviorWritable<Vendor
      */
     public int varyingQueryUpdate(Vendor$Dollar vendor$Dollar, Vendor$DollarCB cb, WritableOptionCall<Vendor$DollarCB, UpdateOption<Vendor$DollarCB>> opLambda) {
         return doQueryUpdate(vendor$Dollar, cb, createUpdateOption(opLambda));
+    }
+
+    /**
+     * Delete the several entities by query with varying requests non-strictly. <br>
+     * For example, allowNonQueryDelete(). <br>
+     * Other specifications are same as queryDelete(cb).
+     * <pre>
+     * <span style="color: #0000C0">vendor$DollarBhv</span>.<span style="color: #CC4747">queryDelete</span>(vendor$Dollar, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of Vendor$Dollar. (NotNull)
+     * @param opLambda The callback for option of delete for varying requests. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryDelete(CBCall<Vendor$DollarCB> cbLambda, WritableOptionCall<Vendor$DollarCB, DeleteOption<Vendor$DollarCB>> opLambda) {
+        return doQueryDelete(createCB(cbLambda), createDeleteOption(opLambda));
     }
 
     /**

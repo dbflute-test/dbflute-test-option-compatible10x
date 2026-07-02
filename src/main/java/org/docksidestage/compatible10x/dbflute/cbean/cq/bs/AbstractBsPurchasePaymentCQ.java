@@ -127,6 +127,19 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * (購入支払ID)PURCHASE_PAYMENT_ID: {PK, ID, NotNull, BIGINT(19)}
      * @param minNumber The min number of purchasePaymentId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of purchasePaymentId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setPurchasePaymentId_RangeOf(Long minNumber, Long maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setPurchasePaymentId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (購入支払ID)PURCHASE_PAYMENT_ID: {PK, ID, NotNull, BIGINT(19)}
+     * @param minNumber The min number of purchasePaymentId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of purchasePaymentId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setPurchasePaymentId_RangeOf(Long minNumber, Long maxNumber, RangeOfOption rangeOfOption) {
@@ -243,6 +256,19 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * (購入ID)PURCHASE_ID: {IX, NotNull, BIGINT(19), FK to PURCHASE}
      * @param minNumber The min number of purchaseId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of purchaseId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setPurchaseId_RangeOf(Long minNumber, Long maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setPurchaseId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (購入ID)PURCHASE_ID: {IX, NotNull, BIGINT(19), FK to PURCHASE}
+     * @param minNumber The min number of purchaseId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of purchaseId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setPurchaseId_RangeOf(Long minNumber, Long maxNumber, RangeOfOption rangeOfOption) {
@@ -274,36 +300,6 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     protected void doSetPurchaseId_NotInScope(Collection<Long> purchaseIdList) {
         regINS(CK_NINS, cTL(purchaseIdList), xgetCValuePurchaseId(), "PURCHASE_ID");
     }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select PURCHASE_ID from PURCHASE where ...)} <br />
-     * (購入)PURCHASE by my PURCHASE_ID, named 'purchase'.
-     * @param subCBLambda The callback for sub-query of Purchase for 'in-scope'. (NotNull)
-     */
-    public void inScopePurchase(SubQuery<PurchaseCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        PurchaseCB cb = new PurchaseCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepPurchaseId_InScopeRelation_Purchase(cb.query());
-        registerInScopeRelation(cb.query(), "PURCHASE_ID", "PURCHASE_ID", pp, "purchase", false);
-    }
-    public abstract String keepPurchaseId_InScopeRelation_Purchase(PurchaseCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select PURCHASE_ID from PURCHASE where ...)} <br />
-     * (購入)PURCHASE by my PURCHASE_ID, named 'purchase'.
-     * @param subCBLambda The callback for sub-query of Purchase for 'not in-scope'. (NotNull)
-     */
-    public void notInScopePurchase(SubQuery<PurchaseCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        PurchaseCB cb = new PurchaseCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepPurchaseId_NotInScopeRelation_Purchase(cb.query());
-        registerInScopeRelation(cb.query(), "PURCHASE_ID", "PURCHASE_ID", pp, "purchase", true);
-    }
-    public abstract String keepPurchaseId_NotInScopeRelation_Purchase(PurchaseCQ sq);
 
     protected void regPurchaseId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValuePurchaseId(), "PURCHASE_ID"); }
     protected abstract ConditionValue xgetCValuePurchaseId();
@@ -368,6 +364,19 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      */
     public void setPaymentAmount_LessEqual(java.math.BigDecimal paymentAmount) {
         regPaymentAmount(CK_LE, paymentAmount);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (支払金額)PAYMENT_AMOUNT: {NotNull, DECIMAL(10, 2)}
+     * @param minNumber The min number of paymentAmount. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of paymentAmount. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setPaymentAmount_RangeOf(java.math.BigDecimal minNumber, java.math.BigDecimal maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setPaymentAmount_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -461,6 +470,19 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setPaymentDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setPaymentDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setPaymentDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setPaymentDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -468,21 +490,6 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      */
     public void setPaymentDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValuePaymentDatetime(), "PAYMENT_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * (支払日時)PAYMENT_DATETIME: {IX+, NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of paymentDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setPaymentDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setPaymentDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regPaymentDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValuePaymentDatetime(), "PAYMENT_DATETIME"); }
@@ -493,7 +500,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3), classification=PaymentMethod}
      * @param paymentMethodCode The value of paymentMethodCode as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setPaymentMethodCode_Equal(String paymentMethodCode) {
+    protected void setPaymentMethodCode_Equal(String paymentMethodCode) {
         doSetPaymentMethodCode_Equal(fRES(paymentMethodCode));
     }
 
@@ -540,7 +547,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3), classification=PaymentMethod}
      * @param paymentMethodCode The value of paymentMethodCode as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setPaymentMethodCode_NotEqual(String paymentMethodCode) {
+    protected void setPaymentMethodCode_NotEqual(String paymentMethodCode) {
         doSetPaymentMethodCode_NotEqual(fRES(paymentMethodCode));
     }
 
@@ -587,7 +594,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3), classification=PaymentMethod}
      * @param paymentMethodCodeList The collection of paymentMethodCode as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setPaymentMethodCode_InScope(Collection<String> paymentMethodCodeList) {
+    protected void setPaymentMethodCode_InScope(Collection<String> paymentMethodCodeList) {
         doSetPaymentMethodCode_InScope(paymentMethodCodeList);
     }
 
@@ -620,7 +627,7 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3), classification=PaymentMethod}
      * @param paymentMethodCodeList The collection of paymentMethodCode as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setPaymentMethodCode_NotInScope(Collection<String> paymentMethodCodeList) {
+    protected void setPaymentMethodCode_NotInScope(Collection<String> paymentMethodCodeList) {
         doSetPaymentMethodCode_NotInScope(paymentMethodCodeList);
     }
 
@@ -690,6 +697,19 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setRegisterDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setRegisterDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -697,21 +717,6 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      */
     public void setRegisterDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueRegisterDatetime(), "REGISTER_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setRegisterDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterDatetime(), "REGISTER_DATETIME"); }
@@ -808,6 +813,17 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setRegisterUser_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param registerUser The value of registerUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegisterUser_LikeSearch(String registerUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegisterUser_LikeSearch(registerUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setRegisterUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param registerUser The value of registerUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -821,19 +837,21 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegisterUser_NotLikeSearch(String registerUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegisterUser_NotLikeSearch(registerUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * REGISTER_USER: {NotNull, VARCHAR(200)}
+     * @param registerUser The value of registerUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setRegisterUser_NotLikeSearch(String registerUser, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(registerUser), xgetCValueRegisterUser(), "REGISTER_USER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * REGISTER_USER: {NotNull, VARCHAR(200)}
-     * @param registerUser The value of registerUser as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setRegisterUser_PrefixSearch(String registerUser) {
-        setRegisterUser_LikeSearch(registerUser, xcLSOPPre());
     }
 
     protected void regRegisterUser(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterUser(), "REGISTER_USER"); }
@@ -888,6 +906,19 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setUpdateDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setUpdateDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -895,21 +926,6 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      */
     public void setUpdateDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueUpdateDatetime(), "UPDATE_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setUpdateDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDatetime(), "UPDATE_DATETIME"); }
@@ -1006,6 +1022,17 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setUpdateUser_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param updateUser The value of updateUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setUpdateUser_LikeSearch(String updateUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setUpdateUser_LikeSearch(updateUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setUpdateUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param updateUser The value of updateUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1019,19 +1046,21 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setUpdateUser_NotLikeSearch(String updateUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setUpdateUser_NotLikeSearch(updateUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * UPDATE_USER: {NotNull, VARCHAR(200)}
+     * @param updateUser The value of updateUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setUpdateUser_NotLikeSearch(String updateUser, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(updateUser), xgetCValueUpdateUser(), "UPDATE_USER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * UPDATE_USER: {NotNull, VARCHAR(200)}
-     * @param updateUser The value of updateUser as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setUpdateUser_PrefixSearch(String updateUser) {
-        setUpdateUser_LikeSearch(updateUser, xcLSOPPre());
     }
 
     protected void regUpdateUser(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateUser(), "UPDATE_USER"); }
@@ -1198,6 +1227,39 @@ public abstract class AbstractBsPurchasePaymentCQ extends AbstractConditionQuery
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

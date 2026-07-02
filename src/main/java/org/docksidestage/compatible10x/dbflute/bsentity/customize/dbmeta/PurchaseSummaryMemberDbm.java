@@ -171,7 +171,6 @@ public class PurchaseSummaryMemberDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public PurchaseSummaryMember newEntity() { return new PurchaseSummaryMember(); }
-    public PurchaseSummaryMember newMyEntity() { return new PurchaseSummaryMember(); }
 
     // ===================================================================================
     //                                                                   Map Communication

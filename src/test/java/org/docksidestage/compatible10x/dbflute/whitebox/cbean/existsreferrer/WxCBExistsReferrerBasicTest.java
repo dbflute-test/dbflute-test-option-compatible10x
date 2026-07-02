@@ -43,7 +43,7 @@ public class WxCBExistsReferrerBasicTest extends UnitContainerTestCase {
     //                                                                               =====
     public void test_ExistsReferrer_nested() {
         // ## Arrange ##
-        final Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        final Member member = memberBhv.selectByPK(3).orElseThrow();
         MemberStatusCB cb = new MemberStatusCB();
         cb.query().existsMemberList(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {
@@ -205,7 +205,7 @@ public class WxCBExistsReferrerBasicTest extends UnitContainerTestCase {
         cb.setupSelect_MemberAddressAsValid(date);
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
-                subCB.query().queryMember().queryMemberAddressAsValid(date).setAddress_PrefixSearch("S");
+                subCB.query().queryMember().queryMemberAddressAsValid(date).setAddress_LikeSearch("S", op -> op.likePrefix());
             }
         });
 

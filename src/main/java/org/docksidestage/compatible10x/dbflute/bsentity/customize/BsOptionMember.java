@@ -464,7 +464,7 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
      * ステータスが変わるたびに、このカラムが更新される。
      * @param memberStatusCode The value of the column 'MEMBER_STATUS_CODE'. (NullAllowed: null update allowed for no constraint)
      */
-    public void setMemberStatusCode(String memberStatusCode) {
+    protected void setMemberStatusCode(String memberStatusCode) {
         registerModifiedProperty("memberStatusCode");
         _memberStatusCode = memberStatusCode;
     }
@@ -530,7 +530,7 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
      * // for Classification Test of Sql2Entity
      * @param dummyFlg The value of the column 'DUMMY_FLG'. (NullAllowed: null update allowed for no constraint)
      */
-    public void setDummyFlg(Integer dummyFlg) {
+    protected void setDummyFlg(Integer dummyFlg) {
         checkClassificationCode("DUMMY_FLG", CDef.DefMeta.Flg, dummyFlg);
         registerModifiedProperty("dummyFlg");
         _dummyFlg = dummyFlg;
@@ -554,5 +554,21 @@ public abstract class BsOptionMember extends AbstractEntity implements Customize
     public void setDummyNoflg(Integer dummyNoflg) {
         registerModifiedProperty("dummyNoflg");
         _dummyNoflg = dummyNoflg;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param memberStatusCode The value of the column 'MEMBER_STATUS_CODE'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void mynativeMappingMemberStatusCode(String memberStatusCode) {
+        setMemberStatusCode(memberStatusCode);
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param dummyFlg The value of the column 'DUMMY_FLG'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void mynativeMappingDummyFlg(Integer dummyFlg) {
+        setDummyFlg(dummyFlg);
     }
 }

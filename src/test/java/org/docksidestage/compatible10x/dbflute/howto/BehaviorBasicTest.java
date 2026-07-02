@@ -111,7 +111,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
     public void test_selectList() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_MemberId_Asc();
 
         // ## Act ##
@@ -143,7 +143,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
     public void test_selectCount() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
 
         // ## Act ##
         int count = memberBhv.selectCount(cb);
@@ -209,7 +209,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
      */
     public void test_update() {
         // ## Arrange ##
-        Member beforeMember = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member beforeMember = memberBhv.selectByPK(3).orElseThrow();
         Long versionNo = beforeMember.getVersionNo();// 排他制御のためにVersionNoを取得
 
         Member member = new Member();
@@ -221,7 +221,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
         memberBhv.update(member);
 
         // ## Assert ##
-        Member afterMember = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member afterMember = memberBhv.selectByPK(3).orElseThrow();
         log("onDatabase = " + afterMember.toString());
         log("onMemory   = " + member.toString());
         assertEquals(Long.valueOf(versionNo + 1), member.getVersionNo());
@@ -263,7 +263,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
         memberBhv.updateNonstrict(member);
 
         // ## Assert ##
-        Member afterMember = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member afterMember = memberBhv.selectByPK(3).orElseThrow();
         log("onDatabase = " + afterMember.toString());
         log("onMemory   = " + member.toString());
         assertNull(member.getVersionNo());
@@ -302,7 +302,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         deleteMemberReferrer();// テストのためにReferrerを全部消す
 
-        Member beforeMember = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member beforeMember = memberBhv.selectByPK(3).orElseThrow();
         Long versionNo = beforeMember.getVersionNo();// 排他制御のためにVersionNoを取得
 
         Member member = new Member();
@@ -314,7 +314,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
 
         // ## Assert ##
         try {
-            memberBhv.selectByPKValueWithDeletedCheck(3);
+            memberBhv.selectByPK(3).orElseThrow();
             fail();
         } catch (EntityAlreadyDeletedException e) {
             // OK
@@ -344,7 +344,7 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
 
         // ## Assert ##
         try {
-            memberBhv.selectByPKValueWithDeletedCheck(3);
+            memberBhv.selectByPK(3).orElseThrow();
             fail();
         } catch (EntityAlreadyDeletedException e) {
             // OK
@@ -356,27 +356,28 @@ public class BehaviorBasicTest extends UnitContainerTestCase {
         // B. 存在しないPK値を指定された場合は例外発生。{EntityAlreadyDeletedException}
     }
 
-    /**
-     * 既に削除済みであれば素通りする排他制御なし一件削除: deleteNonstrictIgnoreDeleted().
-     * 存在しない会員ID'99999'の会員を削除。
-     */
-    public void test_deleteNonstrictIgnoreDeleted() {
-        // ## Arrange ##
-        Member member = new Member();
-        member.setMemberId(99999);// 存在しない会員の会員ID(既に削除されたと仮定)
-
-        // ## Act ##
-        memberBhv.deleteNonstrictIgnoreDeleted(member);// 例外は発生しない
-
-        // ## Assert ##
-        try {
-            memberBhv.selectByPKValueWithDeletedCheck(99999);
-            fail();
-        } catch (EntityAlreadyDeletedException e) {
-            // OK
-            log(e.getMessage());
-        }
-    }
+    // IgnoreDeletedはもうない (2026/07/02)
+    ///**
+    // * 既に削除済みであれば素通りする排他制御なし一件削除: deleteNonstrictIgnoreDeleted().
+    // * 存在しない会員ID'99999'の会員を削除。
+    // */
+    //public void test_deleteNonstrictIgnoreDeleted() {
+    //    // ## Arrange ##
+    //    Member member = new Member();
+    //    member.setMemberId(99999);// 存在しない会員の会員ID(既に削除されたと仮定)
+    //
+    //    // ## Act ##
+    //    memberBhv.deleteNonstrict(member);// 例外は発生しない
+    //
+    //    // ## Assert ##
+    //    try {
+    //        memberBhv.selectByPK(99999).orElseThrow();
+    //        fail();
+    //    } catch (EntityAlreadyDeletedException e) {
+    //        // OK
+    //        log(e.getMessage());
+    //    }
+    //}
 
     // ===================================================================================
     //                                                                          OutsideSql

@@ -57,24 +57,30 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
     /** {@inheritDoc} */
     public String asTableDbName() { return "VENDOR_THE_LONG_AND_WINDING_TABLE_AND_COLUMN_REF"; }
 
-    /** @return The instance of DBMeta as my table type. (NotNull) */
-    public VendorTheLongAndWindingTableAndColumnRefDbm getMyDBMeta() { return VendorTheLongAndWindingTableAndColumnRefDbm.getInstance(); }
-
     // ===================================================================================
     //                                                                        New Instance
     //                                                                        ============
     /** {@inheritDoc} */
     public VendorTheLongAndWindingTableAndColumnRefCB newConditionBean() { return new VendorTheLongAndWindingTableAndColumnRefCB(); }
 
-    /** @return The instance of new entity as my table type. (NotNull) */
-    public VendorTheLongAndWindingTableAndColumnRef newMyEntity() { return new VendorTheLongAndWindingTableAndColumnRef(); }
-
-    /** @return The instance of new condition-bean as my table type. (NotNull) */
-    public VendorTheLongAndWindingTableAndColumnRefCB newMyConditionBean() { return new VendorTheLongAndWindingTableAndColumnRefCB(); }
-
     // ===================================================================================
     //                                                                        Count Select
     //                                                                        ============
+    /**
+     * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
+     * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
+     * <pre>
+     * <span style="color: #70226C">int</span> count = <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectCount</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The count for the condition. (NotMinus)
+     */
+    public int selectCount(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return facadeSelectCount(createCB(cbLambda));
+    }
+
     /**
      * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
      * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
@@ -93,6 +99,29 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
     // ===================================================================================
     //                                                                       Entity Select
     //                                                                       =============
+    /**
+     * Select the entity by the condition-bean. #beforejava8 <br>
+     * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, use selectEntityWithDeletedCheck().</span>
+     * <pre>
+     * VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef = <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectEntity</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * <span style="color: #70226C">if</span> (vendorTheLongAndWindingTableAndColumnRef != <span style="color: #70226C">null</span>) { <span style="color: #3F7E5E">// null check</span>
+     *     ... = vendorTheLongAndWindingTableAndColumnRef.get...();
+     * } <span style="color: #70226C">else</span> {
+     *     ...
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public OptionalEntity<VendorTheLongAndWindingTableAndColumnRef> selectEntity(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return doSelectOptionalEntity(createCB(cbLambda), typeOfSelectedEntity());
+    }
+
     /**
      * Select the entity by the condition-bean. #beforejava8 <br>
      * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
@@ -130,6 +159,23 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
      * Select the entity by the condition-bean with deleted check. <br>
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
+     * VendorTheLongAndWindingTableAndColumnRef <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRef</span> = <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> cb.acceptPK(1));
+     * ... = <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRef</span>.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The entity selected by the condition. (NotNull: if no data, throws exception)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public VendorTheLongAndWindingTableAndColumnRef selectEntityWithDeletedCheck(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return facadeSelectEntityWithDeletedCheck(createCB(cbLambda));
+    }
+
+    /**
+     * Select the entity by the condition-bean with deleted check. <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
+     * <pre>
      * VendorTheLongAndWindingTableAndColumnRefCB cb = <span style="color: #70226C">new</span> VendorTheLongAndWindingTableAndColumnRefCB();
      * cb.query().set...;
      * VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef = <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
@@ -148,16 +194,17 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
     /**
      * Select the entity by the primary-key value.
      * @param theLongAndWindingTableAndColumnRefId : PK, NotNull, BIGINT(19). (NotNull)
-     * @return The entity selected by the PK. (NullAllowed: if no data, it returns null)
+     * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
+     * @throws EntityAlreadyDeletedException When get(), alwaysPresent() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public VendorTheLongAndWindingTableAndColumnRef selectByPKValue(Long theLongAndWindingTableAndColumnRefId) {
-        return facadeSelectByPKValue(theLongAndWindingTableAndColumnRefId);
+    public OptionalEntity<VendorTheLongAndWindingTableAndColumnRef> selectByPK(Long theLongAndWindingTableAndColumnRefId) {
+        return facadeSelectByPK(theLongAndWindingTableAndColumnRefId);
     }
 
-    protected VendorTheLongAndWindingTableAndColumnRef facadeSelectByPKValue(Long theLongAndWindingTableAndColumnRefId) {
-        return doSelectByPK(theLongAndWindingTableAndColumnRefId, typeOfSelectedEntity());
+    protected OptionalEntity<VendorTheLongAndWindingTableAndColumnRef> facadeSelectByPK(Long theLongAndWindingTableAndColumnRefId) {
+        return doSelectOptionalByPK(theLongAndWindingTableAndColumnRefId, typeOfSelectedEntity());
     }
 
     protected <ENTITY extends VendorTheLongAndWindingTableAndColumnRef> ENTITY doSelectByPK(Long theLongAndWindingTableAndColumnRefId, Class<? extends ENTITY> tp) {
@@ -168,22 +215,6 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
         return createOptionalEntity(doSelectByPK(theLongAndWindingTableAndColumnRefId, tp), theLongAndWindingTableAndColumnRefId);
     }
 
-    /**
-     * Select the entity by the primary-key value with deleted check.
-     * @param theLongAndWindingTableAndColumnRefId : PK, NotNull, BIGINT(19). (NotNull)
-     * @return The entity selected by the PK. (NotNull: if no data, throws exception)
-     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @throws EntityDuplicatedException When the entity has been duplicated.
-     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
-     */
-    public VendorTheLongAndWindingTableAndColumnRef selectByPKValueWithDeletedCheck(Long theLongAndWindingTableAndColumnRefId) {
-        return doSelectByPKWithDeletedCheck(theLongAndWindingTableAndColumnRefId, typeOfSelectedEntity());
-    }
-
-    protected <ENTITY extends VendorTheLongAndWindingTableAndColumnRef> ENTITY doSelectByPKWithDeletedCheck(Long theLongAndWindingTableAndColumnRefId, Class<ENTITY> tp) {
-        return doSelectEntityWithDeletedCheck(xprepareCBAsPK(theLongAndWindingTableAndColumnRefId), tp);
-    }
-
     protected VendorTheLongAndWindingTableAndColumnRefCB xprepareCBAsPK(Long theLongAndWindingTableAndColumnRefId) {
         assertObjectNotNull("theLongAndWindingTableAndColumnRefId", theLongAndWindingTableAndColumnRefId);
         return newConditionBean().acceptPK(theLongAndWindingTableAndColumnRefId);
@@ -192,6 +223,25 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
     // ===================================================================================
     //                                                                         List Select
     //                                                                         ===========
+    /**
+     * Select the list as result bean.
+     * <pre>
+     * ListResultBean&lt;VendorTheLongAndWindingTableAndColumnRef&gt; <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRefList</span> = <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectList</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...;
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...;
+     * });
+     * <span style="color: #70226C">for</span> (VendorTheLongAndWindingTableAndColumnRef <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRef</span> : <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRefList</span>) {
+     *     ... = <span style="color: #553000">vendorTheLongAndWindingTableAndColumnRef</span>.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The result bean of selected list. (NotNull: if no data, returns empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public ListResultBean<VendorTheLongAndWindingTableAndColumnRef> selectList(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return facadeSelectList(createCB(cbLambda));
+    }
+
     /**
      * Select the list as result bean.
      * <pre>
@@ -211,9 +261,38 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
         return facadeSelectList(cb);
     }
 
+    @Override
+    protected boolean isEntityDerivedMappable() { return true; }
+
     // ===================================================================================
     //                                                                         Page Select
     //                                                                         ===========
+    /**
+     * Select the page as result bean. <br>
+     * (both count-select and paging-select are executed)
+     * <pre>
+     * PagingResultBean&lt;VendorTheLongAndWindingTableAndColumnRef&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectPage</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...
+     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * });
+     * <span style="color: #70226C">int</span> allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * <span style="color: #70226C">int</span> allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * <span style="color: #70226C">boolean</span> isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * <span style="color: #70226C">boolean</span> isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
+     * ...
+     * <span style="color: #70226C">for</span> (VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef : <span style="color: #553000">page</span>) {
+     *     ... = vendorTheLongAndWindingTableAndColumnRef.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public PagingResultBean<VendorTheLongAndWindingTableAndColumnRef> selectPage(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return facadeSelectPage(createCB(cbLambda));
+    }
+
     /**
      * Select the page as result bean. <br>
      * (both count-select and paging-select are executed)
@@ -243,6 +322,22 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
     // ===================================================================================
     //                                                                       Cursor Select
     //                                                                       =============
+    /**
+     * Select the cursor by the condition-bean.
+     * <pre>
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">selectCursor</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * }, <span style="color: #553000">member</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ... = <span style="color: #553000">member</span>.getMemberName();
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @param entityLambda The handler of entity row of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     */
+    public void selectCursor(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda, EntityRowHandler<VendorTheLongAndWindingTableAndColumnRef> entityLambda) {
+        facadeSelectCursor(createCB(cbLambda), entityLambda);
+    }
+
     /**
      * Select the cursor by the condition-bean.
      * <pre>
@@ -276,23 +371,6 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
      * @return The scalar function object to specify function for scalar value. (NotNull)
      */
     public <RESULT> HpSLSFunction<VendorTheLongAndWindingTableAndColumnRefCB, RESULT> selectScalar(Class<RESULT> resultType) {
-        return facadeScalarSelect(resultType);
-    }
-
-    /**
-     * Select the scalar value derived by a function from uniquely-selected records. <br>
-     * You should call a function method after this method called like as follows:
-     * <pre>
-     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...</span>; <span style="color: #3F7E5E">// required for the function</span>
-     *     <span style="color: #553000">cb</span>.query().set...
-     * });
-     * </pre>
-     * @param <RESULT> The type of result.
-     * @param resultType The type of result. (NotNull)
-     * @return The scalar function object to specify function for scalar value. (NotNull)
-     */
-    public <RESULT> HpSLSFunction<VendorTheLongAndWindingTableAndColumnRefCB, RESULT> scalarSelect(Class<RESULT> resultType) {
         return facadeScalarSelect(resultType);
     }
 
@@ -628,6 +706,32 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setVersionNo(value);</span>
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendorTheLongAndWindingTableAndColumnRef, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param vendorTheLongAndWindingTableAndColumnRef The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition.
+     */
+    public int queryUpdate(VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef, CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return doQueryUpdate(vendorTheLongAndWindingTableAndColumnRef, createCB(cbLambda), null);
+    }
+
+    /**
+     * Update the several entities by query non-strictly modified-only. (NonExclusiveControl)
+     * <pre>
+     * VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef = <span style="color: #70226C">new</span> VendorTheLongAndWindingTableAndColumnRef();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setPK...(value);</span>
+     * vendorTheLongAndWindingTableAndColumnRef.setFoo...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
+     * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setRegisterUser(value);</span>
+     * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.set...;</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setVersionNo(value);</span>
      * VendorTheLongAndWindingTableAndColumnRefCB cb = <span style="color: #70226C">new</span> VendorTheLongAndWindingTableAndColumnRefCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendorTheLongAndWindingTableAndColumnRef, cb);
@@ -639,6 +743,21 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
      */
     public int queryUpdate(VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef, VendorTheLongAndWindingTableAndColumnRefCB cb) {
         return doQueryUpdate(vendorTheLongAndWindingTableAndColumnRef, cb, null);
+    }
+
+    /**
+     * Delete the several entities by query. (NonExclusiveControl)
+     * <pre>
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">queryDelete</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition.
+     */
+    public int queryDelete(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda) {
+        return doQueryDelete(createCB(cbLambda), null);
     }
 
     /**
@@ -809,6 +928,38 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setVersionNo(value);</span>
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorTheLongAndWindingTableAndColumnRef, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
+     * });
+     * </pre>
+     * @param vendorTheLongAndWindingTableAndColumnRef The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @param opLambda The callback for option of update for varying requests. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryUpdate(VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef, CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda, WritableOptionCall<VendorTheLongAndWindingTableAndColumnRefCB, UpdateOption<VendorTheLongAndWindingTableAndColumnRefCB>> opLambda) {
+        return doQueryUpdate(vendorTheLongAndWindingTableAndColumnRef, createCB(cbLambda), createUpdateOption(opLambda));
+    }
+
+    /**
+     * Update the several entities by query with varying requests non-strictly modified-only. {NonExclusiveControl} <br>
+     * For example, self(selfCalculationSpecification), specify(updateColumnSpecification)
+     * , disableCommonColumnAutoSetup(), allowNonQueryUpdate(). <br>
+     * Other specifications are same as queryUpdate(entity, cb).
+     * <pre>
+     * <span style="color: #3F7E5E">// ex) you can update by self calculation values</span>
+     * VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef = <span style="color: #70226C">new</span> VendorTheLongAndWindingTableAndColumnRef();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setPK...(value);</span>
+     * vendorTheLongAndWindingTableAndColumnRef.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//vendorTheLongAndWindingTableAndColumnRef.setVersionNo(value);</span>
      * VendorTheLongAndWindingTableAndColumnRefCB cb = <span style="color: #70226C">new</span> VendorTheLongAndWindingTableAndColumnRefCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorTheLongAndWindingTableAndColumnRef, cb, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -825,6 +976,26 @@ public abstract class BsVendorTheLongAndWindingTableAndColumnRefBhv extends Abst
      */
     public int varyingQueryUpdate(VendorTheLongAndWindingTableAndColumnRef vendorTheLongAndWindingTableAndColumnRef, VendorTheLongAndWindingTableAndColumnRefCB cb, WritableOptionCall<VendorTheLongAndWindingTableAndColumnRefCB, UpdateOption<VendorTheLongAndWindingTableAndColumnRefCB>> opLambda) {
         return doQueryUpdate(vendorTheLongAndWindingTableAndColumnRef, cb, createUpdateOption(opLambda));
+    }
+
+    /**
+     * Delete the several entities by query with varying requests non-strictly. <br>
+     * For example, allowNonQueryDelete(). <br>
+     * Other specifications are same as queryDelete(cb).
+     * <pre>
+     * <span style="color: #0000C0">vendorTheLongAndWindingTableAndColumnRefBhv</span>.<span style="color: #CC4747">queryDelete</span>(vendorTheLongAndWindingTableAndColumnRef, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorTheLongAndWindingTableAndColumnRef. (NotNull)
+     * @param opLambda The callback for option of delete for varying requests. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryDelete(CBCall<VendorTheLongAndWindingTableAndColumnRefCB> cbLambda, WritableOptionCall<VendorTheLongAndWindingTableAndColumnRefCB, DeleteOption<VendorTheLongAndWindingTableAndColumnRefCB>> opLambda) {
+        return doQueryDelete(createCB(cbLambda), createDeleteOption(opLambda));
     }
 
     /**

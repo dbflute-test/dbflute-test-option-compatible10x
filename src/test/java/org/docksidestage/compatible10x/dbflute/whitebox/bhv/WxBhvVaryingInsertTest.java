@@ -78,7 +78,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
         {
             assertEquals("testInsertMan", member.getRegisterUser());
             assertEquals("testUpdateMan", member.getUpdateUser());
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals("testInsertMan", actual.getRegisterUser());
             assertEquals("testUpdateMan", actual.getUpdateUser());
         }
@@ -92,7 +92,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
         {
             assertEquals(accessUser, member.getRegisterUser());
             assertEquals(accessUser, member.getUpdateUser());
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals(accessUser, actual.getRegisterUser());
             assertEquals(accessUser, actual.getUpdateUser());
         }
@@ -108,7 +108,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
         {
             assertEquals(accessUser, member.getRegisterUser());
             assertEquals(accessUser, member.getUpdateUser());
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals(accessUser, actual.getRegisterUser());
             assertEquals(accessUser, actual.getUpdateUser());
         }
@@ -138,7 +138,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
         }
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(directId);
+        Member actual = memberBhv.selectByPK(directId).orElseThrow();
         assertEquals(directId, member.getMemberId());
         assertEquals(directId, actual.getMemberId());
         assertEquals("foo", actual.getMemberName());
@@ -505,7 +505,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals(member.getMemberName(), actual.getMemberName());
             assertEquals(member.getMemberAccount(), actual.getMemberAccount());
         }
@@ -517,7 +517,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals(member.getMemberName(), actual.getMemberName());
             assertEquals(member.getMemberAccount(), actual.getMemberAccount());
         }
@@ -530,7 +530,7 @@ public class WxBhvVaryingInsertTest extends UnitContainerTestCase {
 
         // ## Assert ##
         {
-            Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+            Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
             assertEquals(member.getMemberName(), actual.getMemberName());
             assertEquals(member.getMemberAccount(), actual.getMemberAccount());
         }

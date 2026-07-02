@@ -30,7 +30,7 @@ public class WxCBMyselfInScopeTest extends UnitContainerTestCase {
         cb.query().myselfExists(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {
                 subCB.useInScopeSubQuery();
-                subCB.query().setMemberName_PrefixSearch("S");
+                subCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
 
@@ -76,7 +76,7 @@ public class WxCBMyselfInScopeTest extends UnitContainerTestCase {
     //                                                                             =======
     public void test_myselfExists_specify_basic() {
         // ## Arrange ##
-        String memberStatusCode = memberBhv.selectByPKValueWithDeletedCheck(3).getMemberStatusCode();
+        String memberStatusCode = memberBhv.selectByPK(3).orElseThrow().getMemberStatusCode();
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
         cb.query().myselfExists(new SubQuery<MemberCB>() {
@@ -100,7 +100,7 @@ public class WxCBMyselfInScopeTest extends UnitContainerTestCase {
 
     public void test_myselfExists_specify_nested() {
         // ## Arrange ##
-        String memberStatusCode = memberBhv.selectByPKValueWithDeletedCheck(3).getMemberStatusCode();
+        String memberStatusCode = memberBhv.selectByPK(3).orElseThrow().getMemberStatusCode();
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
         cb.query().myselfExists(new SubQuery<MemberCB>() {

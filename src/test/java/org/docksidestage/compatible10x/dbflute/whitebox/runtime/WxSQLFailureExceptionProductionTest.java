@@ -110,7 +110,7 @@ public class WxSQLFailureExceptionProductionTest extends UnitContainerTestCase {
 
     public void test_insert_alreadyExists() throws Exception {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(1);
+        Member member = memberBhv.selectByPK(1).orElseThrow();
 
         try {
             // ## Act ##
@@ -182,7 +182,7 @@ public class WxSQLFailureExceptionProductionTest extends UnitContainerTestCase {
 
     public void test_delete_basic() throws Exception {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(1);
+        Member member = memberBhv.selectByPK(1).orElseThrow();
 
         try {
             // ## Act ##
@@ -232,7 +232,7 @@ public class WxSQLFailureExceptionProductionTest extends UnitContainerTestCase {
     public void test_batchUpdate_basic() throws Exception {
         // ## Arrange ##
         List<Member> memberList = new ArrayList<Member>();
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(1);
+        Member member = memberBhv.selectByPK(1).orElseThrow();
         member.setMemberName("batch update exception");
         member.setMemberAccount(null);
         memberList.add(member);
@@ -263,7 +263,7 @@ public class WxSQLFailureExceptionProductionTest extends UnitContainerTestCase {
     public void test_batchDelete_basic() throws Exception {
         // ## Arrange ##
         List<Member> memberList = new ArrayList<Member>();
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(1);
+        Member member = memberBhv.selectByPK(1).orElseThrow();
         memberList.add(member);
 
         try {
@@ -371,7 +371,7 @@ public class WxSQLFailureExceptionProductionTest extends UnitContainerTestCase {
         // ## Arrange ##
         PurchaseChangedToPaymentCompletePmb pmb = new PurchaseChangedToPaymentCompletePmb();
         pmb.setMemberName_PrefixSearch("S");
-        pmb.setPaymentCompleteFlg(null);
+        pmb.setPaymentCompleteFlgAsFlg(null);
 
         // ## Act ##
         try {

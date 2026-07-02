@@ -32,7 +32,7 @@ public class WxDBFluteConfigTest extends UnitContainerTestCase {
         final StatementConfig config = new StatementConfig();
         DBFluteConfig.getInstance().setEmptyStringQueryAllowed(true);
         DBFluteConfig.getInstance().setEmptyStringParameterAllowed(true);
-        DBFluteConfig.getInstance().setInvalidQueryChecked(true);
+        DBFluteConfig.getInstance().setNullOrEmptyQueryAllowed(false);
         config.typeForwardOnly().queryTimeout(10).fetchSize(7).maxRows(3);
         DBFluteConfig.getInstance().setDefaultStatementConfig(config);
         DBFluteConfig.getInstance().setInternalDebug(true);
@@ -51,7 +51,7 @@ public class WxDBFluteConfigTest extends UnitContainerTestCase {
         DBFluteConfig.getInstance().unlock();
         DBFluteConfig.getInstance().setEmptyStringQueryAllowed(false);
         DBFluteConfig.getInstance().setEmptyStringParameterAllowed(false);
-        DBFluteConfig.getInstance().setInvalidQueryChecked(false);
+        DBFluteConfig.getInstance().setNullOrEmptyQueryAllowed(true);
         DBFluteConfig.getInstance().setDefaultStatementConfig(null);
         DBFluteConfig.getInstance().setInternalDebug(false);
         DBFluteConfig.getInstance().lock();
@@ -63,7 +63,7 @@ public class WxDBFluteConfigTest extends UnitContainerTestCase {
     public void test_invalidQuery_emptyStringQueryAllowed_basic() throws Exception {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.checkInvalidQuery();
+        cb.checkNullOrEmptyQuery();
 
         // ## Act ##
         cb.query().setMemberName_Equal(""); // expect no exception
@@ -98,7 +98,7 @@ public class WxDBFluteConfigTest extends UnitContainerTestCase {
             // OK
             log(e.getMessage());
         }
-        cb.checkInvalidQuery(); // expect no exception
+        cb.checkNullOrEmptyQuery(); // expect no exception
     }
 
     // ===================================================================================

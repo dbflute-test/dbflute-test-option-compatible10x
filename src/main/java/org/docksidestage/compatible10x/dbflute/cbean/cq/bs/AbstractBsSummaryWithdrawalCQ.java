@@ -127,6 +127,19 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * MEMBER_ID: {INTEGER(10)}
      * @param minNumber The min number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setMemberId_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setMemberId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * MEMBER_ID: {INTEGER(10)}
+     * @param minNumber The min number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setMemberId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
@@ -265,6 +278,17 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * MEMBER_NAME: {VARCHAR(200)} <br>
+     * <pre>e.g. setMemberName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param memberName The value of memberName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberName_LikeSearch(String memberName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberName_LikeSearch(memberName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * MEMBER_NAME: {VARCHAR(200)} <br>
      * <pre>e.g. setMemberName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param memberName The value of memberName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -278,19 +302,21 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * MEMBER_NAME: {VARCHAR(200)}
      * @param memberName The value of memberName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberName_NotLikeSearch(String memberName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberName_NotLikeSearch(memberName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * MEMBER_NAME: {VARCHAR(200)}
+     * @param memberName The value of memberName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setMemberName_NotLikeSearch(String memberName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(memberName), xgetCValueMemberName(), "MEMBER_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * MEMBER_NAME: {VARCHAR(200)}
-     * @param memberName The value of memberName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setMemberName_PrefixSearch(String memberName) {
-        setMemberName_LikeSearch(memberName, xcLSOPPre());
     }
 
     /**
@@ -405,6 +431,17 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * WITHDRAWAL_REASON_CODE: {CHAR(3)} <br>
+     * <pre>e.g. setWithdrawalReasonCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param withdrawalReasonCode The value of withdrawalReasonCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setWithdrawalReasonCode_LikeSearch(String withdrawalReasonCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setWithdrawalReasonCode_LikeSearch(withdrawalReasonCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * WITHDRAWAL_REASON_CODE: {CHAR(3)} <br>
      * <pre>e.g. setWithdrawalReasonCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param withdrawalReasonCode The value of withdrawalReasonCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -418,19 +455,21 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * WITHDRAWAL_REASON_CODE: {CHAR(3)}
      * @param withdrawalReasonCode The value of withdrawalReasonCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setWithdrawalReasonCode_NotLikeSearch(String withdrawalReasonCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setWithdrawalReasonCode_NotLikeSearch(withdrawalReasonCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * WITHDRAWAL_REASON_CODE: {CHAR(3)}
+     * @param withdrawalReasonCode The value of withdrawalReasonCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setWithdrawalReasonCode_NotLikeSearch(String withdrawalReasonCode, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(withdrawalReasonCode), xgetCValueWithdrawalReasonCode(), "WITHDRAWAL_REASON_CODE", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * WITHDRAWAL_REASON_CODE: {CHAR(3)}
-     * @param withdrawalReasonCode The value of withdrawalReasonCode as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setWithdrawalReasonCode_PrefixSearch(String withdrawalReasonCode) {
-        setWithdrawalReasonCode_LikeSearch(withdrawalReasonCode, xcLSOPPre());
     }
 
     /**
@@ -545,6 +584,17 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * WITHDRAWAL_REASON_TEXT: {CLOB(2147483647)} <br>
+     * <pre>e.g. setWithdrawalReasonText_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param withdrawalReasonText The value of withdrawalReasonText as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setWithdrawalReasonText_LikeSearch(String withdrawalReasonText, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setWithdrawalReasonText_LikeSearch(withdrawalReasonText, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * WITHDRAWAL_REASON_TEXT: {CLOB(2147483647)} <br>
      * <pre>e.g. setWithdrawalReasonText_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param withdrawalReasonText The value of withdrawalReasonText as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -558,19 +608,21 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * WITHDRAWAL_REASON_TEXT: {CLOB(2147483647)}
      * @param withdrawalReasonText The value of withdrawalReasonText as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setWithdrawalReasonText_NotLikeSearch(String withdrawalReasonText, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setWithdrawalReasonText_NotLikeSearch(withdrawalReasonText, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * WITHDRAWAL_REASON_TEXT: {CLOB(2147483647)}
+     * @param withdrawalReasonText The value of withdrawalReasonText as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setWithdrawalReasonText_NotLikeSearch(String withdrawalReasonText, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(withdrawalReasonText), xgetCValueWithdrawalReasonText(), "WITHDRAWAL_REASON_TEXT", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * WITHDRAWAL_REASON_TEXT: {CLOB(2147483647)}
-     * @param withdrawalReasonText The value of withdrawalReasonText as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setWithdrawalReasonText_PrefixSearch(String withdrawalReasonText) {
-        setWithdrawalReasonText_LikeSearch(withdrawalReasonText, xcLSOPPre());
     }
 
     /**
@@ -685,6 +737,17 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)} <br>
+     * <pre>e.g. setWithdrawalReasonInputText_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param withdrawalReasonInputText The value of withdrawalReasonInputText as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setWithdrawalReasonInputText_LikeSearch(String withdrawalReasonInputText, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setWithdrawalReasonInputText_LikeSearch(withdrawalReasonInputText, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)} <br>
      * <pre>e.g. setWithdrawalReasonInputText_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param withdrawalReasonInputText The value of withdrawalReasonInputText as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -698,19 +761,21 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)}
      * @param withdrawalReasonInputText The value of withdrawalReasonInputText as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setWithdrawalReasonInputText_NotLikeSearch(String withdrawalReasonInputText, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setWithdrawalReasonInputText_NotLikeSearch(withdrawalReasonInputText, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)}
+     * @param withdrawalReasonInputText The value of withdrawalReasonInputText as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setWithdrawalReasonInputText_NotLikeSearch(String withdrawalReasonInputText, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(withdrawalReasonInputText), xgetCValueWithdrawalReasonInputText(), "WITHDRAWAL_REASON_INPUT_TEXT", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * WITHDRAWAL_REASON_INPUT_TEXT: {CLOB(2147483647)}
-     * @param withdrawalReasonInputText The value of withdrawalReasonInputText as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setWithdrawalReasonInputText_PrefixSearch(String withdrawalReasonInputText) {
-        setWithdrawalReasonInputText_LikeSearch(withdrawalReasonInputText, xcLSOPPre());
     }
 
     /**
@@ -783,6 +848,19 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
+     * <pre>e.g. setWithdrawalDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setWithdrawalDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setWithdrawalDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
      * <pre>e.g. setWithdrawalDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -790,21 +868,6 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      */
     public void setWithdrawalDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueWithdrawalDatetime(), "WITHDRAWAL_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * WITHDRAWAL_DATETIME: {TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of withdrawalDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setWithdrawalDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setWithdrawalDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     /**
@@ -913,6 +976,17 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * MEMBER_STATUS_CODE: {CHAR(3)} <br>
+     * <pre>e.g. setMemberStatusCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param memberStatusCode The value of memberStatusCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberStatusCode_LikeSearch(String memberStatusCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberStatusCode_LikeSearch(memberStatusCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * MEMBER_STATUS_CODE: {CHAR(3)} <br>
      * <pre>e.g. setMemberStatusCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param memberStatusCode The value of memberStatusCode as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -926,19 +1000,21 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * MEMBER_STATUS_CODE: {CHAR(3)}
      * @param memberStatusCode The value of memberStatusCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberStatusCode_NotLikeSearch(String memberStatusCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberStatusCode_NotLikeSearch(memberStatusCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * MEMBER_STATUS_CODE: {CHAR(3)}
+     * @param memberStatusCode The value of memberStatusCode as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setMemberStatusCode_NotLikeSearch(String memberStatusCode, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(memberStatusCode), xgetCValueMemberStatusCode(), "MEMBER_STATUS_CODE", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * MEMBER_STATUS_CODE: {CHAR(3)}
-     * @param memberStatusCode The value of memberStatusCode as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setMemberStatusCode_PrefixSearch(String memberStatusCode) {
-        setMemberStatusCode_LikeSearch(memberStatusCode, xcLSOPPre());
     }
 
     /**
@@ -1053,6 +1129,17 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * MEMBER_STATUS_NAME: {VARCHAR(50)} <br>
+     * <pre>e.g. setMemberStatusName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param memberStatusName The value of memberStatusName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberStatusName_LikeSearch(String memberStatusName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberStatusName_LikeSearch(memberStatusName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * MEMBER_STATUS_NAME: {VARCHAR(50)} <br>
      * <pre>e.g. setMemberStatusName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param memberStatusName The value of memberStatusName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1066,19 +1153,21 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * MEMBER_STATUS_NAME: {VARCHAR(50)}
      * @param memberStatusName The value of memberStatusName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setMemberStatusName_NotLikeSearch(String memberStatusName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setMemberStatusName_NotLikeSearch(memberStatusName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * MEMBER_STATUS_NAME: {VARCHAR(50)}
+     * @param memberStatusName The value of memberStatusName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setMemberStatusName_NotLikeSearch(String memberStatusName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(memberStatusName), xgetCValueMemberStatusName(), "MEMBER_STATUS_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * MEMBER_STATUS_NAME: {VARCHAR(50)}
-     * @param memberStatusName The value of memberStatusName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setMemberStatusName_PrefixSearch(String memberStatusName) {
-        setMemberStatusName_LikeSearch(memberStatusName, xcLSOPPre());
     }
 
     /**
@@ -1162,6 +1251,19 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
      */
     public void setMaxPurchasePrice_LessEqual(Integer maxPurchasePrice) {
         regMaxPurchasePrice(CK_LE, maxPurchasePrice);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * MAX_PURCHASE_PRICE: {INTEGER(10)}
+     * @param minNumber The min number of maxPurchasePrice. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of maxPurchasePrice. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setMaxPurchasePrice_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setMaxPurchasePrice_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -1334,6 +1436,39 @@ public abstract class AbstractBsSummaryWithdrawalCQ extends AbstractConditionQue
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

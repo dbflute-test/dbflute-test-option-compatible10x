@@ -243,7 +243,6 @@ public class SimpleVendorCheckDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public SimpleVendorCheck newEntity() { return new SimpleVendorCheck(); }
-    public SimpleVendorCheck newMyEntity() { return new SimpleVendorCheck(); }
 
     // ===================================================================================
     //                                                                   Map Communication

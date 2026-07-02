@@ -61,7 +61,14 @@ public class PurchasePaymentDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((PurchasePayment)et).getPurchaseId(), (et, vl) -> ((PurchasePayment)et).setPurchaseId(ctl(vl)), "purchaseId");
         setupEpg(_epgMap, et -> ((PurchasePayment)et).getPaymentAmount(), (et, vl) -> ((PurchasePayment)et).setPaymentAmount(ctb(vl)), "paymentAmount");
         setupEpg(_epgMap, et -> ((PurchasePayment)et).getPaymentDatetime(), (et, vl) -> ((PurchasePayment)et).setPaymentDatetime(cttp(vl)), "paymentDatetime");
-        setupEpg(_epgMap, et -> ((PurchasePayment)et).getPaymentMethodCode(), (et, vl) -> ((PurchasePayment)et).setPaymentMethodCode((String)vl), "paymentMethodCode");
+        setupEpg(_epgMap, et -> ((PurchasePayment)et).getPaymentMethodCode(), (et, vl) -> {
+            CDef.PaymentMethod cls = (CDef.PaymentMethod)gcls(et, columnPaymentMethodCode(), vl);
+            if (cls != null) {
+                ((PurchasePayment)et).setPaymentMethodCodeAsPaymentMethod(cls);
+            } else {
+                ((PurchasePayment)et).mynativeMappingPaymentMethodCode((String)vl);
+            }
+        }, "paymentMethodCode");
         setupEpg(_epgMap, et -> ((PurchasePayment)et).getRegisterDatetime(), (et, vl) -> ((PurchasePayment)et).setRegisterDatetime(cttp(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((PurchasePayment)et).getRegisterUser(), (et, vl) -> ((PurchasePayment)et).setRegisterUser((String)vl), "registerUser");
         setupEpg(_epgMap, et -> ((PurchasePayment)et).getUpdateDatetime(), (et, vl) -> ((PurchasePayment)et).setUpdateDatetime(cttp(vl)), "updateDatetime");
@@ -101,7 +108,7 @@ public class PurchasePaymentDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnPurchasePaymentId = cci("PURCHASE_PAYMENT_ID", "PURCHASE_PAYMENT_ID", null, "購入支払ID", Long.class, "purchasePaymentId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR \"PUBLIC\".\"SYSTEM_SEQUENCE_7E82EB80_82E1_4F73_8B87_7AC516F080B0\"", false, null, "連番", null, null, null, false);
+    protected final ColumnInfo _columnPurchasePaymentId = cci("PURCHASE_PAYMENT_ID", "PURCHASE_PAYMENT_ID", null, "購入支払ID", Long.class, "purchasePaymentId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR \"PUBLIC\".\"SYSTEM_SEQUENCE_F75B816C_6B36_4966_9DF0_553F0D5D8571\"", false, null, "連番", null, null, null, false);
     protected final ColumnInfo _columnPurchaseId = cci("PURCHASE_ID", "PURCHASE_ID", null, "購入ID", Long.class, "purchaseId", null, false, false, true, "BIGINT", 19, 0, null, null, false, null, "支払い対象の購入へのID", "purchase", null, null, false);
     protected final ColumnInfo _columnPaymentAmount = cci("PAYMENT_AMOUNT", "PAYMENT_AMOUNT", null, "支払金額", java.math.BigDecimal.class, "paymentAmount", null, false, false, true, "DECIMAL", 10, 2, null, null, false, null, "支払った金額。さて、小数点なのはなぜでしょう？", null, null, null, false);
     protected final ColumnInfo _columnPaymentDatetime = cci("PAYMENT_DATETIME", "PAYMENT_DATETIME", null, "支払日時", java.sql.Timestamp.class, "paymentDatetime", null, false, false, true, "TIMESTAMP", 26, 6, null, null, false, null, "支払ったときの日時", null, null, null, false);
@@ -232,7 +239,6 @@ public class PurchasePaymentDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public PurchasePayment newEntity() { return new PurchasePayment(); }
-    public PurchasePayment newMyEntity() { return new PurchasePayment(); }
 
     // ===================================================================================
     //                                                                   Map Communication

@@ -39,11 +39,11 @@ map:{
     # http://d.hatena.ne.jp/jflute/20140530/java8
     # _/_/_/_/_/_/_/_/_/
     # compile compatible (true if compatible)
-    ; isCompatibleSelectByPKOldStyle = true
-    ; isCompatibleSelectByPKPlainReturn = true
-    ; isCompatibleSelectByPKWithDeletedCheck = true
-    ; isMakeConditionQueryExistsReferrerToOne = true
-    ; isMakeConditionQueryInScopeRelationToOne = true
+    ; isCompatibleSelectByPKOldStyle = false
+    ; isCompatibleSelectByPKPlainReturn = false
+    ; isCompatibleSelectByPKWithDeletedCheck = false
+    ; isMakeConditionQueryExistsReferrerToOne = false
+    ; isMakeConditionQueryInScopeRelationToOne = false
     ; isMakeConditionQueryPlainListManualOrder = true
     ; isMakeDirectConditionBeanSetup = true
     #; makeDirectConditionBeanSetupTableList = list:{}
@@ -51,28 +51,28 @@ map:{
     ; isAvailableSelectEntityPlainReturn = true
     #; availableSelectEntityPlainReturnTableList = list:{ MEMBER ; MEMBER_STATUS ; MEMBER_LOGIN ; PURCHASE }
     ; isAvailableRelationPlainEntity = true
-    ; isMakeConditionQueryPrefixSearch = true
-    ; isMakeConditionQueryDateFromTo = true
+    ; isMakeConditionQueryPrefixSearch = false
+    ; isMakeConditionQueryDateFromTo = false
     ; isMakeDirectConditionOptionSetup = true
     ; isMakeDirectConditionManualOrder = true
-    ; isMakeClassificationNativeTypeSetter = true
-    ; isCompatibleNewMyEntityConditionBean = true
-    ; isCompatibleDeleteNonstrictIgnoreDeleted = true
+    ; isMakeClassificationNativeTypeSetter = false
+    ; isCompatibleNewMyEntityConditionBean = false
+    ; isCompatibleDeleteNonstrictIgnoreDeleted = false
     ; isCompatibleLoadReferrerOldOption = true
-    ; isCompatibleConditionBeanAcceptPKOldStyle = true
-    ; isCompatibleConditionBeanOldNamingCheckInvalid = true
-    ; isCompatibleConditionBeanOldNamingOption = true
+    ; isCompatibleConditionBeanAcceptPKOldStyle = false
+    ; isCompatibleConditionBeanOldNamingCheckInvalid = false
+    ; isCompatibleConditionBeanOldNamingOption = false
     ; isCompatibleBizOneToOneImplicitReverseFkAllowed = true
     ; isCompatibleReferrerCBMethodIdentityNameListSuffix = true
     ; isCompatibleOutsideSqlFacadeChainOldStyle = true
     ; isCompatibleOutsideSqlSqlCommentCheckDefault = true
-    ; isCompatibleSelectScalarOldName = true
+    ; isCompatibleSelectScalarOldName = false
 
     # compile compatible (false if compatible)
-    ; isMakeCallbackConditionBeanSetup = false
-    ; isEntityDerivedMappable = false
-    ; isMakeCallbackConditionOptionSetup = false
-    ; isMakeCallbackConditionManualOrder = false
+    ; isMakeCallbackConditionBeanSetup = true
+    ; isEntityDerivedMappable = true
+    ; isMakeCallbackConditionOptionSetup = true
+    ; isMakeCallbackConditionManualOrder = true
     ; isAvailableJava8TimeLocalDateEntity = false
 
     # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/

@@ -301,7 +301,7 @@ public abstract class BsProductStatus extends AbstractEntity implements DomainEn
      * 商品ステータスを識別するコード。
      * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setProductStatusCode(String productStatusCode) {
+    protected void setProductStatusCode(String productStatusCode) {
         registerModifiedProperty("productStatusCode");
         _productStatusCode = productStatusCode;
     }
@@ -344,5 +344,13 @@ public abstract class BsProductStatus extends AbstractEntity implements DomainEn
     public void setDisplayOrder(Integer displayOrder) {
         registerModifiedProperty("displayOrder");
         _displayOrder = displayOrder;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingProductStatusCode(String productStatusCode) {
+        setProductStatusCode(productStatusCode);
     }
 }

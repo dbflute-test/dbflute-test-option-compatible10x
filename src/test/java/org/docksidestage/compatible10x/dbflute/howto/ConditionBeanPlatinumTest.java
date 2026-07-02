@@ -1318,17 +1318,18 @@ public class ConditionBeanPlatinumTest extends UnitContainerTestCase {
                         purchaseCB.query().setPurchaseCount_GreaterEqual(2);
                     }
                 });
-                memberCB.query().existsMemberWithdrawalAsOne(new SubQuery<MemberWithdrawalCB>() {
-                    public void query(MemberWithdrawalCB subCB) {
-                        final LikeSearchOption option = new LikeSearchOption().likeContain().escapeByPipeLine();
-                        subCB.query().queryWithdrawalReason().setWithdrawalReasonText_LikeSearch("xxx", option);
-                        subCB.union(new UnionQuery<MemberWithdrawalCB>() {
-                            public void query(MemberWithdrawalCB unionCB) {
-                                unionCB.query().setWithdrawalReasonInputText_IsNotNull();
-                            }
-                        });
-                    }
-                });
+                // もうone-to-oneのexistsはないので削除でOK (2026/07/02)
+                //memberCB.query().existsMemberWithdrawalAsOne(new SubQuery<MemberWithdrawalCB>() {
+                //    public void query(MemberWithdrawalCB subCB) {
+                //        final LikeSearchOption option = new LikeSearchOption().likeContain().escapeByPipeLine();
+                //        subCB.query().queryWithdrawalReason().setWithdrawalReasonText_LikeSearch("xxx", option);
+                //        subCB.union(new UnionQuery<MemberWithdrawalCB>() {
+                //            public void query(MemberWithdrawalCB unionCB) {
+                //                unionCB.query().setWithdrawalReasonInputText_IsNotNull();
+                //            }
+                //        });
+                //    }
+                //});
             }
         });
         cb.query().setMemberStatusCode_Equal_Formalized();

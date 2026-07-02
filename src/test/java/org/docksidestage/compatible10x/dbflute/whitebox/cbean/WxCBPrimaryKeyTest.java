@@ -20,7 +20,7 @@ public class WxCBPrimaryKeyTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // ## Act ##
-        cb.acceptPrimaryKey(3);
+        cb.acceptPK(3);
 
         // ## Assert ##
         assertEquals(3, cb.query().xdfgetMemberId().getFixedQuery().get("equal"));

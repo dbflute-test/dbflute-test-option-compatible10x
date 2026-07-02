@@ -57,7 +57,14 @@ public class ProductStatusDbm extends AbstractDBMeta {
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     { xsetupEpg(); }
     protected void xsetupEpg() {
-        setupEpg(_epgMap, et -> ((ProductStatus)et).getProductStatusCode(), (et, vl) -> ((ProductStatus)et).setProductStatusCode((String)vl), "productStatusCode");
+        setupEpg(_epgMap, et -> ((ProductStatus)et).getProductStatusCode(), (et, vl) -> {
+            CDef.ProductStatus cls = (CDef.ProductStatus)gcls(et, columnProductStatusCode(), vl);
+            if (cls != null) {
+                ((ProductStatus)et).setProductStatusCodeAsProductStatus(cls);
+            } else {
+                ((ProductStatus)et).mynativeMappingProductStatusCode((String)vl);
+            }
+        }, "productStatusCode");
         setupEpg(_epgMap, et -> ((ProductStatus)et).getProductStatusName(), (et, vl) -> ((ProductStatus)et).setProductStatusName((String)vl), "productStatusName");
         setupEpg(_epgMap, et -> ((ProductStatus)et).getDisplayOrder(), (et, vl) -> ((ProductStatus)et).setDisplayOrder(cti(vl)), "displayOrder");
     }
@@ -178,7 +185,6 @@ public class ProductStatusDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public ProductStatus newEntity() { return new ProductStatus(); }
-    public ProductStatus newMyEntity() { return new ProductStatus(); }
 
     // ===================================================================================
     //                                                                   Map Communication

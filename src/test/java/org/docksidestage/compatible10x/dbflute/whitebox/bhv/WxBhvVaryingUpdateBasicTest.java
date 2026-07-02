@@ -33,7 +33,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
     //                                                                                ====
     public void test_varyingUpdate_self_basic() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Integer purchaseCount = before.getPurchaseCount();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(3L);
@@ -48,7 +48,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).plus(1));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(Integer.valueOf(purchaseCount + 1), actual.getPurchaseCount());
         assertEquals(purchase.getVersionNo(), actual.getVersionNo());
         assertEquals(before.getRegisterDatetime(), actual.getRegisterDatetime());
@@ -57,7 +57,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
 
     public void test_varyingUpdate_self_callTwice() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Integer purchaseCount = before.getPurchaseCount();
         Integer purchasePrice = before.getPurchasePrice();
         Purchase purchase = new Purchase();
@@ -80,7 +80,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         });
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(Integer.valueOf(purchaseCount + 1), actual.getPurchaseCount());
         assertEquals(Integer.valueOf(purchasePrice + 3), actual.getPurchasePrice());
         assertEquals(purchase.getVersionNo(), actual.getVersionNo());
@@ -90,7 +90,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
 
     public void test_varyingUpdate_self_entityValueIgnored() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Integer purchaseCount = before.getPurchaseCount();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(3L);
@@ -106,7 +106,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).plus(1));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(Integer.valueOf(purchaseCount + 1), actual.getPurchaseCount());
         assertEquals(purchase.getVersionNo(), actual.getVersionNo());
         assertEquals(before.getRegisterDatetime(), actual.getRegisterDatetime());
@@ -183,7 +183,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
     //                                                                             =======
     public void test_varyingUpdate_specify_basic() {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName("foo");
         String preAccount = member.getMemberAccount();
         member.setMemberAccount("bar");
@@ -194,14 +194,14 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }));
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         assertEquals("foo", actual.getMemberName());
         assertEquals(preAccount, actual.getMemberAccount());
     }
 
     public void test_varyingUpdate_self_left_illegal() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(3L);
         purchase.setPaymentCompleteFlg_True();
@@ -228,7 +228,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
     //                                                                             =======
     public void test_varyingUpdate_convert_basic() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Timestamp purchaseDatetime = before.getPurchaseDatetime();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(3L);
@@ -241,7 +241,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).convert(op -> op.addDay(12).addMinute(4)));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         Date expectedDate = new HandyDate(purchaseDatetime).addDay(12).addMinute(4).getDate();
         assertEquals(expectedDate.getTime(), actual.getPurchaseDatetime().getTime());
     }
@@ -251,7 +251,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
     //                                                                           =========
     public void test_varyingUpdateNonstrict_plus() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Integer purchaseCount = before.getPurchaseCount();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(3L);
@@ -263,13 +263,13 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).plus(1));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(Integer.valueOf(purchaseCount + 1), actual.getPurchaseCount());
     }
 
     public void test_varyingUpdateNonstrict_minus() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Integer purchaseCount = before.getPurchaseCount();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(3L);
@@ -283,13 +283,13 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).minus(1));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(Integer.valueOf(purchaseCount - 1), actual.getPurchaseCount());
     }
 
     public void test_varyingUpdateNonstrict_multiply_plus() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         before.setPurchaseCount(8);
         purchaseBhv.updateNonstrict(before);
         Integer purchaseCount = before.getPurchaseCount();
@@ -303,14 +303,14 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).multiply(2).plus(1));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         log("actual=" + actual.getPurchaseCount());
         assertEquals(Integer.valueOf((purchaseCount * 2) + 1), actual.getPurchaseCount());
     }
 
     public void test_varyingUpdateNonstrict_divide() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         before.setPurchaseCount(8);
         purchaseBhv.updateNonstrict(before);
         Integer purchaseCount = before.getPurchaseCount();
@@ -324,7 +324,7 @@ public class WxBhvVaryingUpdateBasicTest extends UnitContainerTestCase {
         }).divide(2));
 
         // ## Assert ##
-        Purchase actual = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase actual = purchaseBhv.selectByPK(3L).orElseThrow();
         log("actual=" + actual.getPurchaseCount());
         assertEquals(Integer.valueOf((purchaseCount / 2)), actual.getPurchaseCount());
     }

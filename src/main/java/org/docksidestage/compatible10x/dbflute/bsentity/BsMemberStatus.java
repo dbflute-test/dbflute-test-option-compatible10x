@@ -320,7 +320,7 @@ public abstract class BsMemberStatus extends AbstractEntity implements DomainEnt
      * 固定的なデータなので連番とか番号にはせず、データを直接見たときも人が直感的にわかるように、例えば "FML" とかの３桁のコード形式にしている。(3って何会員だっけ？とかの問答をやりたくないので)
      * @param memberStatusCode The value of the column 'MEMBER_STATUS_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setMemberStatusCode(String memberStatusCode) {
+    protected void setMemberStatusCode(String memberStatusCode) {
         registerModifiedProperty("memberStatusCode");
         _memberStatusCode = memberStatusCode;
     }
@@ -389,5 +389,13 @@ public abstract class BsMemberStatus extends AbstractEntity implements DomainEnt
     public void setDisplayOrder(Integer displayOrder) {
         registerModifiedProperty("displayOrder");
         _displayOrder = displayOrder;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param memberStatusCode The value of the column 'MEMBER_STATUS_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingMemberStatusCode(String memberStatusCode) {
+        setMemberStatusCode(memberStatusCode);
     }
 }

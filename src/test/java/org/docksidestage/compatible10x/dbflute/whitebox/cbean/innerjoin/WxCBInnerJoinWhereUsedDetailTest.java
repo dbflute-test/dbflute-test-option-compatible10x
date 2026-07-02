@@ -337,13 +337,12 @@ public class WxCBInnerJoinWhereUsedDetailTest extends UnitContainerTestCase {
         }
     }
 
-    @SuppressWarnings("deprecation")
     public void test_innerJoin_ColumnQuery_DerivedReferrer() {
         // ## Arrange ##
         int expectedCount;
         {
             MemberCB cb = new MemberCB();
-            cb.suppressInnerJoinAutoDetect();
+            cb.disableInnerJoinAutoDetect();
             cb.columnQuery(new SpecifyQuery<MemberCB>() {
                 public void specify(MemberCB cb) {
                     cb.specify().specifyMemberStatus().derivedMemberLoginList().max(new SubQuery<MemberLoginCB>() {
@@ -362,7 +361,7 @@ public class WxCBInnerJoinWhereUsedDetailTest extends UnitContainerTestCase {
             assertTrue(cb.toDisplaySql().contains("left outer join"));
         }
         MemberCB cb = new MemberCB();
-        cb.suppressInnerJoinAutoDetect();
+        cb.disableInnerJoinAutoDetect();
         cb.getSqlClause().enableWhereUsedInnerJoin();
         cb.columnQuery(new SpecifyQuery<MemberCB>() {
             public void specify(MemberCB cb) {

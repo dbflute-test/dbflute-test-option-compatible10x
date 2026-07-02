@@ -348,7 +348,7 @@ public abstract class BsSummaryProduct extends AbstractEntity implements DomainE
      * [set] PRODUCT_STATUS_CODE: {CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
      * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (NullAllowed: null update allowed for no constraint)
      */
-    public void setProductStatusCode(String productStatusCode) {
+    protected void setProductStatusCode(String productStatusCode) {
         registerModifiedProperty("productStatusCode");
         _productStatusCode = productStatusCode;
     }
@@ -369,5 +369,13 @@ public abstract class BsSummaryProduct extends AbstractEntity implements DomainE
     public void setLatestPurchaseDatetime(java.sql.Timestamp latestPurchaseDatetime) {
         registerModifiedProperty("latestPurchaseDatetime");
         _latestPurchaseDatetime = latestPurchaseDatetime;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void mynativeMappingProductStatusCode(String productStatusCode) {
+        setProductStatusCode(productStatusCode);
     }
 }

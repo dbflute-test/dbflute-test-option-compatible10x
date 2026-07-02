@@ -402,7 +402,7 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
      * 手渡しや銀行振込など
      * @param paymentMethodCode The value of the column 'PAYMENT_METHOD_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setPaymentMethodCode(String paymentMethodCode) {
+    protected void setPaymentMethodCode(String paymentMethodCode) {
         checkClassificationCode("PAYMENT_METHOD_CODE", CDef.DefMeta.PaymentMethod, paymentMethodCode);
         registerModifiedProperty("paymentMethodCode");
         _paymentMethodCode = paymentMethodCode;
@@ -478,5 +478,13 @@ public abstract class BsPurchasePayment extends AbstractEntity implements Domain
     public void setUpdateUser(String updateUser) {
         registerModifiedProperty("updateUser");
         _updateUser = updateUser;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param paymentMethodCode The value of the column 'PAYMENT_METHOD_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingPaymentMethodCode(String paymentMethodCode) {
+        setPaymentMethodCode(paymentMethodCode);
     }
 }

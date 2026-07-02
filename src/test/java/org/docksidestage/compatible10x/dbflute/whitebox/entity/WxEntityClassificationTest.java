@@ -36,7 +36,7 @@ public class WxEntityClassificationTest extends PlainTestCase {
         assertFalse(member.isMemberStatusCodeProvisional());
         assertNull(member.getMemberStatusCode());
 
-        member.setMemberStatusCode("NON");
+        member.mynativeMappingMemberStatusCode("NON");
         assertNull(member.getMemberStatusCodeAsMemberStatus());
         assertFalse(member.isMemberStatusCodeFormalized());
         assertFalse(member.isMemberStatusCodeWithdrawal());

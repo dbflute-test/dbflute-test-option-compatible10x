@@ -353,15 +353,6 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
     }
 
     /**
-     * [set] memberStatusCode:ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
-     * // reference option (including classification)
-     * @param memberStatusCode The value of memberStatusCode. (NullAllowed)
-     */
-    public void setMemberStatusCode(String memberStatusCode) {
-        _memberStatusCode = memberStatusCode;
-    }
-
-    /**
      * [set as MemberStatus] memberStatusCode:ref(MEMBER) :: refers to (会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to MEMBER_STATUS, classification=MemberStatus} <br>
      * status of member from entry to withdrawal
      * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the property)
@@ -438,15 +429,6 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
      */
     public String getStatus() {
         return filterStringParameter(_status);
-    }
-
-    /**
-     * [set] status:cls(MemberStatus) <br>
-     * // direct classification setting
-     * @param status The value of status. (NullAllowed)
-     */
-    public void setStatus(String status) {
-        _status = status;
     }
 
     /**
@@ -528,15 +510,6 @@ public class BsOptionMemberPmb implements ListHandlingPmb<MemberBhv, OptionMembe
      */
     public Integer getPaymentCompleteFlg() {
         return _paymentCompleteFlg;
-    }
-
-    /**
-     * [set] paymentCompleteFlg:cls(Flg) <br>
-     * // direct one as Integer
-     * @param paymentCompleteFlg The value of paymentCompleteFlg. (NullAllowed)
-     */
-    public void setPaymentCompleteFlg(Integer paymentCompleteFlg) {
-        _paymentCompleteFlg = paymentCompleteFlg;
     }
 
     /**

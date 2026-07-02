@@ -63,7 +63,14 @@ public class PurchaseDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((Purchase)et).getPurchaseDatetime(), (et, vl) -> ((Purchase)et).setPurchaseDatetime(cttp(vl)), "purchaseDatetime");
         setupEpg(_epgMap, et -> ((Purchase)et).getPurchaseCount(), (et, vl) -> ((Purchase)et).setPurchaseCount(cti(vl)), "purchaseCount");
         setupEpg(_epgMap, et -> ((Purchase)et).getPurchasePrice(), (et, vl) -> ((Purchase)et).setPurchasePrice(cti(vl)), "purchasePrice");
-        setupEpg(_epgMap, et -> ((Purchase)et).getPaymentCompleteFlg(), (et, vl) -> ((Purchase)et).setPaymentCompleteFlg(cti(vl)), "paymentCompleteFlg");
+        setupEpg(_epgMap, et -> ((Purchase)et).getPaymentCompleteFlg(), (et, vl) -> {
+            CDef.Flg cls = (CDef.Flg)gcls(et, columnPaymentCompleteFlg(), vl);
+            if (cls != null) {
+                ((Purchase)et).setPaymentCompleteFlgAsFlg(cls);
+            } else {
+                ((Purchase)et).mynativeMappingPaymentCompleteFlg(ctn(vl, Integer.class));
+            }
+        }, "paymentCompleteFlg");
         setupEpg(_epgMap, et -> ((Purchase)et).getRegisterDatetime(), (et, vl) -> ((Purchase)et).setRegisterDatetime(cttp(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((Purchase)et).getRegisterUser(), (et, vl) -> ((Purchase)et).setRegisterUser((String)vl), "registerUser");
         setupEpg(_epgMap, et -> ((Purchase)et).getUpdateDatetime(), (et, vl) -> ((Purchase)et).setUpdateDatetime(cttp(vl)), "updateDatetime");
@@ -106,7 +113,7 @@ public class PurchaseDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnPurchaseId = cci("PURCHASE_ID", "PURCHASE_ID", null, null, Long.class, "purchaseId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR \"PUBLIC\".\"SYSTEM_SEQUENCE_3D785803_C1A7_4BD8_A5BF_C127FB306705\"", false, null, null, null, "purchasePaymentList", null, false);
+    protected final ColumnInfo _columnPurchaseId = cci("PURCHASE_ID", "PURCHASE_ID", null, null, Long.class, "purchaseId", null, true, true, true, "BIGINT", 19, 0, null, "NEXT VALUE FOR \"PUBLIC\".\"SYSTEM_SEQUENCE_E4715458_8A80_401A_9280_BB72AB3A85C3\"", false, null, null, null, "purchasePaymentList", null, false);
     protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, "会員ID", Integer.class, "memberId", null, false, false, true, "INTEGER", 10, 0, null, null, false, null, "会員を参照するID。\n購入を識別する自然キー(複合ユニーク制約)の筆頭要素。", "member", null, null, false);
     protected final ColumnInfo _columnProductId = cci("PRODUCT_ID", "PRODUCT_ID", null, "商品ID", Integer.class, "productId", null, false, false, true, "INTEGER", 10, 0, null, null, false, null, "あなたは何を買ったのか？", "product,summaryProduct", null, null, false);
     protected final ColumnInfo _columnPurchaseDatetime = cci("PURCHASE_DATETIME", "PURCHASE_DATETIME", null, "購入日時", java.sql.Timestamp.class, "purchaseDatetime", null, false, false, true, "TIMESTAMP", 26, 6, null, null, false, null, "購入した瞬間の日時。", null, null, null, false);
@@ -295,7 +302,6 @@ public class PurchaseDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public Purchase newEntity() { return new Purchase(); }
-    public Purchase newMyEntity() { return new Purchase(); }
 
     // ===================================================================================
     //                                                                   Map Communication

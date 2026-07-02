@@ -317,7 +317,7 @@ public class VendorTypeTest extends UnitContainerTestCase {
     public void test_BLOB_insert_select() {
         // ## Arrange ##
         String expected = "foo";
-        Member member = memberBhv.selectByPKValue(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName(expected);
         VendorCheck vendorCheck = createVendorCheck();
         vendorCheck.setTypeOfBlob(serialize(member));
@@ -342,7 +342,7 @@ public class VendorTypeTest extends UnitContainerTestCase {
     public void test_BINARY_insert_select() {
         // ## Arrange ##
         String expected = "foo";
-        Member member = memberBhv.selectByPKValue(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName(expected);
         VendorCheck vendorCheck = createVendorCheck();
         vendorCheck.setTypeOfBinary(serialize(member));

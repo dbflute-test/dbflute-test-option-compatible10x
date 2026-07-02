@@ -30,7 +30,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
     //                                                                               =====
     public void test_update_modifiedOnly() throws Exception {
         // ## Arrange ##
-        Member before = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member before = memberBhv.selectByPK(3).orElseThrow();
         Member member = new Member();
         member.setMemberId(before.getMemberId());
         member.setMemberAccount("foo");
@@ -40,7 +40,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
         memberBhv.update(member);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member actual = memberBhv.selectByPK(3).orElseThrow();
         assertEquals("foo", actual.getMemberAccount());
         assertEquals(before.getMemberName(), actual.getMemberName());
         assertEquals(before.getBirthdate(), actual.getBirthdate());
@@ -51,8 +51,8 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
 
     public void test_update_exclusiveControl_by_versionNo_basic() throws Exception {
         // ## Arrange ##
-        Member member1 = memberBhv.selectByPKValueWithDeletedCheck(3);
-        Member member2 = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member1 = memberBhv.selectByPK(3).orElseThrow();
+        Member member2 = memberBhv.selectByPK(3).orElseThrow();
         member1.setMemberName("Test1");
         member2.setMemberName("Test2");
 
@@ -72,7 +72,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
     public void test_update_nonOptimisticLockTable_deleted() throws Exception {
         // ## Arrange ##
         MemberStatus memberStatus = new MemberStatus();
-        memberStatus.setMemberStatusCode("NON");
+        memberStatus.mynativeMappingMemberStatusCode("NON");
         memberStatus.setDisplayOrder(8);
 
         // ## Act ##
@@ -100,13 +100,13 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
         memberBhv.update(member);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValueWithDeletedCheck(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         assertNull(actual.getBirthdate());
     }
 
     public void test_update_NoModified() {
         // ## Arrange ##
-        final MemberStatusCB cb = memberStatusBhv.newMyConditionBean();
+        final MemberStatusCB cb = memberStatusBhv.newConditionBean();
         cb.query().setMemberStatusCode_Equal_Formalized();
         final MemberStatus memberStatus = memberStatusBhv.selectEntityWithDeletedCheck(cb);
 
@@ -166,7 +166,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
 
     public void test_update_uniqueBy_compoundKey_basic() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(99999L); // dummy
         Integer memberId = before.getMemberId();
@@ -180,7 +180,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
         purchaseBhv.update(purchase);
 
         // ## Assert ##
-        Purchase after = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase after = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(memberId, after.getMemberId());
         assertEquals(productId, after.getProductId());
         assertEquals(purchaseDatetime, after.getPurchaseDatetime());
@@ -190,7 +190,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
 
     public void test_update_uniqueBy_compoundKey_optimisticLock() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(99999L); // dummy
         Integer memberId = before.getMemberId();
@@ -214,7 +214,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
 
     public void test_updateNonstrict_uniqueBy_compoundKey_basic() throws Exception {
         // ## Arrange ##
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(99999L); // dummy
         Integer memberId = before.getMemberId();
@@ -227,7 +227,7 @@ public class WxBhvEntityUpdateTest extends UnitContainerTestCase {
         purchaseBhv.updateNonstrict(purchase);
 
         // ## Assert ##
-        Purchase after = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase after = purchaseBhv.selectByPK(3L).orElseThrow();
         assertEquals(memberId, after.getMemberId());
         assertEquals(productId, after.getProductId());
         assertEquals(purchaseDatetime, after.getPurchaseDatetime());

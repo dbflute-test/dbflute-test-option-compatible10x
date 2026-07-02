@@ -188,7 +188,7 @@ public class WxBhvBasicTest extends UnitContainerTestCase {
         Timestamp expected = expected1.compareTo(expected2) > 0 ? expected1 : expected2;
 
         // ## Act ##
-        memberBhv.scalarSelect(Timestamp.class).max(new ScalarQuery<MemberCB>() {
+        memberBhv.selectScalar(Timestamp.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnRegisterDatetime(); // *Point!
                 cb.query().setMemberStatusCode_Equal_Formalized();

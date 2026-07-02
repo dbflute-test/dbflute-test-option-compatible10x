@@ -20,6 +20,7 @@ import org.dbflute.cbean.sqlclause.SqlClause;
 import org.dbflute.helper.HandyDate;
 import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
+import org.docksidestage.compatible10x.dbflute.bsentity.dbmeta.MemberStatusDbm;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberStatusCB;
 import org.docksidestage.compatible10x.dbflute.cbean.cq.MemberStatusCQ;
@@ -57,7 +58,7 @@ public class VendorPlainTest extends UnitContainerTestCase {
         memberBhv.update(member);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValue(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         DateFormat df = new SimpleDateFormat("Gyyyy/MM/dd");
         log(df.format(actual.getBirthdate()));
         assertTrue(DfTypeUtil.isDateBC(actual.getBirthdate()));
@@ -77,7 +78,7 @@ public class VendorPlainTest extends UnitContainerTestCase {
         memberBhv.update(member);
 
         // ## Assert ##
-        Member actual = memberBhv.selectByPKValue(member.getMemberId());
+        Member actual = memberBhv.selectByPK(member.getMemberId()).orElseThrow();
         DateFormat df = new SimpleDateFormat("Gyyyy/MM/dd HH:mm:dd.SSS");
         log(df.format(actual.getFormalizedDatetime()));
         assertTrue(DfTypeUtil.isDateBC(actual.getFormalizedDatetime()));
@@ -117,14 +118,15 @@ public class VendorPlainTest extends UnitContainerTestCase {
         String name = "ShortTest";
         Integer order = 96473;
         MemberStatus memberStatus = new MemberStatus();
-        memberStatus.setMemberStatusCode(code); // char
+        memberStatus.mynativeMappingMemberStatusCode(code); // char
         memberStatus.setMemberStatusName(name); // varchar
         memberStatus.setDescription("foo");
         memberStatus.setDisplayOrder(order);
         memberStatusBhv.insert(memberStatus);
 
         MemberStatusCB cb = new MemberStatusCB();
-        cb.query().setMemberStatusCode_Equal(code + " ");
+        String statusCodeColumnName = MemberStatusDbm.getInstance().columnMemberStatusCode().getColumnDbName();
+        cb.query().invokeQueryEqual(statusCodeColumnName, code + " ");
 
         // ## Act ##
         MemberStatus actual = memberStatusBhv.selectEntityWithDeletedCheck(cb);
@@ -141,14 +143,15 @@ public class VendorPlainTest extends UnitContainerTestCase {
         String name = "ShortTest";
         Integer order = 96473;
         MemberStatus memberStatus = new MemberStatus();
-        memberStatus.setMemberStatusCode(code); // char
+        memberStatus.mynativeMappingMemberStatusCode(code); // char
         memberStatus.setMemberStatusName(name); // varchar
         memberStatus.setDescription("foo");
         memberStatus.setDisplayOrder(order);
         memberStatusBhv.insert(memberStatus);
 
         MemberStatusCB cb = new MemberStatusCB();
-        cb.query().setMemberStatusCode_Equal(code);
+        String statusCodeColumnName = MemberStatusDbm.getInstance().columnMemberStatusCode().getColumnDbName();
+        cb.query().invokeQueryEqual(statusCodeColumnName, code);
 
         // ## Act ##
         MemberStatus actual = memberStatusBhv.selectEntityWithDeletedCheck(cb);
@@ -165,7 +168,7 @@ public class VendorPlainTest extends UnitContainerTestCase {
         String name = "ShortTest";
         Integer order = 96473; // should be unique order
         MemberStatus memberStatus = new MemberStatus();
-        memberStatus.setMemberStatusCode(code); // char
+        memberStatus.mynativeMappingMemberStatusCode(code); // char
         memberStatus.setMemberStatusName(name); // varchar
         memberStatus.setDescription("foo");
         memberStatus.setDisplayOrder(order);
@@ -184,7 +187,8 @@ public class VendorPlainTest extends UnitContainerTestCase {
                 };
             }
         };
-        cb.query().setMemberStatusCode_Equal(code.trim());
+        String statusCodeColumnName = MemberStatusDbm.getInstance().columnMemberStatusCode().getColumnDbName();
+        cb.query().invokeQueryEqual(statusCodeColumnName, code.trim());
         assertTrue(cb.toDisplaySql().contains("'AB'"));
 
         // ## Act ##

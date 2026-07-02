@@ -57,7 +57,14 @@ public class MemberStatusDbm extends AbstractDBMeta {
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     { xsetupEpg(); }
     protected void xsetupEpg() {
-        setupEpg(_epgMap, et -> ((MemberStatus)et).getMemberStatusCode(), (et, vl) -> ((MemberStatus)et).setMemberStatusCode((String)vl), "memberStatusCode");
+        setupEpg(_epgMap, et -> ((MemberStatus)et).getMemberStatusCode(), (et, vl) -> {
+            CDef.MemberStatus cls = (CDef.MemberStatus)gcls(et, columnMemberStatusCode(), vl);
+            if (cls != null) {
+                ((MemberStatus)et).setMemberStatusCodeAsMemberStatus(cls);
+            } else {
+                ((MemberStatus)et).mynativeMappingMemberStatusCode((String)vl);
+            }
+        }, "memberStatusCode");
         setupEpg(_epgMap, et -> ((MemberStatus)et).getMemberStatusName(), (et, vl) -> ((MemberStatus)et).setMemberStatusName((String)vl), "memberStatusName");
         setupEpg(_epgMap, et -> ((MemberStatus)et).getDescription(), (et, vl) -> ((MemberStatus)et).setDescription((String)vl), "description");
         setupEpg(_epgMap, et -> ((MemberStatus)et).getDisplayOrder(), (et, vl) -> ((MemberStatus)et).setDisplayOrder(cti(vl)), "displayOrder");
@@ -186,7 +193,6 @@ public class MemberStatusDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public MemberStatus newEntity() { return new MemberStatus(); }
-    public MemberStatus newMyEntity() { return new MemberStatus(); }
 
     // ===================================================================================
     //                                                                   Map Communication

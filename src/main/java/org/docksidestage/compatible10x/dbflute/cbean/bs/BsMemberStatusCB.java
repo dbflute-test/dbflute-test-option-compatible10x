@@ -27,6 +27,7 @@ import org.dbflute.cbean.scoping.*;
 import org.dbflute.dbmeta.DBMetaProvider;
 import org.dbflute.twowaysql.factory.SqlAnalyzerFactory;
 import org.dbflute.twowaysql.style.BoundDateDisplayTimeZoneProvider;
+import org.docksidestage.compatible10x.dbflute.allcommon.CDef;
 import org.docksidestage.compatible10x.dbflute.allcommon.DBFluteConfig;
 import org.docksidestage.compatible10x.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.compatible10x.dbflute.allcommon.ImplementedInvokerAssistant;
@@ -102,21 +103,11 @@ public class BsMemberStatusCB extends AbstractConditionBean {
      * @param memberStatusCode (会員ステータスコード): PK, NotNull, CHAR(3), classification=MemberStatus. (NotNull)
      * @return this. (NotNull)
      */
-    public MemberStatusCB acceptPK(String memberStatusCode) {
+    public MemberStatusCB acceptPK(CDef.MemberStatus memberStatusCode) {
         assertObjectNotNull("memberStatusCode", memberStatusCode);
         BsMemberStatusCB cb = this;
-        cb.query().setMemberStatusCode_Equal(memberStatusCode);
+        cb.query().setMemberStatusCode_Equal_AsMemberStatus(memberStatusCode);
         return (MemberStatusCB)this;
-    }
-
-    /**
-     * Accept the query condition of primary key as equal. (old style)
-     * @param memberStatusCode (会員ステータスコード): PK, NotNull, CHAR(3), classification=MemberStatus. (NotNull)
-     */
-    public void acceptPrimaryKey(String memberStatusCode) {
-        assertObjectNotNull("memberStatusCode", memberStatusCode);
-        BsMemberStatusCB cb = this;
-        cb.query().setMemberStatusCode_Equal(memberStatusCode);
     }
 
     /**
@@ -480,99 +471,6 @@ public class BsMemberStatusCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<MemberStatusCB> andCBLambda) {
         xorSQAP((MemberStatusCB)this, andCBLambda);
-    }
-
-    /**
-     * Check invalid query when query is set. <br>
-     * (it throws an exception if set query is invalid) <br>
-     * You should call this before registrations of where clause and other queries. <br>
-     * Union and SubQuery and other sub condition-bean inherit this. <br>
-     *
-     * <p>renamed to checkNullOrEmptyQuery() since 1.1,
-     * but not deprecated because it might have many use.</p>
-     *
-     * #java8 compatible option
-     */
-    public void checkInvalidQuery() {
-        checkNullOrEmptyQuery();
-    }
-
-    /**
-     * Accept (no check) an invalid query when a query is set. <br>
-     * (no condition if a set query is invalid) <br>
-     * You should call this before registrations of where clause and other queries. <br>
-     * Union and SubQuery and other sub condition-bean inherit this.
-     * @deprecated use ignoreNullOrEmptyQuery()
-     */
-    public void acceptInvalidQuery() {
-        getSqlClause().ignoreNullOrEmptyQuery();
-    }
-
-    /**
-     * Allow to auto-detect joins that can be inner-join. <br>
-     * <pre>
-     * o You should call this before registrations of where clause.
-     * o Union and SubQuery and other sub condition-bean inherit this.
-     * o You should confirm your SQL on the log to be tuned by inner-join correctly.
-     * </pre>
-     * @deprecated use enableInnerJoinAutoDetect()
-     */
-    public void allowInnerJoinAutoDetect() {
-        enableInnerJoinAutoDetect();
-    }
-
-    /**
-     * Suppress auto-detecting inner-join. <br>
-     * You should call this before registrations of where clause.
-     * @deprecated use disableInnerJoinAutoDetect()
-     */
-    public void suppressInnerJoinAutoDetect() {
-        disableInnerJoinAutoDetect();
-    }
-
-    /**
-     * Allow an empty string for query. <br>
-     * (you can use an empty string as condition) <br>
-     * You should call this before registrations of where clause and other queries. <br>
-     * Union and SubQuery and other sub condition-bean inherit this.
-     * @deprecated use enableEmptyStringQuery()
-     */
-    public void allowEmptyStringQuery() {
-        doEnableEmptyStringQuery();
-    }
-
-    /**
-     * Enable checking record count before QueryUpdate (contains QueryDelete). (default is disabled) <br>
-     * No query update if zero count. (basically for MySQL's deadlock by next-key lock)
-     * @deprecated use enableQueryUpdateCountPreCheck()
-     */
-    public void enableCheckCountBeforeQueryUpdate() {
-        enableQueryUpdateCountPreCheck();
-    }
-
-    /**
-     * Disable checking record count before QueryUpdate (contains QueryDelete). (back to default) <br>
-     * Executes query update even if zero count. (normal specification)
-     * @deprecated use disableQueryUpdateCountPreCheck()
-     */
-    public void disableCheckCountBeforeQueryUpdate() {
-        disableQueryUpdateCountPreCheck();
-    }
-
-    /**
-     * Allow "that's bad timing" check.
-     * @deprecated use enableThatsBadTiming()
-     */
-    public void allowThatsBadTiming() {
-        enableThatsBadTiming();
-    }
-
-    /**
-     * Suppress "that's bad timing" check.
-     * @deprecated use disableThatsBadTiming()
-     */
-    public void suppressThatsBadTiming() {
-        disableThatsBadTiming();
     }
 
     // ===================================================================================

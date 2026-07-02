@@ -58,7 +58,14 @@ public class MemberWithdrawalDbm extends AbstractDBMeta {
     { xsetupEpg(); }
     protected void xsetupEpg() {
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getMemberId(), (et, vl) -> ((MemberWithdrawal)et).setMemberId(cti(vl)), "memberId");
-        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalReasonCode(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalReasonCode((String)vl), "withdrawalReasonCode");
+        setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalReasonCode(), (et, vl) -> {
+            CDef.WithdrawalReason cls = (CDef.WithdrawalReason)gcls(et, columnWithdrawalReasonCode(), vl);
+            if (cls != null) {
+                ((MemberWithdrawal)et).setWithdrawalReasonCodeAsWithdrawalReason(cls);
+            } else {
+                ((MemberWithdrawal)et).mynativeMappingWithdrawalReasonCode((String)vl);
+            }
+        }, "withdrawalReasonCode");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalReasonInputText(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalReasonInputText((String)vl), "withdrawalReasonInputText");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getWithdrawalDatetime(), (et, vl) -> ((MemberWithdrawal)et).setWithdrawalDatetime(cttp(vl)), "withdrawalDatetime");
         setupEpg(_epgMap, et -> ((MemberWithdrawal)et).getRegisterDatetime(), (et, vl) -> ((MemberWithdrawal)et).setRegisterDatetime(cttp(vl)), "registerDatetime");
@@ -242,7 +249,6 @@ public class MemberWithdrawalDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public MemberWithdrawal newEntity() { return new MemberWithdrawal(); }
-    public MemberWithdrawal newMyEntity() { return new MemberWithdrawal(); }
 
     // ===================================================================================
     //                                                                   Map Communication

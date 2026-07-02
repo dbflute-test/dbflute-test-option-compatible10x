@@ -50,7 +50,7 @@ public class WxBehaviorCommandHookTest extends UnitContainerTestCase {
     public void test_ConditionBean_selectList() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         final List<String> markList = new ArrayList<String>();
         CallbackContext.setBehaviorCommandHookOnThread(new BehaviorCommandHook() {
             public void hookBefore(BehaviorCommandMeta meta) {
@@ -86,7 +86,7 @@ public class WxBehaviorCommandHookTest extends UnitContainerTestCase {
     public void test_ConditionBean_selectCount() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         final List<String> markList = new ArrayList<String>();
         CallbackContext.setBehaviorCommandHookOnThread(new BehaviorCommandHook() {
             public void hookBefore(BehaviorCommandMeta meta) {
@@ -124,7 +124,7 @@ public class WxBehaviorCommandHookTest extends UnitContainerTestCase {
         Member member = new Member();
         member.setBirthdate(null);
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         final List<String> markList = new ArrayList<String>();
         CallbackContext.setBehaviorCommandHookOnThread(new BehaviorCommandHook() {
             public void hookBefore(BehaviorCommandMeta meta) {

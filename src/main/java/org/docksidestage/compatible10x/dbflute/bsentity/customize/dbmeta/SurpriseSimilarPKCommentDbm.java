@@ -186,7 +186,6 @@ public class SurpriseSimilarPKCommentDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public SurpriseSimilarPKComment newEntity() { return new SurpriseSimilarPKComment(); }
-    public SurpriseSimilarPKComment newMyEntity() { return new SurpriseSimilarPKComment(); }
 
     // ===================================================================================
     //                                                                   Map Communication

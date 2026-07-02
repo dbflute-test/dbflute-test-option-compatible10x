@@ -127,6 +127,19 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * (会員ID)MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER}
      * @param minNumber The min number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setMemberId_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setMemberId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (会員ID)MEMBER_ID: {PK, NotNull, INTEGER(10), FK to MEMBER}
+     * @param minNumber The min number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of memberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setMemberId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
@@ -158,36 +171,6 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     protected void doSetMemberId_NotInScope(Collection<Integer> memberIdList) {
         regINS(CK_NINS, cTL(memberIdList), xgetCValueMemberId(), "MEMBER_ID");
     }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my MEMBER_ID, named 'member'.
-     * @param subCBLambda The callback for sub-query of Member for 'in-scope'. (NotNull)
-     */
-    public void inScopeMember(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberId_InScopeRelation_Member(cb.query());
-        registerInScopeRelation(cb.query(), "MEMBER_ID", "MEMBER_ID", pp, "member", false);
-    }
-    public abstract String keepMemberId_InScopeRelation_Member(MemberCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my MEMBER_ID, named 'member'.
-     * @param subCBLambda The callback for sub-query of Member for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeMember(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMemberId_NotInScopeRelation_Member(cb.query());
-        registerInScopeRelation(cb.query(), "MEMBER_ID", "MEMBER_ID", pp, "member", true);
-    }
-    public abstract String keepMemberId_NotInScopeRelation_Member(MemberCQ sq);
 
     /**
      * IsNull {is null}. And OnlyOnceRegistered. <br>
@@ -295,6 +278,17 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (ログインパスワード)LOGIN_PASSWORD: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setLoginPassword_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param loginPassword The value of loginPassword as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setLoginPassword_LikeSearch(String loginPassword, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setLoginPassword_LikeSearch(loginPassword, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (ログインパスワード)LOGIN_PASSWORD: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setLoginPassword_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param loginPassword The value of loginPassword as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -308,19 +302,21 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (ログインパスワード)LOGIN_PASSWORD: {NotNull, VARCHAR(50)}
      * @param loginPassword The value of loginPassword as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setLoginPassword_NotLikeSearch(String loginPassword, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setLoginPassword_NotLikeSearch(loginPassword, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (ログインパスワード)LOGIN_PASSWORD: {NotNull, VARCHAR(50)}
+     * @param loginPassword The value of loginPassword as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setLoginPassword_NotLikeSearch(String loginPassword, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(loginPassword), xgetCValueLoginPassword(), "LOGIN_PASSWORD", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (ログインパスワード)LOGIN_PASSWORD: {NotNull, VARCHAR(50)}
-     * @param loginPassword The value of loginPassword as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setLoginPassword_PrefixSearch(String loginPassword) {
-        setLoginPassword_LikeSearch(loginPassword, xcLSOPPre());
     }
 
     protected void regLoginPassword(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueLoginPassword(), "LOGIN_PASSWORD"); }
@@ -417,6 +413,17 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (リマインダ質問)REMINDER_QUESTION: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setReminderQuestion_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param reminderQuestion The value of reminderQuestion as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setReminderQuestion_LikeSearch(String reminderQuestion, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setReminderQuestion_LikeSearch(reminderQuestion, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (リマインダ質問)REMINDER_QUESTION: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setReminderQuestion_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param reminderQuestion The value of reminderQuestion as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -430,19 +437,21 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (リマインダ質問)REMINDER_QUESTION: {NotNull, VARCHAR(50)}
      * @param reminderQuestion The value of reminderQuestion as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setReminderQuestion_NotLikeSearch(String reminderQuestion, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setReminderQuestion_NotLikeSearch(reminderQuestion, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (リマインダ質問)REMINDER_QUESTION: {NotNull, VARCHAR(50)}
+     * @param reminderQuestion The value of reminderQuestion as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setReminderQuestion_NotLikeSearch(String reminderQuestion, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(reminderQuestion), xgetCValueReminderQuestion(), "REMINDER_QUESTION", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (リマインダ質問)REMINDER_QUESTION: {NotNull, VARCHAR(50)}
-     * @param reminderQuestion The value of reminderQuestion as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setReminderQuestion_PrefixSearch(String reminderQuestion) {
-        setReminderQuestion_LikeSearch(reminderQuestion, xcLSOPPre());
     }
 
     protected void regReminderQuestion(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueReminderQuestion(), "REMINDER_QUESTION"); }
@@ -539,6 +548,17 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (リマインダ回答)REMINDER_ANSWER: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setReminderAnswer_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param reminderAnswer The value of reminderAnswer as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setReminderAnswer_LikeSearch(String reminderAnswer, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setReminderAnswer_LikeSearch(reminderAnswer, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (リマインダ回答)REMINDER_ANSWER: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setReminderAnswer_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param reminderAnswer The value of reminderAnswer as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -552,19 +572,21 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (リマインダ回答)REMINDER_ANSWER: {NotNull, VARCHAR(50)}
      * @param reminderAnswer The value of reminderAnswer as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setReminderAnswer_NotLikeSearch(String reminderAnswer, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setReminderAnswer_NotLikeSearch(reminderAnswer, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (リマインダ回答)REMINDER_ANSWER: {NotNull, VARCHAR(50)}
+     * @param reminderAnswer The value of reminderAnswer as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setReminderAnswer_NotLikeSearch(String reminderAnswer, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(reminderAnswer), xgetCValueReminderAnswer(), "REMINDER_ANSWER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (リマインダ回答)REMINDER_ANSWER: {NotNull, VARCHAR(50)}
-     * @param reminderAnswer The value of reminderAnswer as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setReminderAnswer_PrefixSearch(String reminderAnswer) {
-        setReminderAnswer_LikeSearch(reminderAnswer, xcLSOPPre());
     }
 
     protected void regReminderAnswer(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueReminderAnswer(), "REMINDER_ANSWER"); }
@@ -630,6 +652,19 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      */
     public void setReminderUseCount_LessEqual(Integer reminderUseCount) {
         regReminderUseCount(CK_LE, reminderUseCount);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (リマインダ利用回数)REMINDER_USE_COUNT: {NotNull, INTEGER(10)}
+     * @param minNumber The min number of reminderUseCount. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of reminderUseCount. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setReminderUseCount_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setReminderUseCount_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -723,6 +758,19 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setRegisterDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setRegisterDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -730,21 +778,6 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      */
     public void setRegisterDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueRegisterDatetime(), "REGISTER_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * REGISTER_DATETIME: {NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setRegisterDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setRegisterDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterDatetime(), "REGISTER_DATETIME"); }
@@ -841,6 +874,17 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setRegisterUser_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param registerUser The value of registerUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegisterUser_LikeSearch(String registerUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegisterUser_LikeSearch(registerUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * REGISTER_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setRegisterUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param registerUser The value of registerUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -854,19 +898,21 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * REGISTER_USER: {NotNull, VARCHAR(200)}
      * @param registerUser The value of registerUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegisterUser_NotLikeSearch(String registerUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegisterUser_NotLikeSearch(registerUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * REGISTER_USER: {NotNull, VARCHAR(200)}
+     * @param registerUser The value of registerUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setRegisterUser_NotLikeSearch(String registerUser, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(registerUser), xgetCValueRegisterUser(), "REGISTER_USER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * REGISTER_USER: {NotNull, VARCHAR(200)}
-     * @param registerUser The value of registerUser as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setRegisterUser_PrefixSearch(String registerUser) {
-        setRegisterUser_LikeSearch(registerUser, xcLSOPPre());
     }
 
     protected void regRegisterUser(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterUser(), "REGISTER_USER"); }
@@ -921,6 +967,19 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setUpdateDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setUpdateDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -928,21 +987,6 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      */
     public void setUpdateDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueUpdateDatetime(), "UPDATE_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * UPDATE_DATETIME: {NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setUpdateDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setUpdateDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDatetime(), "UPDATE_DATETIME"); }
@@ -1039,6 +1083,17 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)} <br>
+     * <pre>e.g. setUpdateUser_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param updateUser The value of updateUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setUpdateUser_LikeSearch(String updateUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setUpdateUser_LikeSearch(updateUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * UPDATE_USER: {NotNull, VARCHAR(200)} <br>
      * <pre>e.g. setUpdateUser_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param updateUser The value of updateUser as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -1052,19 +1107,21 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * UPDATE_USER: {NotNull, VARCHAR(200)}
      * @param updateUser The value of updateUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setUpdateUser_NotLikeSearch(String updateUser, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setUpdateUser_NotLikeSearch(updateUser, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * UPDATE_USER: {NotNull, VARCHAR(200)}
+     * @param updateUser The value of updateUser as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setUpdateUser_NotLikeSearch(String updateUser, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(updateUser), xgetCValueUpdateUser(), "UPDATE_USER", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * UPDATE_USER: {NotNull, VARCHAR(200)}
-     * @param updateUser The value of updateUser as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setUpdateUser_PrefixSearch(String updateUser) {
-        setUpdateUser_LikeSearch(updateUser, xcLSOPPre());
     }
 
     protected void regUpdateUser(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateUser(), "UPDATE_USER"); }
@@ -1130,6 +1187,19 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
      */
     public void setVersionNo_LessEqual(Long versionNo) {
         regVersionNo(CK_LE, versionNo);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * VERSION_NO: {NotNull, BIGINT(19)}
+     * @param minNumber The min number of versionNo. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of versionNo. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setVersionNo_RangeOf(Long minNumber, Long maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setVersionNo_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -1335,6 +1405,39 @@ public abstract class AbstractBsMemberSecurityCQ extends AbstractConditionQuery 
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

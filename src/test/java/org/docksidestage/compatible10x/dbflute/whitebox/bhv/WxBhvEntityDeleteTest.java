@@ -32,7 +32,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
         // ## Arrange ##
         deleteMemberReferrer();
 
-        Member beforeMember = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member beforeMember = memberBhv.selectByPK(3).orElseThrow();
         Long versionNo = beforeMember.getVersionNo();
 
         Member member = new Member();
@@ -44,7 +44,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
 
         // ## Assert ##
         try {
-            memberBhv.selectByPKValueWithDeletedCheck(3);
+            memberBhv.selectByPK(3).orElseThrow();
             fail();
         } catch (EntityAlreadyDeletedException e) {
             // OK
@@ -64,7 +64,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
 
         // ## Assert ##
         try {
-            memberBhv.selectByPKValueWithDeletedCheck(3);
+            memberBhv.selectByPK(3).orElseThrow();
             fail();
         } catch (EntityAlreadyDeletedException e) {
             // OK
@@ -72,28 +72,29 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
         }
     }
 
-    public void test_deleteNonstrictIgnoreDeleted() {
-        // ## Arrange ##
-        Member member = new Member();
-        member.setMemberId(99999);
-
-        // ## Act ##
-        memberBhv.deleteNonstrictIgnoreDeleted(member);
-
-        // ## Assert ##
-        try {
-            memberBhv.selectByPKValueWithDeletedCheck(99999);
-            fail();
-        } catch (EntityAlreadyDeletedException e) {
-            // OK
-            log(e.getMessage());
-        }
-    }
+    // already deleted
+    //public void test_deleteNonstrictIgnoreDeleted() {
+    //    // ## Arrange ##
+    //    Member member = new Member();
+    //    member.setMemberId(99999);
+    //
+    //    // ## Act ##
+    //    memberBhv.deleteNonstrictIgnoreDeleted(member);
+    //
+    //    // ## Assert ##
+    //    try {
+    //        memberBhv.selectByPKValueWithDeletedCheck(99999);
+    //        fail();
+    //    } catch (EntityAlreadyDeletedException e) {
+    //        // OK
+    //        log(e.getMessage());
+    //    }
+    //}
 
     public void test_delete_nonOptimisticLockTable_deleted() throws Exception {
         // ## Arrange ##
         MemberStatus memberStatus = new MemberStatus();
-        memberStatus.setMemberStatusCode("NON");
+        memberStatus.mynativeMappingMemberStatusCode("NON");
 
         // ## Act ##
         try {
@@ -141,7 +142,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
     public void test_delete_uniqueBy_compoundKey_basic() throws Exception {
         // ## Arrange ##
         purchasePaymentBhv.varyingQueryDelete(new PurchasePaymentCB(), op -> op.allowNonQueryDelete());
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(99999L); // dummy
         Integer memberId = before.getMemberId();
@@ -156,7 +157,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
 
         // ## Assert ##
         try {
-            purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+            purchaseBhv.selectByPK(3L).orElseThrow();
             fail();
         } catch (EntityAlreadyDeletedException e) {
             log(e.getMessage());
@@ -166,7 +167,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
     public void test_deleteNonstrict_uniqueBy_compoundKey_basic() throws Exception {
         // ## Arrange ##
         purchasePaymentBhv.varyingQueryDelete(new PurchasePaymentCB(), op -> op.allowNonQueryDelete());
-        Purchase before = purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+        Purchase before = purchaseBhv.selectByPK(3L).orElseThrow();
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(99999L); // dummy
         Integer memberId = before.getMemberId();
@@ -180,7 +181,7 @@ public class WxBhvEntityDeleteTest extends UnitContainerTestCase {
 
         // ## Assert ##
         try {
-            purchaseBhv.selectByPKValueWithDeletedCheck(3L);
+            purchaseBhv.selectByPK(3L).orElseThrow();
             fail();
         } catch (EntityAlreadyDeletedException e) {
             log(e.getMessage());

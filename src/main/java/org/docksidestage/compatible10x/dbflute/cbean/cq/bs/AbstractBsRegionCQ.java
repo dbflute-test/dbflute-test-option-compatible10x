@@ -63,7 +63,7 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
      * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10), classification=Region}
      * @param regionId The value of regionId as equal. (basically NotNull: error as default, or no condition as option)
      */
-    public void setRegionId_Equal(Integer regionId) {
+    protected void setRegionId_Equal(Integer regionId) {
         doSetRegionId_Equal(regionId);
     }
 
@@ -118,7 +118,7 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
      * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10), classification=Region}
      * @param regionId The value of regionId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
-    public void setRegionId_NotEqual(Integer regionId) {
+    protected void setRegionId_NotEqual(Integer regionId) {
         doSetRegionId_NotEqual(regionId);
     }
 
@@ -173,7 +173,7 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
      * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10), classification=Region}
      * @param regionIdList The collection of regionId as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setRegionId_InScope(Collection<Integer> regionIdList) {
+    protected void setRegionId_InScope(Collection<Integer> regionIdList) {
         doSetRegionId_InScope(regionIdList);
     }
 
@@ -196,7 +196,7 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
      * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10), classification=Region}
      * @param regionIdList The collection of regionId as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setRegionId_NotInScope(Collection<Integer> regionIdList) {
+    protected void setRegionId_NotInScope(Collection<Integer> regionIdList) {
         doSetRegionId_NotInScope(regionIdList);
     }
 
@@ -393,6 +393,17 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (地域名称)REGION_NAME: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setRegionName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param regionName The value of regionName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegionName_LikeSearch(String regionName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegionName_LikeSearch(regionName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (地域名称)REGION_NAME: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setRegionName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param regionName The value of regionName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -406,19 +417,21 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (地域名称)REGION_NAME: {NotNull, VARCHAR(50)}
      * @param regionName The value of regionName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setRegionName_NotLikeSearch(String regionName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setRegionName_NotLikeSearch(regionName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (地域名称)REGION_NAME: {NotNull, VARCHAR(50)}
+     * @param regionName The value of regionName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setRegionName_NotLikeSearch(String regionName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(regionName), xgetCValueRegionName(), "REGION_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (地域名称)REGION_NAME: {NotNull, VARCHAR(50)}
-     * @param regionName The value of regionName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setRegionName_PrefixSearch(String regionName) {
-        setRegionName_LikeSearch(regionName, xcLSOPPre());
     }
 
     protected void regRegionName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegionName(), "REGION_NAME"); }
@@ -585,6 +598,39 @@ public abstract class AbstractBsRegionCQ extends AbstractConditionQuery {
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

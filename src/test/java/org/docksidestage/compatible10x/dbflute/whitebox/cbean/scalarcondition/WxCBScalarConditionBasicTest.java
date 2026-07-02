@@ -200,7 +200,7 @@ public class WxCBScalarConditionBasicTest extends UnitContainerTestCase {
     //                                                                            ========
     public void test_scalarCondition_OneToOne() {
         // ## Arrange ##
-        Integer avg = memberBhv.scalarSelect(Integer.class).avg(new ScalarQuery<MemberCB>() {
+        Integer avg = memberBhv.selectScalar(Integer.class).avg(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }

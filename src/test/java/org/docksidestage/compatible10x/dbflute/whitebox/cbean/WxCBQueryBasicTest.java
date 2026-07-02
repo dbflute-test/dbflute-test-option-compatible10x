@@ -51,7 +51,7 @@ public class WxCBQueryBasicTest extends UnitContainerTestCase {
         cb.query().setMemberId_InScope(DfCollectionUtil.newArrayList(4, 5, 6)); // append
         cb.query().setMemberId_NotInScope(DfCollectionUtil.newArrayList(7, 8, 9));
         cb.query().setMemberName_Equal("Foo");
-        cb.query().setMemberName_PrefixSearch("A");
+        cb.query().setMemberName_LikeSearch("A", op -> op.likePrefix());
         cb.query().setMemberName_LikeSearch("B%|B", new LikeSearchOption().likeSuffix());
         cb.query().setMemberName_LikeSearch("C", new LikeSearchOption().likeContain()); // append
         cb.query().inline().setBirthdate_Equal(DfTypeUtil.toDate("2099/07/08"));
@@ -67,7 +67,7 @@ public class WxCBQueryBasicTest extends UnitContainerTestCase {
                 orCB.query().setMemberId_NotEqual(21);
                 orCB.query().setMemberId_NotEqual(22);
                 orCB.query().setMemberId_NotEqual(23);
-                orCB.query().setMemberName_PrefixSearch("X");
+                orCB.query().setMemberName_LikeSearch("X", op -> op.likePrefix());
                 orCB.query().setMemberName_LikeSearch("Y", new LikeSearchOption().likeSuffix());
                 orCB.query().setMemberName_LikeSearch("Z%|Z", new LikeSearchOption().likeContain()); // append
                 orCB.orScopeQueryAndPart(new AndQuery<MemberCB>() {
@@ -197,9 +197,9 @@ public class WxCBQueryBasicTest extends UnitContainerTestCase {
     public void test_query_keptLocation() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("A");
-        cb.query().inline().setMemberName_PrefixSearch("B");
-        cb.query().setMemberName_PrefixSearch("C");
+        cb.query().setMemberName_LikeSearch("A", op -> op.likePrefix());
+        cb.query().inline().setMemberName_LikeSearch("B", op -> op.likePrefix());
+        cb.query().setMemberName_LikeSearch("C", op -> op.likePrefix());
 
         // ## Act ##
         String actual = cb.toDisplaySql();
@@ -291,7 +291,7 @@ public class WxCBQueryBasicTest extends UnitContainerTestCase {
         Date toDate = DfTypeUtil.toDate(expected);
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(fromDate, toDate);
+        cb.query().setBirthdate_FromTo(fromDate, toDate, op -> op.compareAsDate());
         memberBhv.selectList(cb);
 
         // ## Assert ##

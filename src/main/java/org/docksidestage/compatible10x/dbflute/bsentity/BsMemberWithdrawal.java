@@ -355,7 +355,7 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Domai
      * 何も言わずに退会する会員もいるので必須項目ではない。
      * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (NullAllowed: null update allowed for no constraint)
      */
-    public void setWithdrawalReasonCode(String withdrawalReasonCode) {
+    protected void setWithdrawalReasonCode(String withdrawalReasonCode) {
         registerModifiedProperty("withdrawalReasonCode");
         _withdrawalReasonCode = withdrawalReasonCode;
     }
@@ -492,5 +492,13 @@ public abstract class BsMemberWithdrawal extends AbstractEntity implements Domai
     public void setVersionNo(Long versionNo) {
         registerModifiedProperty("versionNo");
         _versionNo = versionNo;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void mynativeMappingWithdrawalReasonCode(String withdrawalReasonCode) {
+        setWithdrawalReasonCode(withdrawalReasonCode);
     }
 }

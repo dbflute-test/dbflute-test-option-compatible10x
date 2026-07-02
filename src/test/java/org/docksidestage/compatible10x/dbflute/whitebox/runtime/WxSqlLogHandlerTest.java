@@ -53,7 +53,7 @@ public class WxSqlLogHandlerTest extends UnitContainerTestCase {
     public void test_ConditionBean_selectList() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         final List<String> displaySqlList = newArrayList();
         CallbackContext.setSqlLogHandlerOnThread(new SqlLogHandler() {
             public void handle(SqlLogInfo info) {
@@ -143,7 +143,7 @@ public class WxSqlLogHandlerTest extends UnitContainerTestCase {
 
     public void test_EntityUpdate_insertOrUpdate_updateOnly() {
         // ## Arrange ##
-        Member before = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member before = memberBhv.selectByPK(3).orElseThrow();
         Member member = new Member();
         member.setMemberId(before.getMemberId());
         member.setMemberName("$name");
@@ -175,7 +175,7 @@ public class WxSqlLogHandlerTest extends UnitContainerTestCase {
 
     public void test_EntityUpdate_insertOrUpdate_onParade() {
         // ## Arrange ##
-        Member before = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member before = memberBhv.selectByPK(3).orElseThrow();
         Member member = new Member();
         member.setMemberId(99999);
         member.setMemberName("$name");

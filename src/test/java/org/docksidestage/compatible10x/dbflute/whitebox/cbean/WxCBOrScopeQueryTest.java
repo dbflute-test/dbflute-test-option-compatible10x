@@ -44,8 +44,8 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
-                orCB.query().setMemberName_PrefixSearch("S");
-                orCB.query().setMemberName_PrefixSearch("J");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
+                orCB.query().setMemberName_LikeSearch("J", op -> op.likePrefix());
                 orCB.query().setMemberId_Equal(3);
             }
         });
@@ -71,9 +71,9 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         cb.query().setMemberStatusCode_Equal_Formalized();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
-                orCB.query().setMemberName_PrefixSearch("S");
-                orCB.query().setMemberName_PrefixSearch("J");
-                orCB.query().setMemberName_PrefixSearch("M");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
+                orCB.query().setMemberName_LikeSearch("J", op -> op.likePrefix());
+                orCB.query().setMemberName_LikeSearch("M", op -> op.likePrefix());
             }
         });
 
@@ -98,7 +98,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         int countAll = memberBhv.selectCount(cb);
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
-                orCB.query().setMemberName_PrefixSearch(null);
+                orCB.query().setMemberName_LikeSearch(null, op -> op.likePrefix());
             }
         });
 
@@ -117,7 +117,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
-                orCB.query().setMemberName_PrefixSearch(null);
+                orCB.query().setMemberName_LikeSearch(null, op -> op.likePrefix());
                 orCB.query().setMemberId_Equal(3);
             }
         });
@@ -146,7 +146,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
             public void query(MemberCB orCB) {
                 LikeSearchOption option = new LikeSearchOption().likeContain().splitBySpace();
                 orCB.query().setMemberName_LikeSearch("S t", option);
-                orCB.query().setMemberName_PrefixSearch("J");
+                orCB.query().setMemberName_LikeSearch("J", op -> op.likePrefix());
             }
         });
 
@@ -171,7 +171,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
             public void query(MemberCB orCB) {
                 LikeSearchOption option = new LikeSearchOption().likePrefix().splitBySpace().asOrSplit();
                 orCB.query().setMemberName_LikeSearch("S M", option);
-                orCB.query().setMemberName_PrefixSearch("J");
+                orCB.query().setMemberName_LikeSearch("J", op -> op.likePrefix());
             }
         });
 
@@ -268,9 +268,9 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         cb.query().inline().setMemberStatusCode_Equal_Formalized();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
-                orCB.query().inline().setMemberName_PrefixSearch("S");
-                orCB.query().inline().setMemberName_PrefixSearch("J");
-                orCB.query().inline().setMemberName_PrefixSearch("M");
+                orCB.query().inline().setMemberName_LikeSearch("S", op -> op.likePrefix());
+                orCB.query().inline().setMemberName_LikeSearch("J", op -> op.likePrefix());
+                orCB.query().inline().setMemberName_LikeSearch("M", op -> op.likePrefix());
             }
         });
 
@@ -363,13 +363,13 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
     public void test_orScopeQuery_with_fromTo_basic() {
         // ## Arrange ##
         PurchaseCB cb = new PurchaseCB();
-        cb.query().setPurchaseDatetime_DateFromTo(toUtilDate("2012/03/13"), toUtilDate("2012/03/14"));
+        cb.query().setPurchaseDatetime_FromTo(toUtilDate("2012/03/13"), toUtilDate("2012/03/14"), op -> op.compareAsDate());
         cb.orScopeQuery(new OrQuery<PurchaseCB>() {
             public void query(PurchaseCB orCB) {
-                orCB.query().setRegisterDatetime_DateFromTo(toUtilDate("2012/03/15"), toUtilDate("2012/03/16"));
+                orCB.query().setRegisterDatetime_FromTo(toUtilDate("2012/03/15"), toUtilDate("2012/03/16"), op -> op.compareAsDate());
                 orCB.orScopeQueryAndPart(new AndQuery<PurchaseCB>() {
                     public void query(PurchaseCB andCB) {
-                        andCB.query().queryMember().setBirthdate_DateFromTo(toUtilDate("2012/03/17"), toUtilDate("2012/03/18"));
+                        andCB.query().queryMember().setBirthdate_FromTo(toUtilDate("2012/03/17"), toUtilDate("2012/03/18"), op -> op.compareAsDate());
                         FromToOption optionOrIsNull = new FromToOption().orIsNull();
                         andCB.query()
                                 .queryMember()
@@ -379,7 +379,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                 });
                 orCB.orScopeQueryAndPart(new AndQuery<PurchaseCB>() {
                     public void query(PurchaseCB andCB) {
-                        andCB.query().setUpdateDatetime_DateFromTo(toUtilDate("2012/03/21"), toUtilDate("2012/03/22"));
+                        andCB.query().setUpdateDatetime_FromTo(toUtilDate("2012/03/21"), toUtilDate("2012/03/22"), op -> op.compareAsDate());
                     }
                 });
             }
@@ -467,7 +467,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                         andCB.query().setFormalizedDatetime_IsNotNull();
                     }
                 });
-                orCB.query().setRegisterUser_PrefixSearch("T");
+                orCB.query().setRegisterUser_LikeSearch("T", op -> op.likePrefix());
                 orCB.query().setBirthdate_IsNotNull(); // ignored
             }
         });
@@ -504,7 +504,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                             andCB.query().setBirthdate_IsNotNull();
                         }
                     });
-                    orCB.query().setRegisterUser_PrefixSearch("T");
+                    orCB.query().setRegisterUser_LikeSearch("T", op -> op.likePrefix());
                 }
             });
 
@@ -537,7 +537,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                             });
                         }
                     });
-                    orCB.query().setRegisterUser_PrefixSearch("T");
+                    orCB.query().setRegisterUser_LikeSearch("T", op -> op.likePrefix());
                 }
             });
 
@@ -571,7 +571,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                             });
                         }
                     });
-                    orCB.query().setRegisterUser_PrefixSearch("T");
+                    orCB.query().setRegisterUser_LikeSearch("T", op -> op.likePrefix());
                 }
             });
 
@@ -592,7 +592,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         cb.setupSelect_MemberStatus();
         cb.query().setBirthdate_GreaterThan(currentUtilDate());
         cb.query().inline().setUpdateUser_NotEqual("UPUSER");
-        cb.query().inline().setMemberName_PrefixSearch("IN");
+        cb.query().inline().setMemberName_LikeSearch("IN", op -> op.likePrefix());
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().queryMemberStatus().on().setMemberStatusCode_Equal_Formalized();
@@ -604,9 +604,9 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                         new LikeSearchOption().likePrefix().splitBySpace().asOrSplit());
                 orCB.orScopeQuery(new OrQuery<MemberCB>() {
                     public void query(MemberCB orCB) {
-                        orCB.query().setMemberName_PrefixSearch(null);
-                        orCB.query().setMemberName_PrefixSearch("S");
-                        orCB.query().setMemberName_PrefixSearch("J");
+                        orCB.query().setMemberName_LikeSearch(null, op -> op.likePrefix());
+                        orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
+                        orCB.query().setMemberName_LikeSearch("J", op -> op.likePrefix());
                         orCB.query().setMemberName_LikeSearch("AND SPLIT",
                                 new LikeSearchOption().likePrefix().splitBySpace());
                         orCB.query().setMemberId_Equal(3);
@@ -614,9 +614,9 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
                 });
                 orCB.orScopeQuery(new OrQuery<MemberCB>() {
                     public void query(MemberCB orCB) {
-                        orCB.query().setMemberName_PrefixSearch(null);
-                        orCB.query().setMemberName_PrefixSearch("KI");
-                        orCB.query().setMemberName_PrefixSearch("OP");
+                        orCB.query().setMemberName_LikeSearch(null, op -> op.likePrefix());
+                        orCB.query().setMemberName_LikeSearch("KI", op -> op.likePrefix());
+                        orCB.query().setMemberName_LikeSearch("OP", op -> op.likePrefix());
                     }
                 });
                 orCB.orScopeQuery(new OrQuery<MemberCB>() {
@@ -683,7 +683,7 @@ public class WxCBOrScopeQueryTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
                 orCB.query().setMemberStatusCode_Equal_Formalized();
             }
         });

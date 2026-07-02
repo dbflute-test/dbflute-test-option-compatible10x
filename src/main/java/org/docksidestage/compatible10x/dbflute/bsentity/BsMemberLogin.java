@@ -468,7 +468,7 @@ public abstract class BsMemberLogin extends AbstractEntity implements DomainEnti
      * モバイル機器からのログインか否か。
      * @param mobileLoginFlg The value of the column 'MOBILE_LOGIN_FLG'. (basically NotNull if update: for the constraint)
      */
-    public void setMobileLoginFlg(Integer mobileLoginFlg) {
+    protected void setMobileLoginFlg(Integer mobileLoginFlg) {
         checkClassificationCode("MOBILE_LOGIN_FLG", CDef.DefMeta.Flg, mobileLoginFlg);
         registerModifiedProperty("mobileLoginFlg");
         _mobileLoginFlg = mobileLoginFlg;
@@ -489,8 +489,24 @@ public abstract class BsMemberLogin extends AbstractEntity implements DomainEnti
      * ログイン時の会員ステータス
      * @param loginMemberStatusCode The value of the column 'LOGIN_MEMBER_STATUS_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setLoginMemberStatusCode(String loginMemberStatusCode) {
+    protected void setLoginMemberStatusCode(String loginMemberStatusCode) {
         registerModifiedProperty("loginMemberStatusCode");
         _loginMemberStatusCode = loginMemberStatusCode;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param mobileLoginFlg The value of the column 'MOBILE_LOGIN_FLG'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingMobileLoginFlg(Integer mobileLoginFlg) {
+        setMobileLoginFlg(mobileLoginFlg);
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param loginMemberStatusCode The value of the column 'LOGIN_MEMBER_STATUS_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingLoginMemberStatusCode(String loginMemberStatusCode) {
+        setLoginMemberStatusCode(loginMemberStatusCode);
     }
 }

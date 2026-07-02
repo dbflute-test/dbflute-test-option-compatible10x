@@ -284,7 +284,7 @@ public abstract class BsRegion extends AbstractEntity implements DomainEntity {
      * 珍しく(固定的な)マスタテーブルとしては数値だが、Exampleなのでやはり色々なパターンがないとね、ってところで。
      * @param regionId The value of the column 'REGION_ID'. (basically NotNull if update: for the constraint)
      */
-    public void setRegionId(Integer regionId) {
+    protected void setRegionId(Integer regionId) {
         registerModifiedProperty("regionId");
         _regionId = regionId;
     }
@@ -307,5 +307,13 @@ public abstract class BsRegion extends AbstractEntity implements DomainEntity {
     public void setRegionName(String regionName) {
         registerModifiedProperty("regionName");
         _regionName = regionName;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param regionId The value of the column 'REGION_ID'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingRegionId(Integer regionId) {
+        setRegionId(regionId);
     }
 }

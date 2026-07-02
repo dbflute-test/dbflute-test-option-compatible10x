@@ -20,62 +20,63 @@ public class WxParameterBeanBasicTest extends PlainTestCase {
     // ===================================================================================
     //                                                                           Empty Set
     //                                                                           =========
-    public void test_emptyToNull_basic() {
-        // ## Arrange ##
-        OptionMemberPmb pmb = new OptionMemberPmb();
-
-        // ## Act ##
-        pmb.setMemberStatusCode("");
-        pmb.setStatus("");
-
-        // ## Assert ##
-        assertNull(pmb.getMemberStatusCode());
-        assertNull(pmb.getStatus());
-    }
-
-    public void test_emptyToNull_opion() {
-        // ## Arrange ##
-        OptionMemberPmb pmb = new OptionMemberPmb() {
-            @Override
-            protected boolean isEmptyStringParameterAllowed() {
-                return true;
-            }
-        };
-
-        // ## Act ##
-        pmb.setMemberStatusCode("");
-        pmb.setStatus("");
-
-        // ## Assert ##
-        assertEquals("", pmb.getMemberStatusCode());
-        assertEquals("", pmb.getStatus());
-    }
-
-    public void test_spaceRemains() {
-        // ## Arrange ##
-        OptionMemberPmb pmb = new OptionMemberPmb();
-
-        // ## Act ##
-        pmb.setMemberStatusCode(" ");
-        pmb.setStatus(" ");
-
-        // ## Assert ##
-        assertEquals(" ", pmb.getMemberStatusCode());
-        assertEquals(" ", pmb.getStatus());
-    }
-
-    public void test_nullRemains() {
-        // ## Arrange ##
-        OptionMemberPmb pmb = new OptionMemberPmb();
-
-        // ## Act ##
-        pmb.setMemberStatusCode(null);
-        pmb.setStatus(null);
-
-        // ## Assert ##
-        assertNull(pmb.getMemberStatusCode());
-        assertNull(pmb.getStatus());
-    }
+    // already migrated (2026/07/02)
+    //public void test_emptyToNull_basic() {
+    //    // ## Arrange ##
+    //    OptionMemberPmb pmb = new OptionMemberPmb();
+    //
+    //    // ## Act ##
+    //    pmb.setMemberStatusCode("");
+    //    pmb.setStatus("");
+    //
+    //    // ## Assert ##
+    //    assertNull(pmb.getMemberStatusCode());
+    //    assertNull(pmb.getStatus());
+    //}
+    //
+    //public void test_emptyToNull_opion() {
+    //    // ## Arrange ##
+    //    OptionMemberPmb pmb = new OptionMemberPmb() {
+    //        @Override
+    //        protected boolean isEmptyStringParameterAllowed() {
+    //            return true;
+    //        }
+    //    };
+    //
+    //    // ## Act ##
+    //    pmb.setMemberStatusCode("");
+    //    pmb.setStatus("");
+    //
+    //    // ## Assert ##
+    //    assertEquals("", pmb.getMemberStatusCode());
+    //    assertEquals("", pmb.getStatus());
+    //}
+    //
+    //public void test_spaceRemains() {
+    //    // ## Arrange ##
+    //    OptionMemberPmb pmb = new OptionMemberPmb();
+    //
+    //    // ## Act ##
+    //    pmb.setMemberStatusCode(" ");
+    //    pmb.setStatus(" ");
+    //
+    //    // ## Assert ##
+    //    assertEquals(" ", pmb.getMemberStatusCode());
+    //    assertEquals(" ", pmb.getStatus());
+    //}
+    //
+    //public void test_nullRemains() {
+    //    // ## Arrange ##
+    //    OptionMemberPmb pmb = new OptionMemberPmb();
+    //
+    //    // ## Act ##
+    //    pmb.setMemberStatusCode(null);
+    //    pmb.setStatus(null);
+    //
+    //    // ## Assert ##
+    //    assertNull(pmb.getMemberStatusCode());
+    //    assertNull(pmb.getStatus());
+    //}
 
     // ===================================================================================
     //                                                                         Like Search

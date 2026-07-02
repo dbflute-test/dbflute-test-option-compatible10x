@@ -62,24 +62,30 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /** {@inheritDoc} */
     public String asTableDbName() { return "VENDOR_CHECK"; }
 
-    /** @return The instance of DBMeta as my table type. (NotNull) */
-    public VendorCheckDbm getMyDBMeta() { return VendorCheckDbm.getInstance(); }
-
     // ===================================================================================
     //                                                                        New Instance
     //                                                                        ============
     /** {@inheritDoc} */
     public VendorCheckCB newConditionBean() { return new VendorCheckCB(); }
 
-    /** @return The instance of new entity as my table type. (NotNull) */
-    public VendorCheck newMyEntity() { return new VendorCheck(); }
-
-    /** @return The instance of new condition-bean as my table type. (NotNull) */
-    public VendorCheckCB newMyConditionBean() { return new VendorCheckCB(); }
-
     // ===================================================================================
     //                                                                        Count Select
     //                                                                        ============
+    /**
+     * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
+     * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
+     * <pre>
+     * <span style="color: #70226C">int</span> count = <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectCount</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The count for the condition. (NotMinus)
+     */
+    public int selectCount(CBCall<VendorCheckCB> cbLambda) {
+        return facadeSelectCount(createCB(cbLambda));
+    }
+
     /**
      * Select the count of uniquely-selected records by the condition-bean. {IgnorePagingCondition, IgnoreSpecifyColumn}<br>
      * SpecifyColumn is ignored but you can use it only to remove text type column for union's distinct.
@@ -98,6 +104,29 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     // ===================================================================================
     //                                                                       Entity Select
     //                                                                       =============
+    /**
+     * Select the entity by the condition-bean. #beforejava8 <br>
+     * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, use selectEntityWithDeletedCheck().</span>
+     * <pre>
+     * VendorCheck vendorCheck = <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectEntity</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * });
+     * <span style="color: #70226C">if</span> (vendorCheck != <span style="color: #70226C">null</span>) { <span style="color: #3F7E5E">// null check</span>
+     *     ... = vendorCheck.get...();
+     * } <span style="color: #70226C">else</span> {
+     *     ...
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The entity selected by the condition. (NullAllowed: if no data, it returns null)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public OptionalEntity<VendorCheck> selectEntity(CBCall<VendorCheckCB> cbLambda) {
+        return doSelectOptionalEntity(createCB(cbLambda), typeOfSelectedEntity());
+    }
+
     /**
      * Select the entity by the condition-bean. #beforejava8 <br>
      * <span style="color: #AD4747; font-size: 120%">The return might be null if no data, so you should have null check.</span> <br>
@@ -135,6 +164,23 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * Select the entity by the condition-bean with deleted check. <br>
      * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
      * <pre>
+     * VendorCheck <span style="color: #553000">vendorCheck</span> = <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> cb.acceptPK(1));
+     * ... = <span style="color: #553000">vendorCheck</span>.get...(); <span style="color: #3F7E5E">// the entity always be not null</span>
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The entity selected by the condition. (NotNull: if no data, throws exception)
+     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
+     * @throws EntityDuplicatedException When the entity has been duplicated.
+     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
+     */
+    public VendorCheck selectEntityWithDeletedCheck(CBCall<VendorCheckCB> cbLambda) {
+        return facadeSelectEntityWithDeletedCheck(createCB(cbLambda));
+    }
+
+    /**
+     * Select the entity by the condition-bean with deleted check. <br>
+     * <span style="color: #AD4747; font-size: 120%">If the data is always present as your business rule, this method is good.</span>
+     * <pre>
      * VendorCheckCB cb = <span style="color: #70226C">new</span> VendorCheckCB();
      * cb.query().set...;
      * VendorCheck vendorCheck = <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectEntityWithDeletedCheck</span>(cb);
@@ -153,16 +199,17 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     /**
      * Select the entity by the primary-key value.
      * @param vendorCheckId : PK, NotNull, DECIMAL(16). (NotNull)
-     * @return The entity selected by the PK. (NullAllowed: if no data, it returns null)
+     * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
+     * @throws EntityAlreadyDeletedException When get(), alwaysPresent() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public VendorCheck selectByPKValue(Long vendorCheckId) {
-        return facadeSelectByPKValue(vendorCheckId);
+    public OptionalEntity<VendorCheck> selectByPK(Long vendorCheckId) {
+        return facadeSelectByPK(vendorCheckId);
     }
 
-    protected VendorCheck facadeSelectByPKValue(Long vendorCheckId) {
-        return doSelectByPK(vendorCheckId, typeOfSelectedEntity());
+    protected OptionalEntity<VendorCheck> facadeSelectByPK(Long vendorCheckId) {
+        return doSelectOptionalByPK(vendorCheckId, typeOfSelectedEntity());
     }
 
     protected <ENTITY extends VendorCheck> ENTITY doSelectByPK(Long vendorCheckId, Class<? extends ENTITY> tp) {
@@ -173,22 +220,6 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
         return createOptionalEntity(doSelectByPK(vendorCheckId, tp), vendorCheckId);
     }
 
-    /**
-     * Select the entity by the primary-key value with deleted check.
-     * @param vendorCheckId : PK, NotNull, DECIMAL(16). (NotNull)
-     * @return The entity selected by the PK. (NotNull: if no data, throws exception)
-     * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
-     * @throws EntityDuplicatedException When the entity has been duplicated.
-     * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
-     */
-    public VendorCheck selectByPKValueWithDeletedCheck(Long vendorCheckId) {
-        return doSelectByPKWithDeletedCheck(vendorCheckId, typeOfSelectedEntity());
-    }
-
-    protected <ENTITY extends VendorCheck> ENTITY doSelectByPKWithDeletedCheck(Long vendorCheckId, Class<ENTITY> tp) {
-        return doSelectEntityWithDeletedCheck(xprepareCBAsPK(vendorCheckId), tp);
-    }
-
     protected VendorCheckCB xprepareCBAsPK(Long vendorCheckId) {
         assertObjectNotNull("vendorCheckId", vendorCheckId);
         return newConditionBean().acceptPK(vendorCheckId);
@@ -197,6 +228,25 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     // ===================================================================================
     //                                                                         List Select
     //                                                                         ===========
+    /**
+     * Select the list as result bean.
+     * <pre>
+     * ListResultBean&lt;VendorCheck&gt; <span style="color: #553000">vendorCheckList</span> = <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectList</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...;
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...;
+     * });
+     * <span style="color: #70226C">for</span> (VendorCheck <span style="color: #553000">vendorCheck</span> : <span style="color: #553000">vendorCheckList</span>) {
+     *     ... = <span style="color: #553000">vendorCheck</span>.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The result bean of selected list. (NotNull: if no data, returns empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public ListResultBean<VendorCheck> selectList(CBCall<VendorCheckCB> cbLambda) {
+        return facadeSelectList(createCB(cbLambda));
+    }
+
     /**
      * Select the list as result bean.
      * <pre>
@@ -216,9 +266,38 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
         return facadeSelectList(cb);
     }
 
+    @Override
+    protected boolean isEntityDerivedMappable() { return true; }
+
     // ===================================================================================
     //                                                                         Page Select
     //                                                                         ===========
+    /**
+     * Select the page as result bean. <br>
+     * (both count-select and paging-select are executed)
+     * <pre>
+     * PagingResultBean&lt;VendorCheck&gt; <span style="color: #553000">page</span> = <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectPage</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     *     <span style="color: #553000">cb</span>.query().addOrderBy...
+     *     <span style="color: #553000">cb</span>.<span style="color: #CC4747">paging</span>(20, 3); <span style="color: #3F7E5E">// 20 records per a page and current page number is 3</span>
+     * });
+     * <span style="color: #70226C">int</span> allRecordCount = <span style="color: #553000">page</span>.getAllRecordCount();
+     * <span style="color: #70226C">int</span> allPageCount = <span style="color: #553000">page</span>.getAllPageCount();
+     * <span style="color: #70226C">boolean</span> isExistPrePage = <span style="color: #553000">page</span>.isExistPrePage();
+     * <span style="color: #70226C">boolean</span> isExistNextPage = <span style="color: #553000">page</span>.isExistNextPage();
+     * ...
+     * <span style="color: #70226C">for</span> (VendorCheck vendorCheck : <span style="color: #553000">page</span>) {
+     *     ... = vendorCheck.get...;
+     * }
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The result bean of selected page. (NotNull: if no data, returns bean as empty list)
+     * @throws DangerousResultSizeException When the result size is over the specified safety size.
+     */
+    public PagingResultBean<VendorCheck> selectPage(CBCall<VendorCheckCB> cbLambda) {
+        return facadeSelectPage(createCB(cbLambda));
+    }
+
     /**
      * Select the page as result bean. <br>
      * (both count-select and paging-select are executed)
@@ -248,6 +327,22 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
     // ===================================================================================
     //                                                                       Cursor Select
     //                                                                       =============
+    /**
+     * Select the cursor by the condition-bean.
+     * <pre>
+     * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">selectCursor</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().set...
+     * }, <span style="color: #553000">member</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     ... = <span style="color: #553000">member</span>.getMemberName();
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @param entityLambda The handler of entity row of VendorCheck. (NotNull)
+     */
+    public void selectCursor(CBCall<VendorCheckCB> cbLambda, EntityRowHandler<VendorCheck> entityLambda) {
+        facadeSelectCursor(createCB(cbLambda), entityLambda);
+    }
+
     /**
      * Select the cursor by the condition-bean.
      * <pre>
@@ -281,23 +376,6 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * @return The scalar function object to specify function for scalar value. (NotNull)
      */
     public <RESULT> HpSLSFunction<VendorCheckCB, RESULT> selectScalar(Class<RESULT> resultType) {
-        return facadeScalarSelect(resultType);
-    }
-
-    /**
-     * Select the scalar value derived by a function from uniquely-selected records. <br>
-     * You should call a function method after this method called like as follows:
-     * <pre>
-     * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">scalarSelect</span>(Date.class).max(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
-     *     <span style="color: #553000">cb</span>.specify().<span style="color: #CC4747">column...</span>; <span style="color: #3F7E5E">// required for the function</span>
-     *     <span style="color: #553000">cb</span>.query().set...
-     * });
-     * </pre>
-     * @param <RESULT> The type of result.
-     * @param resultType The type of result. (NotNull)
-     * @return The scalar function object to specify function for scalar value. (NotNull)
-     */
-    public <RESULT> HpSLSFunction<VendorCheckCB, RESULT> scalarSelect(Class<RESULT> resultType) {
         return facadeScalarSelect(resultType);
     }
 
@@ -625,6 +703,32 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//vendorCheck.setVersionNo(value);</span>
+     * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendorCheck, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param vendorCheck The entity that contains update values. (NotNull, PrimaryKeyNullAllowed)
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition.
+     */
+    public int queryUpdate(VendorCheck vendorCheck, CBCall<VendorCheckCB> cbLambda) {
+        return doQueryUpdate(vendorCheck, createCB(cbLambda), null);
+    }
+
+    /**
+     * Update the several entities by query non-strictly modified-only. (NonExclusiveControl)
+     * <pre>
+     * VendorCheck vendorCheck = <span style="color: #70226C">new</span> VendorCheck();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//vendorCheck.setPK...(value);</span>
+     * vendorCheck.setFoo...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set values of common columns</span>
+     * <span style="color: #3F7E5E">//vendorCheck.setRegisterUser(value);</span>
+     * <span style="color: #3F7E5E">//vendorCheck.set...;</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//vendorCheck.setVersionNo(value);</span>
      * VendorCheckCB cb = <span style="color: #70226C">new</span> VendorCheckCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">queryUpdate</span>(vendorCheck, cb);
@@ -636,6 +740,21 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      */
     public int queryUpdate(VendorCheck vendorCheck, VendorCheckCB cb) {
         return doQueryUpdate(vendorCheck, cb, null);
+    }
+
+    /**
+     * Delete the several entities by query. (NonExclusiveControl)
+     * <pre>
+     * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">queryDelete</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition.
+     */
+    public int queryDelete(CBCall<VendorCheckCB> cbLambda) {
+        return doQueryDelete(createCB(cbLambda), null);
     }
 
     /**
@@ -806,6 +925,38 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
      * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
      * <span style="color: #3F7E5E">//vendorCheck.setVersionNo(value);</span>
+     * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorCheck, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.self(<span style="color: #553000">colCB</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *         <span style="color: #553000">colCB</span>.specify().<span style="color: #CC4747">columnFooCount()</span>;
+     *     }).plus(1); <span style="color: #3F7E5E">// FOO_COUNT = FOO_COUNT + 1</span>
+     * });
+     * </pre>
+     * @param vendorCheck The entity that contains update values. (NotNull) {PrimaryKeyNotRequired}
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @param opLambda The callback for option of update for varying requests. (NotNull)
+     * @return The updated count.
+     * @throws NonQueryUpdateNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryUpdate(VendorCheck vendorCheck, CBCall<VendorCheckCB> cbLambda, WritableOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
+        return doQueryUpdate(vendorCheck, createCB(cbLambda), createUpdateOption(opLambda));
+    }
+
+    /**
+     * Update the several entities by query with varying requests non-strictly modified-only. {NonExclusiveControl} <br>
+     * For example, self(selfCalculationSpecification), specify(updateColumnSpecification)
+     * , disableCommonColumnAutoSetup(), allowNonQueryUpdate(). <br>
+     * Other specifications are same as queryUpdate(entity, cb).
+     * <pre>
+     * <span style="color: #3F7E5E">// ex) you can update by self calculation values</span>
+     * VendorCheck vendorCheck = <span style="color: #70226C">new</span> VendorCheck();
+     * <span style="color: #3F7E5E">// you don't need to set PK value</span>
+     * <span style="color: #3F7E5E">//vendorCheck.setPK...(value);</span>
+     * vendorCheck.setOther...(value); <span style="color: #3F7E5E">// you should set only modified columns</span>
+     * <span style="color: #3F7E5E">// you don't need to set a value of concurrency column</span>
+     * <span style="color: #3F7E5E">// (auto-increment for version number is valid though non-exclusive control)</span>
+     * <span style="color: #3F7E5E">//vendorCheck.setVersionNo(value);</span>
      * VendorCheckCB cb = <span style="color: #70226C">new</span> VendorCheckCB();
      * cb.query().setFoo...(value);
      * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">varyingQueryUpdate</span>(vendorCheck, cb, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
@@ -822,6 +973,26 @@ public abstract class BsVendorCheckBhv extends AbstractBehaviorWritable<VendorCh
      */
     public int varyingQueryUpdate(VendorCheck vendorCheck, VendorCheckCB cb, WritableOptionCall<VendorCheckCB, UpdateOption<VendorCheckCB>> opLambda) {
         return doQueryUpdate(vendorCheck, cb, createUpdateOption(opLambda));
+    }
+
+    /**
+     * Delete the several entities by query with varying requests non-strictly. <br>
+     * For example, allowNonQueryDelete(). <br>
+     * Other specifications are same as queryDelete(cb).
+     * <pre>
+     * <span style="color: #0000C0">vendorCheckBhv</span>.<span style="color: #CC4747">queryDelete</span>(vendorCheck, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">cb</span>.query().setFoo...
+     * }, <span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>...
+     * });
+     * </pre>
+     * @param cbLambda The callback for condition-bean of VendorCheck. (NotNull)
+     * @param opLambda The callback for option of delete for varying requests. (NotNull)
+     * @return The deleted count.
+     * @throws NonQueryDeleteNotAllowedException When the query has no condition (if not allowed).
+     */
+    public int varyingQueryDelete(CBCall<VendorCheckCB> cbLambda, WritableOptionCall<VendorCheckCB, DeleteOption<VendorCheckCB>> opLambda) {
+        return doQueryDelete(createCB(cbLambda), createDeleteOption(opLambda));
     }
 
     /**

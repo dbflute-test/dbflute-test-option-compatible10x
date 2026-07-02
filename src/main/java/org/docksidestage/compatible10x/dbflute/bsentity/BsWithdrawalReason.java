@@ -294,7 +294,7 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
      * [set] (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason} <br>
      * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setWithdrawalReasonCode(String withdrawalReasonCode) {
+    protected void setWithdrawalReasonCode(String withdrawalReasonCode) {
         registerModifiedProperty("withdrawalReasonCode");
         _withdrawalReasonCode = withdrawalReasonCode;
     }
@@ -337,5 +337,13 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
     public void setDisplayOrder(Integer displayOrder) {
         registerModifiedProperty("displayOrder");
         _displayOrder = displayOrder;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingWithdrawalReasonCode(String withdrawalReasonCode) {
+        setWithdrawalReasonCode(withdrawalReasonCode);
     }
 }

@@ -40,7 +40,7 @@ public class ThreadSafeTest extends UnitContainerTestCase {
                 // ## Arrange ##
                 MemberCB cb = new MemberCB();
                 cb.setupSelect_MemberStatus();
-                cb.query().setMemberName_PrefixSearch("S");
+                cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
                 cb.query().addOrderBy_Birthdate_Desc().addOrderBy_MemberId_Asc();
 
                 // ## Act ##
@@ -92,7 +92,7 @@ public class ThreadSafeTest extends UnitContainerTestCase {
     //                                                                              ======
     public void test_ThreadSafe_update_sameExecution() {
         final int memberId = 3;
-        final Member before = memberBhv.selectByPKValueWithDeletedCheck(memberId);
+        final Member before = memberBhv.selectByPK(memberId).orElseThrow();
         final Long versionNo = before.getVersionNo();
         final Set<String> markSet = DfCollectionUtil.newHashSet();
         cannonball(new CannonballRun() {
@@ -122,7 +122,7 @@ public class ThreadSafeTest extends UnitContainerTestCase {
 
     public void test_ThreadSafe_update_after_insert() {
         final int memberId = 3;
-        final Member before = memberBhv.selectByPKValue(memberId);
+        final Member before = memberBhv.selectByPK(memberId).orElseThrow();
         final Long versionNo = before.getVersionNo();
         final Set<String> markSet = DfCollectionUtil.newHashSet();
         cannonball(new CannonballRun() {

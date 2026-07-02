@@ -143,7 +143,7 @@ public class WxBhvPulloutRelationTest extends UnitContainerTestCase {
         cb.setupSelect_MemberStatus();
         List<Member> memberList = memberBhv.selectList(cb);
         for (Member member : memberList) {
-            member.setMemberStatusCode(null);
+            member.setMemberStatusCodeAsMemberStatus(null);
         }
 
         // ## Act ##

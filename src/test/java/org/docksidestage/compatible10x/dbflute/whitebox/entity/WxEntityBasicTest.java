@@ -861,7 +861,7 @@ public class WxEntityBasicTest extends UnitContainerTestCase {
 
     public void test_serializable_selected() {
         // ## Arrange ##
-        Member member = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member member = memberBhv.selectByPK(3).orElseThrow();
         member.setMemberName("Stojkovic");
         member.setBirthdate(currentUtilDate());
         member.setMemberStatusCode_Formalized();

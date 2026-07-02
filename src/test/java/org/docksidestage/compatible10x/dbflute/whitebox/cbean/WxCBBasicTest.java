@@ -44,7 +44,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.setupSelect_MemberStatus();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         cb.query().addOrderBy_Birthdate_Desc();
         cb.query().addOrderBy_MemberId_Asc();
 
@@ -118,7 +118,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
     //                                                                     ===============
     public void test_ScalarCondition_max_union() {
         // ## Arrange ##
-        Date expected = memberBhv.scalarSelect(Date.class).max(new ScalarQuery<MemberCB>() {
+        Date expected = memberBhv.selectScalar(Date.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnBirthdate();
             }
@@ -192,7 +192,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
         cb.query().myselfExists(new SubQuery<MemberCB>() {
             public void query(MemberCB subCB) {
                 subCB.useInScopeSubQuery();
-                subCB.query().setMemberName_PrefixSearch("S");
+                subCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
                 subCB.union(new UnionQuery<MemberCB>() {
                     public void query(MemberCB unionCB) {
                         unionCB.query().setMemberStatusCode_Equal_Formalized();
@@ -300,7 +300,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
         Timestamp timestamp = currentTimestamp();
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(timestamp, timestamp);
+        cb.query().setBirthdate_FromTo(timestamp, timestamp, op -> op.compareAsDate());
 
         // ## Assert ##
         {
@@ -394,7 +394,7 @@ public class WxCBBasicTest extends UnitContainerTestCase {
         // ## Arrange ##
         MySerializableCB cb = new MySerializableCB();
         cb.setupSelect_MemberStatus();
-        cb.query().setBirthdate_DateFromTo(currentUtilDate(), currentUtilDate());
+        cb.query().setBirthdate_FromTo(currentUtilDate(), currentUtilDate(), op -> op.compareAsDate());
 
         // ## Act ##
         byte[] binary = DfTypeUtil.toBinary(cb);

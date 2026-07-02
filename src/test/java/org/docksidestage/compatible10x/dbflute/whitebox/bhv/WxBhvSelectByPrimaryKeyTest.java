@@ -28,7 +28,7 @@ public class WxBhvSelectByPrimaryKeyTest extends UnitContainerTestCase {
         // ## Arrange ##
         try {
             // ## Act ##
-            memberBhv.selectByPKValue(null);
+            memberBhv.selectByPK(null).orElseThrow();
 
             // ## Assert ##
             fail();
@@ -40,7 +40,7 @@ public class WxBhvSelectByPrimaryKeyTest extends UnitContainerTestCase {
         // ## Arrange ##
         try {
             // ## Act ##
-            memberBhv.selectByPKValueWithDeletedCheck(null);
+            memberBhv.selectByPK(null).orElseThrow();
 
             // ## Assert ##
             fail();
@@ -81,7 +81,7 @@ public class WxBhvSelectByPrimaryKeyTest extends UnitContainerTestCase {
 
     public void test_selectByUniqueOf_compoundKey_basic() {
         // ## Arrange ##
-        Purchase purchase = purchaseBhv.selectByPKValue(1L);
+        Purchase purchase = purchaseBhv.selectByPK(1L).orElseThrow();
         Integer memberId = purchase.getMemberId();
         Integer productId = purchase.getProductId();
         Timestamp purchaseDatetime = purchase.getPurchaseDatetime();

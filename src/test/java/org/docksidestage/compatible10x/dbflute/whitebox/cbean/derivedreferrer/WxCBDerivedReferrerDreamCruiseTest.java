@@ -405,7 +405,7 @@ public class WxCBDerivedReferrerDreamCruiseTest extends UnitContainerTestCase {
                     }
                 });
                 subCB.specify().columnPurchasePrice().plus(3);
-                subCB.query().queryProduct().setProductName_PrefixSearch("S");
+                subCB.query().queryProduct().setProductName_LikeSearch("S", op -> op.likePrefix());
             }
         }, Member.ALIAS_highestPurchasePrice);
         cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {

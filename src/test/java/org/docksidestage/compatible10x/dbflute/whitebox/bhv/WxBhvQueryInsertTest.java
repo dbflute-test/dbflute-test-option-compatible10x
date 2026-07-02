@@ -70,7 +70,7 @@ public class WxBhvQueryInsertTest extends UnitContainerTestCase {
         // ## Act ##
         int inserted = memberWithdrawalBhv.queryInsert(new QueryInsertSetupper<MemberWithdrawal, MemberWithdrawalCB>() {
             public ConditionBean setup(MemberWithdrawal entity, MemberWithdrawalCB intoCB) {
-                entity.setWithdrawalReasonCode(firstReason.getWithdrawalReasonCode());
+                entity.mynativeMappingWithdrawalReasonCode(firstReason.getWithdrawalReasonCode());
                 MemberCB cb = new MemberCB();
 
                 intoCB.specify().columnMemberId().mappedFrom(cb.specify().columnMemberId());
@@ -227,7 +227,7 @@ public class WxBhvQueryInsertTest extends UnitContainerTestCase {
                 public ConditionBean setup(MemberWithdrawal entity, MemberWithdrawalCB intoCB) {
                     MemberCB cb = new MemberCB();
 
-                    entity.setWithdrawalReasonCode(null);
+                    entity.mynativeMappingWithdrawalReasonCode(null);
                     entity.setRegisterUser("foo-bar-baz-qux-quux"); // overridden
                     entity.setVersionNo(9999999999L); // overridden in an internal process
                     intoCB.specify().columnMemberId().mappedFrom(cb.specify().columnMemberId());
@@ -279,7 +279,7 @@ public class WxBhvQueryInsertTest extends UnitContainerTestCase {
     //                                                                            ========
     public void test_queryInsert_IdentityEnabled() {
         // ## Arrange ##
-        Integer beforeMaxId = memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+        Integer beforeMaxId = memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }
@@ -297,7 +297,7 @@ public class WxBhvQueryInsertTest extends UnitContainerTestCase {
         });
 
         // ## Assert ##
-        Integer afterMaxId = memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+        Integer afterMaxId = memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().columnMemberId();
             }

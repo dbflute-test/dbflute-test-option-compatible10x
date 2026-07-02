@@ -60,7 +60,14 @@ public class SummaryProductDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductId(), (et, vl) -> ((SummaryProduct)et).setProductId(cti(vl)), "productId");
         setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductName(), (et, vl) -> ((SummaryProduct)et).setProductName((String)vl), "productName");
         setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductHandleCode(), (et, vl) -> ((SummaryProduct)et).setProductHandleCode((String)vl), "productHandleCode");
-        setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductStatusCode(), (et, vl) -> ((SummaryProduct)et).setProductStatusCode((String)vl), "productStatusCode");
+        setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductStatusCode(), (et, vl) -> {
+            CDef.ProductStatus cls = (CDef.ProductStatus)gcls(et, columnProductStatusCode(), vl);
+            if (cls != null) {
+                ((SummaryProduct)et).setProductStatusCodeAsProductStatus(cls);
+            } else {
+                ((SummaryProduct)et).mynativeMappingProductStatusCode((String)vl);
+            }
+        }, "productStatusCode");
         setupEpg(_epgMap, et -> ((SummaryProduct)et).getLatestPurchaseDatetime(), (et, vl) -> ((SummaryProduct)et).setLatestPurchaseDatetime(cttp(vl)), "latestPurchaseDatetime");
     }
     public PropertyGateway findPropertyGateway(String prop)
@@ -196,7 +203,6 @@ public class SummaryProductDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public SummaryProduct newEntity() { return new SummaryProduct(); }
-    public SummaryProduct newMyEntity() { return new SummaryProduct(); }
 
     // ===================================================================================
     //                                                                   Map Communication

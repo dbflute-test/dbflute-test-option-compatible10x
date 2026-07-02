@@ -228,7 +228,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(DfTypeUtil.toDate("2011-01-21"), null);
+        cb.query().setBirthdate_FromTo(DfTypeUtil.toDate("2011-01-21"), null, op -> op.compareAsDate());
 
         // ## Assert ##
         assertTrue(cb.hasWhereClauseOnBaseQuery());
@@ -242,7 +242,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(null, DfTypeUtil.toDate("2011-01-21"));
+        cb.query().setBirthdate_FromTo(null, DfTypeUtil.toDate("2011-01-21"), op -> op.compareAsDate());
 
         // ## Assert ##
         assertTrue(cb.hasWhereClauseOnBaseQuery());
@@ -259,7 +259,7 @@ public class WxCBFromToTest extends UnitContainerTestCase {
         MemberCB cb = new MemberCB();
 
         // ## Act ##
-        cb.query().setBirthdate_DateFromTo(null, null);
+        cb.query().setBirthdate_FromTo(null, null, op -> op.compareAsDate());
 
         // ## Assert ##
         assertFalse(cb.hasWhereClauseOnBaseQuery());

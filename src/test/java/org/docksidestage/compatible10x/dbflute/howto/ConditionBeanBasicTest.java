@@ -88,7 +88,7 @@ public class ConditionBeanBasicTest extends UnitContainerTestCase {
         // C. 絞り込み条件・ソート条件を設定
         //    --> where句, order-by句 (, from句, join句)
         // = = = = = = = = = = = = = = = = = = = = = =
-        cb.query().setMemberName_PrefixSearch("S"); // 会員名が'S'で始まること
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix()); // 会員名が'S'で始まること
         cb.query().addOrderBy_Birthdate_Desc(); // 会員の生年月日の降順で並べる
         cb.query().addOrderBy_MemberId_Asc(); // 生年月日が同じ場合は会員IDの昇順
 
@@ -341,7 +341,7 @@ public class ConditionBeanBasicTest extends UnitContainerTestCase {
     public void test_query_queryForeign_Equal() {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
-        cb.query().queryMemberWithdrawalAsOne().setWithdrawalReasonCode_Equal("PRD");// *Point!
+        cb.query().queryMemberWithdrawalAsOne().setWithdrawalReasonCode_Equal_Prd();
 
         // ## Act ##
         ListResultBean<Member> memberList = memberBhv.selectList(cb);

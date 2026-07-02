@@ -127,6 +127,19 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * (会員フォローイングID)MEMBER_FOLLOWING_ID: {PK, ID, NotNull, BIGINT(19)}
      * @param minNumber The min number of memberFollowingId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of memberFollowingId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setMemberFollowingId_RangeOf(Long minNumber, Long maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setMemberFollowingId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (会員フォローイングID)MEMBER_FOLLOWING_ID: {PK, ID, NotNull, BIGINT(19)}
+     * @param minNumber The min number of memberFollowingId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of memberFollowingId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setMemberFollowingId_RangeOf(Long minNumber, Long maxNumber, RangeOfOption rangeOfOption) {
@@ -243,6 +256,19 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * (わたし)MY_MEMBER_ID: {UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER}
      * @param minNumber The min number of myMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of myMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setMyMemberId_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setMyMemberId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (わたし)MY_MEMBER_ID: {UQ+, IX+, NotNull, INTEGER(10), FK to MEMBER}
+     * @param minNumber The min number of myMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of myMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setMyMemberId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
@@ -274,36 +300,6 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     protected void doSetMyMemberId_NotInScope(Collection<Integer> myMemberIdList) {
         regINS(CK_NINS, cTL(myMemberIdList), xgetCValueMyMemberId(), "MY_MEMBER_ID");
     }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select MY_MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my MY_MEMBER_ID, named 'memberByMyMemberId'.
-     * @param subCBLambda The callback for sub-query of MemberByMyMemberId for 'in-scope'. (NotNull)
-     */
-    public void inScopeMemberByMyMemberId(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyMemberId_InScopeRelation_MemberByMyMemberId(cb.query());
-        registerInScopeRelation(cb.query(), "MY_MEMBER_ID", "MEMBER_ID", pp, "memberByMyMemberId", false);
-    }
-    public abstract String keepMyMemberId_InScopeRelation_MemberByMyMemberId(MemberCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select MY_MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my MY_MEMBER_ID, named 'memberByMyMemberId'.
-     * @param subCBLambda The callback for sub-query of MemberByMyMemberId for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeMemberByMyMemberId(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(cb.query());
-        registerInScopeRelation(cb.query(), "MY_MEMBER_ID", "MEMBER_ID", pp, "memberByMyMemberId", true);
-    }
-    public abstract String keepMyMemberId_NotInScopeRelation_MemberByMyMemberId(MemberCQ sq);
 
     protected void regMyMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueMyMemberId(), "MY_MEMBER_ID"); }
     protected abstract ConditionValue xgetCValueMyMemberId();
@@ -377,6 +373,19 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * (あなた)YOUR_MEMBER_ID: {+UQ, IX+, NotNull, INTEGER(10), FK to MEMBER}
      * @param minNumber The min number of yourMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param maxNumber The max number of yourMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setYourMemberId_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setYourMemberId_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (あなた)YOUR_MEMBER_ID: {+UQ, IX+, NotNull, INTEGER(10), FK to MEMBER}
+     * @param minNumber The min number of yourMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of yourMemberId. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param rangeOfOption The option of range-of. (NotNull)
      */
     public void setYourMemberId_RangeOf(Integer minNumber, Integer maxNumber, RangeOfOption rangeOfOption) {
@@ -408,36 +417,6 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     protected void doSetYourMemberId_NotInScope(Collection<Integer> yourMemberIdList) {
         regINS(CK_NINS, cTL(yourMemberIdList), xgetCValueYourMemberId(), "YOUR_MEMBER_ID");
     }
-
-    /**
-     * Set up InScopeRelation (sub-query). <br />
-     * {in (select YOUR_MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my YOUR_MEMBER_ID, named 'memberByYourMemberId'.
-     * @param subCBLambda The callback for sub-query of MemberByYourMemberId for 'in-scope'. (NotNull)
-     */
-    public void inScopeMemberByYourMemberId(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepYourMemberId_InScopeRelation_MemberByYourMemberId(cb.query());
-        registerInScopeRelation(cb.query(), "YOUR_MEMBER_ID", "MEMBER_ID", pp, "memberByYourMemberId", false);
-    }
-    public abstract String keepYourMemberId_InScopeRelation_MemberByYourMemberId(MemberCQ sq);
-
-    /**
-     * Set up NotInScopeRelation (sub-query). <br />
-     * {not in (select YOUR_MEMBER_ID from MEMBER where ...)} <br />
-     * (会員)MEMBER by my YOUR_MEMBER_ID, named 'memberByYourMemberId'.
-     * @param subCBLambda The callback for sub-query of MemberByYourMemberId for 'not in-scope'. (NotNull)
-     */
-    public void notInScopeMemberByYourMemberId(SubQuery<MemberCB> subCBLambda) {
-        assertObjectNotNull("subCBLambda", subCBLambda);
-        MemberCB cb = new MemberCB(); cb.xsetupForInScopeRelation(this);
-        try { lock(); subCBLambda.query(cb); } finally { unlock(); }
-        String pp = keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(cb.query());
-        registerInScopeRelation(cb.query(), "YOUR_MEMBER_ID", "MEMBER_ID", pp, "memberByYourMemberId", true);
-    }
-    public abstract String keepYourMemberId_NotInScopeRelation_MemberByYourMemberId(MemberCQ sq);
 
     protected void regYourMemberId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueYourMemberId(), "YOUR_MEMBER_ID"); }
     protected abstract ConditionValue xgetCValueYourMemberId();
@@ -491,6 +470,19 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
      * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
+     * <pre>e.g. setFollowDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setFollowDatetime_FromTo(Date fromDatetime, Date toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setFollowDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
      * <pre>e.g. setFollowDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
      * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
      * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
@@ -498,21 +490,6 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
      */
     public void setFollowDatetime_FromTo(Date fromDatetime, Date toDatetime, FromToOption fromToOption) {
         regFTQ((fromDatetime != null ? new java.sql.Timestamp(fromDatetime.getTime()) : null), (toDatetime != null ? new java.sql.Timestamp(toDatetime.getTime()) : null), xgetCValueFollowDatetime(), "FOLLOW_DATETIME", fromToOption);
-    }
-
-    /**
-     * DateFromTo. (Date means yyyy/MM/dd) {fromDate &lt;= column &lt; toDate + 1 day} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * (その瞬間)FOLLOW_DATETIME: {IX, NotNull, TIMESTAMP(26, 6)}
-     * <pre>
-     * e.g. from:{2007/04/10 08:24:53} to:{2007/04/16 14:36:29}
-     *  column &gt;= '2007/04/10 00:00:00' and column <span style="color: #CC4747">&lt; '2007/04/17 00:00:00'</span>
-     * </pre>
-     * @param fromDate The from-date(yyyy/MM/dd) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDate The to-date(yyyy/MM/dd) of followDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     */
-    public void setFollowDatetime_DateFromTo(Date fromDate, Date toDate) {
-        setFollowDatetime_FromTo(fromDate, toDate, xcDFTOP());
     }
 
     protected void regFollowDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueFollowDatetime(), "FOLLOW_DATETIME"); }
@@ -679,6 +656,39 @@ public abstract class AbstractBsMemberFollowingCQ extends AbstractConditionQuery
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

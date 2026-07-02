@@ -115,7 +115,7 @@ public class WxSqlResultHandlerTest extends UnitContainerTestCase {
 
         // ## Act ##
         MemberCB cb = new MemberCB();
-        cb.query().setMemberName_PrefixSearch("S");
+        cb.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
         memberBhv.selectCount(cb);
         cb.query().setMemberStatusCode_Equal_Formalized();
         memberBhv.selectList(cb);
@@ -199,7 +199,7 @@ public class WxSqlResultHandlerTest extends UnitContainerTestCase {
 
     public void test_EntityUpdate_insertOrUpdate_onParade_withOptimisticLock() {
         // ## Arrange ##
-        Member before = memberBhv.selectByPKValueWithDeletedCheck(3);
+        Member before = memberBhv.selectByPK(3).orElseThrow();
         Member member = new Member();
         member.setMemberId(99999);
         member.setMemberName("$name");
@@ -250,7 +250,7 @@ public class WxSqlResultHandlerTest extends UnitContainerTestCase {
     public void test_EntityUpdate_insertOrUpdate_onParade_withoutOptimisticLock() {
         // ## Arrange ##
         MemberStatus status = new MemberStatus();
-        status.setMemberStatusCode("ZZZ");
+        status.mynativeMappingMemberStatusCode("ZZZ");
         status.setMemberStatusName("Test");
         status.setDisplayOrder(99999);
         status.setDescription("for test");

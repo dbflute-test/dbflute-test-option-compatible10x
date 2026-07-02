@@ -44,7 +44,7 @@ public class WxCBEmptyStringQueryTest extends UnitContainerTestCase {
         cb.query().existsPurchaseList(new SubQuery<PurchaseCB>() {
             public void query(PurchaseCB subCB) {
                 subCB.enableEmptyStringQuery(() -> {
-                    subCB.query().queryProduct().setProductStatusCode_Equal("");
+                    subCB.query().queryProduct().invokeQueryEqual("productStatusCode", "");
                 });
             }
         });

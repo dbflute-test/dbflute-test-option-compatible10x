@@ -626,7 +626,7 @@ public abstract class BsMember extends AbstractEntity implements DomainEntity, E
      * ステータスが変わるたびに、このカラムが更新される。
      * @param memberStatusCode The value of the column 'MEMBER_STATUS_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setMemberStatusCode(String memberStatusCode) {
+    protected void setMemberStatusCode(String memberStatusCode) {
         registerModifiedProperty("memberStatusCode");
         _memberStatusCode = memberStatusCode;
     }
@@ -783,5 +783,13 @@ public abstract class BsMember extends AbstractEntity implements DomainEntity, E
     public void setVersionNo(Long versionNo) {
         registerModifiedProperty("versionNo");
         _versionNo = versionNo;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param memberStatusCode The value of the column 'MEMBER_STATUS_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingMemberStatusCode(String memberStatusCode) {
+        setMemberStatusCode(memberStatusCode);
     }
 }

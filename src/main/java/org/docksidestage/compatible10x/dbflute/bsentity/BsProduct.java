@@ -431,7 +431,7 @@ public abstract class BsProduct extends AbstractEntity implements DomainEntity, 
      * [set] PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
      * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (basically NotNull if update: for the constraint)
      */
-    public void setProductStatusCode(String productStatusCode) {
+    protected void setProductStatusCode(String productStatusCode) {
         registerModifiedProperty("productStatusCode");
         _productStatusCode = productStatusCode;
     }
@@ -542,5 +542,13 @@ public abstract class BsProduct extends AbstractEntity implements DomainEntity, 
     public void setVersionNo(Long versionNo) {
         registerModifiedProperty("versionNo");
         _versionNo = versionNo;
+    }
+
+    /**
+     * For framework so basically DON'T use this method.
+     * @param productStatusCode The value of the column 'PRODUCT_STATUS_CODE'. (basically NotNull if update: for the constraint)
+     */
+    public void mynativeMappingProductStatusCode(String productStatusCode) {
+        setProductStatusCode(productStatusCode);
     }
 }

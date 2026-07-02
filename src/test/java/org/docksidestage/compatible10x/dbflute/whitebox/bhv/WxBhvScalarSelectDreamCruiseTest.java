@@ -39,7 +39,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
         });
 
         // ## Act ##
-        Integer result = memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+        Integer result = memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 MemberCB dreamCruiseCB = cb.dreamCruiseCB();
                 cb.specify().columnMemberId().multiply(3).plus(dreamCruiseCB.specify().columnVersionNo());
@@ -67,7 +67,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
         });
 
         // ## Act ##
-        Integer result = memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+        Integer result = memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                     public void query(PurchaseCB subCB) {
@@ -97,7 +97,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
         });
 
         // ## Act ##
-        Integer result = memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+        Integer result = memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
             public void query(MemberCB cb) {
                 cb.specify().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
                     public void query(PurchaseCB subCB) {
@@ -154,7 +154,7 @@ public class WxBhvScalarSelectDreamCruiseTest extends UnitContainerTestCase {
         // ## Arrange ##
         // ## Act ##
         try {
-            memberBhv.scalarSelect(Integer.class).max(new ScalarQuery<MemberCB>() {
+            memberBhv.selectScalar(Integer.class).max(new ScalarQuery<MemberCB>() {
                 public void query(MemberCB cb) {
                     MemberCB dreamCruiseCB = cb.dreamCruiseCB();
                     cb.specify().columnVersionNo().multiply(3).plus(dreamCruiseCB.specify().columnMemberId());

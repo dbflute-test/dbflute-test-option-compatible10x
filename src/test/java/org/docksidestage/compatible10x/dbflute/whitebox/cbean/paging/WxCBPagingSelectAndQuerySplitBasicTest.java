@@ -44,7 +44,7 @@ public class WxCBPagingSelectAndQuerySplitBasicTest extends UnitContainerTestCas
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().setMemberStatusCode_Equal_Formalized();
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
         cb.query().queryMemberStatus().addOrderBy_DisplayOrder_Asc();
@@ -99,7 +99,7 @@ public class WxCBPagingSelectAndQuerySplitBasicTest extends UnitContainerTestCas
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().setMemberStatusCode_Equal_Formalized();
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
         cb.query().queryMemberStatus().addOrderBy_DisplayOrder_Asc();
@@ -163,7 +163,7 @@ public class WxCBPagingSelectAndQuerySplitBasicTest extends UnitContainerTestCas
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().setMemberStatusCode_Equal_Formalized();
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
         cb.query().derivedPurchaseList().max(new SubQuery<PurchaseCB>() {
@@ -237,7 +237,7 @@ public class WxCBPagingSelectAndQuerySplitBasicTest extends UnitContainerTestCas
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().setMemberStatusCode_Equal_Formalized();
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
         cb.query().setMemberId_Equal(99999);
@@ -353,7 +353,7 @@ public class WxCBPagingSelectAndQuerySplitBasicTest extends UnitContainerTestCas
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().setMemberStatusCode_Equal_Formalized();
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
         cb.query().queryMemberStatus().addOrderBy_DisplayOrder_Asc();
@@ -419,7 +419,7 @@ public class WxCBPagingSelectAndQuerySplitBasicTest extends UnitContainerTestCas
         cb.orScopeQuery(new OrQuery<MemberCB>() {
             public void query(MemberCB orCB) {
                 orCB.query().setMemberStatusCode_Equal_Formalized();
-                orCB.query().setMemberName_PrefixSearch("S");
+                orCB.query().setMemberName_LikeSearch("S", op -> op.likePrefix());
             }
         });
         cb.query().queryMemberStatus().addOrderBy_DisplayOrder_Asc();

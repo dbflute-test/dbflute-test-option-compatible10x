@@ -137,7 +137,6 @@ public class VendorPrimaryKeyOnlyDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public VendorPrimaryKeyOnly newEntity() { return new VendorPrimaryKeyOnly(); }
-    public VendorPrimaryKeyOnly newMyEntity() { return new VendorPrimaryKeyOnly(); }
 
     // ===================================================================================
     //                                                                   Map Communication

@@ -52,7 +52,7 @@ public class TwoEdgedSwordTest extends UnitContainerTestCase {
         // ## Arrange ##
         MemberCB cb = new MemberCB();
         cb.query().setMemberId_Equal(3);
-        cb.query().setMemberName_PrefixSearch("Mijato");
+        cb.query().setMemberName_LikeSearch("Mijato", op -> op.likePrefix());
         cb.query().setFormalizedDatetime_LessEqual(currentTimestamp());
 
         // Internal Check!

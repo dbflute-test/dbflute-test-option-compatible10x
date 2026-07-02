@@ -63,7 +63,7 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3), classification=ProductStatus}
      * @param productStatusCode The value of productStatusCode as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_Equal(String productStatusCode) {
+    protected void setProductStatusCode_Equal(String productStatusCode) {
         doSetProductStatusCode_Equal(fRES(productStatusCode));
     }
 
@@ -110,7 +110,7 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3), classification=ProductStatus}
      * @param productStatusCode The value of productStatusCode as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_NotEqual(String productStatusCode) {
+    protected void setProductStatusCode_NotEqual(String productStatusCode) {
         doSetProductStatusCode_NotEqual(fRES(productStatusCode));
     }
 
@@ -157,7 +157,7 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3), classification=ProductStatus}
      * @param productStatusCodeList The collection of productStatusCode as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_InScope(Collection<String> productStatusCodeList) {
+    protected void setProductStatusCode_InScope(Collection<String> productStatusCodeList) {
         doSetProductStatusCode_InScope(productStatusCodeList);
     }
 
@@ -180,7 +180,7 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3), classification=ProductStatus}
      * @param productStatusCodeList The collection of productStatusCode as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
-    public void setProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
+    protected void setProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
         doSetProductStatusCode_NotInScope(productStatusCodeList);
     }
 
@@ -450,6 +450,17 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
     /**
      * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品ステータス名称)PRODUCT_STATUS_NAME: {NotNull, VARCHAR(50)} <br>
+     * <pre>e.g. setProductStatusName_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productStatusName The value of productStatusName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductStatusName_LikeSearch(String productStatusName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductStatusName_LikeSearch(productStatusName, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品ステータス名称)PRODUCT_STATUS_NAME: {NotNull, VARCHAR(50)} <br>
      * <pre>e.g. setProductStatusName_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
      * @param productStatusName The value of productStatusName as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of like-search. (NotNull)
@@ -463,19 +474,21 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      * And NullOrEmptyIgnored, SeveralRegistered. <br>
      * (商品ステータス名称)PRODUCT_STATUS_NAME: {NotNull, VARCHAR(50)}
      * @param productStatusName The value of productStatusName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductStatusName_NotLikeSearch(String productStatusName, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductStatusName_NotLikeSearch(productStatusName, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * (商品ステータス名称)PRODUCT_STATUS_NAME: {NotNull, VARCHAR(50)}
+     * @param productStatusName The value of productStatusName as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
      * @param likeSearchOption The option of not-like-search. (NotNull)
      */
     public void setProductStatusName_NotLikeSearch(String productStatusName, LikeSearchOption likeSearchOption) {
         regLSQ(CK_NLS, fRES(productStatusName), xgetCValueProductStatusName(), "PRODUCT_STATUS_NAME", likeSearchOption);
-    }
-
-    /**
-     * PrefixSearch {like 'xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * (商品ステータス名称)PRODUCT_STATUS_NAME: {NotNull, VARCHAR(50)}
-     * @param productStatusName The value of productStatusName as prefixSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setProductStatusName_PrefixSearch(String productStatusName) {
-        setProductStatusName_LikeSearch(productStatusName, xcLSOPPre());
     }
 
     protected void regProductStatusName(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductStatusName(), "PRODUCT_STATUS_NAME"); }
@@ -541,6 +554,19 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
      */
     public void setDisplayOrder_LessEqual(Integer displayOrder) {
         regDisplayOrder(CK_LE, displayOrder);
+    }
+
+    /**
+     * RangeOf with various options. (versatile) <br>
+     * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * (表示順)DISPLAY_ORDER: {UQ, NotNull, INTEGER(10)}
+     * @param minNumber The min number of displayOrder. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param maxNumber The max number of displayOrder. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of range-of. (NotNull)
+     */
+    public void setDisplayOrder_RangeOf(Integer minNumber, Integer maxNumber, ConditionOptionCall<RangeOfOption> opLambda) {
+        setDisplayOrder_RangeOf(minNumber, maxNumber, xcROOP(opLambda));
     }
 
     /**
@@ -746,6 +772,39 @@ public abstract class AbstractBsProductStatusCQ extends AbstractConditionQuery {
     // ===================================================================================
     //                                                                        Manual Order
     //                                                                        ============
+    /**
+     * Order along manual ordering information.
+     * <pre>
+     * cb.query().addOrderBy_Birthdate_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_GreaterEqual</span>(priorityDate); <span style="color: #3F7E5E">// e.g. 2000/01/01</span>
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when BIRTHDATE &gt;= '2000/01/01' then 0</span>
+     * <span style="color: #3F7E5E">//     else 1</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     *
+     * cb.query().addOrderBy_MemberStatusCode_Asc().<span style="color: #CC4747">withManualOrder</span>(<span style="color: #553000">op</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Withdrawal);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Formalized);
+     *     <span style="color: #553000">op</span>.<span style="color: #CC4747">when_Equal</span>(CDef.MemberStatus.Provisional);
+     * });
+     * <span style="color: #3F7E5E">// order by </span>
+     * <span style="color: #3F7E5E">//   case</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'WDL' then 0</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'FML' then 1</span>
+     * <span style="color: #3F7E5E">//     when MEMBER_STATUS_CODE = 'PRV' then 2</span>
+     * <span style="color: #3F7E5E">//     else 3</span>
+     * <span style="color: #3F7E5E">//   end asc, ...</span>
+     * </pre>
+     * <p>This function with Union is unsupported!</p>
+     * <p>The order values are bound (treated as bind parameter).</p>
+     * @param opLambda The callback for option of manual-order containing order values. (NotNull)
+     */
+    public void withManualOrder(ManualOrderOptionCall opLambda) { // is user public!
+        xdoWithManualOrder(cMOO(opLambda));
+    }
+
     /**
      * Order along manual ordering information.
      * <pre>

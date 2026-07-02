@@ -61,10 +61,24 @@ public class OptionMemberDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((OptionMember)et).getMemberName(), (et, vl) -> ((OptionMember)et).setMemberName((String)vl), "memberName");
         setupEpg(_epgMap, et -> ((OptionMember)et).getBirthdate(), (et, vl) -> ((OptionMember)et).setBirthdate(ctdt(vl)), "birthdate");
         setupEpg(_epgMap, et -> ((OptionMember)et).getFormalizedDatetime(), (et, vl) -> ((OptionMember)et).setFormalizedDatetime(cttp(vl)), "formalizedDatetime");
-        setupEpg(_epgMap, et -> ((OptionMember)et).getMemberStatusCode(), (et, vl) -> ((OptionMember)et).setMemberStatusCode((String)vl), "memberStatusCode");
+        setupEpg(_epgMap, et -> ((OptionMember)et).getMemberStatusCode(), (et, vl) -> {
+            CDef.MemberStatus cls = (CDef.MemberStatus)gcls(et, columnMemberStatusCode(), vl);
+            if (cls != null) {
+                ((OptionMember)et).setMemberStatusCodeAsMemberStatus(cls);
+            } else {
+                ((OptionMember)et).mynativeMappingMemberStatusCode((String)vl);
+            }
+        }, "memberStatusCode");
         setupEpg(_epgMap, et -> ((OptionMember)et).getMemberStatusName(), (et, vl) -> ((OptionMember)et).setMemberStatusName((String)vl), "memberStatusName");
         setupEpg(_epgMap, et -> ((OptionMember)et).getStatusDisplayOrder(), (et, vl) -> ((OptionMember)et).setStatusDisplayOrder(cti(vl)), "statusDisplayOrder");
-        setupEpg(_epgMap, et -> ((OptionMember)et).getDummyFlg(), (et, vl) -> ((OptionMember)et).setDummyFlg(cti(vl)), "dummyFlg");
+        setupEpg(_epgMap, et -> ((OptionMember)et).getDummyFlg(), (et, vl) -> {
+            CDef.Flg cls = (CDef.Flg)gcls(et, columnDummyFlg(), vl);
+            if (cls != null) {
+                ((OptionMember)et).setDummyFlgAsFlg(cls);
+            } else {
+                ((OptionMember)et).mynativeMappingDummyFlg(ctn(vl, Integer.class));
+            }
+        }, "dummyFlg");
         setupEpg(_epgMap, et -> ((OptionMember)et).getDummyNoflg(), (et, vl) -> ((OptionMember)et).setDummyNoflg(cti(vl)), "dummyNoflg");
     }
     public PropertyGateway findPropertyGateway(String prop)
@@ -203,7 +217,6 @@ public class OptionMemberDbm extends AbstractDBMeta {
     //                                                                     Object Instance
     //                                                                     ===============
     public OptionMember newEntity() { return new OptionMember(); }
-    public OptionMember newMyEntity() { return new OptionMember(); }
 
     // ===================================================================================
     //                                                                   Map Communication

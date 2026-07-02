@@ -2,18 +2,15 @@ package org.docksidestage.compatible10x.dbflute.whitebox.cbean.internal;
 
 import java.util.Date;
 
-import org.dbflute.cbean.coption.LikeSearchOption;
 import org.dbflute.cbean.result.ListResultBean;
 import org.dbflute.cbean.scoping.OrQuery;
 import org.dbflute.cbean.scoping.SpecifyQuery;
 import org.dbflute.cbean.scoping.SubQuery;
-import org.dbflute.cbean.scoping.UnionQuery;
 import org.dbflute.exception.SetupSelectIllegalPurposeException;
 import org.dbflute.exception.SpecifyIllegalPurposeException;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberCB;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberLoginCB;
 import org.docksidestage.compatible10x.dbflute.cbean.MemberStatusCB;
-import org.docksidestage.compatible10x.dbflute.cbean.MemberWithdrawalCB;
 import org.docksidestage.compatible10x.dbflute.cbean.PurchaseCB;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberBhv;
 import org.docksidestage.compatible10x.dbflute.exbhv.MemberStatusBhv;
@@ -45,17 +42,18 @@ public class WxCBThatsBadTimingExplicitTest extends UnitContainerTestCase {
                         purchaseCB.query().setPurchaseCount_GreaterEqual(2);
                     }
                 });
-                memberCB.query().existsMemberWithdrawalAsOne(new SubQuery<MemberWithdrawalCB>() {
-                    public void query(MemberWithdrawalCB subCB) {
-                        final LikeSearchOption option = new LikeSearchOption().likeContain().escapeByPipeLine();
-                        subCB.query().queryWithdrawalReason().setWithdrawalReasonText_LikeSearch("xxx", option);
-                        subCB.union(new UnionQuery<MemberWithdrawalCB>() {
-                            public void query(MemberWithdrawalCB unionCB) {
-                                unionCB.query().setWithdrawalReasonInputText_IsNotNull();
-                            }
-                        });
-                    }
-                });
+                // already deleted (2026/07/02)
+                //memberCB.query().existsMemberWithdrawalAsOne(new SubQuery<MemberWithdrawalCB>() {
+                //    public void query(MemberWithdrawalCB subCB) {
+                //        final LikeSearchOption option = new LikeSearchOption().likeContain().escapeByPipeLine();
+                //        subCB.query().queryWithdrawalReason().setWithdrawalReasonText_LikeSearch("xxx", option);
+                //        subCB.union(new UnionQuery<MemberWithdrawalCB>() {
+                //            public void query(MemberWithdrawalCB unionCB) {
+                //                unionCB.query().setWithdrawalReasonInputText_IsNotNull();
+                //            }
+                //        });
+                //    }
+                //});
             }
         });
         cb.query().setMemberStatusCode_Equal_Formalized();
