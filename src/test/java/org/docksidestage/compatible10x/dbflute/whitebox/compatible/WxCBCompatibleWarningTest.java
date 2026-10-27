@@ -101,7 +101,9 @@ public class WxCBCompatibleWarningTest extends UnitContainerTestCase {
 
             // isThatsBadTimingWarningOnly
             cb.query().existsPurchaseList(purchaseCB -> {
+                cb.specify().columnFormalizedDatetime();
                 cb.query().setBirthdate_IsNotNull();
+                cb.disableThatsBadTiming();
             });
 
             // これは元々OUTなケースなので関係ない
